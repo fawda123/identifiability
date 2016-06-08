@@ -1,0 +1,196 @@
+\documentclass[letterpaper,12pt,oneside]{article}
+\usepackage[paperwidth=8.5in,paperheight=11in,top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{setspace}
+\usepackage[colorlinks=true,allcolors=Blue]{hyperref}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{outlines}
+\usepackage{lineno}
+\usepackage{array}
+\usepackage{times}
+\usepackage{cleveref}
+\usepackage{acronym}
+\usepackage[position=t]{subfig}
+\usepackage{paralist}
+\usepackage[noae]{Sweave}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{pdflscape}
+\usepackage{bm}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+% \usepackage{showlabels}
+\bibpunct{(}{)}{,}{a}{}{,}
+
+% page margins and section title formatting
+\linespread{1.5}
+\setlength{\footskip}{0.5in}
+\titleformat*{\section}{\Large\bf\em}
+\titleformat*{\subsection}{\singlespace\large\bf}
+\titleformat*{\subsubsection}{\singlespace\normalsize\bf\em}
+\titlespacing{\section}{0in}{0in}{0in}
+\titlespacing{\subsection}{0in}{0in}{0in}
+\titlespacing{\subsubsection}{0in}{0in}{0in}
+
+% cleveref options
+\crefname{table}{Table}{Tables}
+\crefname{figure}{Fig.}{Figs.}
+\renewcommand{\figurename}{Fig.}
+
+% aliased citations
+% \defcitealias{FLDEP12}{FLDEP 2012}
+
+%acronyms
+% \acrodef{sfe}[SFE]{San Francisco Estuary}
+
+%for supplemental figures/tables
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+     }
+
+%knitr options
+<<setup,include=F,cache=F>>=
+library(knitr)
+# set global chunk options
+opts_chunk$set(fig.path = 'figs/', fig.align = 'center', fig.show = 'hold', message = F, echo = F, results = 'asis', dev = 'pdf', dev.args = list(family = 'serif'), fig.pos = '!ht', warning = F)
+options(replace.assign = TRUE, width = 90, digits = 1)
+
+source('R/funcs.r')
+library(WRTDStidal)
+@
+
+% get the version based on commit date
+<<echo = FALSE, cache = FALSE>>=
+raw <- system('git log -1', intern = TRUE)
+raw <- raw[grep('^Date', raw)]
+raw <- paste('Version', raw)
+@
+
+% get online bib file
+<<echo = FALSE, cache = FALSE>>=
+refs <- httr::GET('https://raw.githubusercontent.com/fawda123/refs/master/refs.bib')
+refs <- rawToChar(refs$content)
+writeLines(refs, con = file('refs.bib'))
+@
+
+\begin{document}
+
+\raggedbottom
+\linenumbers
+\raggedright
+\urlstyle{same}
+\setlength{\parindent}{0.5in}
+\renewcommand\refname{References \vspace{12pt}}
+
+\begin{singlespace}
+\title{{\bf {\Large Title....}}}
+\author{
+  {\bf {\normalsize Marcus W. Beck$^1$, John C. Lehrter$^1$}}
+  \\\\{\textit {\normalsize $^1$USEPA National Health and Environmental Effects Research Laboratory}}
+  \\{\textit {\normalsize Gulf Ecology Division, 1 Sabine Island Drive, Gulf Breeze, FL 32561}}
+	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
+	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
+  \vspace{1in} 
+  \\ \Sexpr{raw}
+	}
+\date{}
+\maketitle
+\end{singlespace}
+\clearpage
+
+\begin{abstract}
+\noindent 
+\end{abstract}
+\acresetall
+
+\section{Introduction}
+
+Overall objective: Bio-geo-chemical models of water quality in coastal environments are useful tools for management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The transferability or relative ease of downscaling these models to different systems could facilitate their use as tools for environmental management. This study will evaluate a simple bio-geo-chemical model that is the core unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico. The analysis will focus on use of the model to describe dissolved oxygen dynamics over time having implications for understanding factors that contribute to hypoxic conditions that are detrimental to aquatic resources.
+
+Questions:
+
+* Can the FishTank model that is currently parameterized for GOM conditions be downscaled and parameterized to smaller systems (using Weeks Bay as a test example)?
+* What parameters have the greatest influence on dissolved oxygen as identified by local and global sensitivity analyses?
+* What is the 'parameter space' (from sensitivity analysis) and 'identifiability' of the model parameters?
+* What is the uncertainty in identifiable parameters (MCMC eval)?
+* Does the analysis identify information that is consistent with current understanding of ecological factors that influenc system condition?  That is, does the model give the right results for the right reasons?
+* Additional questions may include the following:
+    * What initial conditions have the greatest effect on dissolved oxygen?
+    * How does the model structure influence predictions of dissolved oxygen?  Does changing complexity influence results, e.g., one to many phytoplankton groups?
+    * How does the assimilation of additional parameters (e.g., other state variables) during calibration influence the conclusions?
+
+Methods:
+
+1. Develop a programmatic infrastructure for FishTank that facilitates sensitivity analysis, parameterization, and additional evaluation.
+2. Conduct local and global sensitivity analyses of dissolved oxygen to identify parameters that influence predictions using existing values for the Gulf of Mexico
+3. Parameterize FishTank to Weeks Bay conditions using NERRS dissolved oxygen time series and values for initial conditions that approximate observed.  This will include a characterization of parameter identifiability.  Appropriate calibration and validation datasets must also be identified.
+4. Use Markov chain Monte Carlo analyses to estimate parameter uncertainties.
+5. Evaluate model results in the context of ecological properties that influence hypoxia, with implications for additional data needs or further development of bio-geo-chemical models. 
+
+\section{Methods}
+
+
+Sensitivity of the model to parameter changes is evaluated using the difference in model results before and after perturbing each parameter value.  Each parameter is perturbed by the same value as a percentage of the whole.  The default value (as 1 + 1e-8 proportion, default value for `tiny` argument in `sensFun`).  A sensitivity value $S$ is estimated for each time step $i$ given a set value for parameter $j$ as:
+
+\begin{equation}
+S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
+\end{equation}
+
+where the estimate depends on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The estimates are unitless such that their relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  The FME package summarizes sensitivity as $L1$ and $L2$ across the time series:
+
+\begin{equation}
+L1 = \sum|S_{ij}|/n
+\end{equation}
+\begin{equation}
+L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
+\end{equation}
+
+The mean, minimum, and maximum $S_{ij}$ values for each parameter are also reported.  In general, positive mean sensitivity estimates generally indicate that a parameter has a positive effect on the model results for a given increase in the parameter.  However, the effect can change over time so a plot of the 'sensitivity function' should be viewed which shows the difference from the values of the response variable before and after changing a parameter value.  Note that the perturbation factor in `sensFun` depends on the default value of each parameter such perturbations are not consistent for parameter values less than or greater than the perturbation factor.  This can produce results that are inconsistent for different levels of perturbation.  A custom function was keeps the perturbation factors constant regardless of the magnitude of the default values.  Sensitiviy for each parameter using the custom function are estimated using the above equations from the FME package. All parameters that are considered 'sensitive' should be further evaluated by plotting the predictions before and after perturbation and across the total range of the parameter. 
+
+
+Each parameter was perturbed by 50\% using `sensfun` to identify model sensitivity.  Parameters that produced different model results from the default values are shown below, by category. 
+
+The parameters that have the greatest effect on the model by category (optics, organics, phytoplankton, zooplankton) are as follows.
+
+
+
+Plotting the raw values from the sensitivity analysis provides a visual assessment of changes.
+
+
+
+Identifiability describes the ability to estimate a parameter in relation to variation among the remaining parameters.  A parameter is identifiable if all parameters within the set can be uniquely estimated based on the observed data.  Parameters that are unidentifiable typically produce similar model outputs for a given relative perturbation, i.e., the effect of altering one parameter can be undone by altering one or more other parameters.  Model calibration will not converge for parameters sets that are unidentifiable.  Identifiability is estimated from the minimum eigenvector of the cross-product of a model's sensitivity matrix:
+
+\begin{equation}
+\gamma = \frac{1} {\sqrt{ \min \left(\rm{EV}[\hat{S}^\intercal \hat{S}]\right)}}
+\end{equation}
+
+where $\gamma$ ranges from one to infinity for perfectly identifiable (orthogonal) or unidentifiable (perfectly collinear) results for a set of parameters in the sensitivity matrix $S$.  Identifiability can be estimated for any combination of parameters for a model.  Values less than 10-15 indicate parameters are generally identifiable.  The FME package provides the `collin` function to estimate identifiability of output from the `sensFun`.  For reasons described above, a custom function was created to determine identifiability from model residuals, where the residauls were based on a relative perturbation of the model parameters.  A comparison of results of identifiability using the custom functions and those from the FME package were generally in agreement.  Standard output from the identifiability function is shown below, where identifiability is displayed as a matrix with increasing combinations of subsets of the parameters.    
+
+
+
+The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
+
+
+
+Pairwise identifiability of the top two most sensitive parameters in each category is shown, first as a table showing all unique combinations from two to all parameters and second as a figure showing pairwise combinations.
+
+
+Model calibration must consider the competing objectives of parameter inclusion and identifability.  Estimating parameters for novel datasets increases model complexity and the ability to identify parameters decreases with the inclusion of parameters to estimate.  The above analyses indicated that estimating all of the parameters was impossible because of redundancies in the the model output.  Calibration to novel datasets should balance the competing objectives of identifiability while including parameters for which model output is most sensitive.  The plots below show different scenarios of parameter inclusion for model calibration.  Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories.  Boxes in each plot represent a unique parameter and the numbers in each box represent the relative rank of a parameter's sensitivity to the model output within each category. 
+
+The following plots show identifiability with the addition of parameters. 
+
+
+\section{Results}
+
+\section{Discussion}
+
+\end{document}
