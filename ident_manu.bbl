@@ -1,0 +1,52 @@
+\begin{thebibliography}{}
+
+\bibitem[Beck, 1987]{Beck87}
+Beck MB. 1987.
+\newblock Water quality modeling: A review of the analysis of uncertainty.
+\newblock Water Resources Research, 23(8):1393--1442.
+
+\bibitem[Brun et~al., 2001]{Brun01}
+Brun R, Reichert P, K\"{u}nsch HR. 2001.
+\newblock Practical identifiability analysis of large environmental simulation
+  models.
+\newblock Water Resources Research, 37(4):1015--1030.
+
+\bibitem[Fasham et~al., 2006]{Fasham06}
+Fasham MJR, Flynn KJ, Pondaven P, Anderson TR, Boyd PW. 2006.
+\newblock Development of a robust marine ecosystem model to predict the role of
+  iron in biogeochemical cycles: A comparison of results for iron-replete and
+  iron-limited areas, and the {SOIREE} iron-enrichment experiment.
+\newblock Deep-Sea Research I, 53:333--366.
+
+\bibitem[Flynn, 2005]{Flynn05}
+Flynn KJ. 2005.
+\newblock Castles built on sand: dysfunctionality in plankton models and the
+  inadequacy of dialogue between biologists and modellers.
+\newblock Journal of Plankton Research, 27(12):1205--1210.
+
+\bibitem[Ganju et~al., 2016]{Ganju16}
+Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
+  Harris LA, Lake SJ, McCardell G, O'Donnell J, Ralston DK, Signell RP, Testa
+  JM, Vaudrey JMP. 2016.
+\newblock Progress and challenges in coupled hydrodynamic-ecological estuarine
+  modeling.
+\newblock Estuaries and Coasts, 39(2):311--332.
+
+\bibitem[Levins, 1966]{Levins66}
+Levins R. 1966.
+\newblock The strategy of model building in population biology.
+\newblock American Scientist, 54(4):421--431.
+
+\bibitem[Morrison and Morgan, 1999]{Morrison99}
+Morrison M, Morgan MS. 1999.
+\newblock Models as mediating agents.
+\newblock In: Morgan MS, Morrison M, editors, Models as Mediators, page 401.
+  Cambridge University Press, Cambridge.
+
+\bibitem[Soetaert and Petzoldt, 2010]{Soetaert10}
+Soetaert K, Petzoldt T. 2010.
+\newblock Inverse modelling, sensitivity, and {M}onte {C}arlo analysis in {R}
+  using package {FME}.
+\newblock Journal of Statistical Software, 33(3):1--28.
+
+\end{thebibliography}
