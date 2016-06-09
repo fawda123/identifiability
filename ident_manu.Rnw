@@ -66,6 +66,10 @@ options(replace.assign = TRUE, width = 90, digits = 1)
 
 source('R/funcs.r')
 library(WRTDStidal)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
 @
 
 % get the version based on commit date
@@ -108,7 +112,7 @@ writeLines(refs, con = file('refs.bib'))
 \clearpage
 
 \begin{abstract}
-\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of model complexity by contrasting numeric and ecological certainty.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using global sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We conclude that numerically optimal parameter sets are often small subsets of the complete parameter set for a model because of redundancies in the unique effects of paramater perturbations on model output.  As a result, use of a model for inference into ecological mechanisms of observed or predicted changes in response to management actions can be potentially misguided.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
+\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of coupled hydrodynamic-ecological modelling by contrasting numeric and ecological certainty with a systematic framework for characterizing parameter uncertainty.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using global sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We further conclude that numerically optimal parameter sets are often small subsets of the complete parameter set for a model because of redundancies in the unique effects of paramater perturbations on model output.  As a result, we demonstrate that use of a model for inference into ecological mechanisms of observed or predicted changes in environmental condition can be potentially misguided in the absence of quantitative descriptions of identifiability.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
 \end{abstract}
 \acresetall
 
@@ -205,5 +209,43 @@ Need to talk about \cite{Flynn05}
 \bibliography{refs}
 \end{singlespace}
 \clearpage
+
+%%%%%%
+% figures
+<<echo = F, fig.cap = 'Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.', fig.height = 5, fig.width = 10, out.width = '\\textwidth'>>=
+
+numparms <- 1:100
+sels <- 1:100
+toplo <- sapply(numparms, choose, k = sels)
+dimnames(toplo) <- list(sels, numparms)
+toplo <- data.frame(sels = sels, toplo)
+toplo <- gather(toplo, 'numparms', 'combs', -sels) %>% 
+  mutate(numparms = as.numeric(gsub('^X', '', numparms))) %>% 
+  filter(combs > 0) %>% 
+  mutate(combs = log(combs))
+
+pal <- 'RdYlGn'
+
+p1 <- ggplot(toplo, aes(x = sels, y = combs, group = numparms, colour = numparms)) + 
+  geom_line() +
+  # geom_point() + 
+  theme_minimal() + 
+  scale_colour_distiller(palette = pal, 
+    guide = guide_legend(title = 'Total number of\nparameters in set')) +
+  scale_x_continuous('Number of parameters selected from total', expand = c(0, 0)) + 
+  scale_y_continuous('Number of unique parameter combinations, log-scale', expand = c(0, 0)) + 
+  theme(legend.position = 'top')
+
+p2 <- ggplot(toplo, aes(x = numparms, y = sels, fill = combs)) +
+  geom_tile() + 
+  scale_fill_distiller(palette = pal, 
+    guide = guide_legend(title = 'Number of unique parameter\ncombinations, log-scale')) + 
+  scale_x_continuous('Total number of parameters in set', expand = c(0, 0)) + 
+  scale_y_continuous('Number of parameters selected from total', expand = c(0, 0)) +
+  theme_minimal() + 
+  theme(legend.position = 'top')
+
+grid.arrange(p1, p2, ncol = 2)
+@
 
 \end{document}

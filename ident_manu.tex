@@ -134,7 +134,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Wed Jun 8 09:02:46 2016 -0500
+  \\ Version Date:   Wed Jun 8 16:40:27 2016 -0500
 	}
 \date{}
 \maketitle
@@ -142,7 +142,7 @@
 \clearpage
 
 \begin{abstract}
-\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of model complexity by contrasting numeric and ecological certainty.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using global sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We conclude that numerically optimal parameter sets are often small subsets of the complete parameter set for a model because of redundancies in the unique effects of paramater perturbations on model output.  As a result, use of a model for inference into ecological mechanisms of observed or predicted changes in response to management actions can be potentially misguided.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
+\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of coupled hydrodynamic-ecological modelling by contrasting numeric and ecological certainty with a systematic framework for characterizing parameter uncertainty.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using global sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We further conclude that numerically optimal parameter sets are often small subsets of the complete parameter set for a model because of redundancies in the unique effects of paramater perturbations on model output.  As a result, we demonstrate that use of a model for inference into ecological mechanisms of observed or predicted changes in environmental condition can be potentially misguided in the absence of quantitative descriptions of identifiability.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
 \end{abstract}
 \acresetall
 
@@ -239,5 +239,18 @@ Need to talk about \cite{Flynn05}
 \bibliography{refs}
 \end{singlespace}
 \clearpage
+
+%%%%%%
+% figures
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\textwidth]{figs/unnamed-chunk-3-1} 
+
+}
+
+\caption[Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets]{Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+
 
 \end{document}
