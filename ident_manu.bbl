@@ -11,6 +11,12 @@ Brun R, Reichert P, K\"{u}nsch HR. 2001.
   models.
 \newblock Water Resources Research, 37(4):1015--1030.
 
+\bibitem[Estrada and Diaz, 2010]{Estrada10}
+Estrada V, Diaz M. 2010.
+\newblock Global sensitivity analysis in the development of first
+  principle-based eutrophication models.
+\newblock Environmental Modelling and Software, 25:1539--1551.
+
 \bibitem[Fasham et~al., 2006]{Fasham06}
 Fasham MJR, Flynn KJ, Pondaven P, Anderson TR, Boyd PW. 2006.
 \newblock Development of a robust marine ecosystem model to predict the role of
@@ -37,11 +43,33 @@ Levins R. 1966.
 \newblock The strategy of model building in population biology.
 \newblock American Scientist, 54(4):421--431.
 
+\bibitem[Mateus and Franz, 2015]{Mateus15}
+Mateus MD, Franz G. 2015.
+\newblock Sensitivity analysis in a complex marine ecological model.
+\newblock Water, 7:2060--2081.
+
 \bibitem[Morrison and Morgan, 1999]{Morrison99}
 Morrison M, Morgan MS. 1999.
 \newblock Models as mediating agents.
 \newblock In: Morgan MS, Morrison M, editors, Models as Mediators, page 401.
   Cambridge University Press, Cambridge.
+
+\bibitem[Omlin et~al., 2001]{Omlin01}
+Omlin M, Brun R, Reichert P. 2001.
+\newblock Biogeochemical model of {L}ake {Z}\"{u}rich: sensitivity,
+  identifiability and uncertainty analysis.
+\newblock Ecological Modelling, 141(1-3):105--123.
+
+\bibitem[Reichert and Vanrolleghem, 2001]{Reichert01}
+Reichert P, Vanrolleghem P. 2001.
+\newblock Identifiability and uncertainty analysis of the {R}iver {W}ater
+  {Q}uality {M}odel {N}o. 1 {RWQM1}.
+\newblock Water Science and Technology, 43(7):329--338.
+
+\bibitem[Snowling and Kramer, 2001]{Snowling01}
+Snowling SD, Kramer JR. 2001.
+\newblock Evaluating modelling uncertainty for model selection.
+\newblock Ecological Modelling, 138:17--30.
 
 \bibitem[Soetaert and Petzoldt, 2010]{Soetaert10}
 Soetaert K, Petzoldt T. 2010.

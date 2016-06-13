@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  9 JUN 2016 13:51
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  10 JUN 2016 17:48
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -754,29 +754,29 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
 (M:\docs\manuscripts\identifiability\ident_manu.bbl) [8
 
 ]
-<figs/unnamed-chunk-3-1.pdf, id=126, 722.7pt x 361.35pt>
+<figs/unnamed-chunk-3-1.pdf, id=153, 722.7pt x 361.35pt>
 File: figs/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 
 <use figs/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-3-1.pdf used on input line 247.
+Package pdftex.def Info: figs/unnamed-chunk-3-1.pdf used on input line 253.
 (pdftex.def)             Requested size: 469.75502pt x 234.88023pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 256.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 262.
  [9
 
  <M:/docs/manuscripts/identifiability/figs/unnamed-chunk-3-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 256.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 262.
  (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 256.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 256.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 262.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 262.
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 3CB9626F058237016AE667BB8921C4DA;504.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 256.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 262.
  ) 
 Here is how much of TeX's memory you used:
- 12349 strings out of 493921
- 191699 string characters out of 3147282
+ 12369 strings out of 493921
+ 192020 string characters out of 3147282
  310059 words of memory out of 3000000
- 15378 multiletter control sequences out of 15000+200000
+ 15393 multiletter control sequences out of 15000+200000
  35334 words of font info for 86 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,9n,42p,2270b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -792,9 +792,9 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/tim
 es/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (9 pages, 216319 bytes).
+Output written on ident_manu.pdf (9 pages, 186496 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
+ 219 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 

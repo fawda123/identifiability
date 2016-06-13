@@ -120,10 +120,10 @@ writeLines(refs, con = file('refs.bib'))
 
 \begin{enumerate}
 \item Simulation/biogeochemical/process-based models overview, contrast with statistical models
-\item What models seek to provide - generality, precision, realism \cite{Levins66}, there is a tradeoff so models are 1) developed in partial independence and dependence on the world and theory, 2) function autonomously from both, or 3) represent both at the same time, from \cite{Morrison99}, cited in \cite{Ganju16}.  This is similar to the bias-variance tradeoff for statistical models, e.g., overparameterization of a model makes it very biased as it fits the data (the world) exactly
+\item What models seek to provide - generality, precision, realism \cite{Levins66}, there is a tradeoff so models are 1) developed in partial independence and dependence on the world and theory, 2) function autonomously from both, or 3) represent both at the same time, from \cite{Morrison99}, cited in \cite{Ganju16}.  This is similar to the bias-variance tradeoff for statistical models, e.g., overparameterization of a model makes it very biased as it fits the data (the world) exactly, tradeoff between sensitity and error with changes in model complexity (more complexity is less error but increasing sensitivity) described in \cite{Snowling01}
 \item How is model performance/uncertainty evaluated regarding what they should provide - structural, observational, parameter \cite{Beck87}?
-\item Parameter uncertainy as low-hanging fruit - can do post-hoc and from inner to outer level of complexity
-\item Challenges related to uncertainty - similar to degrees of freedom, identifiability definition from \cite{Brun01} and need to evaluate identifiability \cite{Fasham06}
+\item Parameter uncertainy as low-hanging fruit - can do post-hoc and from inner to outer level of complexity, parameter uncertainty is the most common, e.g., marine ecological model \cite{Mateus15}, but stopped short, global sensitivity analysis of eutrophication model \cite{Estrada10}
+\item Challenges related to uncertainty - similar to degrees of freedom, identifiability definition from \cite{Brun01} and need to evaluate identifiability \cite{Fasham06}, \cite{Omlin01} did a similar analysis with freshwater biogeochem model
 \item objectives of study, definition of `optimum'
 \begin{enumerate}
 \item What parameters have the greatest influence on dissolved oxygen as identified by local and global sensitivity analyses?
@@ -141,7 +141,7 @@ GGEM, FishTank, parameters and parameter categories, how they compare to other m
 
 \subsection{Local sensitivity analysis}
 
-Methods from \cite{Soetaert10}
+Methods from \cite{Reichert01,Soetaert10}
 
 Sensitivity of the model to parameter changes is evaluated using the difference in model results before and after perturbing each parameter value.  Each parameter is perturbed by the same value as a percentage of the whole.  The default value (as 1 + 1e-8 proportion, default value for `tiny` argument in `sensFun`).  A sensitivity value $S$ is estimated for each time step $i$ given a set value for parameter $j$ as:
 
@@ -149,7 +149,7 @@ Sensitivity of the model to parameter changes is evaluated using the difference 
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-where the estimate depends on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The estimates are unitless such that their relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  The FME package summarizes sensitivity as $L1$ and $L2$ across the time series:
+where the estimate depends on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y$, are set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  The FME package summarizes sensitivity as $L1$ and $L2$ across the time series:
 
 \begin{equation}
 L1 = \sum|S_{ij}|/n
@@ -168,7 +168,7 @@ Plotting the raw values from the sensitivity analysis provides a visual assessme
 
 \subsection{Global sensitivity and identifiability}
 
-Identifiability describes the ability to estimate a parameter in relation to variation among the remaining parameters.  A parameter is identifiable if all parameters within the set can be uniquely estimated based on the observed data.  Parameters that are unidentifiable typically produce similar model outputs for a given relative perturbation, i.e., the effect of altering one parameter can be undone by altering one or more other parameters.  Model calibration will not converge for parameters sets that are unidentifiable.  Identifiability is estimated from the minimum eigenvector of the cross-product of a model's sensitivity matrix:
+Identifiability describes the ability to estimate a parameter in relation to variation among the remaining parameters.  A parameter is identifiable if all parameters within the set can be uniquely estimated based on the observed data.  Parameters that are unidentifiable typically produce similar model outputs for a given relative perturbation, i.e., the effect of altering one parameter can be undone by altering one or more other parameters.  Model calibration will not converge for parameters sets that are unidentifiable.  Identifiability is estimated from the minimum eigenvector of the cross-product of a model's sensitivity matrix \citep{Brun01,Omlin01}:
 
 \begin{equation}
 \gamma = \frac{1} {\sqrt{ \min \left(\rm{EV}[\hat{S}^\intercal \hat{S}]\right)}}
@@ -201,7 +201,13 @@ How does the assimilation of additional parameters (e.g., other state variables)
 
 How does uncertainty translate to what a model should provide (generality v precision)?  The first step - find out what can be optimized but then do not overfit....
 
-Need to talk about \cite{Flynn05}
+What about structural uncertainty - does sensitivity of a model to variation in a parameter imply parameter uncertainty and/or structural uncertainty?
+
+A final point about optimization with identifiable parameter sets - optimization to fit the data still does not ensure a correct model.  Failing in one way can be over-compensated by another feature, e.g., the parameter set that is optimized (see \cite{Flynn05}, p. 1207, third paragraph)
+
+\cite{Omlin01} state that the sensitivity, identifiability, estimation process is iterative (p. 113), need to rinse and repeat for proper calibration. 
+
+How to improve identifiability - get more/better observed data, include obs from other state variables in RSS minimization (eqn q in \cite{Omlin01})
 
 \clearpage
 \begin{singlespace}
@@ -214,8 +220,8 @@ Need to talk about \cite{Flynn05}
 % figures
 <<echo = F, fig.cap = 'Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.', fig.height = 5, fig.width = 10, out.width = '\\textwidth'>>=
 
-numparms <- 1:100
-sels <- 1:100
+numparms <- 1:50
+sels <- numparms
 toplo <- sapply(numparms, choose, k = sels)
 dimnames(toplo) <- list(sels, numparms)
 toplo <- data.frame(sels = sels, toplo)
