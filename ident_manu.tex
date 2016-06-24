@@ -93,10 +93,11 @@
 \renewcommand{\figurename}{Fig.}
 
 % aliased citations
-% \defcitealias{FLDEP12}{FLDEP 2012}
+\defcitealias{LehrterIR}{Lehrter et al. in review}
 
 %acronyms
-% \acrodef{sfe}[SFE]{San Francisco Estuary}
+\acrodef{cgem}[CGEM]{Coastal Gulf Ecology Model}
+\acrodef{gom}[GOM]{Gulf of Mexico}
 
 %for supplemental figures/tables
 \newcommand{\beginsupplement}{%
@@ -134,7 +135,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Thu Jun 9 13:52:04 2016 -0500
+  \\ Version Date:   Mon Jun 13 10:12:26 2016 -0500
 	}
 \date{}
 \maketitle
@@ -142,7 +143,7 @@
 \clearpage
 
 \begin{abstract}
-\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of coupled hydrodynamic-ecological modelling by contrasting numeric and ecological certainty with a systematic framework for characterizing parameter uncertainty.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using global sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We further conclude that numerically optimal parameter sets are often small subsets of the complete parameter set for a model because of redundancies in the unique effects of paramater perturbations on model output.  As a result, we demonstrate that use of a model for inference into ecological mechanisms of observed or predicted changes in environmental condition can be potentially misguided in the absence of quantitative descriptions of identifiability.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
+\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Consequently, significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study describes quantitative limitations of coupled hydrodynamic-ecological modelling by contrasting numeric and ecological certainty with a systematic framework for characterizing parameter sensitivity and identifability.  We evaluate a simple bio-geo-chemical model that is the 1-dimensional unit of a larger spatio-temporal model of hypoxia on the Louisiana Shelf of Gulf of Mexico as an example. Results from analysis of the 1D model are used to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using local sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  We argue that quantitative and ecological certainty in model calibration are often at odds and the practitioner must explicitly choose model components to optimize given tradeoffs between the two. We further conclude that numerically optimal parameter sets for models of hypoxia are often small subsets of the complete parameter set because of redundancies in the unique effects of paramater perturbations on model output.  As a result, we demonstrate that use of a model for inference into ecological mechanisms of observed or predicted changes in hypoxic condition can be potentially misguided in the absence of quantitative descriptions of identifiability.  Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in model evaluations.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
 \end{abstract}
 \acresetall
 
@@ -154,20 +155,24 @@
 \item How is model performance/uncertainty evaluated regarding what they should provide - structural, observational, parameter \cite{Beck87}?
 \item Parameter uncertainy as low-hanging fruit - can do post-hoc and from inner to outer level of complexity, parameter uncertainty is the most common, e.g., marine ecological model \cite{Mateus15}, but stopped short, global sensitivity analysis of eutrophication model \cite{Estrada10}
 \item Challenges related to uncertainty - similar to degrees of freedom, identifiability definition from \cite{Brun01} and need to evaluate identifiability \cite{Fasham06}, \cite{Omlin01} did a similar analysis with freshwater biogeochem model
-\item objectives of study, definition of `optimum'
-\begin{enumerate}
-\item What parameters have the greatest influence on dissolved oxygen as identified by local and global sensitivity analyses?
-\item What is the 'parameter space' (from sensitivity analysis) and 'identifiability' of the model parameters?
-\item Can we get a better estimate of identifiability other than 10-15 according to \cite{Brun01,Soetaert10}?
-\item Can we reconcile differences in numeric uncertainty and ecological uncertainty, e.g., given a finite parameter space, what is an appropriate way to choose parameters given question of interest?  
 \end{enumerate}
-\end{enumerate}
+
+This study describes a parameter sensitivity analysis to evaluate identifiability for a bio-geo-chemical model of hypoxia for the northern \ac{gom}.  We evaluate a simple 1-dimensional unit of a larger spatial-temporal model to explore relationships between multiple parameter sets and hypoxia dynamics on the Lousiana coastal shelf.  The study also provides a general framework for sensitivity analysis and parameter identifiability that can be used on similar mechanistic models.  Specifically, an assumption is that models are generally over-parameterized and only a finite and smaller subset of the larger parameter set can be optimized for a given research question or dataset.  We provide explicit guidance for choosing such subsets of the parameter space given constraints on identifiability as directly related to sensitivity analyses.  The specific objectives are to \begin{inparaenum}[1\upshape)]
+\item identify the parameters that have the greatest influence on dissolved oxygen using local sensitivity analysis,
+\item quantify the identifiability of subsets of the total parameter space based on sensitivity,
+\item provide a set of heuristics for choosing parameters based on sensitivity and parameter categories with the larger mechanistic model, including extension to other state variables, and 
+\item discuss implications for hypoxia formation in coastal regions, including management strategies for nutrient reduction and use of mechanistic models to inform decision-making.
+\end{inparaenum}
+The `optimum' parameter space is defined as the chosen subset that represents the maximum number of identifiable parameters.  Here, `optimum' is both a qualitative description based on a research question or management goal and a quantitative objective based on numerical optimization criteria for fitting model output to a calibration dataset.  These results can be used to refine existing models or guide application of models to novel contexts, such as downscaling or application to new environments. 
 
 \section{Methods}
 
 \subsection{Model description}
 
-GGEM, FishTank, parameters and parameter categories, how they compare to other models
+Three-dimensional numerical models have recently been developed for the northern \ac{gom} to explore dynamics in bottom-water hypoxia and primary production (\citealt{Fennel13,Pauer16}, \citetalias{LehrterIR}).  The Louisiana coastal shelf  covers an area of  
+
+
+CGEM \citepalias{LehrterIR}, FishTank, parameters and parameter categories, how they compare to other models
 
 \subsection{Local sensitivity analysis}
 
@@ -196,7 +201,7 @@ The parameters that have the greatest effect on the model by category (optics, o
 
 Plotting the raw values from the sensitivity analysis provides a visual assessment of changes.
 
-\subsection{Global sensitivity and identifiability}
+\subsection{Identifiability}
 
 Identifiability describes the ability to estimate a parameter in relation to variation among the remaining parameters.  A parameter is identifiable if all parameters within the set can be uniquely estimated based on the observed data.  Parameters that are unidentifiable typically produce similar model outputs for a given relative perturbation, i.e., the effect of altering one parameter can be undone by altering one or more other parameters.  Model calibration will not converge for parameters sets that are unidentifiable.  Identifiability is estimated from the minimum eigenvector of the cross-product of a model's sensitivity matrix \citep{Brun01,Omlin01}:
 
@@ -238,6 +243,8 @@ A final point about optimization with identifiable parameter sets - optimization
 \cite{Omlin01} state that the sensitivity, identifiability, estimation process is iterative (p. 113), need to rinse and repeat for proper calibration. 
 
 How to improve identifiability - get more/better observed data, include obs from other state variables in RSS minimization (eqn q in \cite{Omlin01})
+
+Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibration-constrained optimization \citep{Gallagher07}
 
 \clearpage
 \begin{singlespace}

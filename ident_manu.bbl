@@ -24,11 +24,22 @@ Fasham MJR, Flynn KJ, Pondaven P, Anderson TR, Boyd PW. 2006.
   iron-limited areas, and the {SOIREE} iron-enrichment experiment.
 \newblock Deep-Sea Research I, 53:333--366.
 
+\bibitem[Fennel et~al., 2013]{Fennel13}
+Fennel K, Hu J, Laurent A, Marta-Almeida M, Hetland R. 2013.
+\newblock Sensitivity of hypoxia predictions for the norther {G}ulf of {M}exico
+  to sediment oxygen consumption and model nesting.
+\newblock Journal of Geophysical Research: Oceans, 118(2):990--1002.
+
 \bibitem[Flynn, 2005]{Flynn05}
 Flynn KJ. 2005.
 \newblock Castles built on sand: dysfunctionality in plankton models and the
   inadequacy of dialogue between biologists and modellers.
 \newblock Journal of Plankton Research, 27(12):1205--1210.
+
+\bibitem[Gallagher and Doherty, 2007]{Gallagher07}
+Gallagher M, Doherty J. 2007.
+\newblock Parameter estimation and uncertainty analysis for a watershed model.
+\newblock Environmental Modelling and Software, 22(7):1000--1020.
 
 \bibitem[Ganju et~al., 2016]{Ganju16}
 Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
@@ -37,6 +48,14 @@ Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
 \newblock Progress and challenges in coupled hydrodynamic-ecological estuarine
   modeling.
 \newblock Estuaries and Coasts, 39(2):311--332.
+
+\bibitem[Lehrter et~al., view]{LehrterIR}
+Lehrter JC, Ko DS, Lowe L, Penta B. In review.
+\newblock Predicted effects of climate change on the severity of northern
+  {G}ulf of {M}exico hypoxia.
+\newblock In: {Justic et al.}, editor, Modeling Coastal Hypoxia: Numerical
+  Simulations of Patterns, Controls, and Effect of Dissolved Oxygen Dynamics.
+  Springer, New York.
 
 \bibitem[Levins, 1966]{Levins66}
 Levins R. 1966.
@@ -59,6 +78,13 @@ Omlin M, Brun R, Reichert P. 2001.
 \newblock Biogeochemical model of {L}ake {Z}\"{u}rich: sensitivity,
   identifiability and uncertainty analysis.
 \newblock Ecological Modelling, 141(1-3):105--123.
+
+\bibitem[Pauer et~al., 2016]{Pauer16}
+Pauer JJ, Feist TJ, Anstead AM, DePetro PA, Melendez W, Lehrter JC, Murrell MC,
+  Zhang X, Ko DS. 2016.
+\newblock A modeling study examining the impact of nutrient boundaries on
+  primary production on the {L}ouisiana continental shelf.
+\newblock Ecological Modelling, 328:136--147.
 
 \bibitem[Reichert and Vanrolleghem, 2001]{Reichert01}
 Reichert P, Vanrolleghem P. 2001.
