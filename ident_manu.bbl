@@ -5,11 +5,24 @@ Beck MB. 1987.
 \newblock Water quality modeling: A review of the analysis of uncertainty.
 \newblock Water Resources Research, 23(8):1393--1442.
 
+\bibitem[Bianchi et~al., 2010]{Bianchi10}
+Bianchi TS, DiMarco SF, Jr JHC, Hetland RD, Chapman P, Day JW, Allison MA.
+  2010.
+\newblock The science of hypoxia in the {N}orthern {G}ulf of {M}exico: a
+  review.
+\newblock Science of the Total Environment, 408(7):1471--1484.
+
 \bibitem[Brun et~al., 2001]{Brun01}
 Brun R, Reichert P, K\"{u}nsch HR. 2001.
 \newblock Practical identifiability analysis of large environmental simulation
   models.
 \newblock Water Resources Research, 37(4):1015--1030.
+
+\bibitem[Eldridge and Roelke, 2010]{Eldridge10}
+Eldridge PM, Roelke DL. 2010.
+\newblock Origins and scales of hypoxia on the {L}ouisiana shelf: importance of
+  seasonal plankton dynamics and river nutrients and discharge.
+\newblock Ecological Modelling, 221(7):1028--1042.
 
 \bibitem[Estrada and Diaz, 2010]{Estrada10}
 Estrada V, Diaz M. 2010.
@@ -62,6 +75,18 @@ Levins R. 1966.
 \newblock The strategy of model building in population biology.
 \newblock American Scientist, 54(4):421--431.
 
+\bibitem[Lohrenz et~al., 2008]{Lohrenz08}
+Lohrenz SE, Redalje DG, Cai WJ, Acker J, Dagg M. 2008.
+\newblock A retrospective analysis of nutrients and phytoplankton productivity
+  in the {M}ississippi {R}iver plume.
+\newblock Continental Shelf Research, 28(12):1466--1475.
+
+\bibitem[Martin, 2000]{Martin00}
+Martin PJ. 2000.
+\newblock Description of the navy coastal ocean model version 1.0.
+\newblock Technical Report NRL/FR/7322-00-9962, Naval Research Lab, Stennis
+  Space Center, Mississippi.
+
 \bibitem[Mateus and Franz, 2015]{Mateus15}
 Mateus MD, Franz G. 2015.
 \newblock Sensitivity analysis in a complex marine ecological model.
@@ -102,5 +127,11 @@ Soetaert K, Petzoldt T. 2010.
 \newblock Inverse modelling, sensitivity, and {M}onte {C}arlo analysis in {R}
   using package {FME}.
 \newblock Journal of Statistical Software, 33(3):1--28.
+
+\bibitem[Wiseman et~al., 1997]{Wiseman97}
+Wiseman WJ, Rabalais NN, Turner RE, Dinnel SP, MacNaughton A. 1997.
+\newblock Seasonal and interannual variability within the {L}ouisiana coastal
+  current: stratification and hypoxia.
+\newblock Journal of Marine Systems, 12(1-4):237--248.
 
 \end{thebibliography}
