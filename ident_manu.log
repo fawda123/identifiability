@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  28 JUN 2016 11:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  28 JUN 2016 18:06
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -535,87 +535,6 @@ Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
 LaTeX Info: Redefining \bm on input line 204.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip62
-
-For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
-Package: amstext 2000/06/29 v2.01
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
-File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks25
-\ex@=\dimen160
-))
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
-Package: amsbsy 1999/11/29 v1.2d
-LaTeX Info: Redefining \boldsymbol on input line 39.
-\pmbraise@=\dimen161
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
-Package: amsopn 1999/12/14 v2.01 operator names
-)
-\inf@bad=\count128
-LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count129
-\leftroot@=\count130
-LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count131
-\DOTSCASE@=\count132
-LaTeX Info: Redefining \ldots on input line 378.
-LaTeX Info: Redefining \dots on input line 381.
-LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box30
-\strutbox@=\box31
-\big@size=\dimen162
-LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count133
-\c@MaxMatrixCols=\count134
-\dotsspace@=\muskip11
-\c@parentequation=\count135
-\dspbrk@lvl=\count136
-\tag@help=\toks26
-\row@=\count137
-\column@=\count138
-\maxfields@=\count139
-\andhelp@=\toks27
-\eqnshift@=\dimen163
-\alignsep@=\dimen164
-\tagshift@=\dimen165
-\tagwidth@=\dimen166
-\totwidth@=\dimen167
-\lineht@=\dimen168
-\@envbody=\toks28
-\multlinegap=\skip63
-\multlinetaggap=\skip64
-\mathdisplay@stack=\toks29
-LaTeX Info: Redefining \[ on input line 2665.
-LaTeX Info: Redefining \] on input line 2666.
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup7
-\symAMSb=\mathgroup8
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
-Package: amsthm 2004/08/06 v2.20
-\thm@style=\toks30
-\thm@bodyfont=\toks31
-\thm@headfont=\toks32
-\thm@notefont=\toks33
-\thm@headpunct=\toks34
-\thm@preskip=\skip65
-\thm@postskip=\skip66
-\thm@headsep=\skip67
-\dth@everypar=\toks35
-)
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
@@ -654,17 +573,17 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count140
-\scratchdimen=\dimen169
-\scratchbox=\box32
-\nofMPsegments=\count141
-\nofMParguments=\count142
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count143
-\MPscratchDim=\dimen170
-\MPnumerator=\count144
-\makeMPintoPDFobject=\count145
-\everyMPtoPDFconversion=\toks37
+\scratchcounter=\count128
+\scratchdimen=\dimen160
+\scratchbox=\box30
+\nofMPsegments=\count129
+\nofMParguments=\count130
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count131
+\MPscratchDim=\dimen161
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
+\everyMPtoPDFconversion=\toks26
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -700,7 +619,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box33
+\AtBeginShipoutBox=\box31
 Package hyperref Info: Link coloring ON on input line 126.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -708,7 +627,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count146
+\c@section@level=\count134
 )
 LaTeX Info: Redefining \ref on input line 126.
 LaTeX Info: Redefining \pageref on input line 126.
@@ -730,20 +649,20 @@ LaTeX Font Info:    Try loading font information for OT1+phv on input line 148.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 148.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 148.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 148.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 148.
  [1
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
@@ -771,53 +690,48 @@ although it is yet undefined on input line 179.
 Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
 
 although it is yet undefined on input line 181.
- [4] [5] [6]
-
-LaTeX Warning: Reference `sij' on page 1 undefined on input line 214.
-
-[7]
+ [4] [5] [6] [7]
 Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
 
-although it is yet undefined on input line 226.
+although it is yet undefined on input line 225.
 Package acronym Info: Label `acro:par' newly defined as it shall be overridden
-although it is yet undefined on input line 226.
- [8] [9] [10] (M:\docs\manuscripts\identifiability\ident_manu.bbl [11
+although it is yet undefined on input line 225.
 
-])
-[12] <figs/combnex-1.pdf, id=238, 722.7pt x 361.35pt>
+[8] [9] [10] (M:\docs\manuscripts\identifiability\ident_manu.bbl [11
+
+]) [12]
+<figs/combnex-1.pdf, id=242, 722.7pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
 Package pdftex.def Info: figs/combnex-1.pdf used on input line 271.
 (pdftex.def)             Requested size: 469.75502pt x 234.88023pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
 
 [13
 
  <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 302.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 302.
 
 (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 302.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 302.
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: F9C255193EA01DE79A6DCF66E3A2FB80;496.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 302.
  ) 
 Here is how much of TeX's memory you used:
- 12496 strings out of 493921
- 193526 string characters out of 3147282
- 312456 words of memory out of 3000000
- 15491 multiletter control sequences out of 15000+200000
- 36919 words of font info for 88 fonts, out of 3000000 for 9000
+ 11654 strings out of 493921
+ 184023 string characters out of 3147282
+ 299561 words of memory out of 3000000
+ 14684 multiletter control sequences out of 15000+200000
+ 34372 words of font info for 74 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,9n,42p,2335b,542s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,10n,42p,2335b,537s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fon
@@ -826,14 +740,14 @@ public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (13 pages, 220676 bytes).
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
+imes/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ident_manu.pdf (14 pages, 223102 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
+ 322 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
