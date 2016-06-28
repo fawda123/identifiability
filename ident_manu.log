@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  27 JUN 2016 17:18
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  28 JUN 2016 11:54
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -625,28 +625,28 @@ tim
 LaTeX Warning: Label `acro:oned@cref' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 126.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 124.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 126.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
@@ -701,7 +701,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 124.
+Package hyperref Info: Link coloring ON on input line 126.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -710,9 +710,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 124.
-LaTeX Info: Redefining \pageref on input line 124.
-LaTeX Info: Redefining \nameref on input line 124.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
 
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 (M:\docs\manuscripts\identifiability\ident_manu.out)
@@ -721,87 +721,100 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 146.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 148.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 146.
+LaTeX Font Info:    Try loading font information for U+msa on input line 148.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 146.
+LaTeX Font Info:    Try loading font information for U+msb on input line 148.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 146.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
  [1
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 149.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 151.
 Package acronym Info: Label `acro:oned' newly defined as it shall be overridden
 
-although it is yet undefined on input line 150.
+although it is yet undefined on input line 152.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 154.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 156.
  [2
 
 ]
 Package acronym Info: Label `acro:gom' newly defined as it shall be overridden
-although it is yet undefined on input line 165.
-Package acronym Info: Label `acro:oned' overridden on input line 165.
+although it is yet undefined on input line 167.
+Package acronym Info: Label `acro:oned' overridden on input line 167.
 Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
-although it is yet undefined on input line 165.
+although it is yet undefined on input line 167.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
-although it is yet undefined on input line 166.
+although it is yet undefined on input line 168.
  [3]
 Package acronym Info: Label `acro:marb' newly defined as it shall be overridden
 
-although it is yet undefined on input line 177.
+although it is yet undefined on input line 179.
 Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
 
-although it is yet undefined on input line 179.
- [4] [5] [6] [7]
-[8] [9] (M:\docs\manuscripts\identifiability\ident_manu.bbl [10
+although it is yet undefined on input line 181.
+ [4] [5] [6]
 
-]) [11]
-<figs/unnamed-chunk-3-1.pdf, id=222, 722.7pt x 361.35pt>
-File: figs/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+LaTeX Warning: Reference `sij' on page 1 undefined on input line 214.
 
-<use figs/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: figs/unnamed-chunk-3-1.pdf used on input line 266.
+[7]
+Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
+
+although it is yet undefined on input line 226.
+Package acronym Info: Label `acro:par' newly defined as it shall be overridden
+although it is yet undefined on input line 226.
+ [8] [9] [10] (M:\docs\manuscripts\identifiability\ident_manu.bbl [11
+
+])
+[12] <figs/combnex-1.pdf, id=238, 722.7pt x 361.35pt>
+File: figs/combnex-1.pdf Graphic file (type pdf)
+ <use figs/combnex-1.pdf>
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 271.
 (pdftex.def)             Requested size: 469.75502pt x 234.88023pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 275.
- [12
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
 
- <M:/docs/manuscripts/identifiability/figs/unnamed-chunk-3-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 275.
- (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 275.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 275.
+[13
+
+ <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+
+(M:\docs\manuscripts\identifiability\ident_manu.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
-(rerunfilecheck)             Checksum: DD8F5B53F9EE2AE5BB6EF0B46177BC72;557.
+(rerunfilecheck)             Checksum: F9C255193EA01DE79A6DCF66E3A2FB80;496.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 275.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
  ) 
 Here is how much of TeX's memory you used:
- 12475 strings out of 493921
- 193408 string characters out of 3147282
- 311355 words of memory out of 3000000
- 15475 multiletter control sequences out of 15000+200000
+ 12496 strings out of 493921
+ 193526 string characters out of 3147282
+ 312456 words of memory out of 3000000
+ 15491 multiletter control sequences out of 15000+200000
  36919 words of font info for 88 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,9n,42p,2335b,542s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -818,9 +831,9 @@ m Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (12 pages, 212200 bytes).
+Output written on ident_manu.pdf (13 pages, 220676 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
- 78 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 313 PDF objects out of 1000 (max. 8388607)
+ 74 named destinations out of 1000 (max. 500000)
+ 70 words of extra memory for PDF output out of 10000 (max. 10000000)
 

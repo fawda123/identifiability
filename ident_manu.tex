@@ -96,12 +96,14 @@
 \defcitealias{LehrterIR}{Lehrter et al. in review}
 
 %acronyms
-\acrodef{oned}[1-D]{one-dimensional}
+\acrodef{chla}[chl-\textit{a}]{chlorophyll \textit{a}}
 \acrodef{cgem}[CGEM]{Coastal General Ecosystem Model}
 \acrodef{do}[O$_2$]{dissolved oxygen}
 \acrodef{gom}[GOM]{Gulf of Mexico}
 \acrodef{lcs}[LCS]{Louisiana continental shelf}
 \acrodef{marb}[MARB]{Mississippi-Atchafalaya River Basin}
+\acrodef{oned}[1-D]{one-dimensional}
+\acrodef{par}[PAR]{photosynthetically active radiation}
 
 %for supplemental figures/tables
 \newcommand{\beginsupplement}{%
@@ -139,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Sun Jun 26 16:40:23 2016 -0500
+  \\ Version Date:   Mon Jun 27 17:32:38 2016 -0500
 	}
 \date{}
 \maketitle
@@ -184,13 +186,13 @@ Results from FishTank are based on time-dependent differential equations that de
 
 \subsection{Local sensitivity analysis}
 
-The analysis focused on sensitivity of \ac{do} in the \ac{oned} model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 249 parameters using a simple perturbation approach to evaluate the change in dissolved oyxgten from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
+The analysis focused on sensitivity of \ac{do} in the \ac{oned} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 249 parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
 
-\begin{equation}
+\begin{equation} \label{sij}
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Individual estimates for $S_{ij}$ were as $L1$ and $L2$ across the time series to obtained a single sensitivity value of \ac{do} in response to a change in parameter $j$:
+\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Individual estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain a single sensitivity value of \ac{do} in response to a change in parameter $j$:
 
 \begin{equation}
 L1 = \sum|S_{ij}|/n
@@ -199,9 +201,9 @@ L1 = \sum|S_{ij}|/n
 L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
 \end{equation}
 
-The mean, minimum, and maximum $S_{ij}$ for each parameter were also evaluated.  In general, positive mean sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the time step $i$.  Time series of \ac{do} estimates before and after perturbation  were also evaluated to identify patterns not captured the summary statistics. All parameters that are considered 'sensitive' should be further evaluated by plotting the predictions before and after perturbation and across the total range of the parameter.  All parameters for each of the six equation categories (optics, phytoplankton, zooplankton, temperature, and organic matter) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
+The mean, minimum, and maximum $S_{ij}$ for each parameter were also evaluated.  In general, positive mean sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, phytoplankton, zooplankton, temperature, and organic matter) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
 
-\subsection{Identifiability}
+\subsection{Identifiability and selecting parameter subsets}
 
 Identifiability of parameter subsets was estimated from the minimum eigenvector of the cross-product of a selected sensitivity matrix \citep{Brun01,Omlin01}:
 
@@ -209,22 +211,19 @@ Identifiability of parameter subsets was estimated from the minimum eigenvector 
 \gamma = \frac{1} {\sqrt{ \min \left(\rm{EV}[\hat{S}^\intercal \hat{S}]\right)}}
 \end{equation}
 
-where $\gamma$ ranges from one to infinity for perfectly identifiable (orthogonal) or unidentifiable (perfectly collinear) results for a set of parameters in the sensitivity matrix $S$.  Identifiability can be estimated for any combination of parameters for a model.  Values less than 10-15 indicate parameters are generally identifiable.  The FME package provides the `collin` function to estimate identifiability of output from the `sensFun`.  For reasons described above, a custom function was created to determine identifiability from model residuals, where the residauls were based on a relative perturbation of the model parameters.  A comparison of results of identifiability using the custom functions and those from the FME package were generally in agreement.  Standard output from the identifiability function is shown below, where identifiability is displayed as a matrix with increasing combinations of subsets of the parameters.    
+\noindent where $\gamma$ ranges from one to infinity for perfectly identifiable (orthogonal) or unidentifiable (perfectly collinear) results for a set of parameters in a chosen sensitivity matrix $S$.  The sensitivity functions are supplied as a matrix $\hat{S}$ with rows $i$ and columns $j$ (\cref{sij}) that describe deviations of predicted \ac{do} from the default parameter values.  The sensitivity matrix $\hat{S}$ is first normalized by dividing by the square root of the summed residuals. 
 
+The collinearity index $\gamma$ provides a measure of the linear dependence between sensitivity functions described above for subsets of parameters. Estimates of $\gamma$ greater than 10-15 suggest parameter sets are poorly identifiable \citep{Brun01,Omlin01}, meaning optimal values are inestimable given similar effects of the selected parameters on \ac{do}. Greater sensitivity of a state variable to a parameter subset parameters does not imply identifiability if the individual effects are similar.  An intuitive interpretation of $\gamma$ is provided by \citet{Brun01} such that a change in a state variable caused by a change in one parameter can be offset by the fraction $1 - 1/\gamma$ by the remaining parameters.  That is, $\gamma = 10$ suggests the relative change in \ac{do} for a selected parameter can be compensated for by 90\% with changes in the other parameters. 
 
+Initial analyses suggested that considerably limited subsets of parameters were identifiable of the 249 included in the FishTank model.  Given this limitation, parameter selection must consider the competing objectives of increased precision with parameter inclusion and identifability as it relates to optimization.  An additional challenge is the excessively high number of combinations of parameter sets, which complicates selection given differences in parameter sensitivity and desired ecological categories of each parameter as they relate to the biogeochemical equations.  For example, \cref{fig:combnex} provides a simple graphic of the unique number of combinations that are possible for different subsets of `complete' parameter sets of different sizes (i.e., based on $n$ choose $k$ combinations equal to $n!/\left(k!\left(n-k\right)!\right)$).  The number of unique combinations increases with the total parameters in the set and is also maximized for moderate selections (e.g., selecting half the total).  For example, over 1e14 combinations are possible by selecting 25 parameters from a set of 50.  Accordingly, parameter selection is complicated by differing sensitivity, identifiability, and the difficulty of choosing from many combinations.
 
-The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
+A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above.  These rulesets were developed with the assumption that parameters will be selected given preference for those with high sensitivity and identifability of subsets less than 15 was an acceptable threshold (e.g., 93\% accountability between parameters).  Selection heurestics also recognized that parameter categories (i.e., optics, phytoplankton, zooplankton, temperature, organic matter) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
+\item independent of parameter category,
+\item blocked within parameter category,
+\item or considering all categories equally
+\end{inparaenum}.  The selection rules produced seven subsets of parameters that could further be used to optimized model calibration for \ac{do}.
 
-
-
-Pairwise identifiability of the top two most sensitive parameters in each category is shown, first as a table showing all unique combinations from two to all parameters and second as a figure showing pairwise combinations.
-
-\subsection{Identifying subsets and testing calibration}
-
-Model calibration must consider the competing objectives of parameter inclusion and identifability.  Estimating parameters for novel datasets increases model complexity and the ability to identify parameters decreases with the inclusion of parameters to estimate.  The above analyses indicated that estimating all of the parameters was impossible because of redundancies in the the model output.  Calibration to novel datasets should balance the competing objectives of identifiability while including parameters for which model output is most sensitive.  The plots below show different scenarios of parameter inclusion for model calibration.  Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories.  Boxes in each plot represent a unique parameter and the numbers in each box represent the relative rank of a parameter's sensitivity to the model output within each category. 
-
-The following plots show identifiability with the addition of parameters. 
-
+Finally, the above analyses were repeated for additional state variables estimated by FishTank to provide additional perspective on ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon ($OM1_A$, $OM2_A$), fecal pellets ($OM1_{fp}$, $OM2_{fp}$), river sources ($OM1_{rp}$, $OM2_{rp}$), and boundary conditions ($OM1_{bc}$, $OM2_{bc}$, see \citetalias{LehrterIR}). 
 
 \section{Results}
 
@@ -233,6 +232,12 @@ The following plots show identifiability with the addition of parameters.
 The parameters that have the greatest effect on the model by category (optics, organics, phytoplankton, zooplankton) are as follows.
 
 Plotting the raw values from the sensitivity analysis provides a visual assessment of changes.
+
+The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
+
+Pairwise identifiability of the top two most sensitive parameters in each category is shown, first as a table showing all unique combinations from two to all parameters and second as a figure showing pairwise combinations.
+
+Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories. 
 
 \section{Discussion}
 
@@ -263,11 +268,11 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 % figures
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=\textwidth]{figs/unnamed-chunk-3-1} 
+{\centering \includegraphics[width=\textwidth]{figs/combnex-1} 
 
 }
 
-\caption[Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets]{Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.}\label{fig:unnamed-chunk-3}
+\caption[Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets]{Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.}\label{fig:combnex}
 \end{figure}
 
 
