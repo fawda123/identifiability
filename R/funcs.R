@@ -1,7 +1,8 @@
 # alternative list structure for parameter categories
-parcats2 <- function(){
+parcats2 <- function(as_df = FALSE){
   
   Optics = list(
+    cats = 'Optics',
     shrt = c('Kw_1', 
       'Kcdom_1', 
       'Kspm_1', 
@@ -43,6 +44,7 @@ parcats2 <- function(){
   )
   
   Temperature = list(
+    cats = 'Temperature',
     shrt = c(
       'Tref(nospA+nospZ)_1',
       'Tref(nospA+nospZ)_2',
@@ -148,6 +150,7 @@ parcats2 <- function(){
   )
   
   Phytoplankton = list(
+    cats = 'Phytoplankton',
     shrt = c(
       'ediblevector(Z1)_1',
       'ediblevector(Z1)_2',
@@ -625,6 +628,7 @@ parcats2 <- function(){
   )
   
   Zooplankton = list(
+    cats = 'Zooplankton',
     shrt = c(
       'Zeffic_1',
       'Zeffic_2',
@@ -700,6 +704,7 @@ parcats2 <- function(){
   )
   
   `Organic Matter` = list(
+    cats = 'Organic Matter',
     shrt = c(
       'KG1_1',
       'KG2_1',
@@ -795,15 +800,26 @@ parcats2 <- function(){
       )
   )
   
+  # list
   out <- list(Optics = Optics, Temperature = Temperature, Phytoplankton = Phytoplankton, Zooplankton = Zooplankton, `Organic Matter` = `Organic Matter`)
+  
+  # return as data frame if T
+  if(as_df){
+    
+    out <- lapply(out, data.frame)
+    out <- do.call('rbind', out)
+    row.names(out) <- 1:nrow(out)
+    
+    return(out)
+  }
   
   return(out)
   
 }
 
-
 ##
 # scientific notation from R to LaTeX
+# from https://dankelley.github.io/r/2015/03/22/scinot.html
 scinot <- function(x, digits=2, showDollar=TRUE)
 {
     sign <- ""
