@@ -817,18 +817,23 @@ parcats2 <- function(as_df = FALSE){
   
 }
 
-##
+######
 # scientific notation from R to LaTeX
+# x is numeric to convert
+# pow is minimum exponent (positive or negative) to use for notation
+# digits numeric for rounding
+# showdollar logical if output is enclosed in dollar for latex
 # from https://dankelley.github.io/r/2015/03/22/scinot.html
-scinot <- function(x, digits=2, showDollar=TRUE)
+scinot <- function(x, pow = 3, digits=2, showDollar=TRUE)
 {
+  
     sign <- ""
     if (x < 0) {
         sign <- "-"
         x <- -x
     }
     exponent <- floor(log10(x))
-    if (exponent) {
+    if (exponent & abs(exponent) > pow) {
         xx <- round(x / 10^exponent, digits=digits)
         e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
     } else {
@@ -839,3 +844,126 @@ scinot <- function(x, digits=2, showDollar=TRUE)
     else paste(sign, xx, e, sep="")
 }
 
+######
+# function for sensitivity tables, no phyto, zoop groupings
+senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
+  
+  library(Hmisc)
+  library(dplyr)
+  library(tidyr)
+  
+  load(file = 'data/sens_ests_cat.RData')
+  load(file = 'data/sens_ests.RData')
+  
+  labs <- parcats2()[[categ]] %>% 
+    data.frame %>% 
+    rename(Parameter = shrt)
+  
+  totab <- filter(sens_ests_cat, Category %in% categ) %>% 
+    select(Parameter) %>% 
+    left_join(., sens_ests$sens, by = 'Parameter') %>% 
+    left_join(., labs, by = 'Parameter') %>% 
+    select(lngs, Parameter, vals, L1, L2) %>% 
+    arrange(-L1) %>% 
+    mutate(
+      Parameter = paste0('\\textit{', gsub('_[0-9]$', '', Parameter), '}'),
+      lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
+      lngs = gsub('_', '', lngs), 
+      vals = sapply(vals, scinot),
+      L1 = sapply(L1, scinot), 
+      L2 = sapply(L2, scinot)
+    ) %>% 
+    rename(
+      Description = lngs, 
+      Value = vals
+    )
+
+  # final table formatting
+  Description <- totab$Description
+  totab <- totab[,-1]
+  cap.val<- paste('Sensitivities of \\ac{do} to perturbation of', tolower(categ), 'parameters.  Sensitivities are based on a 50\\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \\cref{l1,l2}).  Parameters that did not affect \\ac{do} are not shown.')
+
+  latex( 
+    totab,
+    file = '',
+    rowlabel = 'Description',
+    caption = cap.val,
+    caption.loc = 'top',
+    rowname = Description,
+    size = tabsize,
+    label = paste0('tab:', tablab)
+    )
+  
+}
+  
+######
+# function for sensitivity tables, with phyto, zoop groupings
+senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt = NULL){
+  
+  library(Hmisc)
+  library(dplyr)
+  library(tidyr)
+  
+  load(file = 'data/sens_ests_cat.RData')
+  load(file = 'data/sens_ests.RData')
+
+  labs <- parcats2()[[categ]] %>% 
+    data.frame %>% 
+    rename(Parameter = shrt)
+  
+  totab <- filter(sens_ests_cat, Category %in% categ) %>% 
+    select(Parameter) %>% 
+    left_join(., sens_ests$sens, by = 'Parameter') %>% 
+    left_join(., labs, by = 'Parameter') %>% 
+    select(Parameter, lngs, vals, L1, L2)
+  
+  if(!is.null(sub))
+    totab <- filter(totab, L1 > sub)
+  
+  totab <- separate(totab, Parameter, c('Parameter', 'Group'), sep = '_') %>% 
+    mutate(
+      Group = factor(Group, 
+        levels = c(1:8), 
+        labels = c(paste0('$_{P', 1:6, '}$'), paste0('$_{Z', 1:2, '}$'))
+      ),
+      lngs = gsub('^.*:\\s', '', lngs), 
+      lngs = gsub('_', '', lngs)
+    ) %>% 
+    arrange(lngs, -L1) %>% 
+    unite('Parameter', Parameter, Group, sep = '') %>% 
+    mutate(Parameter = paste0('\\textit{', Parameter, '}')) %>% 
+    mutate(
+      vals = sapply(vals, scinot),
+      L1 = sapply(L1, scinot), 
+      L2 = sapply(L2, scinot)
+    ) %>% 
+    rename(
+      Description = lngs,
+      Value = vals
+    ) %>% 
+    select(Description, Parameter, Value, L1, L2)
+  
+  # final table formatting
+  Description <- totab$Description
+  Parameter <- totab$Parameter
+  totab <- totab[,-c(1, 2)]
+  cap.val<- paste('Sensitivities of \\ac{do} to perturbation of', tolower(categ), 'parameters.  Sensitivities are based on a 50\\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \\cref{l1,l2}).  Parameters that did not affect \\ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.')
+  
+  if(!is.null(sub.txt))
+    cap.val <- paste(cap.val, sub.txt)
+    
+  latex( 
+    totab,
+    file = '',
+    rowlabel = 'Description, Parameter',
+    caption = cap.val,
+    caption.loc = 'top',
+    rgroup = unique(Description),
+    n.rgroup = as.numeric(table(Description)),
+    rgroupTexCmd = NULL,
+    rowname = Parameter,
+    size = tabsize,
+    label = paste0('tab:', tablab)
+    )
+
+}

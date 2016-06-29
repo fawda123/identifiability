@@ -164,10 +164,10 @@ S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 
 \noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parameter $j$:
 
-\begin{equation}
+\begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
 \end{equation}
-\begin{equation}
+\begin{equation} \label{l2}
 L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
 \end{equation}
 
@@ -196,6 +196,8 @@ A set of heuristics was developed to balance the tradeoff in model complexity an
 Finally, the above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
 
 \section{Results}
+
+\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}
 
 \subsection{Local sensitivity analysis}
 
@@ -277,54 +279,27 @@ grid.arrange(p1, p2, ncol = 2)
 %%%%%%
 % tables
 
-<<optsens, eval = T>>=
+<<optsens, eval = T, cache = F>>=
+senstab1('Optics', 'optsens')
+@
 
-data(sens_ests)
-data(sens_ests_cat)
+<<tempsens, eval = T, cache = F >>=
+senstab2('Temperature', 'tempsens')
+@
 
-categ <- 'Optics'
+<<phytosens, eval = T, cache = F>>=
+# data(sens_ests_cat)
+# tmp <- filter(sens_ests_cat, Category == 'Phytoplankton')
+# quantile(tmp$error)
+senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less than the 75\\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.')
+@
 
-labs <- parcats2()[[categ]] %>% 
-  data.frame %>% 
-  rename(Parameter = shrt)
+<<zoopsens, eval = T, cache = F>>=
+senstab2('Zooplankton', 'zoopsens')
+@
 
-totab <- filter(sens_ests_cat, Category %in% categ) %>% 
-  select(Parameter) %>% 
-  left_join(., sens_ests$sens, by = 'Parameter') %>% 
-  left_join(., labs, by = 'Parameter') %>% 
-  select(Parameter, lngs, vals, L1, L2) %>% 
-  arrange(-L1) %>% 
-  mutate(
-    Parameter = paste0('\\textit{', gsub('_[0-9]$', '', Parameter), '}'),
-    lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
-    lngs = gsub('_', '\\\\_', lngs), 
-    L1 = sapply(L1, scinot), 
-    L2 = sapply(L2, scinot)
-  ) %>% 
-  rename(
-    Description = lngs, 
-    Value = vals
-  )
-
-# final table formatting
-Parameter <- totab$Parameter
-totab <- totab[,-1]
-cap.val<-'Test'
-
-latex( 
-  totab,
-  file = '',
-  rowlabel = 'Parameter',
-  caption = cap.val,
-  caption.loc = 'top',
-  # rgroup = segs,
-  # n.rgroup = c(1, rep(4, 2)),
-#   cgroup = vars,
-#   n.cgroup = c(2, 2),
-  rowname = Parameter,
-  label = 'tab:optsens'
-  )
-
+<<omsens, eval = T, cache = F>>=
+senstab1('Organic Matter', 'omsens')
 @
 
 \end{document}

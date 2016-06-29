@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Tue Jun 28 11:58:04 2016 -0500
+  \\ Version Date:   Wed Jun 29 09:01:37 2016 -0500
 	}
 \date{}
 \maketitle
@@ -193,10 +193,10 @@ S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 
 \noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parameter $j$:
 
-\begin{equation}
+\begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
 \end{equation}
-\begin{equation}
+\begin{equation} \label{l2}
 L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
 \end{equation}
 
@@ -225,6 +225,8 @@ A set of heuristics was developed to balance the tradeoff in model complexity an
 Finally, the above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
 
 \section{Results}
+
+\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}
 
 \subsection{Local sensitivity analysis}
 
@@ -281,20 +283,179 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 %%%%%%
 % tables
 
-%latex.default(totab, file = "", rowlabel = "Parameter", caption = cap.val,     caption.loc = "top", rowname = Parameter, label = "tab:optsens")%
+%latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
 \begin{table}[!tbp]
-\caption{Test\label{tab:optsens}} 
+{\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of optics parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.\label{tab:optsens}} 
 \begin{center}
-\begin{tabular}{llrll}
+\begin{tabular}{lllll}
 \hline\hline
-\multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Description}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-\textit{astar490}&Chla specific absorption at 490 nm&$0.0375$&$1.64$&$8.64$\tabularnewline
-\textit{astarOMA}&OM\_A specific absorption at 490 nm&$0.1000$&$2.29\times 10^{-2}$&$9.52\times 10^{-2}$\tabularnewline
-\textit{astarOMZ}&OM\_Z specific absorption at 490 nm&$0.1000$&$5.65\times 10^{-3}$&$1.42\times 10^{-2}$\tabularnewline
-\textit{Kcdom}&AOP, light attenuation due to CDOM&$0.0010$&$3.18\times 10^{-6}$&$1.09\times 10^{-5}$\tabularnewline
+Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$1.64$&$8.64$\tabularnewline
+OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.02$&$0.1$\tabularnewline
+OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$0.01$&$0.01$\tabularnewline
+AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09\times 10^{-5}$\tabularnewline
 \hline
-\end{tabular}\end{center}
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+%latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
+\begin{table}[!tbp]
+{\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of temperature parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.\label{tab:tempsens}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\hline
+{Optimum temperature for growth(C)}&&&\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{P4}$}&$17$&$2.9$&$22.95$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{Z2}$}&$26$&$0.18$&$2.59$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{P5}$}&$26$&$0.17$&$0.72$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{P2}$}&$22$&$0.16$&$0.82$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{Z1}$}&$22$&$0.16$&$0.33$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{P3}$}&$17$&$0.14$&$0.78$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{P1}$}&$22$&$0.12$&$0.29$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+%latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
+\begin{table}[!tbp]
+{\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of phytoplankton parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter. Parameters less than the 75\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.\label{tab:phytosens}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\hline
+{coefficient for non-limiting nutrient}&&&\tabularnewline
+~~\textit{aN$_{P1}$}&$1$&$2.7$&$47.26$\tabularnewline
+~~\textit{aN$_{P3}$}&$1$&$0.66$&$3.16$\tabularnewline
+\hline
+{half-saturation constant for N}&&&\tabularnewline
+~~\textit{Kn$_{P3}$}&$5.93$&$1.15$&$9.22$\tabularnewline
+~~\textit{Kn$_{P4}$}&$1.13$&$0.62$&$2.5$\tabularnewline
+\hline
+{initial slope of the photosynthesis-irradiance relationship}&&&\tabularnewline
+~~\textit{alpha$_{P4}$}&$3.96\times 10^{-16}$&$1.61$&$7.46$\tabularnewline
+~~\textit{alpha$_{P3}$}&$6.19\times 10^{-17}$&$1.06$&$3.74$\tabularnewline
+~~\textit{alpha$_{P5}$}&$3.87\times 10^{-16}$&$0.81$&$5.54$\tabularnewline
+\hline
+{minimum N cell-quota}&&&\tabularnewline
+~~\textit{QminN$_{P3}$}&$1.27\times 10^{-8}$&$1.53$&$6.4$\tabularnewline
+~~\textit{QminN$_{P4}$}&$1.53\times 10^{-10}$&$0.91$&$2.76$\tabularnewline
+~~\textit{QminN$_{P1}$}&$6.08\times 10^{-9}$&$0.62$&$4.55$\tabularnewline
+\hline
+{mortality coefficient}&&&\tabularnewline
+~~\textit{mA$_{P3}$}&$0.03$&$2.98$&$14.34$\tabularnewline
+~~\textit{mA$_{P4}$}&$0.11$&$1.35$&$7.04$\tabularnewline
+\hline
+{N-uptake rate measured at umax}&&&\tabularnewline
+~~\textit{vmaxN$_{P5}$}&$1.4\times 10^{-9}$&$7.57$&$43.9$\tabularnewline
+~~\textit{vmaxN$_{P4}$}&$1.33\times 10^{-9}$&$2.88$&$16.56$\tabularnewline
+~~\textit{vmaxN$_{P3}$}&$8.11\times 10^{-8}$&$1.99$&$15.23$\tabularnewline
+~~\textit{vmaxN$_{P1}$}&$4.1\times 10^{-8}$&$0.84$&$2.92$\tabularnewline
+\hline
+{P-uptake rate measured at umax}&&&\tabularnewline
+~~\textit{vmaxP$_{P3}$}&$6.15\times 10^{-8}$&$2.23$&$9.89$\tabularnewline
+~~\textit{vmaxP$_{P1}$}&$2.68\times 10^{-8}$&$0.74$&$11.41$\tabularnewline
+\hline
+{phytoplankton basal respiration coefficient}&&&\tabularnewline
+~~\textit{respb$_{P4}$}&$0.02$&$3.1$&$26.48$\tabularnewline
+~~\textit{respb$_{P3}$}&$0.02$&$2.15$&$6.35$\tabularnewline
+~~\textit{respb$_{P5}$}&$0.02$&$0.81$&$8.61$\tabularnewline
+\hline
+{phytoplankton carbon/cell}&&&\tabularnewline
+~~\textit{Qc$_{P1}$}&$1.35\times 10^{-6}$&$328.35$&$2181.05$\tabularnewline
+~~\textit{Qc$_{P3}$}&$2.65\times 10^{-6}$&$232.8$&$1574.72$\tabularnewline
+~~\textit{Qc$_{P2}$}&$1.68\times 10^{-7}$&$4.08$&$61.25$\tabularnewline
+~~\textit{Qc$_{P4}$}&$4.54\times 10^{-8}$&$1.03$&$3.75$\tabularnewline
+\hline
+{phytoplankton growth respiration coefficient}&&&\tabularnewline
+~~\textit{respg$_{P4}$}&$0.1$&$0.98$&$7.37$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+%latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
+\begin{table}[!tbp]
+{\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of zooplankton parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.\label{tab:zoopsens}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\hline
+{assimilation efficiency as a fraction of ingestion}&&&\tabularnewline
+~~\textit{Zeffic$_{P1}$}&$0.4$&$0.23$&$0.55$\tabularnewline
+~~\textit{Zeffic$_{P2}$}&$0.4$&$0.21$&$0.75$\tabularnewline
+\hline
+{half saturation coefficient for grazing}&&&\tabularnewline
+~~\textit{ZKa$_{P1}$}&$1.12\times 10^{12}$&$0.82$&$6.29$\tabularnewline
+~~\textit{ZKa$_{P2}$}&$1.12\times 10^{12}$&$0.46$&$3.24$\tabularnewline
+\hline
+{maximum growth rate of zooplankton}&&&\tabularnewline
+~~\textit{Zumax$_{P2}$}&$2.98\times 10^{7}$&$0.48$&$1.84$\tabularnewline
+~~\textit{Zumax$_{P1}$}&$9.45\times 10^{8}$&$0.46$&$0.91$\tabularnewline
+\hline
+{proportion of grazed phytoplankton lost to sloppy feeding}&&&\tabularnewline
+~~\textit{Zslop$_{P1}$}&$0.25$&$0.12$&$0.33$\tabularnewline
+\hline
+{Zooplankton biomass-dependent respiration factor}&&&\tabularnewline
+~~\textit{Zrespb$_{P1}$}&$0.1$&$0.45$&$3.02$\tabularnewline
+~~\textit{Zrespb$_{P2}$}&$0.42$&$0.09$&$1.05$\tabularnewline
+\hline
+{zooplankton carbon/individual}&&&\tabularnewline
+~~\textit{ZQc$_{P2}$}&$7.08\times 10^{-7}$&$0.1$&$0.36$\tabularnewline
+~~\textit{ZQc$_{P1}$}&$3.13\times 10^{-4}$&$0.06$&$0.62$\tabularnewline
+\hline
+{Zooplankton growth-dependent respiration factor}&&&\tabularnewline
+~~\textit{Zrespg$_{P1}$}&$0.2$&$0.24$&$3.19$\tabularnewline
+~~\textit{Zrespg$_{P2}$}&$0.3$&$0.12$&$0.31$\tabularnewline
+\hline
+{Zooplankton mortality constant for quadratic mortality}&&&\tabularnewline
+~~\textit{Zm$_{P2}$}&$7.2\times 10^{-4}$&$0.33$&$2.85$\tabularnewline
+~~\textit{Zm$_{P1}$}&$7.2\times 10^{-4}$&$0.26$&$0.8$\tabularnewline
+\hline
+{zooplankton nitrogen/individual}&&&\tabularnewline
+~~\textit{ZQn$_{P1}$}&$6.95\times 10^{-5}$&$0.47$&$1.64$\tabularnewline
+~~\textit{ZQn$_{P2}$}&$1.57\times 10^{-7}$&$0.24$&$1.35$\tabularnewline
+\hline
+{zooplankton phosphorus/individual}&&&\tabularnewline
+~~\textit{ZQp$_{P2}$}&$8.53\times 10^{-9}$&$0.01$&$0.01$\tabularnewline
+~~\textit{ZQp$_{P1}$}&$3.77\times 10^{-6}$&$0$&$0$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+%latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
+\begin{table}[!tbp]
+{\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of organic matter parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.\label{tab:omsens}} 
+\begin{center}
+\begin{tabular}{lllll}
+\hline\hline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\hline
+rate constant for nitrification&\textit{k11}&$5$&$2.11$&$16.1$\tabularnewline
+O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.91$&$11.76$\tabularnewline
+turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.49$&$6.83$\tabularnewline
+turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$1.37$&$3.46$\tabularnewline
+half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.24$&$7.98$\tabularnewline
+half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.56$&$1.92$\tabularnewline
+decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
+\hline
+\end{tabular}\end{center}}
 
 \end{table}
 
