@@ -924,7 +924,7 @@ senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt 
     mutate(
       Group = factor(Group, 
         levels = c(1:8), 
-        labels = c(paste0('$_{P', 1:6, '}$'), paste0('$_{Z', 1:2, '}$'))
+        labels = c(paste0('\\textsubscript{P', 1:6, '}'), paste0('\\textsubscript{Z', 1:2, '}'))
       ),
       lngs = gsub('^.*:\\s', '', lngs), 
       lngs = gsub('_', '', lngs)

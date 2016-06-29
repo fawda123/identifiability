@@ -73,7 +73,7 @@
 \usepackage{array}
 \usepackage{pdflscape}
 \usepackage{bm}
-% \usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{fixltx2e}
 % \usepackage{showlabels}
 \bibpunct{(}{)}{,}{a}{}{,}
 
@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Wed Jun 29 09:01:37 2016 -0500
+  \\ Version Date:   Wed Jun 29 14:50:46 2016 -0500
 	}
 \date{}
 \maketitle
@@ -268,13 +268,26 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 %%%%%%
 % figures
 
+% combination example
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=\textwidth]{figs/combnex-1} 
+{\centering \includegraphics[width=0.6\textwidth]{figs/combnex-1} 
 
 }
 
 \caption[Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets]{Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.}\label{fig:combnex}
+\end{figure}
+
+
+
+% sensitivity example of top
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\maxwidth]{figs/sensplo-1} 
+
+}
+
+\caption{Sensitivity of \ac{do} to parameter changes.  Each solid line shows the parameter within each category that had the largest effect on \ac{do} with a 50\% change from the default value.  The dashed line shows \ac{do} holding all parameters at their default values.  The bottom plot shows the estimated \ac{do} as a difference from the default.}\label{fig:sensplo}
 \end{figure}
 
 
@@ -312,13 +325,13 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
 {Optimum temperature for growth(C)}&&&\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{P4}$}&$17$&$2.9$&$22.95$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{Z2}$}&$26$&$0.18$&$2.59$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{P5}$}&$26$&$0.17$&$0.72$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{P2}$}&$22$&$0.16$&$0.82$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{Z1}$}&$22$&$0.16$&$0.33$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{P3}$}&$17$&$0.14$&$0.78$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{P1}$}&$22$&$0.12$&$0.29$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P4}}&$17$&$2.9$&$22.95$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{Z2}}&$26$&$0.18$&$2.59$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P5}}&$26$&$0.17$&$0.72$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P2}}&$22$&$0.16$&$0.82$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{Z1}}&$22$&$0.16$&$0.33$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P3}}&$17$&$0.14$&$0.78$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P1}}&$22$&$0.12$&$0.29$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -335,50 +348,50 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
 {coefficient for non-limiting nutrient}&&&\tabularnewline
-~~\textit{aN$_{P1}$}&$1$&$2.7$&$47.26$\tabularnewline
-~~\textit{aN$_{P3}$}&$1$&$0.66$&$3.16$\tabularnewline
+~~\textit{aN\textsubscript{P1}}&$1$&$2.7$&$47.26$\tabularnewline
+~~\textit{aN\textsubscript{P3}}&$1$&$0.66$&$3.16$\tabularnewline
 \hline
 {half-saturation constant for N}&&&\tabularnewline
-~~\textit{Kn$_{P3}$}&$5.93$&$1.15$&$9.22$\tabularnewline
-~~\textit{Kn$_{P4}$}&$1.13$&$0.62$&$2.5$\tabularnewline
+~~\textit{Kn\textsubscript{P3}}&$5.93$&$1.15$&$9.22$\tabularnewline
+~~\textit{Kn\textsubscript{P4}}&$1.13$&$0.62$&$2.5$\tabularnewline
 \hline
 {initial slope of the photosynthesis-irradiance relationship}&&&\tabularnewline
-~~\textit{alpha$_{P4}$}&$3.96\times 10^{-16}$&$1.61$&$7.46$\tabularnewline
-~~\textit{alpha$_{P3}$}&$6.19\times 10^{-17}$&$1.06$&$3.74$\tabularnewline
-~~\textit{alpha$_{P5}$}&$3.87\times 10^{-16}$&$0.81$&$5.54$\tabularnewline
+~~\textit{alpha\textsubscript{P4}}&$3.96\times 10^{-16}$&$1.61$&$7.46$\tabularnewline
+~~\textit{alpha\textsubscript{P3}}&$6.19\times 10^{-17}$&$1.06$&$3.74$\tabularnewline
+~~\textit{alpha\textsubscript{P5}}&$3.87\times 10^{-16}$&$0.81$&$5.54$\tabularnewline
 \hline
 {minimum N cell-quota}&&&\tabularnewline
-~~\textit{QminN$_{P3}$}&$1.27\times 10^{-8}$&$1.53$&$6.4$\tabularnewline
-~~\textit{QminN$_{P4}$}&$1.53\times 10^{-10}$&$0.91$&$2.76$\tabularnewline
-~~\textit{QminN$_{P1}$}&$6.08\times 10^{-9}$&$0.62$&$4.55$\tabularnewline
+~~\textit{QminN\textsubscript{P3}}&$1.27\times 10^{-8}$&$1.53$&$6.4$\tabularnewline
+~~\textit{QminN\textsubscript{P4}}&$1.53\times 10^{-10}$&$0.91$&$2.76$\tabularnewline
+~~\textit{QminN\textsubscript{P1}}&$6.08\times 10^{-9}$&$0.62$&$4.55$\tabularnewline
 \hline
 {mortality coefficient}&&&\tabularnewline
-~~\textit{mA$_{P3}$}&$0.03$&$2.98$&$14.34$\tabularnewline
-~~\textit{mA$_{P4}$}&$0.11$&$1.35$&$7.04$\tabularnewline
+~~\textit{mA\textsubscript{P3}}&$0.03$&$2.98$&$14.34$\tabularnewline
+~~\textit{mA\textsubscript{P4}}&$0.11$&$1.35$&$7.04$\tabularnewline
 \hline
 {N-uptake rate measured at umax}&&&\tabularnewline
-~~\textit{vmaxN$_{P5}$}&$1.4\times 10^{-9}$&$7.57$&$43.9$\tabularnewline
-~~\textit{vmaxN$_{P4}$}&$1.33\times 10^{-9}$&$2.88$&$16.56$\tabularnewline
-~~\textit{vmaxN$_{P3}$}&$8.11\times 10^{-8}$&$1.99$&$15.23$\tabularnewline
-~~\textit{vmaxN$_{P1}$}&$4.1\times 10^{-8}$&$0.84$&$2.92$\tabularnewline
+~~\textit{vmaxN\textsubscript{P5}}&$1.4\times 10^{-9}$&$7.57$&$43.9$\tabularnewline
+~~\textit{vmaxN\textsubscript{P4}}&$1.33\times 10^{-9}$&$2.88$&$16.56$\tabularnewline
+~~\textit{vmaxN\textsubscript{P3}}&$8.11\times 10^{-8}$&$1.99$&$15.23$\tabularnewline
+~~\textit{vmaxN\textsubscript{P1}}&$4.1\times 10^{-8}$&$0.84$&$2.92$\tabularnewline
 \hline
 {P-uptake rate measured at umax}&&&\tabularnewline
-~~\textit{vmaxP$_{P3}$}&$6.15\times 10^{-8}$&$2.23$&$9.89$\tabularnewline
-~~\textit{vmaxP$_{P1}$}&$2.68\times 10^{-8}$&$0.74$&$11.41$\tabularnewline
+~~\textit{vmaxP\textsubscript{P3}}&$6.15\times 10^{-8}$&$2.23$&$9.89$\tabularnewline
+~~\textit{vmaxP\textsubscript{P1}}&$2.68\times 10^{-8}$&$0.74$&$11.41$\tabularnewline
 \hline
 {phytoplankton basal respiration coefficient}&&&\tabularnewline
-~~\textit{respb$_{P4}$}&$0.02$&$3.1$&$26.48$\tabularnewline
-~~\textit{respb$_{P3}$}&$0.02$&$2.15$&$6.35$\tabularnewline
-~~\textit{respb$_{P5}$}&$0.02$&$0.81$&$8.61$\tabularnewline
+~~\textit{respb\textsubscript{P4}}&$0.02$&$3.1$&$26.48$\tabularnewline
+~~\textit{respb\textsubscript{P3}}&$0.02$&$2.15$&$6.35$\tabularnewline
+~~\textit{respb\textsubscript{P5}}&$0.02$&$0.81$&$8.61$\tabularnewline
 \hline
 {phytoplankton carbon/cell}&&&\tabularnewline
-~~\textit{Qc$_{P1}$}&$1.35\times 10^{-6}$&$328.35$&$2181.05$\tabularnewline
-~~\textit{Qc$_{P3}$}&$2.65\times 10^{-6}$&$232.8$&$1574.72$\tabularnewline
-~~\textit{Qc$_{P2}$}&$1.68\times 10^{-7}$&$4.08$&$61.25$\tabularnewline
-~~\textit{Qc$_{P4}$}&$4.54\times 10^{-8}$&$1.03$&$3.75$\tabularnewline
+~~\textit{Qc\textsubscript{P1}}&$1.35\times 10^{-6}$&$328.35$&$2181.05$\tabularnewline
+~~\textit{Qc\textsubscript{P3}}&$2.65\times 10^{-6}$&$232.8$&$1574.72$\tabularnewline
+~~\textit{Qc\textsubscript{P2}}&$1.68\times 10^{-7}$&$4.08$&$61.25$\tabularnewline
+~~\textit{Qc\textsubscript{P4}}&$4.54\times 10^{-8}$&$1.03$&$3.75$\tabularnewline
 \hline
 {phytoplankton growth respiration coefficient}&&&\tabularnewline
-~~\textit{respg$_{P4}$}&$0.1$&$0.98$&$7.37$\tabularnewline
+~~\textit{respg\textsubscript{P4}}&$0.1$&$0.98$&$7.37$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -395,43 +408,43 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
 {assimilation efficiency as a fraction of ingestion}&&&\tabularnewline
-~~\textit{Zeffic$_{P1}$}&$0.4$&$0.23$&$0.55$\tabularnewline
-~~\textit{Zeffic$_{P2}$}&$0.4$&$0.21$&$0.75$\tabularnewline
+~~\textit{Zeffic\textsubscript{P1}}&$0.4$&$0.23$&$0.55$\tabularnewline
+~~\textit{Zeffic\textsubscript{P2}}&$0.4$&$0.21$&$0.75$\tabularnewline
 \hline
 {half saturation coefficient for grazing}&&&\tabularnewline
-~~\textit{ZKa$_{P1}$}&$1.12\times 10^{12}$&$0.82$&$6.29$\tabularnewline
-~~\textit{ZKa$_{P2}$}&$1.12\times 10^{12}$&$0.46$&$3.24$\tabularnewline
+~~\textit{ZKa\textsubscript{P1}}&$1.12\times 10^{12}$&$0.82$&$6.29$\tabularnewline
+~~\textit{ZKa\textsubscript{P2}}&$1.12\times 10^{12}$&$0.46$&$3.24$\tabularnewline
 \hline
 {maximum growth rate of zooplankton}&&&\tabularnewline
-~~\textit{Zumax$_{P2}$}&$2.98\times 10^{7}$&$0.48$&$1.84$\tabularnewline
-~~\textit{Zumax$_{P1}$}&$9.45\times 10^{8}$&$0.46$&$0.91$\tabularnewline
+~~\textit{Zumax\textsubscript{P2}}&$2.98\times 10^{7}$&$0.48$&$1.84$\tabularnewline
+~~\textit{Zumax\textsubscript{P1}}&$9.45\times 10^{8}$&$0.46$&$0.91$\tabularnewline
 \hline
 {proportion of grazed phytoplankton lost to sloppy feeding}&&&\tabularnewline
-~~\textit{Zslop$_{P1}$}&$0.25$&$0.12$&$0.33$\tabularnewline
+~~\textit{Zslop\textsubscript{P1}}&$0.25$&$0.12$&$0.33$\tabularnewline
 \hline
 {Zooplankton biomass-dependent respiration factor}&&&\tabularnewline
-~~\textit{Zrespb$_{P1}$}&$0.1$&$0.45$&$3.02$\tabularnewline
-~~\textit{Zrespb$_{P2}$}&$0.42$&$0.09$&$1.05$\tabularnewline
+~~\textit{Zrespb\textsubscript{P1}}&$0.1$&$0.45$&$3.02$\tabularnewline
+~~\textit{Zrespb\textsubscript{P2}}&$0.42$&$0.09$&$1.05$\tabularnewline
 \hline
 {zooplankton carbon/individual}&&&\tabularnewline
-~~\textit{ZQc$_{P2}$}&$7.08\times 10^{-7}$&$0.1$&$0.36$\tabularnewline
-~~\textit{ZQc$_{P1}$}&$3.13\times 10^{-4}$&$0.06$&$0.62$\tabularnewline
+~~\textit{ZQc\textsubscript{P2}}&$7.08\times 10^{-7}$&$0.1$&$0.36$\tabularnewline
+~~\textit{ZQc\textsubscript{P1}}&$3.13\times 10^{-4}$&$0.06$&$0.62$\tabularnewline
 \hline
 {Zooplankton growth-dependent respiration factor}&&&\tabularnewline
-~~\textit{Zrespg$_{P1}$}&$0.2$&$0.24$&$3.19$\tabularnewline
-~~\textit{Zrespg$_{P2}$}&$0.3$&$0.12$&$0.31$\tabularnewline
+~~\textit{Zrespg\textsubscript{P1}}&$0.2$&$0.24$&$3.19$\tabularnewline
+~~\textit{Zrespg\textsubscript{P2}}&$0.3$&$0.12$&$0.31$\tabularnewline
 \hline
 {Zooplankton mortality constant for quadratic mortality}&&&\tabularnewline
-~~\textit{Zm$_{P2}$}&$7.2\times 10^{-4}$&$0.33$&$2.85$\tabularnewline
-~~\textit{Zm$_{P1}$}&$7.2\times 10^{-4}$&$0.26$&$0.8$\tabularnewline
+~~\textit{Zm\textsubscript{P2}}&$7.2\times 10^{-4}$&$0.33$&$2.85$\tabularnewline
+~~\textit{Zm\textsubscript{P1}}&$7.2\times 10^{-4}$&$0.26$&$0.8$\tabularnewline
 \hline
 {zooplankton nitrogen/individual}&&&\tabularnewline
-~~\textit{ZQn$_{P1}$}&$6.95\times 10^{-5}$&$0.47$&$1.64$\tabularnewline
-~~\textit{ZQn$_{P2}$}&$1.57\times 10^{-7}$&$0.24$&$1.35$\tabularnewline
+~~\textit{ZQn\textsubscript{P1}}&$6.95\times 10^{-5}$&$0.47$&$1.64$\tabularnewline
+~~\textit{ZQn\textsubscript{P2}}&$1.57\times 10^{-7}$&$0.24$&$1.35$\tabularnewline
 \hline
 {zooplankton phosphorus/individual}&&&\tabularnewline
-~~\textit{ZQp$_{P2}$}&$8.53\times 10^{-9}$&$0.01$&$0.01$\tabularnewline
-~~\textit{ZQp$_{P1}$}&$3.77\times 10^{-6}$&$0$&$0$\tabularnewline
+~~\textit{ZQp\textsubscript{P2}}&$8.53\times 10^{-9}$&$0.01$&$0.01$\tabularnewline
+~~\textit{ZQp\textsubscript{P1}}&$3.77\times 10^{-6}$&$0$&$0$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 

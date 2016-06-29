@@ -1,0 +1,12 @@
+base
+knitr
+ggplot2
+WRTDStidal
+tidyr
+dplyr
+gridExtra
+lattice
+survival
+Formula
+Hmisc
+ncdf4
