@@ -204,9 +204,9 @@ Finally, the above analyses were repeated for additional state variables estimat
 
 Plotting the raw values from the sensitivity analysis provides a visual assessment of changes (\cref{fig:sensplot}).
 
-The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
+\cref{fig:identbox} shows identifiability ranges, describe by caegory, also emphasize that selection indepedent of category may be more appropriate (better identifiability).  Jumps in median suggest inclusion of a specific parameter has disproportionate affect on identifiability.   
 
-Pairwise identifiability of the top two most sensitive parameters in each category is shown, first as a table showing all unique combinations from two to all parameters and second as a figure showing pairwise combinations.
+Note that identifiability for one phytoplankton group and one zooplankton group needs to be evaluated, lots of redundancy between groups. 
 
 Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories. 
 
@@ -379,7 +379,7 @@ grid.arrange(pA, pB, pC, ncol = 1, heights = c(1, 0.85, 0.85))
 @
 
 % identifiability boxplots
-<<identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter caterogires (b) shows identifiability by seleting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for each the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
+<<identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident)
 data(top_ident)
@@ -403,10 +403,10 @@ toplo <- cat_ident %>%
     max = max(coll)
   )
 
-p1 <- ggplot(toplo, aes(x = N, colour = Category, group = N)) + 
-  geom_point(aes(y = ave)) + 
-  geom_point(aes(y = med)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0) + 
+p1 <- ggplot(toplo, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
   facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
   theme_minimal() + 
   theme(
@@ -415,7 +415,6 @@ p1 <- ggplot(toplo, aes(x = N, colour = Category, group = N)) +
     axis.title.x = element_blank(), 
     axis.title.y = element_blank()
   ) + 
-  scale_colour_brewer(palette = colset) + 
   theme(legend.position = 'none') + 
   ggtitle('(a) By parameter category')
 
@@ -432,13 +431,12 @@ toplo2 <-  reshape2::melt(top_ident, id.var = c('N', 'coll')) %>%
     max = max(coll)
   )
 
-p2 <- ggplot(toplo2, aes(x = N, colour = npercat, group = N)) + 
-  geom_point(aes(y = ave, shape = 'Ave')) + 
-  geom_point(aes(y = med, shape = 'Med')) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0) + 
+p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
   facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
   theme_minimal() + 
-  scale_colour_brewer(palette = colset, guide = F) + 
   theme(
     axis.line.x = element_line(), 
     axis.line.y = element_line(), 
@@ -457,6 +455,48 @@ grid.arrange(
   bottom = 'Parameters in set',
   pleg, ncol = 2, widths = c(1, 0.1)
 )
+@
+
+<<catident, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters by category (optics, organic matter, phytoplankton, temperature, zooplankton).  Parameters are selected in each category by decreasing sensitivity (\\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). Grey lines indicate thresholds for maximum acceptable identifiability. Selection stops after $\\gamma > 15$ or if the maximum number of parameters in a category is selected.', fig.height = 8.5, fig.width = 4.5, echo = F, cache = TRUE, out.width = '0.6\\textwidth'>>=
+
+# plot of sequential identifiability by category
+
+data(tocal)
+data(sens_ests_cat)
+
+# ggplot theme
+pthm <- theme_minimal() + 
+  theme(
+    axis.text.x = element_text(size = 6), 
+    axis.line.x = element_line(),
+    axis.line.y = element_line(), 
+    panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank()
+    )
+
+# data prep, select all with coll < 15 plus one, as list
+toplo <- filter(tocal$cat) %>% 
+  split(., .$Category) %>% 
+  lapply(function(x){
+    
+    sel <- which(x$coll < 15)
+    x <- x[c(sel, max(sel) + 1), ] %>% 
+      na.omit
+    x
+    
+  }) %>% 
+  do.call('rbind', .)
+
+ggplot(toplo, aes(x = Selected, y = coll)) + 
+  geom_line() + 
+  geom_point(size = 3, shape = 21, fill = 'grey') +
+  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
+  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
+  facet_wrap(~Category, ncol = 1, scales = 'free') + 
+  scale_x_continuous(breaks = c(1:25)) + 
+  scale_y_continuous('Identifiability') +
+  pthm
+
 @
 
 \clearpage

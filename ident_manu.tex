@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Wed Jun 29 16:36:46 2016 -0500
+  \\ Version Date:   Thu Jun 30 19:09:01 2016 -0500
 	}
 \date{}
 \maketitle
@@ -232,9 +232,9 @@ Finally, the above analyses were repeated for additional state variables estimat
 
 Plotting the raw values from the sensitivity analysis provides a visual assessment of changes (\cref{fig:sensplot}).
 
-The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
+\cref{fig:identbox} shows identifiability ranges, describe by caegory, also emphasize that selection indepedent of category may be more appropriate (better identifiability).  Jumps in median suggest inclusion of a specific parameter has disproportionate affect on identifiability.   
 
-Pairwise identifiability of the top two most sensitive parameters in each category is shown, first as a table showing all unique combinations from two to all parameters and second as a figure showing pairwise combinations.
+Note that identifiability for one phytoplankton group and one zooplankton group needs to be evaluated, lots of redundancy between groups. 
 
 Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories. 
 
@@ -297,7 +297,18 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 
 }
 
-\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do}.  Plots in (a) show identifiability by parameter caterogires (b) shows identifiability by seleting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for each the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.}\label{fig:identbox}
+\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.}\label{fig:identbox}
+\end{figure}
+
+
+
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=0.6\textwidth]{figs/catident-1} 
+
+}
+
+\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters by category (optics, organic matter, phytoplankton, temperature, zooplankton).  Parameters are selected in each category by decreasing sensitivity (\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). Grey lines indicate thresholds for maximum acceptable identifiability. Selection stops after $\gamma > 15$ or if the maximum number of parameters in a category is selected.}\label{fig:catident}
 \end{figure}
 
 
