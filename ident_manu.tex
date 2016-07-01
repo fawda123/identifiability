@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Wed Jun 29 14:50:46 2016 -0500
+  \\ Version Date:   Wed Jun 29 16:36:46 2016 -0500
 	}
 \date{}
 \maketitle
@@ -182,7 +182,7 @@ Three-dimensional numerical simulation models have been developed to describe fa
 
 The core unit of \ac{cgem} is a \ac{oned} model called FishTank that implements the biogeochemical equations in \citet{Eldridge10}.  This model acts as a standalone operational unit from the 3-D model that does not include any form of transport (i.e., advection, mixing, or surface flux) such that it can easily be applied to other hydrodynamic grids.  Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{oned} parcel that is uniformly mixed.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 (Table 1, \citet{Murrell14}).  The FishTank model was executed from January 1\textsuperscript{st} to December \textsuperscript{st}, 2006 at a timestep of five minutes.  
 
-Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton (up to six groups) and zooplankton (two groups) as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, a set of parameter values for each of the equations is also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert-based knowledge in absence of the former.  The sensitivity of \ac{do} was estimated at each timestep from FishTank in relation to 249 parameters that are included in the 108 equations.  For simplicity in the discussion below, the parameters were grouped into one of six categories in relation to applicable equations: optics, phytoplankton, zooplankton, temperature, and organic matter.  A full description of the equations and parameters is available as an appendix in \citepalias{LehrterIR}.  
+Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton (up to six groups) and zooplankton (two groups) as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, a set of parameter values for each of the equations is also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert-based knowledge in absence of the former.  The sensitivity of \ac{do} was estimated at each timestep from FishTank in relation to 249 parameters that are included in the 108 equations.  For simplicity in the discussion below, the parameters were grouped into one of six categories based on respective equations: optics, organic matter, phytoplankton, temperature, and zooplankton.  A full description of the equations and parameters is available as an appendix in \citepalias{LehrterIR}.  
 \subsection{Local sensitivity analysis}
 
 The analysis focused on sensitivity of \ac{do} in the \ac{oned} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 249 parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
@@ -200,13 +200,13 @@ L1 = \sum|S_{ij}|/n
 L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
 \end{equation}
 
-In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, phytoplankton, zooplankton, temperature, and organic matter) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
+In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
 
 \subsection{Identifiability and selecting parameter subsets}
 
 Identifiability of parameter subsets was estimated from the minimum eigenvector of the cross-product of a selected sensitivity matrix \citep{Brun01,Omlin01}:
 
-\begin{equation}
+\begin{equation} \label{gameq}
 \gamma = \frac{1} {\sqrt{ \min \left(\rm{EV}[\mathit{\hat{S}}^\top \mathit{\hat{S}}]\right)}}
 \end{equation}
 
@@ -216,7 +216,7 @@ The collinearity index $\gamma$ provides a measure of the linear dependence betw
 
 Initial analyses suggested that considerably limited subsets of parameters were identifiable of the 249 included in the FishTank model.  Given this limitation, parameter selection must consider the competing objectives of increased precision with parameter inclusion and identifability as it relates to optimization.  An additional challenge is the excessively high number of combinations of parameter sets, which complicates selection given differences in parameter sensitivity and desired ecological categories of each parameter as they relate to the biogeochemical equations.  For example, \cref{fig:combnex} provides a simple graphic of the unique number of combinations that are possible for different subsets of `complete' parameter sets of different sizes (i.e., based on $n$ choose $k$ combinations equal to $n!/\left(k!\left(n-k\right)!\right)$).  The number of unique combinations increases with the total parameters in the set and is also maximized for moderate selections (e.g., selecting half the total).  For example, over 10$^14$ combinations are possible by selecting 25 parameters from a set of 50.  Accordingly, parameter selection is complicated by differing sensitivity, identifiability, and the difficulty of choosing from many combinations.
 
-A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above.  These rulesets were developed with the assumption that parameters will be selected given preference for those with high sensitivity and identifability based on $\gamma < 15$ was an acceptable threshold for subsets (e.g., 93\% accountability between parameters).  Selection heurestics also recognized that parameter categories (i.e., optics, phytoplankton, zooplankton, temperature, organic matter) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity starting with the most sensitive until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
+A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above.  These rulesets were developed with the assumption that parameters will be selected given preference for those with high sensitivity and identifability based on $\gamma < 15$ was an acceptable threshold for subsets (e.g., 93\% accountability between parameters).  Selection heurestics also recognized that parameter categories (i.e., optics, organic matter, phytoplankton, temperature, zooplankton) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity starting with the most sensitive until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
 \item independent of parameter category,
 \item blocked within parameter category,
 \item or considering all categories equally
@@ -226,13 +226,11 @@ Finally, the above analyses were repeated for additional state variables estimat
 
 \section{Results}
 
-\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}
-
 \subsection{Local sensitivity analysis}
 
-The parameters that have the greatest effect on the model by category (optics, organics, phytoplankton, zooplankton) are as follows.
+\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}, how many parameters in each category, how many induced a response in \ac{do}, what parameters in each category had the greatest sensitivity (\cref{fig:sensplo}), what were sensitivity magnitudes between categories, did these vary by phyto or zoop groups?  
 
-Plotting the raw values from the sensitivity analysis provides a visual assessment of changes.
+Plotting the raw values from the sensitivity analysis provides a visual assessment of changes (\cref{fig:sensplot}).
 
 The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
 
@@ -275,7 +273,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 
 }
 
-\caption[Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets]{Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.}\label{fig:combnex}
+\caption[Examples of unique parameter combinations from different parameter sets and number of selected parameters]{Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.}\label{fig:combnex}
 \end{figure}
 
 
@@ -287,7 +285,19 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 
 }
 
-\caption{Sensitivity of \ac{do} to parameter changes.  Each solid line shows the parameter within each category that had the largest effect on \ac{do} with a 50\% change from the default value.  The dashed line shows \ac{do} holding all parameters at their default values.  The bottom plot shows the estimated \ac{do} as a difference from the default.}\label{fig:sensplo}
+\caption{Sensitivity of \ac{do} to parameter changes. The solid lines show the change in \ac{do} based on a 50\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\left(L1\right)$) for all parmaters in each category.}\label{fig:sensplo}
+\end{figure}
+
+
+
+% identifiability boxplots
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\maxwidth]{figs/identbox-1} 
+
+}
+
+\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do}.  Plots in (a) show identifiability by parameter caterogires (b) shows identifiability by seleting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for each the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.}\label{fig:identbox}
 \end{figure}
 
 
@@ -315,23 +325,22 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \end{table}
 
 
-%latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
+%latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
 \begin{table}[!tbp]
 {\normalsize
-\caption{Sensitivities of \ac{do} to perturbation of temperature parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.\label{tab:tempsens}} 
+\caption{Sensitivities of \ac{do} to perturbation of organic matter parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.\label{tab:omsens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lllll}
 \hline\hline
-\multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-{Optimum temperature for growth(C)}&&&\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{P4}}&$17$&$2.9$&$22.95$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{Z2}}&$26$&$0.18$&$2.59$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{P5}}&$26$&$0.17$&$0.72$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{P2}}&$22$&$0.16$&$0.82$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{Z1}}&$22$&$0.16$&$0.33$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{P3}}&$17$&$0.14$&$0.78$\tabularnewline
-~~\textit{Tref(nospA+nospZ)\textsubscript{P1}}&$22$&$0.12$&$0.29$\tabularnewline
+rate constant for nitrification&\textit{k11}&$5$&$2.11$&$16.1$\tabularnewline
+O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.91$&$11.76$\tabularnewline
+turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.49$&$6.83$\tabularnewline
+turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$1.37$&$3.46$\tabularnewline
+half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.24$&$7.98$\tabularnewline
+half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.56$&$1.92$\tabularnewline
+decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -401,6 +410,29 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 %latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\normalsize
+\caption{Sensitivities of \ac{do} to perturbation of temperature parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.\label{tab:tempsens}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
+\hline
+{Optimum temperature for growth(C)}&&&\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P4}}&$17$&$2.9$&$22.95$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{Z2}}&$26$&$0.18$&$2.59$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P5}}&$26$&$0.17$&$0.72$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P2}}&$22$&$0.16$&$0.82$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{Z1}}&$22$&$0.16$&$0.33$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P3}}&$17$&$0.14$&$0.78$\tabularnewline
+~~\textit{Tref(nospA+nospZ)\textsubscript{P1}}&$22$&$0.12$&$0.29$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+%latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
+\begin{table}[!tbp]
+{\normalsize
 \caption{Sensitivities of \ac{do} to perturbation of zooplankton parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.\label{tab:zoopsens}} 
 \begin{center}
 \begin{tabular}{llll}
@@ -451,26 +483,6 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \end{table}
 
 
-%latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
-\begin{table}[!tbp]
-{\normalsize
-\caption{Sensitivities of \ac{do} to perturbation of organic matter parameters.  Sensitivities are based on a 50\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \cref{l1,l2}).  Parameters that did not affect \ac{do} are not shown.\label{tab:omsens}} 
-\begin{center}
-\begin{tabular}{lllll}
-\hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
-\hline
-rate constant for nitrification&\textit{k11}&$5$&$2.11$&$16.1$\tabularnewline
-O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.91$&$11.76$\tabularnewline
-turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.49$&$6.83$\tabularnewline
-turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$1.37$&$3.46$\tabularnewline
-half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.24$&$7.98$\tabularnewline
-half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.56$&$1.92$\tabularnewline
-decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
-\hline
-\end{tabular}\end{center}}
-
-\end{table}
 
 
 \end{document}

@@ -69,7 +69,7 @@
 library(knitr)
 # set global chunk options
 opts_chunk$set(fig.path = 'figs/', fig.align = 'center', fig.show = 'hold', message = F, echo = F, results = 'asis', dev = 'pdf', dev.args = list(family = 'serif'), fig.pos = '!ht', warning = F)
-options(replace.assign = TRUE, width = 90, digits = 1)
+options(replace.assign = TRUE, width = 90)
 
 source('R/funcs.r')
 library(WRTDStidal)
@@ -78,7 +78,7 @@ library(ggplot2)
 library(dplyr)
 library(gridExtra)
 library(Hmisc)
-library(ncdf4)
+library(ggrepel)
 @
 
 % get the version based on commit date
@@ -154,7 +154,7 @@ Three-dimensional numerical simulation models have been developed to describe fa
 
 The core unit of \ac{cgem} is a \ac{oned} model called FishTank that implements the biogeochemical equations in \citet{Eldridge10}.  This model acts as a standalone operational unit from the 3-D model that does not include any form of transport (i.e., advection, mixing, or surface flux) such that it can easily be applied to other hydrodynamic grids.  Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{oned} parcel that is uniformly mixed.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 (Table 1, \citet{Murrell14}).  The FishTank model was executed from January 1\textsuperscript{st} to December \textsuperscript{st}, 2006 at a timestep of five minutes.  
 
-Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton (up to six groups) and zooplankton (two groups) as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, a set of parameter values for each of the equations is also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert-based knowledge in absence of the former.  The sensitivity of \ac{do} was estimated at each timestep from FishTank in relation to 249 parameters that are included in the 108 equations.  For simplicity in the discussion below, the parameters were grouped into one of six categories in relation to applicable equations: optics, phytoplankton, zooplankton, temperature, and organic matter.  A full description of the equations and parameters is available as an appendix in \citepalias{LehrterIR}.  
+Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton (up to six groups) and zooplankton (two groups) as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, a set of parameter values for each of the equations is also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert-based knowledge in absence of the former.  The sensitivity of \ac{do} was estimated at each timestep from FishTank in relation to 249 parameters that are included in the 108 equations.  For simplicity in the discussion below, the parameters were grouped into one of six categories based on respective equations: optics, organic matter, phytoplankton, temperature, and zooplankton.  A full description of the equations and parameters is available as an appendix in \citepalias{LehrterIR}.  
 \subsection{Local sensitivity analysis}
 
 The analysis focused on sensitivity of \ac{do} in the \ac{oned} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 249 parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
@@ -172,13 +172,13 @@ L1 = \sum|S_{ij}|/n
 L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
 \end{equation}
 
-In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, phytoplankton, zooplankton, temperature, and organic matter) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
+In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
 
 \subsection{Identifiability and selecting parameter subsets}
 
 Identifiability of parameter subsets was estimated from the minimum eigenvector of the cross-product of a selected sensitivity matrix \citep{Brun01,Omlin01}:
 
-\begin{equation}
+\begin{equation} \label{gameq}
 \gamma = \frac{1} {\sqrt{ \min \left(\rm{EV}[\mathit{\hat{S}}^\top \mathit{\hat{S}}]\right)}}
 \end{equation}
 
@@ -188,7 +188,7 @@ The collinearity index $\gamma$ provides a measure of the linear dependence betw
 
 Initial analyses suggested that considerably limited subsets of parameters were identifiable of the 249 included in the FishTank model.  Given this limitation, parameter selection must consider the competing objectives of increased precision with parameter inclusion and identifability as it relates to optimization.  An additional challenge is the excessively high number of combinations of parameter sets, which complicates selection given differences in parameter sensitivity and desired ecological categories of each parameter as they relate to the biogeochemical equations.  For example, \cref{fig:combnex} provides a simple graphic of the unique number of combinations that are possible for different subsets of `complete' parameter sets of different sizes (i.e., based on $n$ choose $k$ combinations equal to $n!/\left(k!\left(n-k\right)!\right)$).  The number of unique combinations increases with the total parameters in the set and is also maximized for moderate selections (e.g., selecting half the total).  For example, over 10$^14$ combinations are possible by selecting 25 parameters from a set of 50.  Accordingly, parameter selection is complicated by differing sensitivity, identifiability, and the difficulty of choosing from many combinations.
 
-A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above.  These rulesets were developed with the assumption that parameters will be selected given preference for those with high sensitivity and identifability based on $\gamma < 15$ was an acceptable threshold for subsets (e.g., 93\% accountability between parameters).  Selection heurestics also recognized that parameter categories (i.e., optics, phytoplankton, zooplankton, temperature, organic matter) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity starting with the most sensitive until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
+A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above.  These rulesets were developed with the assumption that parameters will be selected given preference for those with high sensitivity and identifability based on $\gamma < 15$ was an acceptable threshold for subsets (e.g., 93\% accountability between parameters).  Selection heurestics also recognized that parameter categories (i.e., optics, organic matter, phytoplankton, temperature, zooplankton) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity starting with the most sensitive until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
 \item independent of parameter category,
 \item blocked within parameter category,
 \item or considering all categories equally
@@ -198,13 +198,11 @@ Finally, the above analyses were repeated for additional state variables estimat
 
 \section{Results}
 
-\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}
-
 \subsection{Local sensitivity analysis}
 
-The parameters that have the greatest effect on the model by category (optics, organics, phytoplankton, zooplankton) are as follows.
+\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}, how many parameters in each category, how many induced a response in \ac{do}, what parameters in each category had the greatest sensitivity (\cref{fig:sensplo}), what were sensitivity magnitudes between categories, did these vary by phyto or zoop groups?  
 
-Plotting the raw values from the sensitivity analysis provides a visual assessment of changes.
+Plotting the raw values from the sensitivity analysis provides a visual assessment of changes (\cref{fig:sensplot}).
 
 The identifiability functions evaluate the ability to identify all subsets from pairwise to all parameters in the subset.  As an example, the identifiability of pairwise combinations for each of the categories are shown below.
 
@@ -241,7 +239,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 % figures
 
 % combination example
-<<combnex, echo = F, fig.cap = 'Number of unique combinations that can occur by selecting parameters for optimization from different parameter sets.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 100 parameter sets are shown each with one through 100 total parameters.  For example, there are six unique parameter combinations that result from choosing two parameters from a set.  Note that the number of unique combinations is shown as the natural-log.  The same information is viewed differently in each plot.', fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
+<<combnex, echo = F, fig.cap = 'Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.', fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
 
 numparms <- 1:50
 sels <- numparms
@@ -279,7 +277,7 @@ p2
 @
 
 % sensitivity example of top
-<<sensplo, fig.cap = 'Sensitivity of \\ac{do} to parameter changes.  Each solid line shows the parameter within each category that had the largest effect on \\ac{do} with a 50\\% change from the default value.  The dashed line shows \\ac{do} holding all parameters at their default values.  The bottom plot shows the estimated \\ac{do} as a difference from the default.', fig.height = 5.5, fig.width = 8, echo = F, cache = TRUE>>=
+<<sensplo, fig.cap = 'Sensitivity of \\ac{do} to parameter changes. The solid lines show the change in \\ac{do} based on a 50\\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \\ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\\left(L1\\right)$) for all parmaters in each category.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
 load(file = 'data/sens_ests.RData')
 load(file = 'data/sens_ests_cat.RData')
 
@@ -291,13 +289,27 @@ toeval <- group_by(sens_ests_cat, Category) %>%
 toeval <- toeval$Parameter %>% 
   as.character
 
+# for top sens plots
 toplo <- filter(sens_ests$raw, Parameter %in% toeval) %>% 
   mutate(
     diffest = Estimate - default,
     time = as.POSIXct(time, origin = as.POSIXct('2002-01-01 0:0', tz = "GMT"), tz = 'GMT'),
-    time = as.Date(time)
+    time = as.Date(time), 
+    Parameter = factor(Parameter, levels = c('astar490_1', 'k11_1', 'Qc_1', 'Tref(nospA+nospZ)_4', 'ZKa_1'))
   )
 
+# for all L1 boxplots
+toplo2 <- mutate(sens_ests_cat,
+  Category = factor(Category, 
+    levels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+    ), 
+  Parameter = as.character(Parameter)
+  ) %>% 
+  group_by(Category) %>% 
+  mutate(
+    tops = ifelse(error == max(error), Parameter, NA)
+  )
+  
 ylab <- expression(paste(O[2], ' (mmol ', m^-3, ')'))
 colset <- 'Set2'
 lnsz <- 1
@@ -340,16 +352,111 @@ p2 <- ggplot(toplo, aes(x = time, y = diffest, group = Parameter, colour = Param
     axis.line.y = element_line()
     )
 
+p3 <- ggplot(toplo2, aes(x = Category, y = log(error), fill = Category)) + 
+  geom_boxplot() +
+  theme_minimal() +
+  scale_fill_brewer(palette = colset) + 
+  scale_y_continuous(expression(paste('log(', italic('L1'), ')'))) + 
+  theme(
+    legend.position = 'none',
+    axis.title.x = element_blank(),
+    axis.line.x = element_line(), 
+    axis.line.y = element_line()
+    )
+
 # align widths of plots in first column, first two
 pA <- ggplot_gtable(ggplot_build(p1))
 pB <- ggplot_gtable(ggplot_build(p2))
-maxWidth = grid::unit.pmax(pA$widths[2:3], pB$widths[2:3])
+pC <- ggplot_gtable(ggplot_build(p3))
+maxWidth = grid::unit.pmax(pA$widths[2:3], pB$widths[2:3], pC$widths[2:3])
 
 # Set the widths
 pA$widths[2:3] <- maxWidth
 pB$widths[2:3] <- maxWidth
+pC$widths[2:3] <- maxWidth
 
-grid.arrange(pA, pB, ncol = 1, heights = c(1, 0.85))
+grid.arrange(pA, pB, pC, ncol = 1, heights = c(1, 0.85, 0.85))
+@
+
+% identifiability boxplots
+<<identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter caterogires (b) shows identifiability by seleting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for each the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
+# identifiability by category (all parameters with >0 L1) 
+data(cat_ident)
+data(top_ident)
+
+colset <- 'Set2'
+
+toplo <- cat_ident %>% 
+  lapply(., function(x) dplyr::select(x, N, coll)) %>% 
+  reshape2::melt(., id.var = c('N', 'coll')) %>% 
+  rename(Category = L1) %>% 
+  mutate(Category = factor(Category, 
+    levels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton'),
+    labels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+    )) %>% 
+  filter(N <= 25) %>% # reduced for plot space
+  group_by(N, Category) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+p1 <- ggplot(toplo, aes(x = N, colour = Category, group = N)) + 
+  geom_point(aes(y = ave)) + 
+  geom_point(aes(y = med)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0) + 
+  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
+  theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank()
+  ) + 
+  scale_colour_brewer(palette = colset) + 
+  theme(legend.position = 'none') + 
+  ggtitle('(a) By parameter category')
+
+# identifiability top 1, 2, 3, 4, 5 all categories combined
+toplo2 <-  reshape2::melt(top_ident, id.var = c('N', 'coll')) %>% 
+  select(N, coll, L1) %>% 
+  mutate(L1 = factor(L1, levels = paste0('top', 1:5), labels = paste0('Top ', 1:5))) %>% 
+  rename(npercat = L1) %>% 
+  group_by(N, npercat) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+p2 <- ggplot(toplo2, aes(x = N, colour = npercat, group = N)) + 
+  geom_point(aes(y = ave, shape = 'Ave')) + 
+  geom_point(aes(y = med, shape = 'Med')) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0) + 
+  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
+  theme_minimal() + 
+  scale_colour_brewer(palette = colset, guide = F) + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(), 
+    legend.title = element_blank()
+  ) + 
+  ggtitle('(b) By top parameters, all categories')
+
+pleg <- g_legend(p2)
+p2 <- p2 + theme(legend.position = 'none')
+
+grid.arrange(
+  arrangeGrob(p1, p2, ncol = 2),
+  left = 'Identifiability', 
+  bottom = 'Parameters in set',
+  pleg, ncol = 2, widths = c(1, 0.1)
+)
 @
 
 \clearpage
@@ -360,8 +467,8 @@ grid.arrange(pA, pB, ncol = 1, heights = c(1, 0.85))
 senstab1('Optics', 'optsens')
 @
 
-<<tempsens, eval = T, cache = F >>=
-senstab2('Temperature', 'tempsens')
+<<omsens, eval = T, cache = F>>=
+senstab1('Organic Matter', 'omsens')
 @
 
 <<phytosens, eval = T, cache = F>>=
@@ -371,12 +478,14 @@ senstab2('Temperature', 'tempsens')
 senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less than the 75\\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.')
 @
 
+<<tempsens, eval = T, cache = F >>=
+senstab2('Temperature', 'tempsens')
+@
+
 <<zoopsens, eval = T, cache = F>>=
 senstab2('Zooplankton', 'zoopsens')
 @
 
-<<omsens, eval = T, cache = F>>=
-senstab1('Organic Matter', 'omsens')
-@
+
 
 \end{document}
