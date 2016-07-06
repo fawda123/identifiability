@@ -541,6 +541,7 @@ pcattop <- ggplot(toplo, aes(x = Selected, y = coll)) +
   cols +
   pthm +
   theme(legend.position = 'top') + 
+  guides(fill = guide_legend(nrow = 3)) +
   ggtitle('(c) All categories equally')
 
 pleg <- g_legend(pcattop)
@@ -548,52 +549,72 @@ pcattop <- pcattop +
   theme(legend.position = 'none')
 
 grid.arrange(
-  pleg, 
-  arrangeGrob(
-    pcat,
-    arrangeGrob(ptop, pcattop, ncol = 1), 
-    widths = c(1, 1),
-    ncol = 2
-    ), 
-  ncol = 1, 
-  heights = c(0.05, 1),
-  bottom = 'Selected', 
+  pcat,
+  arrangeGrob(ptop, pcattop, pleg, ncol = 1, heights = c(1, 1, 0.6)), 
+  widths = c(1, 1),
+  ncol = 2, 
+  bottom = 'Parameters selected by sensitivity', 
   left = 'Identifiability'
 )
 
 @
 
-<<st>>=
-load(file = 'rdata/tocal_all.Rdata')
+<<heurist_stts, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$.', fig.height = 5, fig.width = 9, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
+data(tocal_all)
 
+# factor levels
+cats <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
+
+# custom col scale
+mycols <- RColorBrewer::brewer.pal(5, 'Set2')
+names(mycols) <- cats
+cols <- scale_fill_manual(name = 'Category', values = mycols)
+
+# ggplot theme
+pthm <- theme_minimal() + 
+  theme(
+    axis.text.x = element_text(size = 6), 
+    axis.line.x = element_line(),
+    axis.line.y = element_line(), 
+    panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank()
+    )
+
+# get all parameters for each state variable where coll < 15 plus one
 toplo <- tocal_all$top_all %>% 
-  reshape2::melt(., id.var = names(.[[1]]))
+  reshape2::melt(., id.var = names(.[[1]])) %>% 
+  filter(!L1 %in% 'O2') %>% 
+  mutate(
+    L1 = factor(L1, levels = stts_lev, labels = stts_lab),
+    Category = factor(Category, levels = cats, labels = cats)
+  ) %>% 
+  split(., .$L1) %>% 
+  lapply(function(x){
+    # browser()
+    sel <- which(x$coll < 15)
+    x <- x[c(sel, max(sel) + 1), ] %>% 
+      na.omit
+    x
+    
+  }) %>% 
+  do.call('rbind', .)
 
 ggplot(toplo, aes(x = Selected, y = coll)) + 
-  geom_line(size = 1) + 
-  geom_hline(yintercept = 15) +
-  geom_label_repel(
-    aes(label = Parameter), 
-    label.padding = unit(0.1, "lines"),
-    box.padding = unit(2, "lines"), 
-    force = 2
-    ) + 
-  geom_point(aes(colour = Category), size = 5) +
-  coord_cartesian(ylim = c(0, 25), xlim = c(0, 16)) + 
-  theme_classic() + 
-  facet_wrap(~L1, scales= 'free_x', ncol = 4) + 
-  scale_colour_brewer(palette = 'Set1') + 
+  geom_line() + 
+  geom_point(aes(fill = Category), shape = 21, size = 4) +
+  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
+  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
+  facet_wrap(~L1, scales= 'free', ncol = 4) + 
   scale_y_continuous('Identifiability') + 
   scale_x_continuous(
-    'No. selected by increasing sensitivity',
-    breaks=toplo$Selected
+    'Parameters selected by sensitivity',
+    breaks = toplo$Selected
     ) + 
-  theme(
-    legend.position = 'top', 
-    strip.text = element_text(size = 12),
-    axis.line.x = element_line(size = 0.5),
-    axis.line.y = element_line(size = 0.5)
-    )
+  cols +
+  pthm +
+  theme(legend.position = c(0.9, 0.2))
 @
 
 \clearpage
