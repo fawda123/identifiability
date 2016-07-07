@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[Arhonditsis et~al., 2008]{Arhonditsis08}
+Arhonditsis GB, Perhar G, Zhang W, Massos E, Shi M, Das A. 2008.
+\newblock Addressing equifinality and uncertainty in eutrophication models.
+\newblock Water Resources Research, 44(1):W01420.
+
 \bibitem[Beck, 1987]{Beck87}
 Beck MB. 1987.
 \newblock Water quality modeling: A review of the analysis of uncertainty.
@@ -11,6 +16,13 @@ Bianchi TS, DiMarco SF, Jr JHC, Hetland RD, Chapman P, Day JW, Allison MA.
 \newblock The science of hypoxia in the {N}orthern {G}ulf of {M}exico: a
   review.
 \newblock Science of the Total Environment, 408(7):1471--1484.
+
+\bibitem[Bierman et~al., 1994]{Bierman94}
+Bierman VJ, Hinz SC, Zhu DW, Wiseman WJ, Rabalais NN, Turner RE. 1994.
+\newblock A preliminary mass-balance model of primary productivity and
+  dissolved oxygen in the {M}ississippi {R}iver plume/ inner {G}ulf shelf
+  region.
+\newblock Estuaries, 17(4):886--899.
 
 \bibitem[Brun et~al., 2001]{Brun01}
 Brun R, Reichert P, K\"{u}nsch HR. 2001.
@@ -118,6 +130,18 @@ Murrell MC, Beddick DL, Devereux R, Greene RM, III JDH, Jarvis BM, Kurtz JC,
 \newblock Technical Report EPA/600/R-13/257, US Environmental Protection
   Agency, Washington, DC.
 
+\bibitem[Murrell et~al., 2013]{Murrell13}
+Murrell MC, Stanley RS, Lehrter JC, Hagy JD. 2013.
+\newblock Plankton community respiration, net ecosystem metabolism, and oxygen
+  dynamics on the {L}ouisiana continental shelf: Implications for hypoxia.
+\newblock Continental Shelf Research, 52:27--38.
+
+\bibitem[Obenour et~al., 2015]{Obenour15}
+Obenour DR, Michalak AM, Scavia D. 2015.
+\newblock Assessing biophysical controls on {G}ulf of {M}exico hypoxia through
+  probabilistic modeling.
+\newblock Ecological Applications, 25(2):492--505.
+
 \bibitem[Omlin et~al., 2001]{Omlin01}
 Omlin M, Brun R, Reichert P. 2001.
 \newblock Biogeochemical model of {L}ake {Z}\"{u}rich: sensitivity,
@@ -135,6 +159,12 @@ Pauer JJ, Feist TJ, Anstead AM, DePetro PA, Melendez W, Lehrter JC, Murrell MC,
 Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008.
 \newblock An underwater light attenuation scheme for marine ecosystem models.
 \newblock Optical Express, 16(21):16581--16591.
+
+\bibitem[Refsgaard et~al., 2007]{Refsgaard07}
+Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
+\newblock Uncertainty in the environmental modelling process - a framework and
+  guidance.
+\newblock Environmental Modelling \& Software, 22(11):1543--1556.
 
 \bibitem[Snowling and Kramer, 2001]{Snowling01}
 Snowling SD, Kramer JR. 2001.

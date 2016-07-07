@@ -5,6 +5,61 @@ g_legend <- function(a.gplot){
   legend <- tmp$grobs[[leg]]
   return(legend)}
 
+# numeric to english for inline text
+# uses english package
+#
+# x numeric vector
+# maxint maximum integer below which english is used
+toeng <- function(x, maxint = 10){
+
+  library(english)
+  
+  if(!is.numeric(x)) stop('x must be numeric')
+
+  nms <- names(x)  
+  xchr <- which(x < maxint) 
+  xeng <- as.character(english(x[xchr]))
+  x <- as.character(x)
+  x[xchr] <- xeng
+  x <- as.list(x)
+  names(x) <- nms
+  
+  return(x)
+  
+}
+
+# formatting of values in S expressions
+form_fun <- function(x, rnd_val = 2, dig_val = 2, nsm_val = 2, ...) {
+  format(round(x, rnd_val), digits = dig_val, nsmall = nsm_val, ...)
+}
+
+######
+# scientific notation from R to LaTeX
+# x is numeric to convert
+# pow is minimum exponent (positive or negative) to use for notation
+# digits numeric for rounding
+# showdollar logical if output is enclosed in dollar for latex
+# from https://dankelley.github.io/r/2015/03/22/scinot.html
+scinot <- function(x, pow = 3, digits=2, showDollar=TRUE)
+{
+  
+    sign <- ""
+    if (x < 0) {
+        sign <- "-"
+        x <- -x
+    }
+    exponent <- floor(log10(x))
+    if (exponent & abs(exponent) > pow) {
+        xx <- round(x / 10^exponent, digits=digits)
+        e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
+    } else {
+        xx <- round(x, digits=digits)
+        e <- ""
+    }
+    if (showDollar) paste("$", sign, xx, e, "$", sep="")
+    else paste(sign, xx, e, sep="")
+}
+
 # alternative list structure for parameter categories
 parcats2 <- function(as_df = FALSE){
   
@@ -813,7 +868,7 @@ parcats2 <- function(as_df = FALSE){
   # return as data frame if T
   if(as_df){
     
-    out <- lapply(out, data.frame)
+    out <- lapply(out, data.frame, stringsAsFactors = FALSE)
     out <- do.call('rbind', out)
     row.names(out) <- 1:nrow(out)
     
@@ -822,33 +877,6 @@ parcats2 <- function(as_df = FALSE){
   
   return(out)
   
-}
-
-######
-# scientific notation from R to LaTeX
-# x is numeric to convert
-# pow is minimum exponent (positive or negative) to use for notation
-# digits numeric for rounding
-# showdollar logical if output is enclosed in dollar for latex
-# from https://dankelley.github.io/r/2015/03/22/scinot.html
-scinot <- function(x, pow = 3, digits=2, showDollar=TRUE)
-{
-  
-    sign <- ""
-    if (x < 0) {
-        sign <- "-"
-        x <- -x
-    }
-    exponent <- floor(log10(x))
-    if (exponent & abs(exponent) > pow) {
-        xx <- round(x / 10^exponent, digits=digits)
-        e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
-    } else {
-        xx <- round(x, digits=digits)
-        e <- ""
-    }
-    if (showDollar) paste("$", sign, xx, e, "$", sep="")
-    else paste(sign, xx, e, sep="")
 }
 
 ######
