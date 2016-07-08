@@ -880,6 +880,92 @@ parcats2 <- function(as_df = FALSE){
 }
 
 ######
+# convert  parameter names to latex format
+#
+# parin chr vector of short names to convert
+# frm chr string indicating format of output
+par_txt <- function(parin, frm = 'tex'){
+
+  library(dplyr)
+  
+  # sanity check
+  if(!frm %in% c('tex', 'exp'))
+    stop('frm argument must be "tex" or "exp"')
+  
+  # all parameters and names
+  cats <- parcats2(as_df = TRUE)[, c('cats', 'shrt')]
+  
+  # get which row the parameter is in
+  sels <- which(cats$shrt %in% parin)
+  if(length(sels) != length(parin)) stop('parin not completely matched in shrt')
+  
+  # split the names by category
+  splits <- cats[sels, ] %>% 
+    .[match(parin, .$shrt), ] %>% # this is important to make sure the output order matches with input
+    split(., .$cats)
+  
+  # gsub the shrt names differnet by category
+  subs <- lapply(splits, function(x){
+    
+    # 1-6 are phytos, 7-8 are zoops (changed to 1-2)
+    if('Temperature' %in% x$cats){
+
+      x$shrt <- gsub('_([1-6])$', '_p\\1', x$shrt)
+      x$shrt <- gsub('_[7]$', '_z1', x$shrt) 
+      x$shrt <- gsub('_[8]$', '_z2', x$shrt)  
+      
+    }
+      
+    # add p to subscript
+    if('Phytoplankton' %in% x$cats){
+      
+      x$shrt <- gsub('_([1-9])$', '_p\\1', x$shrt) 
+      
+    }
+
+    # add z to subscript
+    if('Zooplankton' %in% x$cats){
+     
+      x$shrt <- gsub('_([1-9])$', '_z\\1', x$shrt) 
+      
+    }
+    
+    # remove subscript
+    if(any(c('Optics', 'Organic Matter') %in% x$cats)){
+     
+      x$shrt <- gsub('_[1-9]$', '', x$shrt)
+       
+    }
+        
+    return(x)
+    
+  }) %>% 
+  do.call('rbind', .) %>% 
+  .$shrt
+  
+  # convert output format for tex
+  if(frm == 'tex'){
+    
+    out <- gsub('_([pz][1-9])$', '$_{\\1}$', subs)
+    out <- paste0('\\textit{', out, '}')
+      
+  }
+  
+  # convert output format as expressions for R
+  if(frm == 'exp'){
+  
+    out <- gsub('_([pz][1-9])$', '[italic(\\1)]', subs)
+    out <- paste0('italic(', out, ')')
+    out <- gsub('\\((.*)\\s(.*)\\)', '("\\1 \\2")', out)
+    out <- parse(text = as.expression(out))
+    
+  }
+    
+  return(out)
+  
+}
+
+######
 # function for sensitivity tables, no phyto, zoop groupings
 senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
   
@@ -901,7 +987,7 @@ senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
     select(lngs, Parameter, vals, L1, L2) %>% 
     arrange(-L1) %>% 
     mutate(
-      Parameter = paste0('\\textit{', gsub('_[0-9]$', '', Parameter), '}'),
+      Parameter = par_txt(Parameter),
       lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
       lngs = gsub('_', '', lngs), 
       vals = sapply(vals, scinot),
@@ -934,7 +1020,7 @@ senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
 ######
 # function for sensitivity tables, with phyto, zoop groupings
 senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt = NULL){
-  
+
   library(Hmisc)
   library(dplyr)
   library(tidyr)
@@ -955,18 +1041,13 @@ senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt 
   if(!is.null(sub))
     totab <- filter(totab, L1 > sub)
   
-  totab <- separate(totab, Parameter, c('Parameter', 'Group'), sep = '_') %>% 
-    mutate(
-      Group = factor(Group, 
-        levels = c(1:8), 
-        labels = c(paste0('\\textsubscript{P', 1:6, '}'), paste0('\\textsubscript{Z', 1:2, '}'))
-      ),
+  totab <- mutate(totab,
+      lngs = as.character(lngs),
       lngs = gsub('^.*:\\s', '', lngs), 
-      lngs = gsub('_', '', lngs)
+      lngs = tolower(gsub('_', '', lngs)),
+      Parameter = par_txt(Parameter)
     ) %>% 
     arrange(lngs, -L1) %>% 
-    unite('Parameter', Parameter, Group, sep = '') %>% 
-    mutate(Parameter = paste0('\\textit{', Parameter, '}')) %>% 
     mutate(
       vals = sapply(vals, scinot),
       L1 = sapply(L1, scinot), 
@@ -977,7 +1058,7 @@ senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt 
       Value = vals
     ) %>% 
     select(Description, Parameter, Value, L1, L2)
-  
+
   # final table formatting
   Description <- totab$Description
   Parameter <- totab$Parameter

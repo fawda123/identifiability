@@ -226,16 +226,27 @@ lncats <- table(sens_ests_cat$Category) %>%
   as.list %>% 
   lapply(., paste0, '\\%')
 
-# L1, summaries
-sensrng <- with(sens_ests_cat, which(L2 %in% range(L2))) %>% 
+# L1 range
+sensrng <- with(sens_ests_cat, which(error %in% range(error))) %>% 
   sens_ests_cat[., ] %>% 
-  mutate(error = sapply(error, scinot))
+  mutate(
+    error = sapply(error, scinot),
+    Parameter = par_txt(Parameter)
+    )
+
+# L1 range within categories
+# sensrng <- with(sens_ests_cat, which(error %in% range(error))) %>% 
+#   sens_ests_cat[., ] %>% 
+#   mutate(
+#     error = sapply(error, scinot),
+#     Parameter = par_txt(Parameter)
+#     )
 
 @
 
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 250 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/250, 0)}\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temparature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}).
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 250 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/250, 0)}\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temperature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}).  Within categories, sensitivity ranged from 
 
 what parameters in each category had the greatest sensitivity (\cref{fig:sensplo}), what were sensitivity magnitudes between categories, did these vary by phyto or zoop groups?  
 
