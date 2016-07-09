@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Fri Jul 8 16:33:07 2016 -0500
+  \\ Version Date:   Fri Jul 8 16:56:17 2016 -0500
 	}
 \date{}
 \maketitle
@@ -234,11 +234,9 @@ Finally, the above analyses were repeated for additional state variables estimat
 
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 140 of 250 parameters (56\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to four parameters for optics (36\% of all optic parameters, \cref{tab:optsens}), seven for organic matter (24\%, \cref{tab:omsens}), 103 for phytoplankton (66\%, \cref{tab:phytosens}), seven for temperature (22\%, \cref{tab:tempsens}), and 19 for zooplankton (86\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $3.18\times 10^{-6}$ for \textit{Kcdom} (optics) to $328.35$ for \textit{Qc$_{p1}$} (phytoplankton).  Within categories, sensitivity ranged from $3.18\times 10^{-6}$ (\textit{Kcdom}) to $1.64$ (\textit{astar490}) for optics, $0.01$ (\textit{KGcdom}) to $2.11$ (\textit{k11}) for organic matter, $1\times 10^{-5}$ (\textit{Ksi$_{p1}$}) to $328.35$ (\textit{Qc$_{p1}$}) for phytopankton, $0.12$ (\textit{Tref(nospA+nospZ)$_{p1}$}) to $2.9$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $0$ (\textit{ZQp$_{z1}$}) to $0.82$ (\textit{ZKa$_{z1}$}) for zooplankton (\cref{fig:sensplo}, bottom).
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 140 of 250 parameters (56\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to four parameters for optics (36\% of all optic parameters, \cref{tab:optsens}), seven for organic matter (24\%, \cref{tab:omsens}), 103 for phytoplankton (66\%, \cref{tab:phytosens}), seven for temperature (22\%, \cref{tab:tempsens}), and 19 for zooplankton (86\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $3.18\times 10^{-6}$ for \textit{Kcdom} (optics) to $328.35$ for \textit{Qc$_{p1}$} (phytoplankton), whereas average sensitivity among all parameters was $L1 = $ $4.52$.  Within categories, sensitivity ranged from $3.18\times 10^{-6}$ (\textit{Kcdom}) to $1.64$ (\textit{astar490}) for optics, $0.01$ (\textit{KGcdom}) to $2.11$ (\textit{k11}) for organic matter, $1\times 10^{-5}$ (\textit{Ksi$_{p1}$}) to $328.35$ (\textit{Qc$_{p1}$}) for phytopankton, $0.12$ (\textit{Tref(nospA+nospZ)$_{p1}$}) to $2.9$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $0$ (\textit{ZQp$_{z1}$}) to $0.82$ (\textit{ZKa$_{z1}$}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ $0.42$ for optics, $1.24$ for organic matter, $5.96$ for phytoplankton, $0.55$ for temperature, and $0.27$ for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitues varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ $19.71$, $14.56$), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ $0.31$, $0.23$ for groups one and two)
 
-what parameters in each category had the greatest sensitivity (\cref{fig:sensplo}), what were sensitivity magnitudes between categories, did these vary by phyto or zoop groups?  
-
-Plotting the raw values from the sensitivity analysis provides a visual assessment of changes (\cref{fig:sensplo}).
+Response of \ac{do} to parameter perturbations was not uniform acros the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January), the spring/summer increase represents production associated with expected seasonal maxima, and the remaining time series from August to the end of year shows complete removal of \ac{do} from the system as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \textit{ZKa$_{z1}$}, which caused an increase in \ac{do}.  The phytoplankton parameter, \textit{Qc$_{p1}$}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\textit{astar490}) and phytoplankton (\textit{Qc$_{p1}$}) parameters.
 
 \subsection{Subset identifiability}
 
@@ -312,6 +310,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 
 
 
+% heuristic plots o2
 \begin{figure}[!ht]
 
 {\centering \includegraphics[width=\textwidth]{figs/heurist-1} 
@@ -323,6 +322,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 
 
 
+% heuristic plots, all state
 \begin{figure}[!ht]
 
 {\centering \includegraphics[width=\textwidth]{figs/heurist_stts-1} 
@@ -338,6 +338,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 %%%%%%
 % tables
 
+% optics sensitivity
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
 \begin{table}[!tbp]
 {\normalsize
@@ -357,6 +358,7 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \end{table}
 
 
+% organic matter sensitivity
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, size = tabsize,     label = paste0("tab:", tablab))%
 \begin{table}[!tbp]
 {\normalsize
@@ -379,6 +381,7 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \end{table}
 
 
+% phytoplankton sensitivity
 %latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\normalsize
@@ -439,6 +442,7 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \end{table}
 
 
+% temperature sensitivity
 %latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\normalsize
@@ -462,6 +466,7 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \end{table}
 
 
+% zooplankton sensitivity
 %latex.default(totab, file = "", rowlabel = "Description, Parameter",     caption = cap.val, caption.loc = "top", rgroup = unique(Description),     n.rgroup = as.numeric(table(Description)), rgroupTexCmd = NULL,     rowname = Parameter, size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\normalsize
@@ -513,7 +518,6 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \end{tabular}\end{center}}
 
 \end{table}
-
 
 
 
