@@ -278,6 +278,35 @@ Response of \ac{do} to parameter perturbations was not uniform acros the time se
 
 \subsection{Subset identifiability}
 
+<<>>=
+data(cat_ident)
+data(top_ident)
+
+# percent combos less than gamma 15, 10 by category
+collcatpers <- lapply(cat_ident, function(x){
+  
+  colls <- x$coll
+  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+  c(l15, l10)
+  
+  })
+
+# percent combos less than gamma 15, 10 by top in each category
+colltoppers <- lapply(top_ident, function(x){
+  
+  colls <- x$coll
+  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+  c(l15, l10)
+  
+  })
+
+@
+
+The identifiability analyses suggested that most parameter subsets exceeded the threshold of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, \Sexpr{collcatpers$Zooplankton[2]}\%), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\%, \Sexpr{collcatpers$Temperature[2]}\%).  All subset combinations for optics and organic matter parmeters had $\gamma < 15$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\%, \Sexpr{colltoppers$top4[2]}\%) parameters.  A comparison of average and median identifiability by parameter category or top parameters in each category... something about jump
+
+
 \cref{fig:identbox} shows identifiability ranges, describe by category, also emphasize that selection independent of category may be more appropriate (better identifiability).  Jumps in median suggest inclusion of a specific parameter has disproportionate affect on identifiability.   
 
 Note that identifiability for one phytoplankton group and one zooplankton group needs to be evaluated, lots of redundancy between groups. 
@@ -285,6 +314,8 @@ Note that identifiability for one phytoplankton group and one zooplankton group 
 Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories. 
 
 \section{Discussion}
+
+Identifiability by category - varies with number of parameters in the category but some were more redundant than others (phytoplankton).  
 
 Questions specific to GOM - what initial conditions are important? How many phytoplankton groups do we need (e.g., related to structural uncertainty)?
 
