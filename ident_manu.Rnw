@@ -309,10 +309,9 @@ The identifiability analyses suggested that most parameter subsets exceeded the 
 
 <<echo = F>>=
 temp_coll <- par_txt(c('Tref(nospA+nospZ)_1', 'Tref(nospA+nospZ)_2', 'Tref(nospA+nospZ)_3', 'Tref(nospA+nospZ)_4', 'Tref(nospA+nospZ)_5', 'Tref(nospA+nospZ)_6', 'Tref(nospA+nospZ)_7', 'Tref(nospA+nospZ)_8'))
-
 @
 
-A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of two parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ranges in detail for the parameter subsets in \cref{fig:identbox} with and without the inclusion of parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \Sexpr{temp_coll[2]} and \Sexpr{temp_coll[5]} showed that $\gamma$ remained well below the 10, 15 threshold for all parameters combinations.  Morever, inclusion of \Sexpr{temp_coll[1]}, \Sexpr{temp_coll[4]}, \Sexpr{temp_coll[7]}, and \Sexpr{temp_coll[8]} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
+A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of one or two specific parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ranges in detail for the parameter subsets in \cref{fig:identbox} with and without the inclusion of parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \Sexpr{temp_coll[2]} and \Sexpr{temp_coll[5]} showed that $\gamma$ remained well below the 10, 15 threshold for all parameters combinations.  Morever, inclusion of \Sexpr{temp_coll[1]}, \Sexpr{temp_coll[4]}, \Sexpr{temp_coll[7]}, and \Sexpr{temp_coll[8]} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
 
 Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differenceses between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group.  
 
@@ -603,7 +602,83 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
     legend.position = c(0.8, 0.1)
   )
 
-    
+@
+
+% identifiability boxplot, p1, z1 only
+<<p1z1identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.', fig.height = 10, fig.width = 4, echo = F, cache = TRUE, out.width = '0.6\\textwidth'>>=
+data(p1z1cat_ident)
+data(p1z1top_ident) 
+
+toplo1 <- p1z1cat_ident %>% 
+  lapply(., function(x) dplyr::select(x, N, coll)) %>% 
+  reshape2::melt(., id.var = c('N', 'coll')) %>% 
+  rename(Category = L1) %>% 
+  mutate(Category = factor(Category, 
+    levels = c('Phytoplankton', 'Zooplankton'),
+    labels = c('Phytoplankton', 'Zooplankton')
+    )) %>% 
+  filter(N <= 25) %>% # reduced for plot space
+  group_by(N, Category) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+# identifiability top 1, 2, 3, 4, 5 all categories combined
+toplo2 <-  reshape2::melt(p1z1top_ident, id.var = c('N', 'coll')) %>% 
+  select(N, coll, L1) %>% 
+  mutate(L1 = factor(L1, levels = paste0('top', 1:5), labels = paste0('Top ', 1:5))) %>% 
+  rename(npercat = L1) %>% 
+  group_by(N, npercat) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+p1 <- ggplot(toplo1, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
+  theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank()
+  ) + 
+  theme(legend.position = 'none') +
+  ggtitle('(a) By parameter category')
+
+p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
+  theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(), 
+    legend.title = element_blank()
+  ) + 
+  ggtitle('(b) By top parameters, all categories')
+
+pleg <- g_legend(p2)
+p2 <- p2 + theme(legend.position = 'none')
+
+grid.arrange(
+  arrangeGrob(p1, p2, ncol = 1, heights = c(0.5, 1)),
+  left = 'Identifiability', 
+  bottom = 'Parameters in set',
+  pleg, ncol = 2, widths = c(1, 0.1)
+)
+
 @
 
 % heuristic plots o2
