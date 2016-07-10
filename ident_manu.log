@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  9 JUL 2016 15:30
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  10 JUL 2016 14:25
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -701,73 +701,80 @@ although it is yet undefined on input line 228.
 Package acronym Info: Label `acro:par' newly defined as it shall be overridden
 although it is yet undefined on input line 228.
 
-[8] [9] [10] [11] [12] (M:\docs\manuscripts\identifiability\ident_manu.bbl
-[13
+[8] [9] [10] [11] [12] [13] (M:\docs\manuscripts\identifiability\ident_manu.bbl
+[14
 
-] [14]) [15] <figs/combnex-1.pdf, id=293, 361.35pt x 361.35pt>
+] [15]) [16] <figs/combnex-1.pdf, id=300, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
 
 <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 287.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 292.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
- <figs/sensplo-1.pdf, id=294, 578.16pt x 578.16pt>
+ <figs/sensplo-1.pdf, id=301, 578.16pt x 578.16pt>
 File: figs/sensplo-1.pdf Graphic file (type pdf)
 
 <use figs/sensplo-1.pdf>
-Package pdftex.def Info: figs/sensplo-1.pdf used on input line 299.
+Package pdftex.def Info: figs/sensplo-1.pdf used on input line 304.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
- <figs/identbox-1.pdf, id=295, 578.16pt x 578.16pt>
+ <figs/identbox-1.pdf, id=302, 578.16pt x 578.16pt>
 File: figs/identbox-1.pdf Graphic file (type pdf)
 
 <use figs/identbox-1.pdf>
-Package pdftex.def Info: figs/identbox-1.pdf used on input line 311.
+Package pdftex.def Info: figs/identbox-1.pdf used on input line 316.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
- <figs/heurist-1.pdf, id=298, 578.16pt x 578.16pt>
+ <figs/excltemp-1.pdf, id=305, 361.35pt x 578.16pt>
+File: figs/excltemp-1.pdf Graphic file (type pdf)
+
+<use figs/excltemp-1.pdf>
+Package pdftex.def Info: figs/excltemp-1.pdf used on input line 328.
+(pdftex.def)             Requested size: 281.85587pt x 450.9718pt.
+ <figs/heurist-1.pdf, id=312, 578.16pt x 578.16pt>
 File: figs/heurist-1.pdf Graphic file (type pdf)
 
 <use figs/heurist-1.pdf>
-Package pdftex.def Info: figs/heurist-1.pdf used on input line 323.
+Package pdftex.def Info: figs/heurist-1.pdf used on input line 340.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
 
-<figs/heurist_stts-1.pdf, id=305, 650.43pt x 361.35pt>
+<figs/heurist_stts-1.pdf, id=319, 650.43pt x 361.35pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 335.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 352.
 (pdftex.def)             Requested size: 469.75502pt x 260.98232pt.
- [16
+ [17
 
- <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>] [17 <M:/docs/manuscr
+ <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>] [18 <M:/docs/manuscr
 ipts/identifiability/figs/sensplo-1.pdf>]
-[18 <M:/docs/manuscripts/identifiability/figs/identbox-1.pdf>] [19 <M:/docs/man
-uscripts/identifiability/figs/heurist-1.pdf>] [20 <M:/docs/manuscripts/identifi
-ability/figs/heurist_stts-1.pdf>]
-Overfull \hbox (2.96927pt too wide) in paragraph at lines 374--386
+[19 <M:/docs/manuscripts/identifiability/figs/identbox-1.pdf>] [20 <M:/docs/man
+uscripts/identifiability/figs/excltemp-1.pdf>] [21 <M:/docs/manuscripts/identif
+iability/figs/heurist-1.pdf>] [22 <M:/docs/manuscripts/identifiability/figs/heu
+rist_stts-1.pdf>]
+Overfull \hbox (2.96927pt too wide) in paragraph at lines 391--403
  [] 
  []
 
 
-LaTeX Warning: Float too large for page by 1.76933pt on input line 449.
+LaTeX Warning: Float too large for page by 1.76933pt on input line 466.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 531.
-[21] [22] [23] [24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 531.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 547.
+[23] [24] [25] [26]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 547.
  (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 531.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 531.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 547.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 547.
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: B75F0C3C756BBF85C676117F9F5052B6;568.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 531.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 547.
  ) 
 Here is how much of TeX's memory you used:
- 11784 strings out of 493921
- 186011 string characters out of 3147282
+ 11796 strings out of 493921
+ 186217 string characters out of 3147282
  320092 words of memory out of 3000000
- 14783 multiletter control sequences out of 15000+200000
+ 14791 multiletter control sequences out of 15000+200000
  34372 words of font info for 74 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,10n,47p,2335b,565s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -784,9 +791,9 @@ es/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (24 pages, 312326 bytes).
+Output written on ident_manu.pdf (26 pages, 330839 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
- 98 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 491 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 

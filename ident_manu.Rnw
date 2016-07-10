@@ -278,7 +278,7 @@ Response of \ac{do} to parameter perturbations was not uniform acros the time se
 
 \subsection{Subset identifiability}
 
-<<>>=
+<<identres>>=
 data(cat_ident)
 data(top_ident)
 
@@ -302,18 +302,27 @@ colltoppers <- lapply(top_ident, function(x){
   
   })
 
+maxtempcoll <- scinot(max(cat_ident$Temperature$coll))
 @
 
-The identifiability analyses suggested that most parameter subsets exceeded the threshold of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, \Sexpr{collcatpers$Zooplankton[2]}\%), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\%, \Sexpr{collcatpers$Temperature[2]}\%).  All subset combinations for optics and organic matter parmeters had $\gamma < 15$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\%, \Sexpr{colltoppers$top4[2]}\%) parameters.  A comparison of average and median identifiability by parameter category or top parameters in each category... something about jump
+The identifiability analyses suggested that most parameter subsets exceeded the threshold of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Temperature[2]}\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parmeters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\%, less than $\gamma = 10$) parameters.  
+
+<<echo = F>>=
+temp_coll <- par_txt(c('Tref(nospA+nospZ)_1', 'Tref(nospA+nospZ)_2', 'Tref(nospA+nospZ)_3', 'Tref(nospA+nospZ)_4', 'Tref(nospA+nospZ)_5', 'Tref(nospA+nospZ)_6', 'Tref(nospA+nospZ)_7', 'Tref(nospA+nospZ)_8'))
+
+@
+
+A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of two parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ranges in detail for the parameter subsets in \cref{fig:identbox} with and without the inclusion of parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \Sexpr{temp_coll[2]} and \Sexpr{temp_coll[5]} showed that $\gamma$ remained well below the 10, 15 threshold for all parameters combinations.  Morever, inclusion of \Sexpr{temp_coll[1]}, \Sexpr{temp_coll[4]}, \Sexpr{temp_coll[7]}, and \Sexpr{temp_coll[8]} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
+
+Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differenceses between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group.  
 
 
-\cref{fig:identbox} shows identifiability ranges, describe by category, also emphasize that selection independent of category may be more appropriate (better identifiability).  Jumps in median suggest inclusion of a specific parameter has disproportionate affect on identifiability.   
-
-Note that identifiability for one phytoplankton group and one zooplankton group needs to be evaluated, lots of redundancy between groups. 
 
 Reading each plot from left to right can be interpreted as including additional parameters, where each parameter is ranked by relative sensitivity.  The inset in each plot shows the identifiability of including parameters, up to a maximum where additional inclusion exceeds the identifability threshold of fifteen.  The scenarios for including parameters all begin with the parameters that have the greatest effect on the model output.  The inclusion of additional parameters depends on the scenario.  The first scenario selected parameters by decreasing sensitivity within each category (i.e., four separate models calibrated for optics, organics, phytoplankton, or zooplankton), the second scenario selected parameters by sensitivity regardless of category, and the third scenario selects parameters by sensitivity with equal representation between categories. 
 
 \section{Discussion}
+
+Emphasize that parameters that have the greatest effect on collinearity are not those that have the highest sensitivity (contrast the identifiability by category vs identifiability by top parameters)  , also note that groups of parameters together can have large effects on collinearity, maybe some kind of bootstrap analysis could be done looking at doubletons, etc. The example in teh results highlights how redundant variables can be identified as a necessary part of the model calibration process.
 
 Identifiability by category - varies with number of parameters in the category but some were more redundant than others (phytoplankton).  
 
@@ -562,6 +571,41 @@ grid.arrange(
 )
 @
 
+% parameter exclusion temp
+<<excltemp, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of temperature parameters for subset combinations in \\cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \\cref{fig:identbox}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 8, fig.width = 5, echo = F, cache = TRUE, out.width = '0.6\\textwidth'>>=
+data(cat_ident)
+
+toplo <- cat_ident$`Temperature` %>% 
+  gather('parm', 'inc', -N, -coll) %>% 
+  ungroup %>% 
+  filter(N < max(N)) %>% 
+  mutate(
+    parm = as.character(par_txt(parm, frm = 'exp')),
+    N = factor(N), 
+    inc = factor(inc, levels = c(0, 1), labels = c('excluded', 'included'))
+    )
+
+ggplot(toplo, aes(x = N, y = coll, fill = inc)) + 
+  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
+  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
+  geom_boxplot(outlier.size = 0.5, size = 0.5) + 
+  facet_wrap(~parm, label = label_parsed, ncol = 2) + 
+  theme_minimal() + 
+  scale_fill_brewer(palette = 'Greys') + 
+  scale_y_continuous('Identifiability') +
+  scale_x_discrete('Parameters in set') + 
+  theme(
+    legend.title = element_blank(),
+    axis.line.x = element_line(),
+    axis.line.y = element_line(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank(), 
+    legend.position = c(0.8, 0.1)
+  )
+
+    
+@
+
 % heuristic plots o2
 <<heurist, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$ or if the maximum number of possible parameters is selected.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
 
@@ -755,6 +799,5 @@ senstab2('Temperature', 'tempsens')
 <<zoopsens, eval = T, cache = F>>=
 senstab2('Zooplankton', 'zoopsens')
 @
-
 
 \end{document}

@@ -894,10 +894,10 @@ par_txt <- function(parin, frm = 'tex'){
   
   # all parameters and names
   cats <- parcats2(as_df = TRUE)[, c('cats', 'shrt')]
-  
+
   # get which row the parameter is in
   sels <- which(cats$shrt %in% parin)
-  if(length(sels) != length(parin)) stop('parin not completely matched in shrt')
+  if(length(sels) != length(unique(parin))) stop('parin not completely matched in shrt')
   
   # split the names by category
   splits <- cats[sels, ] %>% 
