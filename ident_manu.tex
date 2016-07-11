@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Sun Jul 10 14:28:00 2016 -0500
+  \\ Version Date:   Sun Jul 10 15:30:23 2016 -0500
 	}
 \date{}
 \maketitle
@@ -248,7 +248,7 @@ The identifiability analyses suggested that most parameter subsets exceeded the 
 
 A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of one or two specific parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ranges in detail for the parameter subsets in \cref{fig:identbox} with and without the inclusion of parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \textit{Tref(nospA+nospZ)$_{p2}$} and \textit{Tref(nospA+nospZ)$_{p5}$} showed that $\gamma$ remained well below the 10, 15 threshold for all parameters combinations.  Morever, inclusion of \textit{Tref(nospA+nospZ)$_{p1}$}, \textit{Tref(nospA+nospZ)$_{p4}$}, \textit{Tref(nospA+nospZ)$_{z1}$}, and \textit{Tref(nospA+nospZ)$_{z2}$} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
 
-Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differenceses between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group.  
+Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differences between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group (\cref{fig:p1z1identbox}).  
 
 
 
@@ -337,7 +337,7 @@ Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibra
 % identifiability boxplot, p1, z1 only
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=0.6\textwidth]{figs/p1z1identbox-1} 
+{\centering \includegraphics[width=0.5\textwidth]{figs/p1z1identbox-1} 
 
 }
 

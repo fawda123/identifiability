@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  10 JUL 2016 15:29
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  11 JUL 2016 09:00
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -704,48 +704,45 @@ although it is yet undefined on input line 228.
 [8] [9] [10] [11] [12] [13] (M:\docs\manuscripts\identifiability\ident_manu.bbl
 [14
 
-] [15]) [16] <figs/combnex-1.pdf, id=300, 361.35pt x 361.35pt>
+] [15]) [16] <figs/combnex-1.pdf, id=302, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
 
 <use figs/combnex-1.pdf>
 Package pdftex.def Info: figs/combnex-1.pdf used on input line 292.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
- <figs/sensplo-1.pdf, id=301, 578.16pt x 578.16pt>
+ <figs/sensplo-1.pdf, id=303, 578.16pt x 578.16pt>
 File: figs/sensplo-1.pdf Graphic file (type pdf)
 
 <use figs/sensplo-1.pdf>
 Package pdftex.def Info: figs/sensplo-1.pdf used on input line 304.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
- <figs/identbox-1.pdf, id=302, 578.16pt x 578.16pt>
+ <figs/identbox-1.pdf, id=304, 578.16pt x 578.16pt>
 File: figs/identbox-1.pdf Graphic file (type pdf)
 
 <use figs/identbox-1.pdf>
 Package pdftex.def Info: figs/identbox-1.pdf used on input line 316.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
- <figs/excltemp-1.pdf, id=305, 361.35pt x 578.16pt>
+ <figs/excltemp-1.pdf, id=307, 361.35pt x 578.16pt>
 File: figs/excltemp-1.pdf Graphic file (type pdf)
 
 <use figs/excltemp-1.pdf>
 Package pdftex.def Info: figs/excltemp-1.pdf used on input line 328.
 (pdftex.def)             Requested size: 281.85587pt x 450.9718pt.
 
-<figs/p1z1identbox-1.pdf, id=312, 289.08pt x 722.7pt>
+<figs/p1z1identbox-1.pdf, id=314, 325.215pt x 578.16pt>
 File: figs/p1z1identbox-1.pdf Graphic file (type pdf)
 
 <use figs/p1z1identbox-1.pdf>
 Package pdftex.def Info: figs/p1z1identbox-1.pdf used on input line 340.
-(pdftex.def)             Requested size: 281.85587pt x 704.67929pt.
+(pdftex.def)             Requested size: 234.8775pt x 417.57172pt.
 
-
-LaTeX Warning: Float too large for page by 136.74927pt on input line 345.
-
-<figs/heurist-1.pdf, id=315, 578.16pt x 578.16pt>
+<figs/heurist-1.pdf, id=317, 578.16pt x 578.16pt>
 File: figs/heurist-1.pdf Graphic file (type pdf)
  <use figs/heurist-1.pdf>
 Package pdftex.def Info: figs/heurist-1.pdf used on input line 352.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
 
-<figs/heurist_stts-1.pdf, id=322, 650.43pt x 361.35pt>
+<figs/heurist_stts-1.pdf, id=324, 650.43pt x 361.35pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
@@ -802,9 +799,9 @@ es/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (27 pages, 345878 bytes).
+Output written on ident_manu.pdf (27 pages, 345917 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
+ 506 PDF objects out of 1000 (max. 8388607)
  104 named destinations out of 1000 (max. 500000)
  108 words of extra memory for PDF output out of 10000 (max. 10000000)
 
