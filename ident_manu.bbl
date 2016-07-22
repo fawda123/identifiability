@@ -177,6 +177,11 @@ Soetaert K, Petzoldt T. 2010.
   using package {FME}.
 \newblock Journal of Statistical Software, 33(3):1--28.
 
+\bibitem[Wagener et~al., 2001]{Wagener01}
+Wagener T, Boyle DP, Lees MJ, Wheater HS, Gupta HV, Sorooshian S. 2001.
+\newblock A framework for development and application of hydrological models.
+\newblock Hydrology and Earth System Sciences, 5(1):13--26.
+
 \bibitem[Wiseman et~al., 1997]{Wiseman97}
 Wiseman WJ, Rabalais NN, Turner RE, Dinnel SP, MacNaughton A. 1997.
 \newblock Seasonal and interannual variability within the {L}ouisiana coastal
