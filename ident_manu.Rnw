@@ -385,6 +385,11 @@ Each of the three selection heuristics (blocked by parameter category, independe
 
 \section{Discussion}
 
+% back of envelop calcs for number of relevant parms, all state variables
+<<echo = F>>=
+
+@
+
 We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
 
 Emphasize that parameters that have the greatest effect on collinearity are not those that have the highest sensitivity (contrast the identifiability by category vs identifiability by top parameters)  , also note that groups of parameters together can have large effects on collinearity, maybe some kind of bootstrap analysis could be done looking at doubletons, etc. The example in teh results highlights how redundant variables can be identified as a necessary part of the model calibration process.
