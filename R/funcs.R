@@ -891,6 +891,8 @@ par_txt <- function(parin, frm = 'tex'){
   # sanity check
   if(!frm %in% c('tex', 'exp'))
     stop('frm argument must be "tex" or "exp"')
+
+  parin <- as.character(parin) 
   
   # all parameters and names
   cats <- parcats2(as_df = TRUE)[, c('cats', 'shrt')]
@@ -901,48 +903,48 @@ par_txt <- function(parin, frm = 'tex'){
   
   # split the names by category
   splits <- cats[sels, ] %>% 
-    .[match(parin, .$shrt), ] %>% # this is important to make sure the output order matches with input
-    split(., .$cats)
+    .[match(parin, .$shrt), ] # this is important to make sure the output order matches with input
   
   # gsub the shrt names differnet by category
-  subs <- lapply(splits, function(x){
-    
-    # 1-6 are phytos, 7-8 are zoops (changed to 1-2)
-    if('Temperature' %in% x$cats){
+  subs <- apply(splits, 1,  function(x){
 
-      x$shrt <- gsub('_([1-6])$', '_p\\1', x$shrt)
-      x$shrt <- gsub('_[7]$', '_z1', x$shrt) 
-      x$shrt <- gsub('_[8]$', '_z2', x$shrt)  
+    # 1-6 are phytos, 7-8 are zoops (changed to 1-2)
+    if('Temperature' %in% x['cats']){
+
+      x['shrt'] <- gsub('_([1-6])$', '_p\\1', x['shrt'])
+      x['shrt'] <- gsub('_[7]$', '_z1', x['shrt']) 
+      x['shrt'] <- gsub('_[8]$', '_z2', x['shrt'])  
       
     }
       
     # add p to subscript
-    if('Phytoplankton' %in% x$cats){
+    if('Phytoplankton' %in% x['cats']){
       
-      x$shrt <- gsub('_([1-9])$', '_p\\1', x$shrt) 
+      x['shrt'] <- gsub('_([1-9])$', '_p\\1', x['shrt']) 
       
     }
 
     # add z to subscript
-    if('Zooplankton' %in% x$cats){
+    if('Zooplankton' %in% x['cats']){
      
-      x$shrt <- gsub('_([1-9])$', '_z\\1', x$shrt) 
+      x['shrt'] <- gsub('_([1-9])$', '_z\\1', x['shrt']) 
       
     }
     
     # remove subscript
-    if(any(c('Optics', 'Organic Matter') %in% x$cats)){
+    if(any(c('Optics', 'Organic Matter') %in% x['cats'])){
      
-      x$shrt <- gsub('_[1-9]$', '', x$shrt)
+      x['shrt'] <- gsub('_[1-9]$', '', x['shrt'])
        
     }
         
     return(x)
     
   }) %>% 
-  do.call('rbind', .) %>% 
+  t %>% 
+  data.frame(., stringsAsFactors = FALSE) %>% 
   .$shrt
-  
+
   # convert output format for tex
   if(frm == 'tex'){
     

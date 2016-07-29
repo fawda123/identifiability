@@ -388,6 +388,85 @@ Each of the three selection heuristics (blocked by parameter category, independe
 % back of envelop calcs for number of relevant parms, all state variables
 <<echo = F>>=
 
+data(sens_ests_cat_all)
+
+tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
+
+lims <- with(tmp, quantile(error, c(0.05, 0.95))) %>% 
+  as.numeric
+
+stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'O2', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'Dissolved Oxygen', 'OM1', 'OM2', 'Phosphate')
+
+toplo <- filter(tmp, error < lims[2] & error > lims[1]) %>% 
+  mutate(
+    L1 = factor(L1, levels = stts_lev, labels = stts_lab)
+  )
+toplo1 <- filter(toplo, !Category %in% c('Phytoplankton', 'Zooplankton')) %>% 
+  mutate(Parameter = as.character(par_txt(Parameter, frm = 'exp')))
+toplo2 <- filter(toplo, Category %in% c('Phytoplankton')) %>% 
+  mutate(
+    grp = gsub('^.*_([1-6])$', 'p\\1', Parameter), 
+    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
+  )
+toplo3 <- filter(toplo, Category %in% c('Zooplankton')) %>% 
+  mutate(
+    grp = gsub('^.*_([1-2])$', 'z\\1', Parameter), 
+    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
+  )
+
+pbase <- theme(
+  panel.grid.major = element_blank(), 
+  panel.grid.minor = element_blank(), 
+  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 8), 
+  axis.text.y = element_text(size =8),
+  axis.title.y = element_blank(), 
+  axis.title.x = element_blank(),
+  legend.position = 'none'
+  ) 
+
+p1 <- ggplot(toplo1, aes(x = Parameter, y = L1, fill = error)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0),
+    breaks = toplo1$Parameter, 
+    labels = parse(text = toplo1$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~Category, scales = 'free')
+p2 <- ggplot(toplo2, aes(x = Parameter, y = L1, fill = error)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0), 
+    breaks = toplo2$Parameter, 
+    labels = parse(text = toplo2$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~grp, scales = 'free') + 
+  ggtitle('Phytoplankton')
+p3 <- ggplot(toplo3, aes(x = Parameter, y = L1, fill = error)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0), 
+    breaks = toplo3$Parameter, 
+    labels = parse(text = toplo3$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) + 
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~grp, scales = 'free') + 
+  ggtitle('Zooplankton') + 
+  theme(legend.position = 'right')
+pleg <- g_legend(p3)
+p3 <- p3 + theme(legend.position = 'none')
+
+grid.arrange(
+  arrangeGrob(p1, p2, p3, ncol = 1), 
+  pleg, ncol = 2, widths =  c(1, 0.1), 
+  bottom = 'Parameter', 
+  left = 'State variable'
+)
 @
 
 We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
