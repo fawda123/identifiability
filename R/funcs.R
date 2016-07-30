@@ -883,7 +883,7 @@ parcats2 <- function(as_df = FALSE){
 # convert  parameter names to latex format
 #
 # parin chr vector of short names to convert
-# frm chr string indicating format of output
+# frm chr string indicating format of output, tex or exp for latex or expression
 par_txt <- function(parin, frm = 'tex'){
 
   library(dplyr)

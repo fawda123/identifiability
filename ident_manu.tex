@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Sat Jul 30 12:31:08 2016 -0500
+  \\ Version Date:   Sat Jul 30 12:41:03 2016 -0500
 	}
 \date{}
 \maketitle
@@ -260,7 +260,7 @@ Comparison of identifiability between categories showed that phytoplankton and z
 
 
 
-Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ $4$, $\gamma =$  $3.7$) and organic matter ($n = $ $7$, $\gamma =$  $1.7$) categories were selected, whereas 23 were selected for phytoplankton ($\gamma = $ $13.7$), five for temperature ($\gamma = $ $11.4$), and five for zooplankton ($\gamma = $ $3.1$).  For the second selection heuristic, 20 parameters were selected ($\gamma = $ $4.6$, with a majority from the phytoplankton category).  For the third heuristic, 18 parameters were selected ($\gamma = $ $9.2$) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \textit{KNO3} caused in increase in $\gamma$ from $4.6$ to $15.6$ and equal selection within cateogies showed that including \textit{Tref(nospA+nospZ)$_{p2}$} caused in increase in $\gamma$ from $9.2$ to $66.2$.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ $4$, $\gamma =$  $3.7$) and organic matter ($n = $ $7$, $\gamma =$  $1.7$) categories were selected, whereas 23 were selected for phytoplankton ($\gamma = $ $13.7$), five for temperature ($\gamma = $ $11.4$), and five for zooplankton ($\gamma = $ $3.1$).  For the second selection heuristic, 20 parameters were selected ($\gamma = $ $4.6$, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, 18 parameters were selected ($\gamma = $ $9.2$) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \textit{KNO3} caused in increase in $\gamma$ from $4.6$ to $15.6$ and equal selection within cateogies showed that including \textit{Tref(nospA+nospZ)$_{p2}$} caused in increase in $\gamma$ from $9.2$ to $66.2$.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
 
@@ -483,6 +483,111 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 
 \end{table}
 
+
+% ident all states
+%latex.default(identall1, file = "", rowlabel = "Parameter description",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:identall1", rowname = descrip, colheads = colnms,     rgroupTexCmd = NULL)%
+\begin{table}[!tbp]
+{\footnotesize
+\caption{Parameter identifiability for dissolved oxygen.  Selection followed the second heuristic where parameters were selected by decreasing sensitivity up to maximum $\gamma < 15$.  Rank describes the parameter sensitivity in each category (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).\label{tab:identall1}} 
+\begin{center}
+\begin{tabular}{lllll}
+\hline\hline
+\multicolumn{1}{l}{Parameter description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
+\hline
+\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$1$\textsuperscript{P}&$328.35$&$1$\tabularnewline
+\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$2$\textsuperscript{P}&$232.8$&$1$\tabularnewline
+\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p5}$}}&$3$\textsuperscript{P}&$7.57$&$1$\tabularnewline
+\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p2}$}}&$4$\textsuperscript{P}&$4.08$&$1$\tabularnewline
+\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p4}$}}&$5$\textsuperscript{P}&$3.1$&$1$\tabularnewline
+\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$6$\textsuperscript{P}&$2.98$&$1.01$\tabularnewline
+\scriptsize{Tref(nospA+nospZ): Optimum temperature for growth(C)}&\scriptsize{\textit{Tref(nospA+nospZ)$_{p4}$}}&$1$\textsuperscript{T}&$2.9$&$1.02$\tabularnewline
+\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p4}$}}&$7$\textsuperscript{P}&$2.88$&$1.04$\tabularnewline
+\scriptsize{coefficient for non-limiting nutrient}&\scriptsize{\textit{aN$_{p1}$}}&$8$\textsuperscript{P}&$2.7$&$1.05$\tabularnewline
+\scriptsize{P-uptake rate measured at umax}&\scriptsize{\textit{vmaxP$_{p3}$}}&$9$\textsuperscript{P}&$2.23$&$1.07$\tabularnewline
+\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p3}$}}&$10$\textsuperscript{P}&$2.15$&$1.73$\tabularnewline
+\scriptsize{rate constant for nitrification}&\scriptsize{\textit{k11}}&$1$\textsuperscript{OM}&$2.11$&$1.73$\tabularnewline
+\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p3}$}}&$11$\textsuperscript{P}&$1.99$&$1.73$\tabularnewline
+\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$1.91$&$1.73$\tabularnewline
+\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$1.64$&$1.77$\tabularnewline
+\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$12$\textsuperscript{P}&$1.61$&$4.1$\tabularnewline
+\scriptsize{minimum N cell-quota}&\scriptsize{\textit{QminN$_{p3}$}}&$13$\textsuperscript{P}&$1.53$&$4.1$\tabularnewline
+\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$3$\textsuperscript{OM}&$1.49$&$4.2$\tabularnewline
+\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$4$\textsuperscript{OM}&$1.37$&$4.62$\tabularnewline
+\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p4}$}}&$14$\textsuperscript{P}&$1.35$&$4.62$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+% ident all states
+%latex.default(identall2, file = "", rowlabel = "State variable, parameter description",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:identall2", rgroup = unique(as.character(stts)),     n.rgroup = as.numeric(table(as.character(stts))), rowname = descrip,     colheads = colnms, rgroupTexCmd = NULL)%
+\begin{table}[!tbp]
+{\footnotesize
+\caption{Parameter identifiability for ammonium, chlorophyll, irradiance, nitrate, OM1, OM2, and phosphate.  Selection followed the second heuristic where parameters were selected by decreasing sensitivity up to maximum $\gamma < 15$.  Rank describes the parameter sensitivity in each category (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).\label{tab:identall2}} 
+\begin{center}
+\begin{tabular}{lllll}
+\hline\hline
+\multicolumn{1}{l}{State variable, parameter description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
+\hline
+{Ammonium}&&&&\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$2.38$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$2.23$&$3.1$\tabularnewline
+~~\scriptsize{rate constant for nitrification}&\scriptsize{\textit{k11}}&$1$\textsuperscript{OM}&$0.68$&$3.1$\tabularnewline
+~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$0.46$&$3.12$\tabularnewline
+~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$3$\textsuperscript{OM}&$0.39$&$6.53$\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$3$\textsuperscript{P}&$0.35$&$7.18$\tabularnewline
+~~\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p4}$}}&$4$\textsuperscript{P}&$0.35$&$7.26$\tabularnewline
+~~\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p3}$}}&$5$\textsuperscript{P}&$0.34$&$13.14$\tabularnewline
+\hline
+{Chlorophyll}&&&&\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$104.26$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$47.86$&$3.65$\tabularnewline
+~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$3$\textsuperscript{P}&$1.71$&$4.07$\tabularnewline
+~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$1$\textsuperscript{OM}&$1.29$&$5.58$\tabularnewline
+\hline
+{Irradiance}&&&&\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$0.32$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$0.25$&$4.87$\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$3$\textsuperscript{P}&$0.19$&$5.38$\tabularnewline
+~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$4$\textsuperscript{P}&$0.17$&$7.61$\tabularnewline
+~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.15$&$13.34$\tabularnewline
+~~\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p3}$}}&$5$\textsuperscript{P}&$0.11$&$13.5$\tabularnewline
+~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$1$\textsuperscript{OM}&$0.08$&$14.64$\tabularnewline
+\hline
+{Nitrate}&&&&\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$1.07\times 10^{38}$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$1.44\times 10^{23}$&$1$\tabularnewline
+~~\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$2\times 10^{5}$&$10.55$\tabularnewline
+\hline
+{OM1}&&&&\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1.5$\textsuperscript{P}&$1.13$&$1$\tabularnewline
+~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p4}$}}&$1.5$\textsuperscript{P}&$0.78$&$1.68$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$3$\textsuperscript{P}&$0.76$&$8.66$\tabularnewline
+~~\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$0.71$&$8.98$\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$4$\textsuperscript{P}&$0.48$&$9.22$\tabularnewline
+~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.43$&$9.22$\tabularnewline
+\hline
+{OM2}&&&&\tabularnewline
+~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$1$\textsuperscript{OM}&$1.3$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$0.94$&$2.01$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$0.74$&$7.65$\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$3$\textsuperscript{P}&$0.35$&$11$\tabularnewline
+~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$0.34$&$11.29$\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$4$\textsuperscript{P}&$0.31$&$11.44$\tabularnewline
+~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.29$&$11.54$\tabularnewline
+~~\scriptsize{maximum growth rate of zooplankton}&\scriptsize{\textit{Zumax$_{z1}$}}&$1$\textsuperscript{Z}&$0.29$&$11.66$\tabularnewline
+\hline
+{Phosphate}&&&&\tabularnewline
+~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$1$\textsuperscript{P}&$2.92$&$1$\tabularnewline
+~~\scriptsize{P-uptake rate measured at umax}&\scriptsize{\textit{vmaxP$_{p3}$}}&$2$\textsuperscript{P}&$1.57$&$2.23$\tabularnewline
+~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$3$\textsuperscript{P}&$0.78$&$2.57$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$4$\textsuperscript{P}&$0.73$&$5.29$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
 \clearpage
 
 %%%%%%
@@ -555,7 +660,7 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 
 }
 
-\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$ or if the maximum number of possible parameters is selected.}\label{fig:heurist}
+\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$ or if the maximum number of possible parameters is selected. See \cref{tab:identall1} for values in (b).}\label{fig:heurist}
 \end{figure}
 
 
@@ -567,7 +672,7 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 
 }
 
-\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$.}\label{fig:heurist_stts}
+\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$.  See \cref{tab:identall2} for values.}\label{fig:heurist_stts}
 \end{figure}
 
 
