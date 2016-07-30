@@ -141,7 +141,7 @@
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Fri Jul 22 16:25:17 2016 -0500
+  \\ Version Date:   Fri Jul 29 17:27:00 2016 -0500
 	}
 \date{}
 \maketitle
@@ -238,7 +238,7 @@ The sensitivity and identifiability analyses can be extended to
 
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 140 of 250 parameters (56\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to four parameters for optics (36\% of all optic parameters, \cref{tab:optsens}), seven for organic matter (24\%, \cref{tab:omsens}), 103 for phytoplankton (66\%, \cref{tab:phytosens}), seven for temperature (22\%, \cref{tab:tempsens}), and 19 for zooplankton (86\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $3.18\times 10^{-6}$ for \textit{Kcdom} (optics) to $328.35$ for \textit{Qc$_{p1}$} (phytoplankton), whereas average sensitivity among all parameters was $L1 = $ $4.52$.  Within categories, sensitivity ranged from $3.18\times 10^{-6}$ (\textit{Kcdom}) to $1.64$ (\textit{astar490}) for optics, $0.01$ (\textit{KGcdom}) to $2.11$ (\textit{k11}) for organic matter, $1\times 10^{-5}$ (\textit{Ksi$_{p1}$}) to $328.35$ (\textit{Qc$_{p1}$}) for phytopankton, $0.12$ (\textit{Tref(nospA+nospZ)$_{p1}$}) to $2.9$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $0$ (\textit{ZQp$_{z1}$}) to $0.82$ (\textit{ZKa$_{z1}$}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ $0.42$ for optics, $1.24$ for organic matter, $5.96$ for phytoplankton, $0.55$ for temperature, and $0.27$ for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ $19.71$, $14.56$), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ $0.31$, $0.23$ for groups one and two).
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 140 of 250 parameters (56\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to four parameters for optics (36\% of all optic parameters, \cref{tab:optsens}), seven for organic matter (24\%, \cref{tab:omsens}), 103 for phytoplankton (66\%, \cref{tab:phytosens}), seven for temperature (22\%, \cref{tab:tempsens}), and 19 for zooplankton (86\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $3.18\times 10^{-6}$ for \textit{Kcdom} (optics) to $328.35$ for \textit{Qc$_{p1}$} (phytoplankton), whereas average sensitivity among all parameters was $L1 = $ $4.52$.  Within categories, sensitivity ranged from $3.18\times 10^{-6}$ (\textit{Kcdom}) to $1.64$ (\textit{astar490}) for optics, $0.01$ (\textit{KGcdom}) to $2.11$ (\textit{k11}) for organic matter, $1\times 10^{-5}$ (\textit{Ksi$_{p1}$}) to $328.35$ (\textit{Qc$_{p1}$}) for phytopankton, $0.12$ (\textit{Tref(nospA+nospZ)$_{p1}$}) to $2.9$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $0$ (\textit{ZQp$_{z1}$}) to $0.82$ (\textit{ZKa$_{z1}$}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ $0.42$ for optics, $1.24$ for organic matter, $5.96$ for phytoplankton, $0.55$ for temperature, and $0.27$ for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ $19.71$, $14.56$), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ $0.31$, $0.23$ for groups one and two).
 
 Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \textit{ZKa$_{z1}$}, which caused an increase in \ac{do}.  The phytoplankton parameter, \textit{Qc$_{p1}$}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\textit{astar490}) and phytoplankton (\textit{Qc$_{p1}$}) parameters.
 
@@ -263,6 +263,8 @@ Comparison of identifiability between categories showed that phytoplankton and z
 Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ $4$, $\gamma =$  $3.7$) and organic matter ($n = $ $7$, $\gamma =$  $1.7$) categories were selected, whereas 23 were selected for phytoplankton ($\gamma = $ $13.7$), five for temperature ($\gamma = $ $11.4$), and five for zooplankton ($\gamma = $ $3.1$).  For the second selection heuristic, 20 parameters were selected ($\gamma = $ $4.6$, with a majority from the phytoplankton category).  For the third heuristic, 18 parameters were selected ($\gamma = $ $9.2$) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \textit{KNO3} caused in increase in $\gamma$ from $4.6$ to $15.6$ and equal selection within cateogies showed that including \textit{Tref(nospA+nospZ)$_{p2}$} caused in increase in $\gamma$ from $9.2$ to $66.2$.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
+
+% back of envelop calcs for number of relevant parms, all state variables
 
 We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
 
@@ -297,94 +299,6 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 \end{singlespace}
 \clearpage
 
-%%%%%%
-% figures
-
-% combination example
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=0.6\textwidth]{figs/combnex-1} 
-
-}
-
-\caption[Examples of unique parameter combinations from different parameter sets and number of selected parameters]{Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.}\label{fig:combnex}
-\end{figure}
-
-
-
-% sensitivity example of top
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\maxwidth]{figs/sensplo-1} 
-
-}
-
-\caption{Sensitivity of \ac{do} to parameter changes. The solid lines show the change in \ac{do} based on a 50\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\left(L1\right)$) for all parmaters in each category.}\label{fig:sensplo}
-\end{figure}
-
-
-
-% identifiability boxplots
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\maxwidth]{figs/identbox-1} 
-
-}
-
-\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.}\label{fig:identbox}
-\end{figure}
-
-
-
-% parameter exclusion temp
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=0.6\textwidth]{figs/excltemp-1} 
-
-}
-
-\caption{Identifiability (as $\gamma$, \cref{gameq}) of temperature parameters for subset combinations in \cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \cref{fig:identbox}. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability.}\label{fig:excltemp}
-\end{figure}
-
-
-
-% identifiability boxplot, p1, z1 only
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=0.5\textwidth]{figs/p1z1identbox-1} 
-
-}
-
-\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.}\label{fig:p1z1identbox}
-\end{figure}
-
-
-
-% heuristic plots o2
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\textwidth]{figs/heurist-1} 
-
-}
-
-\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$ or if the maximum number of possible parameters is selected.}\label{fig:heurist}
-\end{figure}
-
-
-
-% heuristic plots, all state
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\textwidth]{figs/heurist_stts-1} 
-
-}
-
-\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$.}\label{fig:heurist_stts}
-\end{figure}
-
-
-
-\clearpage
 %%%%%%
 % tables
 
@@ -568,6 +482,110 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \end{tabular}\end{center}}
 
 \end{table}
+
+\clearpage
+
+%%%%%%
+% figures
+
+% combination example
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=0.6\textwidth]{figs/combnex-1} 
+
+}
+
+\caption[Examples of unique parameter combinations from different parameter sets and number of selected parameters]{Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.}\label{fig:combnex}
+\end{figure}
+
+
+
+% sensitivity example of top
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\maxwidth]{figs/sensplo-1} 
+
+}
+
+\caption{Sensitivity of \ac{do} to parameter changes. The solid lines show the change in \ac{do} based on a 50\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\left(L1\right)$) for all parmaters in each category.}\label{fig:sensplo}
+\end{figure}
+
+
+
+% identifiability boxplots
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\maxwidth]{figs/identbox-1} 
+
+}
+
+\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.}\label{fig:identbox}
+\end{figure}
+
+
+
+% parameter exclusion temp
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=0.6\textwidth]{figs/excltemp-1} 
+
+}
+
+\caption{Identifiability (as $\gamma$, \cref{gameq}) of temperature parameters for subset combinations in \cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \cref{fig:identbox}. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability.}\label{fig:excltemp}
+\end{figure}
+
+
+
+% identifiability boxplot, p1, z1 only
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=0.5\textwidth]{figs/p1z1identbox-1} 
+
+}
+
+\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for \ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.}\label{fig:p1z1identbox}
+\end{figure}
+
+
+
+% heuristic plots o2
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\textwidth]{figs/heurist-1} 
+
+}
+
+\caption{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$ or if the maximum number of possible parameters is selected.}\label{fig:heurist}
+\end{figure}
+
+
+
+% heuristic plots, all state
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\textwidth]{figs/heurist_stts-1} 
+
+}
+
+\caption[Identifiability (as ]{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$.}\label{fig:heurist_stts}
+\end{figure}
+
+
+\clearpage
+
+% supplementary material
+\beginsupplement
+
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\textwidth]{figs/sensalltile-1} 
+
+}
+
+\caption{Sensitivity values (L1, \cref{l1}) for local analyses of all state variables.  Values are truncated by the 5\textsuperscript{th} and 95\textsuperscript{th} sensitivity values between all parameters for visual appearance. Parameters are grouped by category (plot strips).  Phytoplankton and zooplankton categories are further separated into one through six, and one and two groups (p1 - p6, z1 - z2), respectively.}\label{fig:sensalltile}
+\end{figure}
+
+
 
 
 \end{document}

@@ -276,7 +276,7 @@ zoopgrps <- filter(sens_ests_cat, Category == 'Zooplankton') %>%
 
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 250 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/250, 0)}\% of total) in FishTank. Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temperature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{sensave}.  Within categories, sensitivity ranged from \Sexpr{sensrngcat$Optics$error[1]} (\Sexpr{sensrngcat$Optics$Parameter[1]}) to \Sexpr{sensrngcat$Optics$error[2]} (\Sexpr{sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{sensrngcat$`Organic Matter`$error[1]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{sensrngcat$`Organic Matter`$error[2]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{sensrngcat$Phytoplankton$error[1]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{sensrngcat$Phytoplankton$error[2]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) for phytopankton, \Sexpr{sensrngcat$Temperature$error[1]} (\Sexpr{sensrngcat$Temperature$Parameter[1]}) to \Sexpr{sensrngcat$Temperature$error[2]} (\Sexpr{sensrngcat$Temperature$Parameter[2]}) for temperature, and \Sexpr{sensrngcat$Zooplankton$error[1]} (\Sexpr{sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{sensrngcat$Zooplankton$error[2]} (\Sexpr{sensrngcat$Zooplankton$Parameter[2]}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ \Sexpr{sensave_cat$Optics} for optics, \Sexpr{sensave_cat$`Organic Matter`} for organic matter, \Sexpr{sensave_cat$Phytoplankton} for phytoplankton, \Sexpr{sensave_cat$Temperature} for temperature, and \Sexpr{sensave_cat$Zooplankton} for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ \Sexpr{phytogrps[1, 2]}, \Sexpr{phytogrps[2, 2]}), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ \Sexpr{zoopgrps[1, 2]}, \Sexpr{zoopgrps[2, 2]} for groups one and two).
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 250 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/250, 0)}\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temperature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{sensave}.  Within categories, sensitivity ranged from \Sexpr{sensrngcat$Optics$error[1]} (\Sexpr{sensrngcat$Optics$Parameter[1]}) to \Sexpr{sensrngcat$Optics$error[2]} (\Sexpr{sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{sensrngcat$`Organic Matter`$error[1]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{sensrngcat$`Organic Matter`$error[2]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{sensrngcat$Phytoplankton$error[1]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{sensrngcat$Phytoplankton$error[2]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) for phytopankton, \Sexpr{sensrngcat$Temperature$error[1]} (\Sexpr{sensrngcat$Temperature$Parameter[1]}) to \Sexpr{sensrngcat$Temperature$error[2]} (\Sexpr{sensrngcat$Temperature$Parameter[2]}) for temperature, and \Sexpr{sensrngcat$Zooplankton$error[1]} (\Sexpr{sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{sensrngcat$Zooplankton$error[2]} (\Sexpr{sensrngcat$Zooplankton$Parameter[2]}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ \Sexpr{sensave_cat$Optics} for optics, \Sexpr{sensave_cat$`Organic Matter`} for organic matter, \Sexpr{sensave_cat$Phytoplankton} for phytoplankton, \Sexpr{sensave_cat$Temperature} for temperature, and \Sexpr{sensave_cat$Zooplankton} for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ \Sexpr{phytogrps[1, 2]}, \Sexpr{phytogrps[2, 2]}), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ \Sexpr{zoopgrps[1, 2]}, \Sexpr{zoopgrps[2, 2]} for groups one and two).
 
 Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \Sexpr{sensrngcat$Zooplankton$Parameter[2]}, which caused an increase in \ac{do}.  The phytoplankton parameter, \Sexpr{sensrngcat$Phytoplankton$Parameter[2]}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\Sexpr{sensrngcat$Optics$Parameter[2]}) and phytoplankton (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) parameters.
 
@@ -388,87 +388,7 @@ Each of the three selection heuristics (blocked by parameter category, independe
 % back of envelop calcs for number of relevant parms, all state variables
 <<echo = F>>=
 
-data(sens_ests_cat_all)
-
-tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
-
-lims <- with(tmp, quantile(error, c(0.05, 0.95))) %>% 
-  as.numeric
-
-stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'O2', 'OM1', 'OM2', 'PO4')
-stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'Dissolved Oxygen', 'OM1', 'OM2', 'Phosphate')
-
-toplo <- filter(tmp, error < lims[2] & error > lims[1]) %>% 
-  mutate(
-    L1 = factor(L1, levels = stts_lev, labels = stts_lab)
-  )
-toplo1 <- filter(toplo, !Category %in% c('Phytoplankton', 'Zooplankton')) %>% 
-  mutate(Parameter = as.character(par_txt(Parameter, frm = 'exp')))
-toplo2 <- filter(toplo, Category %in% c('Phytoplankton')) %>% 
-  mutate(
-    grp = gsub('^.*_([1-6])$', 'p\\1', Parameter), 
-    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
-  )
-toplo3 <- filter(toplo, Category %in% c('Zooplankton')) %>% 
-  mutate(
-    grp = gsub('^.*_([1-2])$', 'z\\1', Parameter), 
-    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
-  )
-
-pbase <- theme(
-  panel.grid.major = element_blank(), 
-  panel.grid.minor = element_blank(), 
-  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 8), 
-  axis.text.y = element_text(size =8),
-  axis.title.y = element_blank(), 
-  axis.title.x = element_blank(),
-  legend.position = 'none'
-  ) 
-
-p1 <- ggplot(toplo1, aes(x = Parameter, y = L1, fill = error)) + 
-  geom_tile() + 
-  pbase +
-  scale_x_discrete(expand = c(0, 0),
-    breaks = toplo1$Parameter, 
-    labels = parse(text = toplo1$Parameter)
-    ) + 
-  scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~Category, scales = 'free')
-p2 <- ggplot(toplo2, aes(x = Parameter, y = L1, fill = error)) + 
-  geom_tile() + 
-  pbase +
-  scale_x_discrete(expand = c(0, 0), 
-    breaks = toplo2$Parameter, 
-    labels = parse(text = toplo2$Parameter)
-    ) + 
-  scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~grp, scales = 'free') + 
-  ggtitle('Phytoplankton')
-p3 <- ggplot(toplo3, aes(x = Parameter, y = L1, fill = error)) + 
-  geom_tile() + 
-  pbase +
-  scale_x_discrete(expand = c(0, 0), 
-    breaks = toplo3$Parameter, 
-    labels = parse(text = toplo3$Parameter)
-    ) + 
-  scale_y_discrete(expand = c(0, 0)) + 
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~grp, scales = 'free') + 
-  ggtitle('Zooplankton') + 
-  theme(legend.position = 'right')
-pleg <- g_legend(p3)
-p3 <- p3 + theme(legend.position = 'none')
-
-grid.arrange(
-  arrangeGrob(p1, p2, p3, ncol = 1), 
-  pleg, ncol = 2, widths =  c(1, 0.1), 
-  bottom = 'Parameter', 
-  left = 'State variable'
-)
 @
-
 We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
 
 Emphasize that parameters that have the greatest effect on collinearity are not those that have the highest sensitivity (contrast the identifiability by category vs identifiability by top parameters)  , also note that groups of parameters together can have large effects on collinearity, maybe some kind of bootstrap analysis could be done looking at doubletons, etc. The example in teh results highlights how redundant variables can be identified as a necessary part of the model calibration process.
@@ -500,6 +420,38 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 \bibliographystyle{apalike_mine}
 \bibliography{refs}
 \end{singlespace}
+\clearpage
+
+%%%%%%
+% tables
+
+% optics sensitivity
+<<optsens, eval = T, cache = F>>=
+senstab1('Optics', 'optsens')
+@
+
+% organic matter sensitivity
+<<omsens, eval = T, cache = F>>=
+senstab1('Organic Matter', 'omsens')
+@
+
+% phytoplankton sensitivity
+<<phytosens, eval = T, cache = F>>=
+# data(sens_ests_cat)
+# tmp <- filter(sens_ests_cat, Category == 'Phytoplankton')
+# quantile(tmp$error)
+senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less than the 75\\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.')
+@
+
+% temperature sensitivity
+<<tempsens, eval = T, cache = F >>=
+senstab2('Temperature', 'tempsens')
+@
+
+% zooplankton sensitivity
+<<zoopsens, eval = T, cache = F>>=
+senstab2('Zooplankton', 'zoopsens')
+@
 \clearpage
 
 %%%%%%
@@ -1007,37 +959,95 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
   pthm +
   theme(legend.position = c(0.9, 0.2))
 @
-
 \clearpage
-%%%%%%
-% tables
 
-% optics sensitivity
-<<optsens, eval = T, cache = F>>=
-senstab1('Optics', 'optsens')
+% supplementary material
+\beginsupplement
+
+<<sensalltile, echo = F, fig.height = 9, fig.width = 9, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables.  Values are truncated by the 5\\textsuperscript{th} and 95\\textsuperscript{th} sensitivity values between all parameters for visual appearance. Parameters are grouped by category (plot strips).  Phytoplankton and zooplankton categories are further separated into one through six, and one and two groups (p1 - p6, z1 - z2), respectively.'>>=
+data(sens_ests_cat_all)
+
+tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
+
+lims <- with(tmp, quantile(error, c(0.05, 0.95))) %>% 
+  as.numeric
+
+stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'O2', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'Dissolved Oxygen', 'OM1', 'OM2', 'Phosphate')
+
+toplo <- filter(tmp, error < lims[2] & error > lims[1]) %>% 
+  mutate(
+    L1 = factor(L1, levels = stts_lev, labels = stts_lab)
+  ) %>% 
+  rename(Sensitivity = error)
+
+toplo1 <- filter(toplo, !Category %in% c('Phytoplankton', 'Zooplankton')) %>% 
+  mutate(Parameter = as.character(par_txt(Parameter, frm = 'exp')))
+toplo2 <- filter(toplo, Category %in% c('Phytoplankton')) %>% 
+  mutate(
+    grp = gsub('^.*_([1-6])$', 'p\\1', Parameter), 
+    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
+  )
+toplo3 <- filter(toplo, Category %in% c('Zooplankton')) %>% 
+  mutate(
+    grp = gsub('^.*_([1-2])$', 'z\\1', Parameter), 
+    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
+  )
+
+pbase <- theme(
+  panel.grid.major = element_blank(), 
+  panel.grid.minor = element_blank(), 
+  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6), 
+  axis.text.y = element_text(size =8),
+  axis.title.y = element_blank(), 
+  axis.title.x = element_blank(),
+  legend.position = 'none', 
+  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt')
+  ) 
+
+p1 <- ggplot(toplo1, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0),
+    breaks = toplo1$Parameter, 
+    labels = parse(text = toplo1$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~Category, scales = 'free')
+p2 <- ggplot(toplo2, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0), 
+    breaks = toplo2$Parameter, 
+    labels = parse(text = toplo2$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~grp, scales = 'free') + 
+  ggtitle('Phytoplankton')
+p3 <- ggplot(toplo3, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
+  geom_tile() + 
+  pbase +
+  scale_x_discrete(expand = c(0, 0), 
+    breaks = toplo3$Parameter, 
+    labels = parse(text = toplo3$Parameter)
+    ) + 
+  scale_y_discrete(expand = c(0, 0)) + 
+  scale_fill_distiller(palette = "Spectral", limits = lims) + 
+  facet_grid(~grp, scales = 'free') + 
+  ggtitle('Zooplankton') + 
+  theme(legend.position = 'top')
+pleg <- g_legend(p3)
+p3 <- p3 + theme(legend.position = 'none')
+
+grid.arrange(
+  pleg, p1, p2, p3, ncol = 1, 
+  heights = c(0.2, 1, 0.85, 1),
+  bottom = 'Parameter', 
+  left = 'State variable'
+)
 @
 
-% organic matter sensitivity
-<<omsens, eval = T, cache = F>>=
-senstab1('Organic Matter', 'omsens')
-@
-
-% phytoplankton sensitivity
-<<phytosens, eval = T, cache = F>>=
-# data(sens_ests_cat)
-# tmp <- filter(sens_ests_cat, Category == 'Phytoplankton')
-# quantile(tmp$error)
-senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less than the 75\\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.')
-@
-
-% temperature sensitivity
-<<tempsens, eval = T, cache = F >>=
-senstab2('Temperature', 'tempsens')
-@
-
-% zooplankton sensitivity
-<<zoopsens, eval = T, cache = F>>=
-senstab2('Zooplankton', 'zoopsens')
-@
 
 \end{document}
