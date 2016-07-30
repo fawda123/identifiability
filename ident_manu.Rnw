@@ -907,8 +907,8 @@ data(tocal_all)
 
 # factor levels
 cats <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'OM1', 'OM2', 'PO4')
-stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
+stts_lev <- c('NH4', 'Chla_mg_tot', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Ammonium', 'Chlorophyll', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
 
 # custom col scale
 mycols <- RColorBrewer::brewer.pal(5, 'Set2')
@@ -964,7 +964,7 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
 % supplementary material
 \beginsupplement
 
-<<sensalltile, echo = F, fig.height = 9, fig.width = 9, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables.  Values are truncated by the 5\\textsuperscript{th} and 95\\textsuperscript{th} sensitivity values between all parameters for visual appearance. Parameters are grouped by category (plot strips).  Phytoplankton and zooplankton categories are further separated into one through six, and one and two groups (p1 - p6, z1 - z2), respectively.'>>=
+<<sensalltile, echo = F, fig.height = 9, fig.width = 9, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables.  Values are truncated by the 5\\textsuperscript{th} and 95\\textsuperscript{th} sensitivity values between all parameters for visual appearance. Parameters are grouped by category (plot strips).  Phytoplankton and zooplankton categories are further separated into one through six, and one and two groups (p1-p6, z1, z2), respectively.'>>=
 data(sens_ests_cat_all)
 
 tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
@@ -972,8 +972,8 @@ tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Categ
 lims <- with(tmp, quantile(error, c(0.05, 0.95))) %>% 
   as.numeric
 
-stts_lev <- c('Chla_mg_tot', 'irradiance', 'NH4', 'NO3', 'O2', 'OM1', 'OM2', 'PO4')
-stts_lab <- c('Chlorophyll', 'Irradiance', 'Ammonium', 'Nitrate', 'Dissolved Oxygen', 'OM1', 'OM2', 'Phosphate')
+stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
 
 toplo <- filter(tmp, error < lims[2] & error > lims[1]) %>% 
   mutate(
