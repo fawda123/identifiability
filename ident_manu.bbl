@@ -5,11 +5,6 @@ Arhonditsis GB, Perhar G, Zhang W, Massos E, Shi M, Das A. 2008.
 \newblock Addressing equifinality and uncertainty in eutrophication models.
 \newblock Water Resources Research, 44(1):W01420.
 
-\bibitem[Beck, 1987]{Beck87}
-Beck MB. 1987.
-\newblock Water quality modeling: A review of the analysis of uncertainty.
-\newblock Water Resources Research, 23(8):1393--1442.
-
 \bibitem[Bianchi et~al., 2010]{Bianchi10}
 Bianchi TS, DiMarco SF, Jr JHC, Hetland RD, Chapman P, Day JW, Allison MA.
   2010.
@@ -42,19 +37,6 @@ Eldridge PM, Roelke DL. 2010.
   seasonal plankton dynamics and river nutrients and discharge.
 \newblock Ecological Modelling, 221(7):1028--1042.
 
-\bibitem[Estrada and Diaz, 2010]{Estrada10}
-Estrada V, Diaz M. 2010.
-\newblock Global sensitivity analysis in the development of first
-  principle-based eutrophication models.
-\newblock Environmental Modelling and Software, 25:1539--1551.
-
-\bibitem[Fasham et~al., 2006]{Fasham06}
-Fasham MJR, Flynn KJ, Pondaven P, Anderson TR, Boyd PW. 2006.
-\newblock Development of a robust marine ecosystem model to predict the role of
-  iron in biogeochemical cycles: A comparison of results for iron-replete and
-  iron-limited areas, and the {SOIREE} iron-enrichment experiment.
-\newblock Deep-Sea Research I, 53:333--366.
-
 \bibitem[Fennel et~al., 2013]{Fennel13}
 Fennel K, Hu J, Laurent A, Marta-Almeida M, Hetland R. 2013.
 \newblock Sensitivity of hypoxia predictions for the norther {G}ulf of {M}exico
@@ -71,14 +53,6 @@ Flynn KJ. 2005.
 Gallagher M, Doherty J. 2007.
 \newblock Parameter estimation and uncertainty analysis for a watershed model.
 \newblock Environmental Modelling and Software, 22(7):1000--1020.
-
-\bibitem[Ganju et~al., 2016]{Ganju16}
-Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
-  Harris LA, Lake SJ, McCardell G, O'Donnell J, Ralston DK, Signell RP, Testa
-  JM, Vaudrey JMP. 2016.
-\newblock Progress and challenges in coupled hydrodynamic-ecological estuarine
-  modeling.
-\newblock Estuaries and Coasts, 39(2):311--332.
 
 \bibitem[Hodur, 1997]{Hodur97}
 Hodur RM. 1997.
@@ -101,11 +75,6 @@ Lehrter JC, Ko DS, Murrell MC, III JDH, Schaeffer BA, Greene RM, Gould RW,
   of a river-dominated continental shelf.
 \newblock Journal of Geophysical Research, 118(10):4822--4838.
 
-\bibitem[Levins, 1966]{Levins66}
-Levins R. 1966.
-\newblock The strategy of model building in population biology.
-\newblock American Scientist, 54(4):421--431.
-
 \bibitem[Lohrenz et~al., 2008]{Lohrenz08}
 Lohrenz SE, Redalje DG, Cai WJ, Acker J, Dagg M. 2008.
 \newblock A retrospective analysis of nutrients and phytoplankton productivity
@@ -117,17 +86,6 @@ Martin PJ. 2000.
 \newblock Description of the navy coastal ocean model version 1.0.
 \newblock Technical Report NRL/FR/7322-00-9962, Naval Research Lab, Stennis
   Space Center, Mississippi.
-
-\bibitem[Mateus and Franz, 2015]{Mateus15}
-Mateus MD, Franz G. 2015.
-\newblock Sensitivity analysis in a complex marine ecological model.
-\newblock Water, 7:2060--2081.
-
-\bibitem[Morrison and Morgan, 1999]{Morrison99}
-Morrison M, Morgan MS. 1999.
-\newblock Models as mediating agents.
-\newblock In: Morgan MS, Morrison M, editors, Models as Mediators, page 401.
-  Cambridge University Press, Cambridge.
 
 \bibitem[Murrell et~al., 2014]{Murrell14}
 Murrell MC, Beddick DL, Devereux R, Greene RM, III JDH, Jarvis BM, Kurtz JC,
@@ -161,13 +119,13 @@ Pauer JJ, Feist TJ, Anstead AM, DePetro PA, Melendez W, Lehrter JC, Murrell MC,
   primary production on the {L}ouisiana continental shelf.
 \newblock Ecological Modelling, 328:136--147.
 
-\bibitem[Penta et~al., 2008a]{Penta08}
-Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008a.
+\bibitem[Penta et~al., 2008]{Penta08}
+Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008.
 \newblock An underwater light attenuation scheme for marine ecosystem models.
 \newblock Optical Express, 16(21):16581--16591.
 
-\bibitem[Penta et~al., 2008b]{Penta09}
-Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008b.
+\bibitem[Penta et~al., 2009]{Penta09}
+Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2009.
 \newblock An underwater light attenuation scheme for marine ecosystem models:
   errata.
 \newblock Optical Express, 17(25):23351--23351.
@@ -177,11 +135,6 @@ Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
 \newblock Uncertainty in the environmental modelling process - a framework and
   guidance.
 \newblock Environmental Modelling \& Software, 22(11):1543--1556.
-
-\bibitem[Snowling and Kramer, 2001]{Snowling01}
-Snowling SD, Kramer JR. 2001.
-\newblock Evaluating modelling uncertainty for model selection.
-\newblock Ecological Modelling, 138:17--30.
 
 \bibitem[Soetaert and Petzoldt, 2010]{Soetaert10}
 Soetaert K, Petzoldt T. 2010.
