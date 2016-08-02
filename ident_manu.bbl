@@ -30,6 +30,12 @@ Brun R, Reichert P, K\"{u}nsch HR. 2001.
   models.
 \newblock Water Resources Research, 37(4):1015--1030.
 
+\bibitem[Cloern et~al., 1995]{Cloern95}
+Cloern JE, Grenz C, Vidergar-Lucas L. 1995.
+\newblock An empirical model of the phytoplankton:carbon ratio - the conversion
+  factor between productivity and growth rate.
+\newblock Limnology and Oceanography, 40(7):1313--1321.
+
 \bibitem[Eldridge and Roelke, 2010]{Eldridge10}
 Eldridge PM, Roelke DL. 2010.
 \newblock Origins and scales of hypoxia on the {L}ouisiana shelf: importance of
@@ -155,10 +161,16 @@ Pauer JJ, Feist TJ, Anstead AM, DePetro PA, Melendez W, Lehrter JC, Murrell MC,
   primary production on the {L}ouisiana continental shelf.
 \newblock Ecological Modelling, 328:136--147.
 
-\bibitem[Penta et~al., 2008]{Penta08}
-Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008.
+\bibitem[Penta et~al., 2008a]{Penta08}
+Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008a.
 \newblock An underwater light attenuation scheme for marine ecosystem models.
 \newblock Optical Express, 16(21):16581--16591.
+
+\bibitem[Penta et~al., 2008b]{Penta09}
+Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2008b.
+\newblock An underwater light attenuation scheme for marine ecosystem models:
+  errata.
+\newblock Optical Express, 17(25):23351--23351.
 
 \bibitem[Refsgaard et~al., 2007]{Refsgaard07}
 Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.

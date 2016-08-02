@@ -133,15 +133,19 @@
 \renewcommand\refname{References \vspace{12pt}}
 
 \begin{singlespace}
-\title{{\bf {\Large Title....}}}
+\title{{\bf {\Large Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico}}}
 \author{
-  {\bf {\normalsize Marcus W. Beck$^1$, John C. Lehrter$^1$}}
+  {\bf {\normalsize Marcus W. Beck$^1$, John C. Lehrter$^1$, Lisa L. Lowe$^2$}}
   \\\\{\textit {\normalsize $^1$USEPA National Health and Environmental Effects Research Laboratory}}
   \\{\textit {\normalsize Gulf Ecology Division, 1 Sabine Island Drive, Gulf Breeze, FL 32561}}
 	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
 	\\{\textit {\normalsize Emails: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}, \href{mailto:lehrter.john@epa.gov}{lehrter.john@epa.gov}}}
+	\\\\{\textit {\normalsize $^2$Lockheed Martin IS \& GS - Civil, supporting the USEPA}}
+	\\{\textit {\normalsize Resarch Triangle Park, NC 27709}}
+	\\{\textit {\normalsize Phone: 919-541-3985,}}
+	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Sat Jul 30 12:41:03 2016 -0500
+  \\ Version Date:   Sat Jul 30 15:11:50 2016 -0500
 	}
 \date{}
 \maketitle
@@ -229,7 +233,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 \subsection{Identifiability and structural uncertainty}
 
-The sensitivity and identifiability analyses can be extended to 
+As a final analysis, the effects of model structure on parameter identifiability were evaluated for \ac{do} predictions.  The FishTank model includes several processes that can be included or excluded from the equations based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes that affect the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty as a means to begin addressing componenents of structural uncertainty.  The analysis is provided as an example of applying basic (i.e., local) sensitivity analyses to address more complex questions in model uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  Parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
 
 \section{Results}
 
@@ -485,9 +489,9 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 
 
 % ident all states
-%latex.default(identall1, file = "", rowlabel = "Parameter description",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:identall1", rowname = descrip, colheads = colnms,     rgroupTexCmd = NULL)%
+%latex.default(identall1, file = "", rowlabel = "Parameter description",     caption = cap_val, caption.loc = "top", size = "normalsize",     label = "tab:identall1", rowname = descrip, colheads = colnms,     rgroupTexCmd = NULL)%
 \begin{table}[!tbp]
-{\footnotesize
+{\normalsize
 \caption{Parameter identifiability for dissolved oxygen.  Selection followed the second heuristic where parameters were selected by decreasing sensitivity up to maximum $\gamma < 15$.  Rank describes the parameter sensitivity in each category (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).\label{tab:identall1}} 
 \begin{center}
 \begin{tabular}{lllll}
