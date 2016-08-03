@@ -36,6 +36,11 @@ Cloern JE, Grenz C, Vidergar-Lucas L. 1995.
   factor between productivity and growth rate.
 \newblock Limnology and Oceanography, 40(7):1313--1321.
 
+\bibitem[Denman, 2003]{Denman03}
+Denman KL. 2003.
+\newblock Modelling planktonic ecosystems: parameterizing complexity.
+\newblock Progress in Oceanography, 57(3-4):429--452.
+
 \bibitem[Diaz and Rosenberg, 1995]{Diaz95}
 Diaz RJ, Rosenberg R. 1995.
 \newblock Marine benthic hypoxia: A review of its ecological effects and the
@@ -46,6 +51,12 @@ Diaz RJ, Rosenberg R. 1995.
 Diaz RJ, Rosenberg R. 2011.
 \newblock Introduction to environmental and economic consequences of hypoxia.
 \newblock International Journal of Water Resources Development, 27(1):71--82.
+
+\bibitem[Durand et~al., 2002]{Durand02}
+Durand P, Gascuel-Odoux C, Cordier MO. 2002.
+\newblock Parameterisation of hydrological models: a review and lessons learned
+  from studies of an agricultural catchment ({N}aisin, {F}rance.
+\newblock Agronomie, 22(2):217--228.
 
 \bibitem[Eldridge and Roelke, 2010]{Eldridge10}
 Eldridge PM, Roelke DL. 2010.
@@ -97,6 +108,11 @@ Hagy JD, Murrell MC. 2007.
   An analysis using box models.
 \newblock Estuarine Coastal and Shelf Science, 74:239--253.
 
+\bibitem[Hilborn and Mangel, 1997]{Hilborn97}
+Hilborn R, Mangel M. 1997.
+\newblock The Ecological Detective: Confronting Models with Data.
+\newblock Princeton University Press, Princeton, New Jersey.
+
 \bibitem[Hodur, 1997]{Hodur97}
 Hodur RM. 1997.
 \newblock The {N}aval {R}esearch {L}aboratory's {C}oupled {O}cean/{A}tmosphere
@@ -111,11 +127,22 @@ Howarth RW, Billen G, Swaney D, Townsend A, Jaworski N, Lajtha K, Downing JA,
   drainages to the {N}orth {A}tlantic {O}cean: natural and human influences.
 \newblock Biogeochemistry, 35(1):75--139.
 
+\bibitem[Jr., 1996]{Rykiel96}
+Jr. EJR. 1996.
+\newblock Testing ecological models: the meaning of validation.
+\newblock Ecological Modelling, 90(3):229--244.
+
 \bibitem[Just\'{i}c et~al., 1987]{Justic87}
 Just\'{i}c D, Legov\'{i}c T, Rottini-Sandrini L. 1987.
 \newblock Trends in oxygen content 1911--1984 and occurrence of benthic
   mortality in the northern {A}driatic {S}ea.
 \newblock Estuarine, Coastal and Shelf Science, 25(4):435--445.
+
+\bibitem[Kirchner, 2006]{Kirchner06}
+Kirchner JW. 2006.
+\newblock Getting the right answers for the right reasons: Linking
+  measurements, analyses, and models to advance the science of hydrology.
+\newblock Water Resources Research, 42(3):W03S04.
 
 \bibitem[Lehrter et~al., view]{LehrterIR}
 Lehrter JC, Ko DS, Lowe L, Penta B. In review.
@@ -180,6 +207,13 @@ Murrell MC, Stanley RS, Lehrter JC, Hagy JD. 2013.
   dynamics on the {L}ouisiana continental shelf: Implications for hypoxia.
 \newblock Continental Shelf Research, 52:27--38.
 
+\bibitem[Nossent and Bauwens, 2012]{Nossent12}
+Nossent J, Bauwens W. 2012.
+\newblock Multi-variable sensitivity and identifiability analysis for a complex
+  environmental model in view of integrated water quantity and water quality
+  modeling.
+\newblock Water Science \& Technology, 65(3):539--549.
+
 \bibitem[Obenour et~al., 2015]{Obenour15}
 Obenour DR, Michalak AM, Scavia D. 2015.
 \newblock Assessing biophysical controls on {G}ulf of {M}exico hypoxia through
@@ -223,6 +257,13 @@ Penta B, Lee Z, Kudela RM, Palacios SL, Gray DJ, Jolliff JK, Shulman IG. 2009.
   errata.
 \newblock Optical Express, 17(25):23351--23351.
 
+\bibitem[Petrucci and Bonhomme, 2014]{Petrucci14}
+Petrucci G, Bonhomme C. 2014.
+\newblock The dilemma of spatial representation for urban hydrology
+  semi-distributed modelling: trade-offs among complexity, calibration and
+  geographical data.
+\newblock Journal of Hydrology, 517:997--1007.
+
 \bibitem[Rabalais et~al., 2002]{Rabalais02}
 Rabalais NN, Turner RE, Scavia D. 2002.
 \newblock Beyond science into policy: {G}ulf of {M}exico hypoxia and the
@@ -251,10 +292,25 @@ Soetaert K, Petzoldt T. 2010.
   using package {FME}.
 \newblock Journal of Statistical Software, 33(3):1--28.
 
-\bibitem[Wagener et~al., 2001]{Wagener01}
-Wagener T, Boyle DP, Lees MJ, Wheater HS, Gupta HV, Sorooshian S. 2001.
+\bibitem[Wade et~al., 2008]{Wade08}
+Wade AJ, Jackson BM, Butterfield D. 2008.
+\newblock Over-parameterised, uncertain `mathematical marionettes' - how can we
+  best use catchment water quality models? {A}n example of an 80-year
+  catchment-scale nutrient balance.
+\newblock Science of the Total Environment, 400(1-3):52--74.
+
+\bibitem[Wagener et~al., 2001a]{Wagener01}
+Wagener T, Boyle DP, Lees MJ, Wheater HS, Gupta HV, Sorooshian S. 2001a.
 \newblock A framework for development and application of hydrological models.
 \newblock Hydrology and Earth System Sciences, 5(1):13--26.
+
+\bibitem[Wagener et~al., 2001b]{Wagener01b}
+Wagener T, Lees MJ, Wheater HS. 2001b.
+\newblock A toolkit for the development and application of parsimonious
+  hydrological models.
+\newblock In: Singh VP, Meyer DKFSP, editors, Mathematical Models of Small
+  Watershed Hydrology and Applications - Volume 2, pages 91--140. Water
+  Resources Publications LLC, USA.
 
 \bibitem[Warner et~al., 2005]{Warner05}
 Warner JC, Geyer WR, Lerczak JA. 2005.

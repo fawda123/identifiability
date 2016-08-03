@@ -145,7 +145,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Tue Aug 2 11:40:44 2016 -0500
+  \\ Version Date:   Tue Aug 2 17:30:02 2016 -0500
 	}
 \date{}
 \maketitle
@@ -161,14 +161,13 @@
 
 Hypoxia formation in bottom waters of coastal oceans occurs primarily from excess nutrient inputs from land-based sources \citep{Justic87,Diaz95,Howarth96}.  These events are detrimental to aquatic organisms and have significant negative effects on economic resources derived from coastal ecosystems \citep{Lipton03,Diaz11}.  An understanding of the biological, physical, and chemical processes that contribute to the growth of hypoxic areas is a critical concern for mitigating and preventing these negative impacts.  Numerical ecosystem models have been important tools for describing current knowledge of ecosystem processes that contribute to hypoxia formation and for predicting the effects of proposed management activities or future scenarios \citep{Scavia04,Hagy07,Pauer16}.  Unlike statistical models that have more generic structures, simulation and process-based models include explicit descriptions of relevant processes that are constrained by empirical or observational data relevant to the system of interest \citep[e.g.][]{Omlin01b,Eldridge10}.  These models are often coupled with hydrodynamic grids to provide spatially-explicit representations of patterns in three dimensions \citep{Warner05,Zhao10,Ganju16}. Combined hydrodynamic and bio-geo-chemical models have been developed specifically to describe hypoxic conditions on the \ac{lcs} in the northern \ac{gom} (\citealt{Obenour15,Pauer16}, \citetalias{LehrterIR}).  This area drains a significant portion of the continental United States through the \ac{marb} and is the second largest hypoxic area in the world \citep{Rabalais02}.  Understanding processes that contribute to the frequency and duration of hypoxic events remains a critical research goal for the region, including the application of process-based models to characterize the current knowledge domain.  
 
-The development and application of a model represents a tradeoff between desirable characteristics that are defined by the analysis needs.  An idealized model should be sufficiently generalizable across systems, provide results that are precise given the inputs, and include structural components that are realistic descriptions of actual processes \citep{Levins66}. Given that a model cannot possibly excel in all of these characterics, models are developed in partial dependence of reality and theoretical constructs, completely separate from both, or dependent on one or the other \citep{Morrison99}.  These challenges are analagous to the well-known `bias-variance' tradeoff in statistical models that balances the competing objectives of over- and under-fitting to an observed dataset. Process-based models are typically not well balanced between reality and theory, such that a common tendency during development is to over-parameterize equations in an attempt to descibe reality completely.  Such over-parameterization, including use of excessive structural equations, can have serious implications for practical applications of a model.  Over-parameterization can limit application to novel systems outside of the development area and impose uncertainty in model predictions as `realistic' values for every variable may not be known.    Quantitative limitations of over-parameterization are also analagous to degrees of freedom in standard statistical models as free parameters cannot be numerically estimated when constrained to an observed dataset.  The application of process-based models to describe hypoxia dynamics has not been immune to these challenges and more comprehensive approaches are needed to develop models that more carefully balance theory with reality.  
+The development and application of a model represents a tradeoff between different characteristics that are expected from the output or provided by the structural components. An idealized model is sufficiently generalizable across systems, provides results that are precise given the inputs, and includes components that are realistic descriptions of actual processes \citep{Levins66}. Given that all of these characteristics cannot be achieved, models are developed in partial dependence of reality and theoretical constructs, completely separate from both, or dependent on one or the other \citep{Morrison99,Ganju16}.  These challenges are analagous to the well-known `bias-variance' tradeoff in statistical models that balances the competing objectives of over- and under-fitting an observed dataset. Process-based models are more commonly imbalanced between reality and theory, such that many models are over-parameterized in an attempt to describe reality completely \citep{Denman03,Nossent12,Petrucci14}.  Such over-parameterization, including use of excessive structural equations, can have serious implications for practical applications of a model.  Over-parameterization can limit application to novel systems outside of the data domain and impose uncertainty in model predictions as `realistic' values for every variable may not be known or inaccurately applied from existing studies \citep{Durand02,Refsgaard07,Wade08}. More importantly, quantitative limitations of over-parameterization are analagous to degrees of freedom in standard statistical models as free parameters cannot be numerically estimated when constrained to an observed dataset \citep{Kirchner06}.  The application of process-based models to describe hypoxia dynamics has not been immune to these challenges and more comprehensive approaches are needed to develop models that more carefully balance theory with reality \citep[e.g.,][]{Snowling01}.  
 
-Standard approaches for uncertainty analysis can be used 
+Standard approaches for uncertainty analysis can be used to begin addressing model complexity issues.  In the most general sense, uncertainty can be evaluated relative to the effects of input conditions or the observed data used to calibrate a model, changes in parameter values, or variation in the structural components \citep{Beck87}.  Evaluating parameter uncertainty is by far the most common and simplest means of evaluating model behavior.  Although uncertainty analyses should be integrated throughout model development and application, parameters are more often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is related to inverse modelling where results from sensitivity analysis of parameters are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability', such that only a subset of parameters can be numerically constrained to the data as compared to the entire parameter set.  Redundancies in the effects of parameters on the output lead to unidentifiable models where optimal solutions may be empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}.  The concept of identifiable parameter subsets is not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in model development \citep{Fasham06}.  Moreover, the inclusion of sensitivity and identifiability analyses in model tuning will require the adoption of selection rules that are context-dependent given the subsets that are possible with large parameter sets \citep[e.g.,][]{Wagener01, Wagener01b}.  
 
 \begin{comment}
 \begin{enumerate}
-\item What models seek to provide - generality, precision, realism \cite{Levins66}, there is a tradeoff so models are 1) developed in partial independence and dependence on the world and theory, 2) function autonomously from both, or 3) represent both at the same time, from \cite{Morrison99}, cited in \cite{Ganju16}.  This is similar to the bias-variance tradeoff for statistical models, e.g., overparameterization of a model makes it very biased as it fits the data (the world) exactly, tradeoff between sensitity and error with changes in model complexity (more complexity is less error but increasing sensitivity) described in \cite{Snowling01}
-\item How is model performance/uncertainty evaluated regarding what they should provide - structural, observational, parameter \cite{Beck87}? \cite{Refsgaard07} provides comprehensive overview of factors that contribute to uncertainty in environmental modelling.
+\
 \item Parameter uncertainy as low-hanging fruit - can do post-hoc and from inner to outer level of complexity, parameter uncertainty is the most common, e.g., marine ecological model \cite{Mateus15}, but stopped short, global sensitivity analysis of eutrophication model \cite{Estrada10}
 \item Challenges related to uncertainty - similar to degrees of freedom, identifiability definition from \cite{Brun01} and need to evaluate identifiability \cite{Fasham06}, \cite{Omlin01} did a similar analysis with freshwater biogeochem model.
 Identifiability describes the ability to estimate a parameter in relation to variation among the remaining parameters.  A parameter is identifiable if all parameters within the set can be uniquely estimated based on the observed data.  Parameters that are unidentifiable typically produce similar model outputs for a given relative perturbation, i.e., the effect of altering one parameter can be undone by altering one or more other parameters.  Model calibration will not converge for parameters sets that are unidentifiable. 
@@ -283,6 +282,8 @@ Emphasize that parameters that have the greatest effect on collinearity are not 
 
 Why did identifiability decrease for top five parameters in each category after removing redundant phyto/zoop groups?
 
+\citep{Denman03} describes over-parameterization for multiple phyto groups, use this to emphasize collinearity issues with the phyto groups despite differing sensitivity values between groups
+
 Identifiability by category - varies with number of parameters in the category but some were more redundant than others (phytoplankton).  
 
 Questions specific to GOM - what initial conditions are important? How many phytoplankton groups do we need (e.g., related to structural uncertainty)?
@@ -293,7 +294,7 @@ How does uncertainty translate to what a model should provide (generality v prec
 
 What about structural uncertainty - does sensitivity of a model to variation in a parameter imply parameter uncertainty and/or structural uncertainty?
 
-A final point about optimization with identifiable parameter sets - optimization to fit the data still does not ensure a correct model.  Failing in one way can be over-compensated by another feature, e.g., the parameter set that is optimized (see \cite{Flynn05}, p. 1207, third paragraph), also \citep{Arhonditsis08}, also note that over-parameterized models are not necessarily bad, see \citep{Omlin01}
+A final point about optimization with identifiable parameter sets - optimization to fit the data still does not ensure a correct model.  Failing in one way can be over-compensated by another feature, e.g., the parameter set that is optimized (see \cite{Flynn05}, p. 1207, third paragraph), also \citep{Durand02,Arhonditsis08}, also note that over-parameterized models are not necessarily bad, see \citep{Omlin01}, models must be validated for the uses which they were intended where a comparison of observed and predicted is the simplest approach and other methods should be used depending on analysis needs \citep{Rykiel96}
 
 \cite{Omlin01} state that the sensitivity, identifiability, estimation process is iterative (p. 113), need to rinse and repeat for proper calibration. 
 
@@ -301,7 +302,7 @@ How to improve identifiability - get more/better observed data, include obs from
 
 Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibration-constrained optimization \citep{Gallagher07}, \citep{Arhonditsis08}
 
-Our heuristic products are partially analogous to the Rainfall-Runoff Modelling Toolbox (RRMT) presented by Wagener et al. 1999, 2001 (cited on page 15, in \citealt{Wagener01}).
+Our heuristic products are partially analogous to the Rainfall-Runoff Modelling Toolbox (RRMT) presented by \citep{Wagener01b}2001 (cited on page 15, in \citealt{Wagener01}), although ours is simple in comparison
 
 \clearpage
 \begin{singlespace}
@@ -505,26 +506,26 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \hline\hline
 \multicolumn{1}{l}{Parameter description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
-\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$1$\textsuperscript{P}&$328.35$&$1$\tabularnewline
-\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$2$\textsuperscript{P}&$232.8$&$1$\tabularnewline
-\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p5}$}}&$3$\textsuperscript{P}&$7.57$&$1$\tabularnewline
-\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p2}$}}&$4$\textsuperscript{P}&$4.08$&$1$\tabularnewline
-\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p4}$}}&$5$\textsuperscript{P}&$3.1$&$1$\tabularnewline
-\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$6$\textsuperscript{P}&$2.98$&$1.01$\tabularnewline
-\scriptsize{Tref(nospA+nospZ): Optimum temperature for growth(C)}&\scriptsize{\textit{Tref(nospA+nospZ)$_{p4}$}}&$1$\textsuperscript{T}&$2.9$&$1.02$\tabularnewline
-\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p4}$}}&$7$\textsuperscript{P}&$2.88$&$1.04$\tabularnewline
-\scriptsize{coefficient for non-limiting nutrient}&\scriptsize{\textit{aN$_{p1}$}}&$8$\textsuperscript{P}&$2.7$&$1.05$\tabularnewline
-\scriptsize{P-uptake rate measured at umax}&\scriptsize{\textit{vmaxP$_{p3}$}}&$9$\textsuperscript{P}&$2.23$&$1.07$\tabularnewline
-\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p3}$}}&$10$\textsuperscript{P}&$2.15$&$1.73$\tabularnewline
-\scriptsize{rate constant for nitrification}&\scriptsize{\textit{k11}}&$1$\textsuperscript{OM}&$2.11$&$1.73$\tabularnewline
-\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p3}$}}&$11$\textsuperscript{P}&$1.99$&$1.73$\tabularnewline
-\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$1.91$&$1.73$\tabularnewline
-\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$1.64$&$1.77$\tabularnewline
-\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$12$\textsuperscript{P}&$1.61$&$4.1$\tabularnewline
-\scriptsize{minimum N cell-quota}&\scriptsize{\textit{QminN$_{p3}$}}&$13$\textsuperscript{P}&$1.53$&$4.1$\tabularnewline
-\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$3$\textsuperscript{OM}&$1.49$&$4.2$\tabularnewline
-\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$4$\textsuperscript{OM}&$1.37$&$4.62$\tabularnewline
-\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p4}$}}&$14$\textsuperscript{P}&$1.35$&$4.62$\tabularnewline
+\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p1}$}}&$1$\textsuperscript{P}&$328.35$&$1$\tabularnewline
+\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p3}$}}&$2$\textsuperscript{P}&$232.8$&$1$\tabularnewline
+\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p5}$}}&$3$\textsuperscript{P}&$7.57$&$1$\tabularnewline
+\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p2}$}}&$4$\textsuperscript{P}&$4.08$&$1$\tabularnewline
+\footnotesize{phytoplankton basal respiration coefficient}&\footnotesize{\textit{respb$_{p4}$}}&$5$\textsuperscript{P}&$3.1$&$1$\tabularnewline
+\footnotesize{mortality coefficient}&\footnotesize{\textit{mA$_{p3}$}}&$6$\textsuperscript{P}&$2.98$&$1.01$\tabularnewline
+\footnotesize{Tref(nospA+nospZ): Optimum temperature for growth(C)}&\footnotesize{\textit{Tref(nospA+nospZ)$_{p4}$}}&$1$\textsuperscript{T}&$2.9$&$1.02$\tabularnewline
+\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p4}$}}&$7$\textsuperscript{P}&$2.88$&$1.04$\tabularnewline
+\footnotesize{coefficient for non-limiting nutrient}&\footnotesize{\textit{aN$_{p1}$}}&$8$\textsuperscript{P}&$2.7$&$1.05$\tabularnewline
+\footnotesize{P-uptake rate measured at umax}&\footnotesize{\textit{vmaxP$_{p3}$}}&$9$\textsuperscript{P}&$2.23$&$1.07$\tabularnewline
+\footnotesize{phytoplankton basal respiration coefficient}&\footnotesize{\textit{respb$_{p3}$}}&$10$\textsuperscript{P}&$2.15$&$1.73$\tabularnewline
+\footnotesize{rate constant for nitrification}&\footnotesize{\textit{k11}}&$1$\textsuperscript{OM}&$2.11$&$1.73$\tabularnewline
+\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p3}$}}&$11$\textsuperscript{P}&$1.99$&$1.73$\tabularnewline
+\footnotesize{O2 concentration that inhibits denitrification}&\footnotesize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$1.91$&$1.73$\tabularnewline
+\footnotesize{Chla specific absorption at 490 nm}&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$1.64$&$1.77$\tabularnewline
+\footnotesize{initial slope of the photosynthesis-irradiance relationship}&\footnotesize{\textit{alpha$_{p4}$}}&$12$\textsuperscript{P}&$1.61$&$4.1$\tabularnewline
+\footnotesize{minimum N cell-quota}&\footnotesize{\textit{QminN$_{p3}$}}&$13$\textsuperscript{P}&$1.53$&$4.1$\tabularnewline
+\footnotesize{turnover rate for OM1A and OM1G}&\footnotesize{\textit{KG1}}&$3$\textsuperscript{OM}&$1.49$&$4.2$\tabularnewline
+\footnotesize{turnover rate for OM2A and OM2G}&\footnotesize{\textit{KG2}}&$4$\textsuperscript{OM}&$1.37$&$4.62$\tabularnewline
+\footnotesize{mortality coefficient}&\footnotesize{\textit{mA$_{p4}$}}&$14$\textsuperscript{P}&$1.35$&$4.62$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
