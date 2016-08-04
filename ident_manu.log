@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  3 AUG 2016 11:11
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  4 AUG 2016 08:53
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -545,7 +545,7 @@ tim
 )
 (M:\docs\manuscripts\identifiability\ident_manu.aux
 
-LaTeX Warning: Label `acro:oned@cref' multiply defined.
+LaTeX Warning: Label `acro:zerod@cref' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
@@ -672,8 +672,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 155.
-Package acronym Info: Label `acro:oned' newly defined as it shall be overridden
-
+Package acronym Info: Label `acro:zerod' newly defined as it shall be overridde
+n
 although it is yet undefined on input line 156.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 160.
@@ -687,7 +687,7 @@ although it is yet undefined on input line 162.
  [2
 
 ] [3] [4]
-Package acronym Info: Label `acro:oned' overridden on input line 168.
+Package acronym Info: Label `acro:zerod' overridden on input line 168.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
 although it is yet undefined on input line 169.
  [5]
@@ -718,44 +718,44 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Warning: Float too large for page by 25.60434pt on input line 591.
 
 [21] [22] [23] [24] [25] [26]
-<figs/combnex-1.pdf, id=496, 361.35pt x 361.35pt>
+<figs/combnex-1.pdf, id=493, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
 Package pdftex.def Info: figs/combnex-1.pdf used on input line 601.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensplo-1.pdf, id=497, 578.16pt x 578.16pt>
+<figs/sensplo-1.pdf, id=494, 578.16pt x 578.16pt>
 File: figs/sensplo-1.pdf Graphic file (type pdf)
  <use figs/sensplo-1.pdf>
 Package pdftex.def Info: figs/sensplo-1.pdf used on input line 613.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
 
-<figs/identbox-1.pdf, id=498, 578.16pt x 578.16pt>
+<figs/identbox-1.pdf, id=495, 578.16pt x 578.16pt>
 File: figs/identbox-1.pdf Graphic file (type pdf)
  <use figs/identbox-1.pdf>
 Package pdftex.def Info: figs/identbox-1.pdf used on input line 625.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
 
-<figs/excltemp-1.pdf, id=501, 361.35pt x 578.16pt>
+<figs/excltemp-1.pdf, id=498, 361.35pt x 578.16pt>
 File: figs/excltemp-1.pdf Graphic file (type pdf)
  <use figs/excltemp-1.pdf>
 Package pdftex.def Info: figs/excltemp-1.pdf used on input line 637.
 (pdftex.def)             Requested size: 281.85587pt x 450.9718pt.
 
-<figs/p1z1identbox-1.pdf, id=508, 325.215pt x 578.16pt>
+<figs/p1z1identbox-1.pdf, id=505, 325.215pt x 578.16pt>
 File: figs/p1z1identbox-1.pdf Graphic file (type pdf)
 
 <use figs/p1z1identbox-1.pdf>
 Package pdftex.def Info: figs/p1z1identbox-1.pdf used on input line 649.
 (pdftex.def)             Requested size: 234.8775pt x 417.57172pt.
 
-<figs/heurist-1.pdf, id=511, 578.16pt x 578.16pt>
+<figs/heurist-1.pdf, id=508, 578.16pt x 578.16pt>
 File: figs/heurist-1.pdf Graphic file (type pdf)
  <use figs/heurist-1.pdf>
 Package pdftex.def Info: figs/heurist-1.pdf used on input line 661.
 (pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
 
-<figs/heurist_stts-1.pdf, id=520, 650.43pt x 361.35pt>
+<figs/heurist_stts-1.pdf, id=517, 650.43pt x 361.35pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
@@ -770,7 +770,7 @@ ipts/identifiability/figs/sensplo-1.pdf>]
 uscripts/identifiability/figs/excltemp-1.pdf>] [31 <M:/docs/manuscripts/identif
 iability/figs/p1z1identbox-1.pdf>] [32 <M:/docs/manuscripts/identifiability/fig
 s/heurist-1.pdf>] [33 <M:/docs/manuscripts/identifiability/figs/heurist_stts-1.
-pdf>] <figs/sensalltile-1.pdf, id=596, 650.43pt x 650.43pt>
+pdf>] <figs/sensalltile-1.pdf, id=593, 650.43pt x 650.43pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
@@ -794,12 +794,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 698.
  ) 
 Here is how much of TeX's memory you used:
  11948 strings out of 493921
- 188590 string characters out of 3147282
- 343092 words of memory out of 3000000
+ 188597 string characters out of 3147282
+ 343094 words of memory out of 3000000
  14901 multiletter control sequences out of 15000+200000
  42870 words of font info for 88 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,12n,47p,2335b,596s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,47p,2337b,596s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
@@ -818,9 +818,9 @@ pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program F
 iles/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on ident_manu.pdf (34 pages, 450771 bytes).
+Output written on ident_manu.pdf (34 pages, 449925 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
+ 698 PDF objects out of 1000 (max. 8388607)
  134 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
