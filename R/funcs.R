@@ -74,7 +74,7 @@ parcats2 <- function(as_df = FALSE){
       'astarOMA_1',
       'astarOMZ_1',
       'astarOMR_1',
-      'astarOMbC_1',
+      'astarOMBC_1',
       'sink CDOM_1'
       ),
     lngs = c(

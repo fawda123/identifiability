@@ -145,7 +145,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Thu Aug 4 08:53:56 2016 -0500
+  \\ Version Date:   Sat Aug 13 13:27:22 2016 -0500
 	}
 \date{}
 \maketitle
@@ -178,23 +178,23 @@ A final analysis evaluates identifiability relative to structural uncertainty to
 
 Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^-3$), occur seasonally in bottom waters in the northern \ac{gom}.  The \ac{lcs} receives high nutrient loads from the \ac{marb} that drains a significant portion of the continental United States.  Nutrient-stimulated primary production in surface waters increases biological oxygen demand in bottom waters as sinking organic matter is decomposed \citep{Bierman94,Murrell13}.  The hypoxic area averages 15,540 km$^2$ annually (1993-2015) with minimum concentrations observed from late spring to early fall.  Seasonal variation is strongly related to carbon and nutrient export from the \ac{marb} \citep{Lohrenz08,Bianchi10}, whereas hydrologic variation, currents, and wind patterns can affect vertical salinity gradients that contribute to the formation of hypoxia \citep{Wiseman97,Paerl98,Obenour15}. 
 
-This study evaluates a recently developed hydrodynamic and ecological model that describes horizontal and vertical transport and mixing of state variables relevant for hypoxia in the northern \ac{gom}.  The \ac{cgem} includes elements from the Navy Coastal Ocean Model \citep{Martin00} that describe hydrodynamics on the \ac{lcs} and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf (depth $\leq$ 100 m, with additional hybrid layers at deeper depths).  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.  Atmospheric and hydrological boundary conditions described in \citet{Hodur97} and \citet{Lehrter13} are also included in \ac{cgem}.
+This study evaluated a recently developed hydrodynamic and ecological model that describes horizontal and vertical transport and mixing of state variables relevant for hypoxia in the northern \ac{gom}.  The \ac{cgem} includes elements from the Navy Coastal Ocean Model \citep{Martin00} that describes hydrodynamics on the \ac{lcs} and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf (depth $\leq$ 100 m, with additional hybrid layers at deeper depths).  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.  Atmospheric and hydrological boundary conditions described in \citet{Hodur97} and \citet{Lehrter13} are also included in \ac{cgem}.
 
-The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any form of physical transport (i.e., advection, mixing, or surface flux).  Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{zerod} parcel that is uniformly mixed as a closed system.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 \citet[Table 1 in][]{Murrell14}. 
+The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any form of physical transport (i.e., advection, mixing, or surface flux).  Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{zerod} parcel that is uniformly mixed as a closed system.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 \citep[Table 1 in][]{Murrell14}. 
 
 
 
-Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 250 parameter values for each of the equations is also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.  The sensitivity of \ac{do} to perturbations of all parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes.  For simplicity, the parameters were grouped into one of six categories based on their respective equations: optics ($n = $ 11 parameters), organic matter (29), phytoplankton (156), temperature (32), and zooplankton (22).  A full description is available as an appendix in \citepalias{LehrterIR}.  
+Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.  The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes.  Initial screening removed 73 irrelevant parameters that were not relevant such that 178 were retained for the sensitivity analysis.  Irrelevant parameters were removed for several reasons, e.g., a parameter was only relevant for the hydrodynamic model, was considered a physical constant, or had no effect given initial conditions.  For simplicity, the remaining parameters were grouped into one of six categories based on their respective equations: optics ($n = $ 4 parameters), organic matter (12), phytoplankton (132), temperature (8), and zooplankton (22).  A full description is available as an appendix in \citepalias{LehrterIR}.  
 
 \subsection{Local sensitivity analysis}
 
-The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 250 parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
+The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the 178 parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
 
 \begin{equation} \label{sijeqn}
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parameter $j$:
+\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
 
 \begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
@@ -217,7 +217,7 @@ Identifiability of parameter subsets was estimated from the minimum eigenvector 
 
 The collinearity index $\gamma$ provides a measure of the linear dependence between sensitivity functions described above for subsets of parameters. Estimates of $\gamma$ greater than 10-15 suggest parameter sets are poorly identifiable \citep{Brun01,Omlin01}, meaning optimal values are inestimable given similar effects of the selected parameters on \ac{do}. Greater sensitivity of a state variable to a subset of parameters does not always imply better identifiability if the individual effects are similar.  An intuitive interpretation of $\gamma$ is provided by \citet{Brun01} such that a change in a state variable caused by a change in one parameter can be offset by the fraction $1 - 1/\gamma$ by the remaining parameters.  That is, $\gamma = 10$ suggests the relative change in \ac{do} for a selected parameter can be compensated for by 90\% with changes in the other parameters. 
 
-Initial analyses suggested that considerably limited subsets of parameters were identifiable of the 250 in the FishTank model.  Given this limitation, parameter selection must consider the competing objectives of increased precision with parameter inclusion and reduced identifability as it relates to optimization.  An additional challenge is the excessively high number of combinations of parameter sets, which complicates selection given sensitivity differences and desired ecological categories of each parameter.  For example, \cref{fig:combnex} provides a simple graphic of the unique number of combinations that are possible for different subsets of `complete' parameter sets of different sizes (i.e., based on $n$ choose $k$ combinations equal to $n!/\left(k!\left(n-k\right)!\right)$).  The number of unique combinations increases with the total parameters in the set and is also maximized for moderate selections (e.g., selecting half the total).  For example, over 10$^{14}$ combinations are possible by selecting 25 parameters from a set of 50.  Accordingly, parameter selection is complicated by differing sensitivity, identifiability, and the difficulty of choosing from many combinations.
+Initial analyses suggested that considerably limited subsets of parameters were identifiable of the 178 evaluated for the FishTank model.  Given this limitation, parameter selection must consider the competing objectives of increased precision with parameter inclusion and reduced identifability as it relates to optimization.  An additional challenge is the excessively high number of combinations of parameter sets, which complicates selection given sensitivity differences and desired ecological categories of each parameter.  For example, \cref{fig:combnex} provides a simple graphic of the unique number of combinations that are possible for different subsets of `complete' parameter sets of different sizes (i.e., based on $n$ choose $k$ combinations equal to $n!/\left(k!\left(n-k\right)!\right)$).  The number of unique combinations increases with the total parameters in the set and is also maximized for moderate selections (e.g., selecting half the total).  For example, over 10$^{14}$ combinations are possible by selecting 25 parameters from a set of 50.  Accordingly, parameter selection is complicated by differing sensitivity, identifiability, and the difficulty of choosing from many combinations.
 
 A set of heuristics was developed to balance the tradeoff in model complexity and identifiability given the challenges described above \citep[see also][]{Wagener01}.  These rulesets were developed with the assumption that parameters will be selected with preference for those with high sensitivity and identifability based on $\gamma < 15$ as an acceptable threshold for subsets (e.g., 93\% accountability).  Selection heurestics also recognized that parameter categories (i.e., optics, organic matter, phytoplankton, temperature, zooplankton) may have unequal preferences given questions of interest.  In all selection scenarios, parameters were selected by decreasing sensitivity starting with the most sensitive until identifiability did not exceed $\gamma = 15$ where selections were \begin{inparaenum}[1\upshape)]
 \item blocked within parameter category,
@@ -238,15 +238,15 @@ As a final analysis, the effects of model structure on parameter identifiability
 
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 140 of 250 parameters (56\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to four parameters for optics (36\% of all optic parameters, \cref{tab:optsens}), seven for organic matter (24\%, \cref{tab:omsens}), 103 for phytoplankton (66\%, \cref{tab:phytosens}), seven for temperature (22\%, \cref{tab:tempsens}), and 19 for zooplankton (86\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $3.18\times 10^{-6}$ for \textit{Kcdom} (optics) to $328.35$ for \textit{Qc$_{p1}$} (phytoplankton), whereas average sensitivity among all parameters was $L1 = $ $4.52$.  Within categories, sensitivity ranged from $3.18\times 10^{-6}$ (\textit{Kcdom}) to $1.64$ (\textit{astar490}) for optics, $0.01$ (\textit{KGcdom}) to $2.11$ (\textit{k11}) for organic matter, $1\times 10^{-5}$ (\textit{Ksi$_{p1}$}) to $328.35$ (\textit{Qc$_{p1}$}) for phytopankton, $0.12$ (\textit{Tref(nospA+nospZ)$_{p1}$}) to $2.9$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $0$ (\textit{ZQp$_{z1}$}) to $0.82$ (\textit{ZKa$_{z1}$}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ $0.42$ for optics, $1.24$ for organic matter, $5.96$ for phytoplankton, $0.55$ for temperature, and $0.27$ for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ $19.71$, $14.56$), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ $0.31$, $0.23$ for groups one and two).
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 105 of 178 parameters (59\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to three parameters for optics (27\% of all optic parameters, \cref{tab:optsens}), eight for organic matter (25\%, \cref{tab:omsens}), 78 for phytoplankton (50\%, \cref{tab:phytosens}), six for temperature (27\%, \cref{tab:tempsens}), and 10 for zooplankton (33\%, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $2.29\times 10^{-5}$ for \textit{respg$_{p5}$} (phytoplankton) to $1.24$ for \textit{KG2} (organic matter), whereas average sensitivity among all parameters was $L1 = $ $0.12$.  Within categories, sensitivity ranged from $6.78\times 10^{-4}$ (\textit{astarOMZ}) to $0.43$ (\textit{astar490}) for optics, $0.01$ (\textit{KNO3}) to $1.24$ (\textit{KG2}) for organic matter, $2.29\times 10^{-5}$ (\textit{respg$_{p5}$}) to $0.65$ (\textit{Qc$_{p1}$}) for phytopankton, $9.75\times 10^{-5}$ (\textit{Tref(nospA+nospZ)$_{p6}$}) to $9.97\times 10^{-5}$ (\textit{Tref(nospA+nospZ)$_{p4}$}) for temperature, and $5.75\times 10^{-5}$ (\textit{ZQp$_{z1}$}) to $5.75\times 10^{-5}$ (\textit{ZQp$_{z2}$}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ $0.17$ for optics, $0.34$ for organic matter, $0.12$ for phytoplankton, $9.89\times 10^{-5}$ for temperature, and $0$ for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ $0.12$, $0.12$), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ $0$, $0$ for groups one and two).
 
-Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \textit{ZKa$_{z1}$}, which caused an increase in \ac{do}.  The phytoplankton parameter, \textit{Qc$_{p1}$}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\textit{astar490}) and phytoplankton (\textit{Qc$_{p1}$}) parameters.
+Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \textit{ZQp$_{z2}$}, which caused an increase in \ac{do}.  The phytoplankton parameter, \textit{Qc$_{p1}$}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\textit{astar490}) and phytoplankton (\textit{Qc$_{p1}$}) parameters.
 
 \subsection{Subset identifiability}
 
 
 
-The identifiability analyses suggested that most parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton ($7$\% less than $\gamma = 15$, $5.9$\% less than $\gamma = 10$)  and zooplankton categories ($28.9$\%, less than $\gamma = 15$, $24.2$\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable ($83.3$\% less than $\gamma = 15$, $73.3$\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parameters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four ($77$\% less than $\gamma = 15$, $70.8$\% less than $\gamma = 10$) and top five ($77$\% less than $\gamma = 15$, $70.8$\%, less than $\gamma = 10$) parameters.  
+The identifiability analyses suggested that most parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton ($1.7$\% less than $\gamma = 15$, $1.2$\% less than $\gamma = 10$)  and zooplankton categories ($7.9$\%, less than $\gamma = 15$, $4.3$\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable ($NaN\times 10^{NA}$\% less than $\gamma = 15$, $NaN\times 10^{NA}$\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parameters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four ($2.7$\% less than $\gamma = 15$, $1.9$\% less than $\gamma = 10$) and top five ($2.7$\% less than $\gamma = 15$, $1.9$\%, less than $\gamma = 10$) parameters.  
 
 
 
@@ -260,7 +260,7 @@ Comparison of identifiability between categories showed that phytoplankton and z
 
 
 
-Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ $4$, $\gamma =$  $3.7$) and organic matter ($n = $ $7$, $\gamma =$  $1.7$) categories were selected, whereas 23 were selected for phytoplankton ($\gamma = $ $13.7$), five for temperature ($\gamma = $ $11.4$), and five for zooplankton ($\gamma = $ $3.1$).  For the second selection heuristic, 20 parameters were selected ($\gamma = $ $4.6$, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, 18 parameters were selected ($\gamma = $ $9.2$) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \textit{KNO3} caused in increase in $\gamma$ from $4.6$ to $15.6$ and equal selection within cateogies showed that including \textit{Tref(nospA+nospZ)$_{p2}$} caused in increase in $\gamma$ from $9.2$ to $66.2$.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ $2$, $\gamma =$  $3.5$) and organic matter ($n = $ $3$, $\gamma =$  $10.5$) categories were selected, whereas one were selected for phytoplankton ($\gamma = $ $1$), one for temperature ($\gamma = $ $1$), and one for zooplankton ($\gamma = $ $1$).  For the second selection heuristic, two parameters were selected ($\gamma = $ $8.5$, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, four parameters were selected ($\gamma = $ $12.6$) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \textit{Qc$_{p1}$} caused in increase in $\gamma$ from $8.5$ to $17.5$ and equal selection within cateogies showed that including \textit{ZQc$_{z1}$} caused in increase in $\gamma$ from $12.6$ to $72.2$.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
 
@@ -314,10 +314,9 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 \hline\hline
 \multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$1.64$&$8.64$\tabularnewline
-OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.02$&$0.1$\tabularnewline
-OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$0.01$&$0.01$\tabularnewline
-AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09\times 10^{-5}$\tabularnewline
+Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$0.43$&$1.95$\tabularnewline
+OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.09$&$0.4$\tabularnewline
+OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$6.78\times 10^{-4}$&$0$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -334,13 +333,14 @@ AOP, light attenuation due to CDOM&\textit{Kcdom}&$0$&$3.18\times 10^{-6}$&$1.09
 \hline\hline
 \multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-rate constant for nitrification&\textit{k11}&$5$&$2.11$&$16.1$\tabularnewline
-O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.91$&$11.76$\tabularnewline
-turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.49$&$6.83$\tabularnewline
-turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$1.37$&$3.46$\tabularnewline
-half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.24$&$7.98$\tabularnewline
-half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.56$&$1.92$\tabularnewline
-decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
+turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$1.24$&$6.02$\tabularnewline
+turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.92$&$4.62$\tabularnewline
+half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.35$&$1.57$\tabularnewline
+O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.06$&$0.34$\tabularnewline
+maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$0.05$&$0.21$\tabularnewline
+NH4 rate constant for nitrification&\textit{KNH4}&$1$&$0.04$&$0.17$\tabularnewline
+decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.03$&$0.12$\tabularnewline
+half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$0.01$&$0.05$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -357,51 +357,13 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \hline\hline
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-{coefficient for non-limiting nutrient}&&&\tabularnewline
-~~\textit{aN$_{p1}$}&$1$&$2.7$&$47.26$\tabularnewline
-~~\textit{aN$_{p3}$}&$1$&$0.66$&$3.16$\tabularnewline
-\hline
-{half-saturation constant for n}&&&\tabularnewline
-~~\textit{Kn$_{p3}$}&$5.93$&$1.15$&$9.22$\tabularnewline
-~~\textit{Kn$_{p4}$}&$1.13$&$0.62$&$2.5$\tabularnewline
-\hline
-{initial slope of the photosynthesis-irradiance relationship}&&&\tabularnewline
-~~\textit{alpha$_{p4}$}&$3.96\times 10^{-16}$&$1.61$&$7.46$\tabularnewline
-~~\textit{alpha$_{p3}$}&$6.19\times 10^{-17}$&$1.06$&$3.74$\tabularnewline
-~~\textit{alpha$_{p5}$}&$3.87\times 10^{-16}$&$0.81$&$5.54$\tabularnewline
-\hline
-{minimum n cell-quota}&&&\tabularnewline
-~~\textit{QminN$_{p3}$}&$1.27\times 10^{-8}$&$1.53$&$6.4$\tabularnewline
-~~\textit{QminN$_{p4}$}&$1.53\times 10^{-10}$&$0.91$&$2.76$\tabularnewline
-~~\textit{QminN$_{p1}$}&$6.08\times 10^{-9}$&$0.62$&$4.55$\tabularnewline
-\hline
-{mortality coefficient}&&&\tabularnewline
-~~\textit{mA$_{p3}$}&$0.03$&$2.98$&$14.34$\tabularnewline
-~~\textit{mA$_{p4}$}&$0.11$&$1.35$&$7.04$\tabularnewline
-\hline
-{n-uptake rate measured at umax}&&&\tabularnewline
-~~\textit{vmaxN$_{p5}$}&$1.4\times 10^{-9}$&$7.57$&$43.9$\tabularnewline
-~~\textit{vmaxN$_{p4}$}&$1.33\times 10^{-9}$&$2.88$&$16.56$\tabularnewline
-~~\textit{vmaxN$_{p3}$}&$8.11\times 10^{-8}$&$1.99$&$15.23$\tabularnewline
-~~\textit{vmaxN$_{p1}$}&$4.1\times 10^{-8}$&$0.84$&$2.92$\tabularnewline
-\hline
-{p-uptake rate measured at umax}&&&\tabularnewline
-~~\textit{vmaxP$_{p3}$}&$6.15\times 10^{-8}$&$2.23$&$9.89$\tabularnewline
-~~\textit{vmaxP$_{p1}$}&$2.68\times 10^{-8}$&$0.74$&$11.41$\tabularnewline
-\hline
-{phytoplankton basal respiration coefficient}&&&\tabularnewline
-~~\textit{respb$_{p4}$}&$0.02$&$3.1$&$26.48$\tabularnewline
-~~\textit{respb$_{p3}$}&$0.02$&$2.15$&$6.35$\tabularnewline
-~~\textit{respb$_{p5}$}&$0.02$&$0.81$&$8.61$\tabularnewline
-\hline
 {phytoplankton carbon/cell}&&&\tabularnewline
-~~\textit{Qc$_{p1}$}&$1.35\times 10^{-6}$&$328.35$&$2181.05$\tabularnewline
-~~\textit{Qc$_{p3}$}&$2.65\times 10^{-6}$&$232.8$&$1574.72$\tabularnewline
-~~\textit{Qc$_{p2}$}&$1.68\times 10^{-7}$&$4.08$&$61.25$\tabularnewline
-~~\textit{Qc$_{p4}$}&$4.54\times 10^{-8}$&$1.03$&$3.75$\tabularnewline
-\hline
-{phytoplankton growth respiration coefficient}&&&\tabularnewline
-~~\textit{respg$_{p4}$}&$0.1$&$0.98$&$7.37$\tabularnewline
+~~\textit{Qc$_{p1}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
+~~\textit{Qc$_{p2}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
+~~\textit{Qc$_{p3}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
+~~\textit{Qc$_{p4}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
+~~\textit{Qc$_{p5}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
+~~\textit{Qc$_{p6}$}&$1.35\times 10^{-6}$&$0.65$&$3.16$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -419,13 +381,12 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
 {optimum temperature for growth(c)}&&&\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{p4}$}&$17$&$2.9$&$22.95$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{z2}$}&$26$&$0.18$&$2.59$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{p5}$}&$26$&$0.17$&$0.72$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{p2}$}&$22$&$0.16$&$0.82$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{z1}$}&$22$&$0.16$&$0.33$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{p3}$}&$17$&$0.14$&$0.78$\tabularnewline
-~~\textit{Tref(nospA+nospZ)$_{p1}$}&$22$&$0.12$&$0.29$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p4}$}&$22$&$9.97\times 10^{-5}$&$1.46\times 10^{-4}$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p2}$}&$22$&$9.96\times 10^{-5}$&$1.46\times 10^{-4}$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p1}$}&$22$&$9.96\times 10^{-5}$&$1.46\times 10^{-4}$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p3}$}&$22$&$9.86\times 10^{-5}$&$1.45\times 10^{-4}$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p5}$}&$22$&$9.86\times 10^{-5}$&$1.45\times 10^{-4}$\tabularnewline
+~~\textit{Tref(nospA+nospZ)$_{p6}$}&$22$&$9.75\times 10^{-5}$&$1.43\times 10^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -442,44 +403,25 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \hline\hline
 \multicolumn{1}{l}{Description, Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{L2}\tabularnewline
 \hline
-{assimilation efficiency as a fraction of ingestion}&&&\tabularnewline
-~~\textit{Zeffic$_{z1}$}&$0.4$&$0.23$&$0.55$\tabularnewline
-~~\textit{Zeffic$_{z2}$}&$0.4$&$0.21$&$0.75$\tabularnewline
-\hline
-{half saturation coefficient for grazing}&&&\tabularnewline
-~~\textit{ZKa$_{z1}$}&$1.12\times 10^{12}$&$0.82$&$6.29$\tabularnewline
-~~\textit{ZKa$_{z2}$}&$1.12\times 10^{12}$&$0.46$&$3.24$\tabularnewline
-\hline
-{maximum growth rate of zooplankton}&&&\tabularnewline
-~~\textit{Zumax$_{z2}$}&$2.98\times 10^{7}$&$0.48$&$1.84$\tabularnewline
-~~\textit{Zumax$_{z1}$}&$9.45\times 10^{8}$&$0.46$&$0.91$\tabularnewline
-\hline
-{proportion of grazed phytoplankton lost to sloppy feeding}&&&\tabularnewline
-~~\textit{Zslop$_{z1}$}&$0.25$&$0.12$&$0.33$\tabularnewline
-\hline
 {zooplankton biomass-dependent respiration factor}&&&\tabularnewline
-~~\textit{Zrespb$_{z1}$}&$0.1$&$0.45$&$3.02$\tabularnewline
-~~\textit{Zrespb$_{z2}$}&$0.42$&$0.09$&$1.05$\tabularnewline
+~~\textit{Zrespb$_{z1}$}&$0.1$&$0$&$0.01$\tabularnewline
+~~\textit{Zrespb$_{z2}$}&$0.1$&$0$&$0.01$\tabularnewline
 \hline
 {zooplankton carbon/individual}&&&\tabularnewline
-~~\textit{ZQc$_{z2}$}&$7.08\times 10^{-7}$&$0.1$&$0.36$\tabularnewline
-~~\textit{ZQc$_{z1}$}&$3.13\times 10^{-4}$&$0.06$&$0.62$\tabularnewline
-\hline
-{zooplankton growth-dependent respiration factor}&&&\tabularnewline
-~~\textit{Zrespg$_{z1}$}&$0.2$&$0.24$&$3.19$\tabularnewline
-~~\textit{Zrespg$_{z2}$}&$0.3$&$0.12$&$0.31$\tabularnewline
+~~\textit{ZQc$_{z1}$}&$3.13\times 10^{-4}$&$0.01$&$0.04$\tabularnewline
+~~\textit{ZQc$_{z2}$}&$3.13\times 10^{-4}$&$0.01$&$0.04$\tabularnewline
 \hline
 {zooplankton mortality constant for quadratic mortality}&&&\tabularnewline
-~~\textit{Zm$_{z2}$}&$7.2\times 10^{-4}$&$0.33$&$2.85$\tabularnewline
-~~\textit{Zm$_{z1}$}&$7.2\times 10^{-4}$&$0.26$&$0.8$\tabularnewline
+~~\textit{Zm$_{z1}$}&$7.2\times 10^{-4}$&$4.95\times 10^{-4}$&$0$\tabularnewline
+~~\textit{Zm$_{z2}$}&$7.2\times 10^{-4}$&$4.95\times 10^{-4}$&$0$\tabularnewline
 \hline
 {zooplankton nitrogen/individual}&&&\tabularnewline
-~~\textit{ZQn$_{z1}$}&$6.95\times 10^{-5}$&$0.47$&$1.64$\tabularnewline
-~~\textit{ZQn$_{z2}$}&$1.57\times 10^{-7}$&$0.24$&$1.35$\tabularnewline
+~~\textit{ZQn$_{z1}$}&$6.95\times 10^{-5}$&$0$&$0.01$\tabularnewline
+~~\textit{ZQn$_{z2}$}&$6.95\times 10^{-5}$&$0$&$0.01$\tabularnewline
 \hline
 {zooplankton phosphorus/individual}&&&\tabularnewline
-~~\textit{ZQp$_{z2}$}&$8.53\times 10^{-9}$&$0.01$&$0.01$\tabularnewline
-~~\textit{ZQp$_{z1}$}&$3.77\times 10^{-6}$&$0$&$0$\tabularnewline
+~~\textit{ZQp$_{z1}$}&$3.77\times 10^{-6}$&$5.75\times 10^{-5}$&$2.66\times 10^{-4}$\tabularnewline
+~~\textit{ZQp$_{z2}$}&$3.77\times 10^{-6}$&$5.75\times 10^{-5}$&$2.66\times 10^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -496,26 +438,8 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \hline\hline
 \multicolumn{1}{l}{Parameter description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
-\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p1}$}}&$1$\textsuperscript{P}&$328.35$&$1$\tabularnewline
-\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p3}$}}&$2$\textsuperscript{P}&$232.8$&$1$\tabularnewline
-\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p5}$}}&$3$\textsuperscript{P}&$7.57$&$1$\tabularnewline
-\footnotesize{phytoplankton carbon/cell}&\footnotesize{\textit{Qc$_{p2}$}}&$4$\textsuperscript{P}&$4.08$&$1$\tabularnewline
-\footnotesize{phytoplankton basal respiration coefficient}&\footnotesize{\textit{respb$_{p4}$}}&$5$\textsuperscript{P}&$3.1$&$1$\tabularnewline
-\footnotesize{mortality coefficient}&\footnotesize{\textit{mA$_{p3}$}}&$6$\textsuperscript{P}&$2.98$&$1.01$\tabularnewline
-\footnotesize{Tref(nospA+nospZ): Optimum temperature for growth(C)}&\footnotesize{\textit{Tref(nospA+nospZ)$_{p4}$}}&$1$\textsuperscript{T}&$2.9$&$1.02$\tabularnewline
-\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p4}$}}&$7$\textsuperscript{P}&$2.88$&$1.04$\tabularnewline
-\footnotesize{coefficient for non-limiting nutrient}&\footnotesize{\textit{aN$_{p1}$}}&$8$\textsuperscript{P}&$2.7$&$1.05$\tabularnewline
-\footnotesize{P-uptake rate measured at umax}&\footnotesize{\textit{vmaxP$_{p3}$}}&$9$\textsuperscript{P}&$2.23$&$1.07$\tabularnewline
-\footnotesize{phytoplankton basal respiration coefficient}&\footnotesize{\textit{respb$_{p3}$}}&$10$\textsuperscript{P}&$2.15$&$1.73$\tabularnewline
-\footnotesize{rate constant for nitrification}&\footnotesize{\textit{k11}}&$1$\textsuperscript{OM}&$2.11$&$1.73$\tabularnewline
-\footnotesize{N-uptake rate measured at umax}&\footnotesize{\textit{vmaxN$_{p3}$}}&$11$\textsuperscript{P}&$1.99$&$1.73$\tabularnewline
-\footnotesize{O2 concentration that inhibits denitrification}&\footnotesize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$1.91$&$1.73$\tabularnewline
-\footnotesize{Chla specific absorption at 490 nm}&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$1.64$&$1.77$\tabularnewline
-\footnotesize{initial slope of the photosynthesis-irradiance relationship}&\footnotesize{\textit{alpha$_{p4}$}}&$12$\textsuperscript{P}&$1.61$&$4.1$\tabularnewline
-\footnotesize{minimum N cell-quota}&\footnotesize{\textit{QminN$_{p3}$}}&$13$\textsuperscript{P}&$1.53$&$4.1$\tabularnewline
-\footnotesize{turnover rate for OM1A and OM1G}&\footnotesize{\textit{KG1}}&$3$\textsuperscript{OM}&$1.49$&$4.2$\tabularnewline
-\footnotesize{turnover rate for OM2A and OM2G}&\footnotesize{\textit{KG2}}&$4$\textsuperscript{OM}&$1.37$&$4.62$\tabularnewline
-\footnotesize{mortality coefficient}&\footnotesize{\textit{mA$_{p4}$}}&$14$\textsuperscript{P}&$1.35$&$4.62$\tabularnewline
+\footnotesize{turnover rate for OM2A and OM2G}&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$1.24$&$1$\tabularnewline
+\footnotesize{turnover rate for OM1A and OM1G}&\footnotesize{\textit{KG1}}&$2$\textsuperscript{OM}&$0.92$&$8.48$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -533,58 +457,27 @@ decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.01$&$0.03$\tabularnewline
 \multicolumn{1}{l}{State variable, parameter description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
 {Ammonium}&&&&\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$2.38$&$1$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$2.23$&$3.1$\tabularnewline
-~~\scriptsize{rate constant for nitrification}&\scriptsize{\textit{k11}}&$1$\textsuperscript{OM}&$0.68$&$3.1$\tabularnewline
-~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$0.46$&$3.12$\tabularnewline
-~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$3$\textsuperscript{OM}&$0.39$&$6.53$\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$3$\textsuperscript{P}&$0.35$&$7.18$\tabularnewline
-~~\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p4}$}}&$4$\textsuperscript{P}&$0.35$&$7.26$\tabularnewline
-~~\scriptsize{N-uptake rate measured at umax}&\scriptsize{\textit{vmaxN$_{p3}$}}&$5$\textsuperscript{P}&$0.34$&$13.14$\tabularnewline
+~~\scriptsize{NH4 rate constant for nitrification}&\scriptsize{\textit{KNH4}}&$1$\textsuperscript{OM}&$0.81$&$1$\tabularnewline
 \hline
 {Chlorophyll}&&&&\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$104.26$&$1$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$47.86$&$3.65$\tabularnewline
-~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$3$\textsuperscript{P}&$1.71$&$4.07$\tabularnewline
-~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$1$\textsuperscript{OM}&$1.29$&$5.58$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p5}$}}&$1$\textsuperscript{P}&$0.08$&$1$\tabularnewline
 \hline
 {Irradiance}&&&&\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$0.32$&$1$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$0.25$&$4.87$\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$3$\textsuperscript{P}&$0.19$&$5.38$\tabularnewline
-~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$4$\textsuperscript{P}&$0.17$&$7.61$\tabularnewline
-~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.15$&$13.34$\tabularnewline
-~~\scriptsize{phytoplankton basal respiration coefficient}&\scriptsize{\textit{respb$_{p3}$}}&$5$\textsuperscript{P}&$0.11$&$13.5$\tabularnewline
-~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$1$\textsuperscript{OM}&$0.08$&$14.64$\tabularnewline
+~~\scriptsize{OMA specific absorption at 490 nm}&\scriptsize{\textit{astarOMA}}&$1$\textsuperscript{O}&$5.86\times 10^{14}$&$1$\tabularnewline
+~~\scriptsize{decay rate of CDOM, 1/day}&\scriptsize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$2.66\times 10^{14}$&$3.92$\tabularnewline
 \hline
 {Nitrate}&&&&\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$1.07\times 10^{38}$&$1$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$1.44\times 10^{23}$&$1$\tabularnewline
-~~\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$2\times 10^{5}$&$10.55$\tabularnewline
+~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$1$\textsuperscript{OM}&$0.85$&$1$\tabularnewline
 \hline
 {OM1}&&&&\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1.5$\textsuperscript{P}&$1.13$&$1$\tabularnewline
-~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p4}$}}&$1.5$\textsuperscript{P}&$0.78$&$1.68$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$3$\textsuperscript{P}&$0.76$&$8.66$\tabularnewline
-~~\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$0.71$&$8.98$\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$4$\textsuperscript{P}&$0.48$&$9.22$\tabularnewline
-~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.43$&$9.22$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$3.5$\textsuperscript{P}&$43.06$&$1$\tabularnewline
 \hline
 {OM2}&&&&\tabularnewline
-~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$1$\textsuperscript{OM}&$1.3$&$1$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$1$\textsuperscript{P}&$0.94$&$2.01$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$2$\textsuperscript{P}&$0.74$&$7.65$\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p4}$}}&$3$\textsuperscript{P}&$0.35$&$11$\tabularnewline
-~~\scriptsize{O2 concentration that inhibits denitrification}&\scriptsize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$0.34$&$11.29$\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$4$\textsuperscript{P}&$0.31$&$11.44$\tabularnewline
-~~\scriptsize{Chla specific absorption at 490 nm}&\scriptsize{\textit{astar490}}&$1$\textsuperscript{O}&$0.29$&$11.54$\tabularnewline
-~~\scriptsize{maximum growth rate of zooplankton}&\scriptsize{\textit{Zumax$_{z1}$}}&$1$\textsuperscript{Z}&$0.29$&$11.66$\tabularnewline
+~~\scriptsize{turnover rate for OM1A and OM1G}&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$35.62$&$1$\tabularnewline
+~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p1}$}}&$3.5$\textsuperscript{P}&$33.53$&$10.36$\tabularnewline
 \hline
 {Phosphate}&&&&\tabularnewline
-~~\scriptsize{initial slope of the photosynthesis-irradiance relationship}&\scriptsize{\textit{alpha$_{p3}$}}&$1$\textsuperscript{P}&$2.92$&$1$\tabularnewline
-~~\scriptsize{P-uptake rate measured at umax}&\scriptsize{\textit{vmaxP$_{p3}$}}&$2$\textsuperscript{P}&$1.57$&$2.23$\tabularnewline
-~~\scriptsize{mortality coefficient}&\scriptsize{\textit{mA$_{p3}$}}&$3$\textsuperscript{P}&$0.78$&$2.57$\tabularnewline
-~~\scriptsize{phytoplankton carbon/cell}&\scriptsize{\textit{Qc$_{p3}$}}&$4$\textsuperscript{P}&$0.73$&$5.29$\tabularnewline
+~~\scriptsize{turnover rate for OM2A and OM2G}&\scriptsize{\textit{KG2}}&$1$\textsuperscript{OM}&$0.21$&$1$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
