@@ -887,7 +887,8 @@ parcats2 <- function(as_df = FALSE){
 #
 # parin chr vector of short names to convert
 # frm chr string indicating format of output, tex or exp for latex or expression
-par_txt <- function(parin, frm = 'tex'){
+# p1z1 logical indicating if subscripts for multiple phyto/zoop groups are removed
+par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
 
   library(dplyr)
   
@@ -947,6 +948,9 @@ par_txt <- function(parin, frm = 'tex'){
   t %>% 
   data.frame(., stringsAsFactors = FALSE) %>% 
   .$shrt
+
+  # remove subscripts if p1z1
+  if(p1z1) subs <- gsub('_p[1-6]$|_z[1-1]$', '', subs)
 
   # convert output format for tex
   if(frm == 'tex'){

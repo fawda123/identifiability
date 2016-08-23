@@ -65,12 +65,15 @@
      }
 
 %knitr options
-<<setup,include=F,cache=F>>=
+<<setup, include = F, cache = F>>=
 library(knitr)
 # set global chunk options
 opts_chunk$set(fig.path = 'figs/', fig.align = 'center', fig.show = 'hold', message = F, echo = F, results = 'asis', dev = 'pdf', dev.args = list(family = 'serif'), fig.pos = '!ht', warning = F)
 options(replace.assign = TRUE, width = 90)
+@
 
+% R dependencies
+<<include = F, cache = F>>=
 source('R/funcs.r')
 library(WRTDStidal)
 library(tidyr)
@@ -156,6 +159,9 @@ This study evaluated a recently developed hydrodynamic and ecological model that
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any form of physical transport (i.e., advection, mixing, or surface flux).  Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{zerod} parcel that is uniformly mixed as a closed system.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 \citep[Table 1 in][]{Murrell14}. 
 
+Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.  The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes.  Initial screening removed 73 irrelevant parameters that were removed for several reasons, e.g., a parameter was only relevant for the hydrodynamic model, was considered a physical constant, or had no effect given initial conditions.  
+
+
 <<echo = FALSE>>=
 # remove irrelevant parameters, from 'ignore/noparams.csv'
 rmpars <- c('Kw_1', 'Kcdom_1', 'Kspm_1', 'Kchla_1', 'aw490_1', 'astarOMR_1', 'astarOMBC_1', 'KTg1(nospA+nospZ)_1', 'KTg1(nospA+nospZ)_2', 'KTg1(nospA+nospZ)_3', 'KTg1(nospA+nospZ)_4', 'KTg1(nospA+nospZ)_5', 'KTg1(nospA+nospZ)_6', 'KTg1(nospA+nospZ)_7', 'KTg1(nospA+nospZ)_8', 'KTg2(nospA+nospZ)_1', 'KTg2(nospA+nospZ)_2', 'KTg2(nospA+nospZ)_3', 'KTg2(nospA+nospZ)_4', 'KTg2(nospA+nospZ)_5', 'KTg2(nospA+nospZ)_6', 'KTg2(nospA+nospZ)_7', 'KTg2(nospA+nospZ)_8', 'Ea_R(nospA+nospZ)_1', 'Ea_R(nospA+nospZ)_2', 'Ea_R(nospA+nospZ)_3', 'Ea_R(nospA+nospZ)_4', 'Ea_R(nospA+nospZ)_5', 'Ea_R(nospA+nospZ)_6', 'Ea_R(nospA+nospZ)_7', 'Ea_R(nospA+nospZ)_8', 'beta_1', 'beta_2', 'beta_3', 'beta_4', 'beta_5', 'beta_6', 'QmaxN_1', 'QmaxN_2', 'QmaxN_3', 'QmaxN_4', 'QmaxN_5', 'QmaxN_6', 'QmaxP_1', 'QmaxP_2', 'QmaxP_3', 'QmaxP_4', 'QmaxP_5', 'QmaxP_6', 'nfQs_1', 'nfQs_2', 'nfQs_3', 'nfQs_4', 'nfQs_5', 'nfQs_6', 'KG1_R_1', 'KG2_R_1', 'KG1_BC_1', 'KG2_BC_1', 'pCO2_1', 'stoich_x1R_1', 'stoich_y1R_1', 'stoich_x2R_1', 'stoich_y2R_1', 'stoich_x1BC_1', 'stoich_y1BC_1', 'stoich_x2BC_1', 'stoich_y2BC_1', 'sink OM1_R_1', 'sink OM2_R_1', 'sink OM1_BC_1', 'sink OM2_BC_1', 'CF_SPM_1')
@@ -168,7 +174,7 @@ nparms <- parcats2(as_df = TRUE) %>%
   as.list
 @
 
-Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.  The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes.  Initial screening removed 73 irrelevant parameters that were not relevant such that 178 were retained for the sensitivity analysis.  Irrelevant parameters were removed for several reasons, e.g., a parameter was only relevant for the hydrodynamic model, was considered a physical constant, or had no effect given initial conditions.  For simplicity, the remaining parameters were grouped into one of six categories based on their respective equations: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}).  A full description is available as an appendix in \citepalias{LehrterIR}.  
+As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize greater complexity in community structure and foodweb dynamics.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differences between the groups, e.g., large-bodied or small-bodied plankton, slow-growing or fast-growing plankton, etc..  Initial analyses indicated that parameter sensitivity of dissolved oxygen was identical within the six phytoplankton and zooplankton groups.  To remove obvious redundancies in the model, the sensitivity analyes were conducted using only one phytoplankton and one zooplankton group.  This further reduced the parameter set....  For simplicity, the remaining parameters were grouped in  to one of six categories based on their respective equations: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}).  A full description is available as an appendix in \citepalias{LehrterIR}.  
 
 \subsection{Local sensitivity analysis}
 
@@ -178,7 +184,7 @@ The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model 
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes that may vary in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
+\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the initial value of $y$ at time $= 0$ \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes provide a comparison for model sensitivity to parameter changes and state variables that differ in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
 
 \begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
@@ -216,179 +222,179 @@ The above analyses were repeated for additional state variables estimated by Fis
 As a final analysis, the effects of model structure on parameter identifiability were evaluated for \ac{do} predictions.  The FishTank model includes several processes that can be included or excluded from the equations based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes that affect the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty as a means to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  Parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
 
 \section{Results}
-
-% for inline
-<<echo = FALSE, cache = F>>=
-data(sens_ests)
-data(sens_ests_cat)
-
-# number of parameters in each category
-bycat <- table(sens_ests_cat$Category)
-nms <- names(bycat)
-bycat <- as.numeric(bycat)
-names(bycat) <- nms
-bycat <- toeng(bycat)
-
-# percent of parameters in each category
-lncats <- table(sens_ests_cat$Category) %>% 
-  `/` (table(sort(parcats2(as_df = TRUE)$cats))) %>% 
-  `*` (100) %>% 
-  form_fun(nsm_val = 0) %>% 
-  as.list %>% 
-  lapply(., paste0, '\\%')
-
-# L1 range
-sensrng <- with(sens_ests_cat, which(error %in% range(error))) %>% 
-  sens_ests_cat[., ] %>% 
-  mutate(
-    error = sapply(error, scinot),
-    Parameter = par_txt(Parameter)
-    )
-
-# L1 range within categories
-sensrngcat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
-  lapply(., function(x){
-    
-    with(x, which(error %in% range(error))) %>% 
-      x[., ] %>% 
-      mutate(
-        Parameter = par_txt(Parameter), 
-        error = sapply(error, scinot)
-      )
-    
-    }
-  )
-
-# average L1, all and by category
-sensave <- scinot(mean(sens_ests_cat$error))
-sensave_cat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
-  lapply(., function(x) scinot(mean(x$error)))
-    
-# phyto errors
-phytogrps <- filter(sens_ests_cat, Category == 'Phytoplankton') %>% 
-  separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
-  group_by(grp) %>%
-  summarise(grpave = mean(error)) %>% 
-  arrange(-grpave) %>% 
-  mutate(grpave = sapply(grpave, scinot))
-
-# zoop errors 
-zoopgrps <- filter(sens_ests_cat, Category == 'Zooplankton') %>% 
-  separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
-  group_by(grp) %>%
-  summarise(grpave = mean(error)) %>% 
-  arrange(-grpave) %>% 
-  mutate(grpave = sapply(grpave, scinot))
-@
-
-\subsection{Local sensitivity analysis}
-
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 178 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/178, 0)}\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temperature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{sensave}.  Within categories, sensitivity ranged from \Sexpr{sensrngcat$Optics$error[1]} (\Sexpr{sensrngcat$Optics$Parameter[1]}) to \Sexpr{sensrngcat$Optics$error[2]} (\Sexpr{sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{sensrngcat$`Organic Matter`$error[1]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{sensrngcat$`Organic Matter`$error[2]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{sensrngcat$Phytoplankton$error[1]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{sensrngcat$Phytoplankton$error[2]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) for phytopankton, \Sexpr{sensrngcat$Temperature$error[1]} (\Sexpr{sensrngcat$Temperature$Parameter[1]}) to \Sexpr{sensrngcat$Temperature$error[2]} (\Sexpr{sensrngcat$Temperature$Parameter[2]}) for temperature, and \Sexpr{sensrngcat$Zooplankton$error[1]} (\Sexpr{sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{sensrngcat$Zooplankton$error[2]} (\Sexpr{sensrngcat$Zooplankton$Parameter[2]}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ \Sexpr{sensave_cat$Optics} for optics, \Sexpr{sensave_cat$`Organic Matter`} for organic matter, \Sexpr{sensave_cat$Phytoplankton} for phytoplankton, \Sexpr{sensave_cat$Temperature} for temperature, and \Sexpr{sensave_cat$Zooplankton} for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ \Sexpr{phytogrps[1, 2]}, \Sexpr{phytogrps[2, 2]}), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ \Sexpr{zoopgrps[1, 2]}, \Sexpr{zoopgrps[2, 2]} for groups one and two).
-
-Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \Sexpr{sensrngcat$Zooplankton$Parameter[2]}, which caused an increase in \ac{do}.  The phytoplankton parameter, \Sexpr{sensrngcat$Phytoplankton$Parameter[2]}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\Sexpr{sensrngcat$Optics$Parameter[2]}) and phytoplankton (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) parameters.
-
-\subsection{Subset identifiability}
-
-<<>>=
-data(cat_ident)
-data(top_ident)
-
-# percent combos less than gamma 15, 10 by category
-collcatpers <- lapply(cat_ident, function(x){
-  
-  colls <- x$coll
-  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-  c(l15, l10)
-  
-  })
-
-# percent combos less than gamma 15, 10 by top in each category
-colltoppers <- lapply(top_ident, function(x){
-  
-  colls <- x$coll
-  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-  c(l15, l10)
-  
-  })
-
-maxtempcoll <- scinot(max(cat_ident$Temperature$coll))
-@
-
-The identifiability analyses suggested that most parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Temperature[2]}\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parameters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\%, less than $\gamma = 10$) parameters.  
-
-<<>>=
-temp_coll <- par_txt(c('Tref(nospA+nospZ)_1', 'Tref(nospA+nospZ)_2', 'Tref(nospA+nospZ)_3', 'Tref(nospA+nospZ)_4', 'Tref(nospA+nospZ)_5', 'Tref(nospA+nospZ)_6', 'Tref(nospA+nospZ)_7', 'Tref(nospA+nospZ)_8'))
-@
-
-A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of one or two specific parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ($\gamma$) ranges in detail for the parameter subsets in \cref{fig:identbox} before and after excluding individual parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \Sexpr{temp_coll[2]} and \Sexpr{temp_coll[5]} showed that $\gamma$ remained well below the 10, 15 threshold for all parameter combinations.  Morever, inclusion of \Sexpr{temp_coll[1]}, \Sexpr{temp_coll[4]}, \Sexpr{temp_coll[7]}, and \Sexpr{temp_coll[8]} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
-
-<<>>=
-data(p1z1cat_ident)
-data(p1z1top_ident)
-
-# percent combos less than gamma 15, 10 by category
-p1z1collcatpers <- lapply(p1z1cat_ident, function(x){
-  
-  colls <- x$coll
-  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-  c(l15, l10)
-  
-  })
-
-# percent combos less than gamma 15, 10 by top in each category
-p1z1colltoppers <- lapply(p1z1top_ident, function(x){
-  
-  colls <- x$coll
-  l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-  l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-  c(l15, l10)
-  
-  })
-@
-
-Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differences between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group (\cref{fig:p1z1identbox}). Compared to all groups, evaluating a single group improved identifiability such that a majority of parameter combinations were below the threshold (\Sexpr{p1z1collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{p1z1collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$ for Phytoplankton; \Sexpr{p1z1collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{p1z1collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$ for zooplankton).  Analysis of identifiability for top parameters in all categories did not show similar changes in identifiability.  Although all combinations for the top one, two, and three parameters in each category were still well below the threshold, selecting the top four and five parameters showed an increase (\Sexpr{p1z1colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{p1z1colltoppers$top4[2]}\% less than $\gamma = 10$) and a decrease (\Sexpr{p1z1colltoppers$top5[1]}\% less than $\gamma = 15$, \Sexpr{p1z1colltoppers$top5[2]}\% less than $\gamma = 10$) in identifiability, respectively (\cref{fig:p1z1identbox}), compared to results that included all phytoplankton and zooplankton groups (\cref{fig:identbox}).  
-
-\subsection{Parameter selection}
-
-<<>>=
-data(tocal)
-
-# n parms and ident for each selection heuristic
-h1_id <- tocal$cat %>% 
-  split(., .$Category) %>% 
-  lapply(function(x){
-    x <- x[x$coll < 15, ]
-    list(nrow(x), scinot(max(x$coll), digits = 1))
-  }) 
-h2_id <- filter(tocal$top, coll < 15) %>%
-  list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-  .[c(2, 3)]
-h3_id <- filter(tocal$cattop, coll < 15) %>%
-  list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-  .[c(2, 3)]
-
-# which parameter broke selection for h2, h3
-h2_brk <- tocal$top
-sel <- which(h2_brk$coll < 15)
-h2_brk <- h2_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-  arrange(-coll) %>% 
-  .[1:2, ] %>% 
-  list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-  .[[2]]
-# which parameter broke selection for h2, h3
-h3_brk <- tocal$cattop
-sel <- which(h3_brk$coll < 15)
-h3_brk <- h3_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-  arrange(-coll) %>% 
-  .[1:2, ] %>% 
-  list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-  .[[2]]
-@
-
-Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+%' 
+%' % for inline
+%' <<echo = FALSE, eavl = F, cache = F>>=
+%' data(sens_ests)
+%' data(sens_ests_cat)
+%' 
+%' # number of parameters in each category
+%' bycat <- table(sens_ests_cat$Category)
+%' nms <- names(bycat)
+%' bycat <- as.numeric(bycat)
+%' names(bycat) <- nms
+%' bycat <- toeng(bycat)
+%' 
+%' # percent of parameters in each category
+%' lncats <- table(sens_ests_cat$Category) %>% 
+%'   `/` (table(sort(parcats2(as_df = TRUE)$cats))) %>% 
+%'   `*` (100) %>% 
+%'   form_fun(nsm_val = 0) %>% 
+%'   as.list %>% 
+%'   lapply(., paste0, '\\%')
+%' 
+%' # L1 range
+%' sensrng <- with(sens_ests_cat, which(error %in% range(error))) %>% 
+%'   sens_ests_cat[., ] %>% 
+%'   mutate(
+%'     error = sapply(error, scinot),
+%'     Parameter = par_txt(Parameter)
+%'     )
+%' 
+%' # L1 range within categories
+%' sensrngcat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
+%'   lapply(., function(x){
+%'     
+%'     with(x, which(error %in% range(error))) %>% 
+%'       x[., ] %>% 
+%'       mutate(
+%'         Parameter = par_txt(Parameter), 
+%'         error = sapply(error, scinot)
+%'       )
+%'     
+%'     }
+%'   )
+%' 
+%' # average L1, all and by category
+%' sensave <- scinot(mean(sens_ests_cat$error))
+%' sensave_cat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
+%'   lapply(., function(x) scinot(mean(x$error)))
+%'     
+%' # phyto errors
+%' phytogrps <- filter(sens_ests_cat, Category == 'Phytoplankton') %>% 
+%'   separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
+%'   group_by(grp) %>%
+%'   summarise(grpave = mean(error)) %>% 
+%'   arrange(-grpave) %>% 
+%'   mutate(grpave = sapply(grpave, scinot))
+%' 
+%' # zoop errors 
+%' zoopgrps <- filter(sens_ests_cat, Category == 'Zooplankton') %>% 
+%'   separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
+%'   group_by(grp) %>%
+%'   summarise(grpave = mean(error)) %>% 
+%'   arrange(-grpave) %>% 
+%'   mutate(grpave = sapply(grpave, scinot))
+%' @
+%' 
+%' \subsection{Local sensitivity analysis}
+%' 
+%' Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{nrow(sens_ests_cat)} of 178 parameters (\Sexpr{round(100 * nrow(sens_ests_cat)/178, 0)}\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to \Sexpr{bycat$Optics} parameters for optics (\Sexpr{lncats$Optics} of all optic parameters, \cref{tab:optsens}), \Sexpr{bycat$`Organic Matter`} for organic matter (\Sexpr{lncats$`Organic Matter`}, \cref{tab:omsens}), \Sexpr{bycat$Phytoplankton} for phytoplankton (\Sexpr{lncats$Phytoplankton}, \cref{tab:phytosens}), \Sexpr{bycat$Temperature} for temperature (\Sexpr{lncats$Temperature}, \cref{tab:tempsens}), and \Sexpr{bycat$Zooplankton} for zooplankton (\Sexpr{lncats$Zooplankton}, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{sensrng$error[1]} for \Sexpr{sensrng$Parameter[1]} (\Sexpr{tolower(sensrng$Category[1])}) to \Sexpr{sensrng$error[2]} for \Sexpr{sensrng$Parameter[2]} (\Sexpr{tolower(sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{sensave}.  Within categories, sensitivity ranged from \Sexpr{sensrngcat$Optics$error[1]} (\Sexpr{sensrngcat$Optics$Parameter[1]}) to \Sexpr{sensrngcat$Optics$error[2]} (\Sexpr{sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{sensrngcat$`Organic Matter`$error[1]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{sensrngcat$`Organic Matter`$error[2]} (\Sexpr{sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{sensrngcat$Phytoplankton$error[1]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{sensrngcat$Phytoplankton$error[2]} (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) for phytopankton, \Sexpr{sensrngcat$Temperature$error[1]} (\Sexpr{sensrngcat$Temperature$Parameter[1]}) to \Sexpr{sensrngcat$Temperature$error[2]} (\Sexpr{sensrngcat$Temperature$Parameter[2]}) for temperature, and \Sexpr{sensrngcat$Zooplankton$error[1]} (\Sexpr{sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{sensrngcat$Zooplankton$error[2]} (\Sexpr{sensrngcat$Zooplankton$Parameter[2]}) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ \Sexpr{sensave_cat$Optics} for optics, \Sexpr{sensave_cat$`Organic Matter`} for organic matter, \Sexpr{sensave_cat$Phytoplankton} for phytoplankton, \Sexpr{sensave_cat$Temperature} for temperature, and \Sexpr{sensave_cat$Zooplankton} for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ \Sexpr{phytogrps[1, 2]}, \Sexpr{phytogrps[2, 2]}), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ \Sexpr{zoopgrps[1, 2]}, \Sexpr{zoopgrps[2, 2]} for groups one and two).
+%' 
+%' Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, \Sexpr{sensrngcat$Zooplankton$Parameter[2]}, which caused an increase in \ac{do}.  The phytoplankton parameter, \Sexpr{sensrngcat$Phytoplankton$Parameter[2]}, had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (\Sexpr{sensrngcat$Optics$Parameter[2]}) and phytoplankton (\Sexpr{sensrngcat$Phytoplankton$Parameter[2]}) parameters.
+%' 
+%' \subsection{Subset identifiability}
+%' 
+%' <<eval = F>>=
+%' data(cat_ident)
+%' data(top_ident)
+%' 
+%' # percent combos less than gamma 15, 10 by category
+%' collcatpers <- lapply(cat_ident, function(x){
+%'   
+%'   colls <- x$coll
+%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+%'   c(l15, l10)
+%'   
+%'   })
+%' 
+%' # percent combos less than gamma 15, 10 by top in each category
+%' colltoppers <- lapply(top_ident, function(x){
+%'   
+%'   colls <- x$coll
+%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+%'   c(l15, l10)
+%'   
+%'   })
+%' 
+%' maxtempcoll <- scinot(max(cat_ident$Temperature$coll))
+%' @
+%' 
+%' The identifiability analyses suggested that most parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Temperature[2]}\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parameters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\%, less than $\gamma = 10$) parameters.  
+%' 
+%' <<eval = F>>=
+%' temp_coll <- par_txt(c('Tref(nospA+nospZ)_1', 'Tref(nospA+nospZ)_2', 'Tref(nospA+nospZ)_3', 'Tref(nospA+nospZ)_4', 'Tref(nospA+nospZ)_5', 'Tref(nospA+nospZ)_6', 'Tref(nospA+nospZ)_7', 'Tref(nospA+nospZ)_8'))
+%' @
+%' 
+%' A comparison of average and median identifiability by parameter category and top parameters in each category suggested that individual parameters had large effects on $\gamma$ (\cref{fig:identbox}).  For example, a consistent increase in average $\gamma$ from 2 to 7 parameters in a combination for temperature was observed, whereas median identiability remained low until 6 parameter combinations were evaluated.  Further evaluation showed that identifiability was greatly affected by the inclusion of one or two specific parameters in a subset combination.  \Cref{fig:excltemp} shows the temperature collinearity ($\gamma$) ranges in detail for the parameter subsets in \cref{fig:identbox} before and after excluding individual parameters.  Collinearity increases with more parameters included in a subset, although the increase varies depending on the specific parameter.  Exclusion of the parameters \Sexpr{temp_coll[2]} and \Sexpr{temp_coll[5]} showed that $\gamma$ remained well below the 10, 15 threshold for all parameter combinations.  Morever, inclusion of \Sexpr{temp_coll[1]}, \Sexpr{temp_coll[4]}, \Sexpr{temp_coll[7]}, and \Sexpr{temp_coll[8]} generally reduced collinearity relative to when the parameters were excluded.  Similar analyses identified parameters in other categories that had disproportionate effects on identifiability if included in a subset (see supplementary information).
+%' 
+%' <<eval = F>>=
+%' data(p1z1cat_ident)
+%' data(p1z1top_ident)
+%' 
+%' # percent combos less than gamma 15, 10 by category
+%' p1z1collcatpers <- lapply(p1z1cat_ident, function(x){
+%'   
+%'   colls <- x$coll
+%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+%'   c(l15, l10)
+%'   
+%'   })
+%' 
+%' # percent combos less than gamma 15, 10 by top in each category
+%' p1z1colltoppers <- lapply(p1z1top_ident, function(x){
+%'   
+%'   colls <- x$coll
+%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+%'   c(l15, l10)
+%'   
+%'   })
+%' @
+%' 
+%' Comparison of identifiability between categories showed that phytoplankton and zooplankton had the least identifiable parameter subsets.  As noted above, FishTank includes six phytoplankton and two zooplankton groups to characterize community structure and foodweb dynamics that likely have an important role in hypoxia development.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily control differences between the groups, e.g., large-bodied vs small-bodied plankton, slow-growing vs. fast-growing plankton.  To obtain identifiability estimates of the plankton categories that were independent of groups, the identifiability analyses were re-evaluated using only one phytoplankton and one zooplankton group (\cref{fig:p1z1identbox}). Compared to all groups, evaluating a single group improved identifiability such that a majority of parameter combinations were below the threshold (\Sexpr{p1z1collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{p1z1collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$ for Phytoplankton; \Sexpr{p1z1collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{p1z1collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$ for zooplankton).  Analysis of identifiability for top parameters in all categories did not show similar changes in identifiability.  Although all combinations for the top one, two, and three parameters in each category were still well below the threshold, selecting the top four and five parameters showed an increase (\Sexpr{p1z1colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{p1z1colltoppers$top4[2]}\% less than $\gamma = 10$) and a decrease (\Sexpr{p1z1colltoppers$top5[1]}\% less than $\gamma = 15$, \Sexpr{p1z1colltoppers$top5[2]}\% less than $\gamma = 10$) in identifiability, respectively (\cref{fig:p1z1identbox}), compared to results that included all phytoplankton and zooplankton groups (\cref{fig:identbox}).  
+%' 
+%' \subsection{Parameter selection}
+%' 
+%' <<eval = F>>=
+%' data(tocal)
+%' 
+%' # n parms and ident for each selection heuristic
+%' h1_id <- tocal$cat %>% 
+%'   split(., .$Category) %>% 
+%'   lapply(function(x){
+%'     x <- x[x$coll < 15, ]
+%'     list(nrow(x), scinot(max(x$coll), digits = 1))
+%'   }) 
+%' h2_id <- filter(tocal$top, coll < 15) %>%
+%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
+%'   .[c(2, 3)]
+%' h3_id <- filter(tocal$cattop, coll < 15) %>%
+%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
+%'   .[c(2, 3)]
+%' 
+%' # which parameter broke selection for h2, h3
+%' h2_brk <- tocal$top
+%' sel <- which(h2_brk$coll < 15)
+%' h2_brk <- h2_brk[c(sel, rev(sel)[1] + 1), ] %>% 
+%'   arrange(-coll) %>% 
+%'   .[1:2, ] %>% 
+%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
+%'   .[[2]]
+%' # which parameter broke selection for h2, h3
+%' h3_brk <- tocal$cattop
+%' sel <- which(h3_brk$coll < 15)
+%' h3_brk <- h3_brk[c(sel, rev(sel)[1] + 1), ] %>% 
+%'   arrange(-coll) %>% 
+%'   .[1:2, ] %>% 
+%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
+%'   .[[2]]
+%' @
+%' 
+%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
 
@@ -435,17 +441,17 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 % tables
 
 % optics sensitivity
-<<optsens, eval = T, cache = F>>=
+<<optsens, eval = F, cache = F>>=
 senstab1('Optics', 'optsens')
 @
 
 % organic matter sensitivity
-<<omsens, eval = T, cache = F>>=
+<<omsens, eval = F, cache = F>>=
 senstab1('Organic Matter', 'omsens')
 @
 
 % phytoplankton sensitivity
-<<phytosens, eval = T, cache = F>>=
+<<phytosens, eval = F, cache = F>>=
 # data(sens_ests_cat)
 # tmp <- filter(sens_ests_cat, Category == 'Phytoplankton')
 # quantile(tmp$error)
@@ -453,17 +459,17 @@ senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less th
 @
 
 % temperature sensitivity
-<<tempsens, eval = T, cache = F >>=
+<<tempsens, eval = F, cache = F >>=
 senstab2('Temperature', 'tempsens')
 @
 
 % zooplankton sensitivity
-<<zoopsens, eval = T, cache = F>>=
+<<zoopsens, eval = F, cache = F>>=
 senstab2('Zooplankton', 'zoopsens')
 @
 
 % ident all states
-<<identdo, eval = T, cache = F>>=
+<<identdo, eval = F, cache = F>>=
 data(tocal_all)
 
 # factor levels
@@ -547,7 +553,7 @@ latex(
 @
 
 % ident all states
-<<identall, eval = T, cache = F>>=
+<<identall, eval = F, cache = F>>=
 data(tocal_all)
 
 # factor levels
@@ -565,8 +571,8 @@ labs <- parcats2(as_df = T) %>%
 # get parameter combos with coll < 15 + 1
 # format error and coll with scinot
 # format category label so no duplicates
-totab <- tocal_all$top_all %>% 
-  reshape2::melt(., id.var = names(.[[1]])) %>%
+totab <- lapply(tocal_all, function(x) x$top) %>% 
+  reshape2::melt(., id.var = names(.[[1]])) %>% 
   mutate(Parameter = as.character(Parameter)) %>% 
   left_join(., labs, by = 'Parameter') %>% 
   mutate(
@@ -638,7 +644,7 @@ latex(
 % figures
 
 % combination example
-<<combnex, echo = F, fig.cap = 'Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.', fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
+<<combnex, eval = T, echo = F, fig.cap = 'Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.', fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
 
 numparms <- 1:50
 sels <- numparms
@@ -676,7 +682,7 @@ p2
 @
 
 % sensitivity example of top
-<<sensplo, fig.cap = 'Sensitivity of \\ac{do} to parameter changes. The solid lines show the change in \\ac{do} based on a 50\\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \\ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\\left(L1\\right)$) for all parmaters in each category.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
+<<sensplo, eval = F, fig.cap = 'Sensitivity of \\ac{do} to parameter changes. The solid lines show the change in \\ac{do} based on a 50\\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \\ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\\left(L1\\right)$) for all parmaters in each category.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
 load(file = 'data/sens_ests.RData')
 load(file = 'data/sens_ests_cat.RData')
 
@@ -778,7 +784,7 @@ grid.arrange(pA, pB, pC, ncol = 1, heights = c(1, 0.85, 0.85))
 @
 
 % identifiability boxplots
-<<identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
+<<identbox, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident)
 data(top_ident)
@@ -857,7 +863,7 @@ grid.arrange(
 @
 
 % parameter exclusion temp
-<<excltemp, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of temperature parameters for subset combinations in \\cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \\cref{fig:identbox}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 8, fig.width = 5, echo = F, cache = TRUE, out.width = "0.6\\textwidth">>=
+<<excltemp, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of temperature parameters for subset combinations in \\cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \\cref{fig:identbox}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 8, fig.width = 5, echo = F, cache = TRUE, out.width = "0.6\\textwidth">>=
 data(cat_ident)
 
 toplo <- cat_ident$`Temperature` %>% 
@@ -891,7 +897,7 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
 @
 
 % identifiability boxplot, p1, z1 only
-<<p1z1identbox, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.', fig.height = 8, fig.width = 4.5, echo = F, cache = TRUE, out.width = '0.5\\textwidth'>>=
+<<p1z1identbox, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.', fig.height = 8, fig.width = 4.5, echo = F, cache = TRUE, out.width = '0.5\\textwidth'>>=
 data(p1z1cat_ident)
 data(p1z1top_ident) 
 
@@ -979,7 +985,7 @@ grid.arrange(
 @
 
 % heuristic plots o2
-<<heurist, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$ or if the maximum number of possible parameters is selected. See \\cref{tab:identall1} for values in (b).', fig.height = 8, fig.width = 8, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
+<<heurist, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$ or if the maximum number of possible parameters is selected. See \\cref{tab:identall1} for values in (b).', fig.height = 8, fig.width = 8, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
 
 # plot of sequential identifiability by category
 
@@ -1082,7 +1088,7 @@ grid.arrange(
 @
 
 % heuristic plots, all state
-<<heurist_stts, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$.  See \\cref{tab:identall2} for values.', fig.height = 5, fig.width = 9, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
+<<heurist_stts, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$.  See \\cref{tab:identall2} for values.', fig.height = 5, fig.width = 9, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
 data(tocal_all)
 
 # factor levels
@@ -1144,89 +1150,48 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
 % supplementary material
 \beginsupplement
 
-<<sensalltile, echo = F, fig.height = 9, fig.width = 9, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables.  Values are truncated by the 5\\textsuperscript{th} and 95\\textsuperscript{th} sensitivity values between all parameters for visual appearance. Parameters are grouped by category (plot strips).  Phytoplankton and zooplankton categories are further separated into one through six, and one and two groups (p1-p6, z1, z2), respectively.'>>=
+<<sensalltile, eval = T, echo = F, fig.height = 7, fig.width = 6, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables.  Values are in log-space for visual comparison. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.'>>=
 data(sens_ests_cat_all)
 
 tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
 
-lims <- with(tmp, quantile(error, c(0.05, 0.95))) %>% 
+lims <- with(tmp, quantile(error)) %>% 
   as.numeric
 
 stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
 stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
 
-toplo <- filter(tmp, error < lims[2] & error > lims[1]) %>% 
-  mutate(
-    L1 = factor(L1, levels = stts_lev, labels = stts_lab)
+toplo <- mutate(tmp,
+    L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab))
   ) %>% 
   rename(Sensitivity = error)
 
-toplo1 <- filter(toplo, !Category %in% c('Phytoplankton', 'Zooplankton')) %>% 
-  mutate(Parameter = as.character(par_txt(Parameter, frm = 'exp')))
-toplo2 <- filter(toplo, Category %in% c('Phytoplankton')) %>% 
-  mutate(
-    grp = gsub('^.*_([1-6])$', 'p\\1', Parameter), 
-    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
-  )
-toplo3 <- filter(toplo, Category %in% c('Zooplankton')) %>% 
-  mutate(
-    grp = gsub('^.*_([1-2])$', 'z\\1', Parameter), 
-    Parameter = as.character(par_txt(Parameter, frm = 'exp'))
-  )
+toplo1 <- mutate(toplo, Parameter = as.character(par_txt(Parameter, frm = 'exp')))
 
 pbase <- theme(
   panel.grid.major = element_blank(), 
   panel.grid.minor = element_blank(), 
-  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6), 
-  axis.text.y = element_text(size =8),
-  axis.title.y = element_blank(), 
-  axis.title.x = element_blank(),
-  legend.position = 'none', 
-  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt')
+  axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8), 
+  axis.text.y = element_text(size = 6),
+  legend.position = 'top', 
+  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt'), 
+  strip.background = element_blank(), 
+  strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0.5)
   ) 
 
-p1 <- ggplot(toplo1, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
-  geom_tile() + 
+ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
+  geom_tile(colour = 'black') + 
   pbase +
-  scale_x_discrete(expand = c(0, 0),
+  scale_y_discrete('Parameter', 
+    expand = c(0, 0),
     breaks = toplo1$Parameter, 
     labels = parse(text = toplo1$Parameter)
     ) + 
-  scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~Category, scales = 'free')
-p2 <- ggplot(toplo2, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
-  geom_tile() + 
-  pbase +
-  scale_x_discrete(expand = c(0, 0), 
-    breaks = toplo2$Parameter, 
-    labels = parse(text = toplo2$Parameter)
-    ) + 
-  scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~grp, scales = 'free') + 
-  ggtitle('Phytoplankton')
-p3 <- ggplot(toplo3, aes(x = Parameter, y = L1, fill = Sensitivity)) + 
-  geom_tile() + 
-  pbase +
-  scale_x_discrete(expand = c(0, 0), 
-    breaks = toplo3$Parameter, 
-    labels = parse(text = toplo3$Parameter)
-    ) + 
-  scale_y_discrete(expand = c(0, 0)) + 
-  scale_fill_distiller(palette = "Spectral", limits = lims) + 
-  facet_grid(~grp, scales = 'free') + 
-  ggtitle('Zooplankton') + 
-  theme(legend.position = 'top')
-pleg <- g_legend(p3)
-p3 <- p3 + theme(legend.position = 'none')
+  scale_x_discrete('State variable', expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
+  facet_grid(Category~., scales = 'free_y', space = 'free') + 
+  guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
 
-grid.arrange(
-  pleg, p1, p2, p3, ncol = 1, 
-  heights = c(0.2, 1, 0.85, 1),
-  bottom = 'Parameter', 
-  left = 'State variable'
-)
 @
 
 
