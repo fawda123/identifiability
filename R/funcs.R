@@ -40,7 +40,7 @@ form_fun <- function(x, rnd_val = 2, dig_val = 2, nsm_val = 2, ...) {
 # digits numeric for rounding
 # showdollar logical if output is enclosed in dollar for latex
 # from https://dankelley.github.io/r/2015/03/22/scinot.html
-scinot <- function(x, pow = 3, digits=2, showDollar=TRUE)
+scinot <- function(x, pow = 3, digits = 2, showDollar = TRUE)
 {
   x <- as.numeric(x)
   sign <- ""
@@ -976,43 +976,50 @@ par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
 
 ######
 # function for sensitivity tables, no phyto, zoop groupings
-senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
-  
+senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabsize = 'normalsize', pow = 3, digits = 2){
+
   library(Hmisc)
   library(dplyr)
   library(tidyr)
   
-  load(file = 'data/sens_ests_cat.RData')
-  load(file = 'data/sens_ests.RData')
+  load(file = 'data/sens_ests_cat_all.RData')
+  load(file = 'data/sens_ests_all.RData')
   
-  labs <- parcats2()[[categ]] %>% 
-    data.frame %>% 
-    rename(Parameter = shrt)
+  # subset the sensitivy and sensitivity catgory lists
+  tmpest <- sens_ests_all[[out_var]]$sens
+  tmpest$Parameter <- as.character(tmpest$Parameter)
+  tmpest_cat <- sens_ests_cat_all[[out_var]]
   
-  totab <- filter(sens_ests_cat, Category %in% categ) %>% 
+  labs <- parcats2(as_df = TRUE) %>% 
+    rename(Parameter = shrt) %>% 
+    mutate(Parameter = as.character(Parameter))
+
+  totab <- tmpest_cat %>% 
     select(Parameter) %>% 
-    left_join(., sens_ests$sens, by = 'Parameter') %>% 
+    mutate(Parameter = as.character(Parameter)) %>% 
+    left_join(., tmpest, by = 'Parameter') %>% 
     left_join(., labs, by = 'Parameter') %>% 
-    select(lngs, Parameter, vals, L1, L2) %>% 
-    arrange(-L1) %>% 
+    select(cats, lngs, Parameter, vals, L1) %>% 
+    arrange(cats, -L1) %>% 
     mutate(
       Parameter = par_txt(Parameter),
-      lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
+      lngs = gsub('^.*:\\s', '', lngs), 
       lngs = gsub('_', '', lngs), 
       vals = sapply(vals, scinot),
-      L1 = sapply(L1, scinot), 
-      L2 = sapply(L2, scinot)
+      L1 = sapply(L1, scinot, digits = digits, pow = pow)
     ) %>% 
     rename(
       Description = lngs, 
       Value = vals
     )
-
+  
   # final table formatting
   Description <- totab$Description
-  totab <- totab[,-1]
-  cap.val<- paste('Sensitivities of \\ac{do} to perturbation of', tolower(categ), 'parameters.  Sensitivities are based on a 50\\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \\cref{l1,l2}).  Parameters that did not affect \\ac{do} are not shown.')
-
+  cats <- totab$cats
+  totab <- totab[,-c(1:2)]
+  
+  cap.val<- paste('Sensitivities of', captxt, 'to perturbation of indivividual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+  
   latex( 
     totab,
     file = '',
@@ -1020,75 +1027,10 @@ senstab1 <- function(categ, tablab, tabsize = 'normalsize'){
     caption = cap.val,
     caption.loc = 'top',
     rowname = Description,
+    rgroup = unique(cats),
+    n.rgroup = as.numeric(table(cats)),
     size = tabsize,
     label = paste0('tab:', tablab)
     )
-  
-}
-  
-######
-# function for sensitivity tables, with phyto, zoop groupings
-senstab2 <- function(categ, tablab, tabsize = 'normalsize', sub = NULL, sub.txt = NULL){
-
-  library(Hmisc)
-  library(dplyr)
-  library(tidyr)
-  
-  load(file = 'data/sens_ests_cat.RData')
-  load(file = 'data/sens_ests.RData')
-
-  labs <- parcats2()[[categ]] %>% 
-    data.frame %>% 
-    rename(Parameter = shrt)
-  
-  totab <- filter(sens_ests_cat, Category %in% categ) %>% 
-    select(Parameter) %>% 
-    left_join(., sens_ests$sens, by = 'Parameter') %>% 
-    left_join(., labs, by = 'Parameter') %>% 
-    select(Parameter, lngs, vals, L1, L2)
-  
-  if(!is.null(sub))
-    totab <- filter(totab, L1 > sub)
-  
-  totab <- mutate(totab,
-      lngs = as.character(lngs),
-      lngs = gsub('^.*:\\s', '', lngs), 
-      lngs = tolower(gsub('_', '', lngs)),
-      Parameter = par_txt(Parameter)
-    ) %>% 
-    arrange(lngs, -L1) %>% 
-    mutate(
-      vals = sapply(vals, scinot),
-      L1 = sapply(L1, scinot), 
-      L2 = sapply(L2, scinot)
-    ) %>% 
-    rename(
-      Description = lngs,
-      Value = vals
-    ) %>% 
-    select(Description, Parameter, Value, L1, L2)
-
-  # final table formatting
-  Description <- totab$Description
-  Parameter <- totab$Parameter
-  totab <- totab[,-c(1, 2)]
-  cap.val<- paste('Sensitivities of \\ac{do} to perturbation of', tolower(categ), 'parameters.  Sensitivities are based on a 50\\% increase from the default parameter value, where $L1$ and $L2$ summarize differences in model output from the default (see \\cref{l1,l2}).  Parameters that did not affect \\ac{do} are not shown.  Subscripts show the phytoplankton or zooplankton group that applies for the parameter.')
-  
-  if(!is.null(sub.txt))
-    cap.val <- paste(cap.val, sub.txt)
     
-  latex( 
-    totab,
-    file = '',
-    rowlabel = 'Description, Parameter',
-    caption = cap.val,
-    caption.loc = 'top',
-    rgroup = unique(Description),
-    n.rgroup = as.numeric(table(Description)),
-    rgroupTexCmd = NULL,
-    rowname = Parameter,
-    size = tabsize,
-    label = paste0('tab:', tablab)
-    )
-
 }
