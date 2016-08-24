@@ -189,16 +189,13 @@ The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model 
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes allows comparisons of model sensitivity to parameter changes and state variables that differ in scale.  Estimates for $S_{ij}$ were summarized as $L1$ and $L2$ across the time series to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
+\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes allows comparisons of model sensitivity to parameter changes and state variables that differ in scale.  Estimates for $S_{ij}$ were summarized as $L1$ to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
 
 \begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
 \end{equation}
-\begin{equation} \label{l2}
-L2 = \sqrt{\sum\left(S_{ij}^2\right)|/n}
-\end{equation}
 
-In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the temporal location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ or $L2$ were retained for identifiability analysis.  
+In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the temporal location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ were retained for identifiability analysis.  
 
 \subsection{Identifiability and selecting parameter subsets}
 
@@ -224,7 +221,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 \subsection{Observational and structural uncertainty}
 
-As a final analysis, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability to infer the effects of observational and structural uncertainty on model output to create a more comprehensive evaluation.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting .  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  
+As a final analysis, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability to infer the effects of observational and structural uncertainty on model output to create a more comprehensive evaluation.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting.  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  
 
 The effects of model structure on parameter identifiability were evaluated by including or excluding specific components of the model.  The FishTank model includes several processes that are based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes included in the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  Parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
 
@@ -447,32 +444,55 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 %%%%%%
 % tables
 
-% optics sensitivity
-<<optsens, eval = F, cache = F>>=
-senstab1('Optics', 'optsens')
-@
+<<dosens, eval = T, cache = F>>=
+load(file = 'data/sens_ests_cat_all.RData')
+load(file = 'data/sens_ests_all.RData')
 
-% organic matter sensitivity
-<<omsens, eval = F, cache = F>>=
-senstab1('Organic Matter', 'omsens')
-@
+# subset the sensitivy and sensitivity catgory lists
+tmpest <- sens_ests_all[['O2']]
+tmpest_cat <- sens_ests_cat_all[['O2']]
 
-% phytoplankton sensitivity
-<<phytosens, eval = F, cache = F>>=
-# data(sens_ests_cat)
-# tmp <- filter(sens_ests_cat, Category == 'Phytoplankton')
-# quantile(tmp$error)
-senstab2('Phytoplankton', 'phytosens', sub = 0.59, sub.txt = 'Parameters less than the 75\\textsuperscript{th} percentile (0.59) for L1 were removed for brevity.')
-@
 
-% temperature sensitivity
-<<tempsens, eval = F, cache = F >>=
-senstab2('Temperature', 'tempsens')
-@
+labs <- parcats2(as_df = TRUE) %>% 
+  rename(Parameter = shrt)
 
-% zooplankton sensitivity
-<<zoopsens, eval = F, cache = F>>=
-senstab2('Zooplankton', 'zoopsens')
+totab <- tmpest_cat %>% 
+  select(Parameter) %>% 
+  left_join(., tmpest$sens, by = 'Parameter') %>% 
+  left_join(., labs, by = 'Parameter') %>% 
+  select(cats, lngs, Parameter, vals, L1) %>% 
+  arrange(cats, -L1) %>% 
+  mutate(
+    Parameter = par_txt(Parameter),
+    lngs = gsub('^.*:\\s', '', lngs), 
+    lngs = gsub('_', '', lngs), 
+    vals = sapply(vals, scinot),
+    L1 = sapply(L1, scinot, digits = 2, pow = 2)
+  ) %>% 
+  rename(
+    Description = lngs, 
+    Value = vals
+  )
+
+# final table formatting
+Description <- totab$Description
+cats <- totab$cats
+totab <- totab[,-c(1:2)]
+
+cap.val<- paste('Sensitivities of \\ac{do} to perturbation of indivividual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect \\ac{do} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+
+latex( 
+  totab,
+  file = '',
+  rowlabel = 'Description',
+  caption = cap.val,
+  caption.loc = 'top',
+  rowname = Description,
+  rgroup = unique(cats),
+  n.rgroup = as.numeric(table(cats)),
+  size = 'footnotesize',
+  label = 'tab:dosens'
+  )
 @
 
 % ident all states
@@ -1157,7 +1177,7 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
 % supplementary material
 \beginsupplement
 
-<<sensalltile, eval = T, echo = F, fig.height = 7, fig.width = 6, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.'>>=
+<<sensalltile, eval = T, echo = F, fig.height = 7, fig.width = 6, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do}.'>>=
 data(sens_ests_cat_all)
 
 tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
