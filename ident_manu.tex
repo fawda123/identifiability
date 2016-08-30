@@ -148,7 +148,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Wed Aug 24 11:58:31 2016 -0500
+  \\ Version Date:   Tue Aug 30 11:59:58 2016 -0500
 	}
 \date{}
 \maketitle
@@ -507,10 +507,190 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 \end{table}
 
 
-% ident all states
+% first heuristic, all states
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Parameter",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:heurist1", rowname = parms, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms, rgroupTexCmd = NULL)%
+\begin{table}[!tbp]
+{\footnotesize
+\caption{Parameter identifiability (as $\gamma$, \cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable.\label{tab:heurist1}} 
+\begin{center}
+\begin{tabular}{llllllllll}
+\hline\hline
+\multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
+\hline
+{Optics}&&&&&&&&&\tabularnewline
+~~\footnotesize{\textit{astar490}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\footnotesize{\textit{astarOMA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\footnotesize{\textit{astar490}}&$2$&$8.54$&$10.83$&-&-&-&$9.19$&$7.33$&-\tabularnewline
+~~\footnotesize{\textit{astarOMA}}&$2$&-&-&$3.86$&$1.43$&-&-&-&$3.63$\tabularnewline
+~~\footnotesize{\textit{astarOMZ}}&$3$&-&$13.7$&$3.93$&$3.78$&-&$13.31$&$13.12$&$3.73$\tabularnewline
+\hline
+{Organic Matter}&&&&&&&&&\tabularnewline
+~~\footnotesize{\textit{KG1}}&$1$&-&-&-&-&-&$1$&-&$1$\tabularnewline
+~~\footnotesize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KNH4}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KstarO2}}&$1$&-&-&$1$&-&$1$&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG1}}&$2$&-&$3.42$&$1.12$&$1.43$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG2}}&$2$&-&-&-&-&-&-&-&$6.03$\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.9$&$1.73$&-\tabularnewline
+~~\footnotesize{\textit{nitmax}}&$2$&$14.51$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG2}}&$3$&-&-&$5.31$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$3$&$14.51$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KO2}}&$3$&-&-&-&$6.37$&-&$6.17$&$4.98$&-\tabularnewline
+\hline
+{Phytoplankton}&&&&&&&&&\tabularnewline
+~~\footnotesize{\textit{alpha}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\footnotesize{\textit{Qc}}&$1$&-&-&$1$&$1$&$1$&-&-&-\tabularnewline
+~~\footnotesize{\textit{QminP}}&$1$&-&-&-&-&-&-&-&$1$\tabularnewline
+~~\footnotesize{\textit{alpha}}&$2$&-&-&$1.66$&$1.36$&$4.98$&-&-&-\tabularnewline
+~~\footnotesize{\textit{mA}}&$2$&-&-&-&-&-&-&-&$1.24$\tabularnewline
+~~\footnotesize{\textit{umax}}&$2$&$8.51$&$4.64$&-&-&-&$6.1$&$5.36$&-\tabularnewline
+~~\footnotesize{\textit{alpha}}&$3$&-&-&-&-&-&-&-&$4.73$\tabularnewline
+~~\footnotesize{\textit{mA}}&$3$&$9.18$&$5.26$&$7.56$&$2.7$&-&$7.13$&$6.72$&-\tabularnewline
+~~\footnotesize{\textit{respb}}&$4$&$13.74$&$9.62$&-&-&-&$13.32$&$14.3$&-\tabularnewline
+~~\footnotesize{\textit{vmaxP}}&$4$&-&-&-&-&-&-&-&$6.18$\tabularnewline
+~~\footnotesize{\textit{Qc}}&$5$&-&$13.06$&-&-&-&$13.35$&$14.39$&-\tabularnewline
+\hline
+{Zooplankton}&&&&&&&&&\tabularnewline
+~~\footnotesize{\textit{ZQc}}&$1$&-&$1$&$1$&$1$&-&$1$&$1$&-\tabularnewline
+~~\footnotesize{\textit{ZQn}}&$1$&$1$&-&-&-&$1$&-&-&-\tabularnewline
+~~\footnotesize{\textit{ZQp}}&$1$&-&-&-&-&-&-&-&$1$\tabularnewline
+~~\footnotesize{\textit{Zm}}&$2$&-&-&-&-&-&$2.76$&-&-\tabularnewline
+~~\footnotesize{\textit{Zrespb}}&$2$&-&$5.46$&-&$5.88$&-&-&-&$1.66$\tabularnewline
+~~\footnotesize{\textit{Zm}}&$3$&-&$14.16$&-&-&-&-&-&$4.21$\tabularnewline
+~~\footnotesize{\textit{ZQp}}&$3$&-&-&-&-&-&$2.76$&-&-\tabularnewline
+~~\footnotesize{\textit{ZQc}}&$4$&-&-&-&-&-&-&-&$5.23$\tabularnewline
+~~\footnotesize{\textit{ZQp}}&$4$&-&$14.2$&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{Zrespb}}&$4$&-&-&-&-&-&$12.49$&-&-\tabularnewline
+~~\footnotesize{\textit{ZQn}}&$5$&-&-&-&-&-&$13.59$&-&-\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
 
 
-% ident all states
+% second heuristic, all states
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:heurist2", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms, rgroupTexCmd = NULL)%
+\begin{table}[!tbp]
+{\footnotesize
+\caption{Parameter identifiability (as $\gamma$, \cref{gameq}) for relevant state variables.  Selections followed the second heuristic where parameters were selected independent of category from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton). See \cref{fig:heurist_stts} for a graphical illustration.\label{tab:heurist2}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
+\hline
+{Ammonium}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$8.51$\tabularnewline
+~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$9.18$\tabularnewline
+~~4&\footnotesize{\textit{KNH4}}&$1$\textsuperscript{OM}&$11.35$\tabularnewline
+\hline
+{Chlorophyll}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$4.64$\tabularnewline
+~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$5.26$\tabularnewline
+~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$9.62$\tabularnewline
+~~5&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$12.93$\tabularnewline
+\hline
+{Dissolved Oxygen}&&&\tabularnewline
+~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+\hline
+{Irradiance}&&&\tabularnewline
+~~1&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1.15$\tabularnewline
+~~3&\footnotesize{\textit{alpha}}&$2$\textsuperscript{P}&$2.5$\tabularnewline
+~~4&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$2.92$\tabularnewline
+\hline
+{Nitrate}&&&\tabularnewline
+~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+\hline
+{OM1}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$6.1$\tabularnewline
+~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$7.13$\tabularnewline
+~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$13.32$\tabularnewline
+~~5&\footnotesize{\textit{Qc}}&$5$\textsuperscript{P}&$13.35$\tabularnewline
+\hline
+{OM2}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$5.36$\tabularnewline
+~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$6.72$\tabularnewline
+~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$14.3$\tabularnewline
+~~5&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$14.9$\tabularnewline
+\hline
+{Phosphate}&&&\tabularnewline
+~~1&\footnotesize{\textit{QminP}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$1.24$\tabularnewline
+~~3&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$4.73$\tabularnewline
+~~4&\footnotesize{\textit{vmaxP}}&$4$\textsuperscript{P}&$6.18$\tabularnewline
+~~5&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$7.17$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
+% third heuristic, all states
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "footnotesize",     label = "tab:heurist3", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms, rgroupTexCmd = NULL)%
+\begin{table}[!tbp]
+{\footnotesize
+\caption{Parameter identifiability (as $\gamma$, \cref{gameq}) for relevant state variables.  Selections followed the third heuristic where parameters were selected equally within each category from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).\label{tab:heurist3}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
+\hline
+{Ammonium}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{KNH4}}&$1$\textsuperscript{OM}&$1.67$\tabularnewline
+~~3&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.96$\tabularnewline
+~~4&\footnotesize{\textit{ZQn}}&$1$\textsuperscript{Z}&$3.61$\tabularnewline
+~~5&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$4.97$\tabularnewline
+\hline
+{Chlorophyll}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.36$\tabularnewline
+~~3&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$6.39$\tabularnewline
+~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$13.97$\tabularnewline
+\hline
+{Dissolved Oxygen}&&&\tabularnewline
+~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+\hline
+{Irradiance}&&&\tabularnewline
+~~1&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1.15$\tabularnewline
+~~3&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$4.97$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$5.14$\tabularnewline
+~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$6.62$\tabularnewline
+~~6&\footnotesize{\textit{alpha}}&$2$\textsuperscript{P}&$12.85$\tabularnewline
+\hline
+{Nitrate}&&&\tabularnewline
+~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+\hline
+{OM1}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.73$\tabularnewline
+~~3&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$2.77$\tabularnewline
+~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$6.91$\tabularnewline
+~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$6.91$\tabularnewline
+~~6&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$13.68$\tabularnewline
+\hline
+{OM2}&&&\tabularnewline
+~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$1.46$\tabularnewline
+~~3&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.53$\tabularnewline
+~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$7.69$\tabularnewline
+~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$7.87$\tabularnewline
+\hline
+{Phosphate}&&&\tabularnewline
+~~1&\footnotesize{\textit{QminP}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$1.3$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+
+\end{table}
+
+
 
 \clearpage
 
@@ -906,7 +1086,7 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 \end{table}
 
 
-% phosphatesensitivity all categories
+% phosphate sensitivity all categories
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize

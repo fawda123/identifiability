@@ -448,32 +448,21 @@ Our heuristic products are partially analogous to the Rainfall-Runoff Modelling 
 senstab(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', digits = 2, pow = 2, tabsize = 'footnotesize')
 @
 
-% ident all states
-<<identdo, eval = F, cache = F>>=
+% first heuristic, all states
+<<heurist1, eval = T, cache = F>>=
 data(tocal_all)
 
 # factor levels
 cats_lev <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-cats_lab <- c('O', 'OM', 'P', 'T', 'Z')
+cats_lab <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
 stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
 stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
 
-labs <- parcats2(as_df = T) %>% 
-    rename(Parameter = shrt) %>% 
-    select(Parameter, lngs)
-
 # format tocal_all for identifiability table
-# add long parameter name
-# get parameter combos with coll < 15 + 1
-# format error and coll with scinot
-# format category label so no duplicates
-totab <- tocal_all$top_all %>% 
+totab <- lapply(tocal_all, function(x) x$cat) %>% 
   reshape2::melt(., id.var = names(.[[1]])) %>%
-  mutate(Parameter = as.character(Parameter)) %>% 
-  left_join(., labs, by = 'Parameter') %>% 
+  mutate(Parameter = as.character(Parameter)) %>%
   mutate(
-    lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
-    lngs = gsub('_', '', lngs), 
     stts = factor(L1, levels = stts_lev, labels = stts_lab),
     Category = factor(Category, levels = cats_lev, labels = cats_lab), 
     Parameter = par_txt(Parameter, frm = 'tex')
@@ -483,6 +472,7 @@ totab <- tocal_all$top_all %>%
     
     sel <- which(x$coll < 15)
     x <- x[sel, ] %>% 
+      
     # x <- x[c(sel, max(sel) + 1), ] %>% 
       na.omit
     x
@@ -490,134 +480,153 @@ totab <- tocal_all$top_all %>%
   }) %>% 
   do.call('rbind', .) %>%
   mutate(
-    error = sapply(error, scinot),
     coll = sapply(coll, scinot), 
     Rank = sapply(rnk_incat, scinot), 
-    Rank = paste0(Rank, '\\textsuperscript{', Category, '}')
+    Rank = paste0(Rank)
     ) %>%
   group_by(stts) %>% 
   nest %>% 
   unnest %>% 
-  select(stts, lngs, Parameter, Rank, error, coll) %>% 
-  rename(
-    Description = lngs, 
-    L1 = error
-  ) %>% 
+  select(stts, Category, Parameter, Rank, coll) %>%
   mutate(
     stts = as.character(stts),
-    Description = paste0('\\footnotesize{', Description, '}'),
     Parameter = paste0('\\footnotesize{', Parameter, '}')
     ) %>% 
-  arrange(stts)
+  spread(stts, coll, fill = '-') %>% 
+  group_by(Parameter) %>% 
+  arrange(Category, Rank)
     
-identall1 <- filter(totab, stts %in% 'Dissolved Oxygen')
-
 # final table formatting
-descrip <- as.character(identall1$Description)
-identall1 <- identall1[,-c(1, 2)]
-cap_val<- 'Parameter identifiability for dissolved oxygen.  Selection followed the second heuristic where parameters were selected by decreasing sensitivity up to maximum $\\gamma < 15$.  Rank describes the parameter sensitivity in each category (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).'
-colnms <- c('Parameter', 'Rank', 'L1', '$\\gamma$')
+parms <- totab$Parameter
+cats <- as.character(totab$Category)
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable.'
+colnms <- c('Rank', 'Ammonium', 'Chl-\\textit{a}', 'O$_2$', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
 
 latex( 
-  identall1,
+  totab[, -c(1, 2)],
   file = '',
-  rowlabel = 'Parameter description',
-  caption = cap_val,
-  caption.loc = 'top',
-  size = 'normalsize',
-  label = 'tab:identall1',
-  rowname = descrip,
-  colheads = colnms,
-  rgroupTexCmd = NULL
-  )
-@
-
-% ident all states
-<<identall, eval = F, cache = F>>=
-data(tocal_all)
-
-# factor levels
-cats_lev <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-cats_lab <- c('O', 'OM', 'P', 'T', 'Z')
-stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
-stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
-
-labs <- parcats2(as_df = T) %>% 
-    rename(Parameter = shrt) %>% 
-    select(Parameter, lngs)
-
-# format tocal_all for identifiability table
-# add long parameter name
-# get parameter combos with coll < 15 + 1
-# format error and coll with scinot
-# format category label so no duplicates
-totab <- lapply(tocal_all, function(x) x$top) %>% 
-  reshape2::melt(., id.var = names(.[[1]])) %>% 
-  mutate(Parameter = as.character(Parameter)) %>% 
-  left_join(., labs, by = 'Parameter') %>% 
-  mutate(
-    lngs = gsub('^[a-z,A-Z,0-9]*:\\s', '', lngs), 
-    lngs = gsub('_', '', lngs), 
-    stts = factor(L1, levels = stts_lev, labels = stts_lab),
-    Category = factor(Category, levels = cats_lev, labels = cats_lab), 
-    Parameter = par_txt(Parameter, frm = 'tex')
-  ) %>% 
-  split(., .$L1) %>% 
-  lapply(function(x){
-    
-    sel <- which(x$coll < 15)
-    x <- x[sel, ] %>% 
-    # x <- x[c(sel, max(sel) + 1), ] %>% 
-      na.omit
-    x
-    
-  }) %>% 
-  do.call('rbind', .) %>%
-  mutate(
-    error = sapply(error, scinot),
-    coll = sapply(coll, scinot), 
-    Rank = sapply(rnk_incat, scinot), 
-    Rank = paste0(Rank, '\\textsuperscript{', Category, '}')
-    ) %>%
-  group_by(stts) %>% 
-  nest %>% 
-  unnest %>% 
-  select(stts, lngs, Parameter, Rank, error, coll) %>% 
-  rename(
-    Description = lngs, 
-    L1 = error
-  ) %>% 
-  mutate(
-    stts = as.character(stts),
-    Description = paste0('\\scriptsize{', Description, '}'),
-    Parameter = paste0('\\scriptsize{', Parameter, '}')
-    ) %>% 
-  arrange(stts)
-    
-identall2 <- filter(totab, !stts %in% 'Dissolved Oxygen')
-
-# final table formatting
-stts <- identall2$stts
-descrip <- as.character(identall2$Description)
-identall2 <- identall2[,-c(1, 2)]
-cap_val<- 'Parameter identifiability for ammonium, chlorophyll, irradiance, nitrate, OM1, OM2, and phosphate.  Selection followed the second heuristic where parameters were selected by decreasing sensitivity up to maximum $\\gamma < 15$.  Rank describes the parameter sensitivity in each category (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).'
-colnms <- c('Parameter', 'Rank', 'L1', '$\\gamma$')
-
-latex( 
-  identall2,
-  file = '',
-  rowlabel = 'State variable, parameter description',
+  rowlabel = 'Parameter',
   caption = cap_val,
   caption.loc = 'top',
   size = 'footnotesize',
-  label = 'tab:identall2',
-  rgroup = unique(as.character(stts)),
-  n.rgroup = as.numeric(table(as.character(stts))),
-  rowname = descrip,
+  label = 'tab:heurist1',
+  rowname = parms,
+  rgroup = unique(cats),
+  n.rgroup = as.numeric(table(cats)),
   colheads = colnms,
   rgroupTexCmd = NULL
   )
 @
+
+% second heuristic, all states
+<<heurist2, eval = T, cache = F>>=
+data(tocal_all)
+
+# factor levels
+cats_lev <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+cats_lab <- c('O', 'OM', 'P', 'T', 'Z')
+stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+
+# format tocal_all for identifiability table
+totab <- lapply(tocal_all, function(x) x$top) %>% 
+  reshape2::melt(., id.var = names(.[[1]])) %>%
+  mutate(Parameter = as.character(Parameter)) %>% 
+  mutate(
+    stts = factor(L1, levels = stts_lev, labels = stts_lab),
+    Category = factor(Category, levels = cats_lev, labels = cats_lab), 
+    Parameter = par_txt(Parameter, frm = 'tex')
+  ) %>% 
+  filter(coll < 15) %>% 
+  mutate(
+    coll = sapply(coll, scinot), 
+    Rank = sapply(rnk_incat, scinot), 
+    Rank = paste0(Rank, '\\textsuperscript{', Category, '}')
+    ) %>%
+  select(stts, Selected, Parameter, Rank, coll) %>%
+  mutate(
+    stts = as.character(stts),
+    Parameter = paste0('\\footnotesize{', Parameter, '}')
+    ) %>% 
+  arrange(stts, Selected)
+    
+# final table formatting
+stts <- as.character(totab$stts)
+sels <- totab$Selected
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the second heuristic where parameters were selected independent of category from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton). See \\cref{fig:heurist_stts} for a graphical illustration.'
+colnms <- c('Parameter', 'Rank', '$\\gamma$')
+
+latex( 
+  totab[, -c(1, 2)],
+  file = '',
+  rowlabel = 'Selections by state variable',
+  caption = cap_val,
+  caption.loc = 'top',
+  size = 'footnotesize',
+  label = 'tab:heurist2',
+  rowname = sels,
+  rgroup = unique(stts),
+  n.rgroup = as.numeric(table(stts)),
+  colheads = colnms,
+  rgroupTexCmd = NULL
+  )
+@
+
+% third heuristic, all states
+<<heurist3, eval = T, cache = F>>=
+data(tocal_all)
+
+# factor levels
+cats_lev <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+cats_lab <- c('O', 'OM', 'P', 'T', 'Z')
+stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+
+# format tocal_all for identifiability table
+totab <- lapply(tocal_all, function(x) x$cattop) %>% 
+  reshape2::melt(., id.var = names(.[[1]])) %>%
+  mutate(Parameter = as.character(Parameter)) %>% 
+  mutate(
+    stts = factor(L1, levels = stts_lev, labels = stts_lab),
+    Category = factor(Category, levels = cats_lev, labels = cats_lab), 
+    Parameter = par_txt(Parameter, frm = 'tex')
+  ) %>% 
+  filter(coll < 15) %>% 
+  mutate(
+    coll = sapply(coll, scinot), 
+    Rank = sapply(rnk_incat, scinot), 
+    Rank = paste0(Rank, '\\textsuperscript{', Category, '}')
+    ) %>%
+  select(stts, Selected, Parameter, Rank, coll) %>%
+  mutate(
+    stts = as.character(stts),
+    Parameter = paste0('\\footnotesize{', Parameter, '}')
+    ) %>% 
+  arrange(stts, Selected)
+    
+# final table formatting
+stts <- as.character(totab$stts)
+sels <- totab$Selected
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the third heuristic where parameters were selected equally within each category from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).'
+colnms <- c('Parameter', 'Rank', '$\\gamma$')
+
+latex( 
+  totab[, -c(1, 2)],
+  file = '',
+  rowlabel = 'Selections by state variable',
+  caption = cap_val,
+  caption.loc = 'top',
+  size = 'footnotesize',
+  label = 'tab:heurist3',
+  rowname = sels,
+  rgroup = unique(stts),
+  n.rgroup = as.numeric(table(stts)),
+  colheads = colnms,
+  rgroupTexCmd = NULL
+  )
+@
+
+
 \clearpage
 
 %%%%%%
@@ -933,7 +942,7 @@ senstab(out_var = 'OM1', tablab = 'om1sens', captxt = 'particulate organic matte
 senstab(out_var = 'OM2', tablab = 'om2sens', captxt = 'dissolved organic matter', digits = 2, pow = 2, tabsize = 'footnotesize')
 @
 
-% phosphatesensitivity all categories
+% phosphate sensitivity all categories
 <<po4sens, eval = T, cache = F>>=
 senstab(out_var = 'PO4', tablab = 'po4sens', captxt = 'phosphate', digits = 2, pow = 2, tabsize = 'footnotesize')
 @
