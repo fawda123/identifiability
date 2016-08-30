@@ -75,7 +75,6 @@ options(replace.assign = TRUE, width = 90)
 % R dependencies
 <<include = F, cache = F>>=
 source('R/funcs.r')
-library(WRTDStidal)
 library(tidyr)
 library(ggplot2)
 library(dplyr)
@@ -159,7 +158,7 @@ This study evaluated a recently developed hydrodynamic and ecological model that
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any form of physical transport (i.e., advection, mixing, or surface flux).  Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Accordingly, the sensitivity and identifiability analysis described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{zerod} parcel that is uniformly mixed as a closed system.  A set of initial conditions is provided as input to the model that was based on observations of relevant variables obtained from research cruises in April, June, and September 2006 \citep[Table 1 in][]{Murrell14}. 
 
-Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.  The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes.
+Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, sediment diagenesis, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.
 
 <<echo = FALSE>>=
 pars <- parcats2(as_df = TRUE)$shrt %>% 
@@ -179,23 +178,23 @@ nparms <- parcats2(as_df = TRUE) %>%
 
 @
 
-Irrelevant parameters were removed for several reasons from the analysis.  Parameters that were removed were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to describe complexity in community structure and foodweb dynamics.  However, structural equations for each group do not vary considerably such that variation in parameter values primarily controls differences between the groups, e.g., large-bodied or small-bodied plankton, slow-growing or fast-growing plankton, etc.  Initial analyses indicated that parameter sensitivity of dissolved oxygen was identical within the six phytoplankton and zooplankton groups.  To remove obvious redundancies in the model, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final parameter set that was evaluated included \Sexpr{length(p1z1pars)} parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}).  A full description of the model parameters is available as an appendix in \citetalias{LehrterIR}.  
+The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006 by running FishTank at a timestep of five minutes. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to describe complexity in community structure and foodweb dynamics.  However, structural equations for each group are identical such that chosen parameter values primarily control differences between the groups, e.g., large-bodied or small-bodied plankton, slow-growing or fast-growing plankton, etc.  Initial analyses indicated that parameter sensitivity of dissolved oxygen was identical within the six phytoplankton and zooplankton groups.  To remove obvious redundancies in the model, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final parameter set that was evaluated included \Sexpr{length(p1z1pars)} parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}).  A full description of the model parameters is available as an appendix in \citetalias{LehrterIR}.  
 
 \subsection{Local sensitivity analysis}
 
-The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exlusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the effect on \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
+The analysis focused on sensitivity of \ac{do} in the \ac{zerod} FishTank model to identify parameters that may affect spatial and temporal variation of hypoxia in the larger model.  A local sensitivity analysis was performed for each of the parameters using a simple perturbation approach to evaluate the change in \ac{do} from the original parameter values.  The analyses relied exclusively on concepts used in the FME package developed for the R statistical programming language \citep{Soetaert10,RDCT16}. Each parameter was perturbed by 50\% of its original value and the model was executed to obtain an estimate of the change in \ac{do}.  For each perturbation, a sensitivity value $S$ was estimated for each time step $i$ given a set value for parameter $j$ as:
 
 \begin{equation} \label{sijeqn}
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
 \end{equation}
 
-\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes allows comparisons of model sensitivity to parameter changes and state variables that differ in scale.  Estimates for $S_{ij}$ were summarized as $L1$ to obtain individual sensitivity values of \ac{do} in response to a change in parame ter $j$:
+\noindent where the estimate depended on the change in the predicted value for response variable $y$ divided by the change in the parameter $\Theta_j$ multiplied by the quotient of scaling factors $w$ for each.  The scaling factors, $w_{\Theta_j}$ for the parameter $\Theta_j$ and $w_{y_i}$ for response variable $y_i$, were set as the default value of the unperturbed parameter and the predicted value of $y_i$ after perturbation \citep{Soetaert10}.  The scaling ensures the estimates are unitless such that the relative magnitudes allow comparisons of model sensitivity to parameters and state variables that differ in scale.  Sensitivity values for all $j$ parameters were summarized across the time series from $i = 1$ to $n$ as $L1$:
 
 \begin{equation} \label{l1}
 L1 = \sum|S_{ij}|/n
 \end{equation}
 
-In general, positive sensitivity estimates suggested a parameter had a positive effect on \ac{do} for a given increase in the parameter, whereas the converse was true for negative sensitivity estimates.  However, the effect of a parameter change may not be uniform over time such that $S_{ij}$ can change in magnitude and sign depending on the temporal location.  Time series of \ac{do} estimates before and after perturbation were also evaluated to identify patterns not captured by the summary statistics. All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ were retained for identifiability analysis.  
+All parameters for each of the six equation categories (optics, organic matter, phytoplankton, temperature, and zooplankton) that had non-zero $L1$ were retained for identifiability analysis.  
 
 \subsection{Identifiability and selecting parameter subsets}
 
@@ -215,15 +214,15 @@ A set of heuristics was developed to balance the tradeoff in model complexity an
 \item blocked within parameter category,
 \item independent of parameter category,
 \item or considering all categories equally.
-\end{inparaenum} The selection rules produced eight subsets of parameters that could further be used to optimize model calibration for \ac{do}.
-
-The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
+\end{inparaenum} The selection rules produced seven subsets of parameters that could further be used to optimize model calibration for \ac{do}.
 
 \subsection{Observational and structural uncertainty}
 
-As a final analysis, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability to infer the effects of observational and structural uncertainty on model output to create a more comprehensive evaluation.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting.  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  
+The effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability to infer the effects of observational and structural uncertainty on model output to create a more comprehensive evaluation.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplnakton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting.  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  Initial conditions were also changed to test the effects of different limiting nutrients by setting nitrogen and phosphorus values above or below concentrations defined by the standard Redfield ratio.  
 
-The effects of model structure on parameter identifiability were evaluated by including or excluding specific components of the model.  The FishTank model includes several processes that are based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes included in the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  Parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
+The effects of model structure on parameter sensitivity and identifiability were evaluated by including or excluding specific components of the model.  The FishTank model includes several processes that are based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes included in the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  For simplicity, parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
+
+The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
 
 \section{Results}
 %' 
@@ -662,476 +661,7 @@ p2 <- ggplot(toplo, aes(x = numparms, y = sels, fill = combs)) +
 p2
 @
 
-% sensitivity example of top
-<<sensplo, eval = F, fig.cap = 'Sensitivity of \\ac{do} to parameter changes. The solid lines show the change in \\ac{do} based on a 50\\% change from the default parameter values (dashed line) for each parameter.  Individual parameters with the largest effect are shown for each category.  The top plot shows the model output and the middle plot shows the estimated \\ac{do} as a difference from the default.  The bottom plot shows the distribution of error values (as $log\\left(L1\\right)$) for all parmaters in each category.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
-load(file = 'data/sens_ests.RData')
-load(file = 'data/sens_ests_cat.RData')
-
-toeval <- group_by(sens_ests_cat, Category) %>% 
-  filter(error == max(error)) %>% 
-  arrange(error) %>% 
-  data.frame
-
-toeval <- toeval$Parameter %>% 
-  as.character
-
-# for top sens plots
-toplo <- filter(sens_ests$raw, Parameter %in% toeval) %>% 
-  mutate(
-    diffest = Estimate - default,
-    time = as.POSIXct(time, origin = as.POSIXct('2002-01-01 0:0', tz = "GMT"), tz = 'GMT'),
-    time = as.Date(time), 
-    Parameter = factor(Parameter, levels = c('astar490_1', 'k11_1', 'Qc_1', 'Tref(nospA+nospZ)_4', 'ZKa_1'))
-  )
-
-# for all L1 boxplots
-toplo2 <- mutate(sens_ests_cat,
-  Category = factor(Category, 
-    levels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-    ), 
-  Parameter = as.character(Parameter)
-  ) %>% 
-  group_by(Category) %>% 
-  mutate(
-    tops = ifelse(error == max(error), Parameter, NA)
-  )
-  
-ylab <- expression(paste(O[2], ' (mmol ', m^-3, ')'))
-colset <- 'Set2'
-lnsz <- 1
-alph <- 0.8
-
-leglabs <- list(
-  expression(atop('Optics', italic(astar490))),
-  expression(atop('Organic Matter', italic('k11'))),
-  expression(atop('Phytoplankton', italic(Qc[italic('p1')]))),
-  expression(atop('Temperature', italic(Tref(nospA+nospZ)[italic('p4')]))),
-  expression(atop('Zooplankton', italic(Zka[italic('z1')])))
-  )
-  
-p1 <- ggplot(toplo, aes(x = time, y = Estimate, group = Parameter, colour = Parameter)) + 
-  geom_line(aes(y = default), colour = 'black', linetype = 'dashed') + 
-  geom_line(size = lnsz, alpha = alph) + 
-  theme_minimal() +
-  scale_colour_brewer(palette = colset, 
-    labels = leglabs
-    ) + 
-  scale_y_continuous(ylab) + 
-  theme(
-    legend.position = 'top',
-    axis.text.x = element_blank(), 
-    axis.title.x = element_blank(),
-    axis.line.x = element_line(), 
-    axis.line.y = element_line()
-    )
-
-p2 <- ggplot(toplo, aes(x = time, y = diffest, group = Parameter, colour = Parameter)) + 
-  geom_hline(yintercept = 0, linetype = 'dashed') +
-  geom_line(size = lnsz, alpha = alph) + 
-  theme_minimal() +
-  scale_colour_brewer(palette = colset) + 
-  scale_y_continuous('Difference') + 
-  theme(
-    legend.position = 'none',
-    axis.title.x = element_blank(),
-    axis.line.x = element_line(), 
-    axis.line.y = element_line()
-    )
-
-p3 <- ggplot(toplo2, aes(x = Category, y = log(error), fill = Category)) + 
-  geom_boxplot() +
-  theme_minimal() +
-  scale_fill_brewer(palette = colset) + 
-  scale_y_continuous(expression(paste('log(', italic('L1'), ')'))) + 
-  theme(
-    legend.position = 'none',
-    axis.title.x = element_blank(),
-    axis.line.x = element_line(), 
-    axis.line.y = element_line()
-    )
-
-# align widths of plots in first column, first two
-pA <- ggplot_gtable(ggplot_build(p1))
-pB <- ggplot_gtable(ggplot_build(p2))
-pC <- ggplot_gtable(ggplot_build(p3))
-maxWidth = grid::unit.pmax(pA$widths[2:3], pB$widths[2:3], pC$widths[2:3])
-
-# Set the widths
-pA$widths[2:3] <- maxWidth
-pB$widths[2:3] <- maxWidth
-pC$widths[2:3] <- maxWidth
-
-grid.arrange(pA, pB, pC, ncol = 1, heights = c(1, 0.85, 0.85))
-@
-
-% identifiability boxplots
-<<identbox, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The phytoplankton category is limited to 25 total parameters.', fig.height = 8, fig.width = 8, echo = F, cache = TRUE>>=
-# identifiability by category (all parameters with >0 L1) 
-data(cat_ident)
-data(top_ident)
-
-colset <- 'Set2'
-
-toplo <- cat_ident %>% 
-  lapply(., function(x) dplyr::select(x, N, coll)) %>% 
-  reshape2::melt(., id.var = c('N', 'coll')) %>% 
-  rename(Category = L1) %>% 
-  mutate(Category = factor(Category, 
-    levels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton'),
-    labels = c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-    )) %>% 
-  filter(N <= 25) %>% # reduced for plot space
-  group_by(N, Category) %>% 
-  summarise(
-    ave = mean(coll), 
-    med = median(coll),
-    min = min(coll), 
-    max = max(coll)
-  )
-
-p1 <- ggplot(toplo, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
-  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
-  theme_minimal() + 
-  theme(
-    axis.line.x = element_line(), 
-    axis.line.y = element_line(), 
-    axis.title.x = element_blank(), 
-    axis.title.y = element_blank()
-  ) + 
-  theme(legend.position = 'none') + 
-  ggtitle('(a) By parameter category')
-
-# identifiability top 1, 2, 3, 4, 5 all categories combined
-toplo2 <-  reshape2::melt(top_ident, id.var = c('N', 'coll')) %>% 
-  select(N, coll, L1) %>% 
-  mutate(L1 = factor(L1, levels = paste0('top', 1:5), labels = paste0('Top ', 1:5))) %>% 
-  rename(npercat = L1) %>% 
-  group_by(N, npercat) %>% 
-  summarise(
-    ave = mean(coll), 
-    med = median(coll),
-    min = min(coll), 
-    max = max(coll)
-  )
-
-p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
-  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
-  theme_minimal() + 
-  theme(
-    axis.line.x = element_line(), 
-    axis.line.y = element_line(), 
-    axis.title.x = element_blank(), 
-    axis.title.y = element_blank(), 
-    legend.title = element_blank()
-  ) + 
-  ggtitle('(b) By top parameters, all categories')
-
-pleg <- g_legend(p2)
-p2 <- p2 + theme(legend.position = 'none')
-
-grid.arrange(
-  arrangeGrob(p1, p2, ncol = 2),
-  left = 'Identifiability', 
-  bottom = 'Parameters in set',
-  pleg, ncol = 2, widths = c(1, 0.1)
-)
-@
-
-% parameter exclusion temp
-<<excltemp, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of temperature parameters for subset combinations in \\cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all seven parameters is in \\cref{fig:identbox}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 8, fig.width = 5, echo = F, cache = TRUE, out.width = "0.6\\textwidth">>=
-data(cat_ident)
-
-toplo <- cat_ident$`Temperature` %>% 
-  gather('parm', 'inc', -N, -coll) %>% 
-  ungroup %>% 
-  filter(N < max(N)) %>% 
-  mutate(
-    parm = as.character(par_txt(parm, frm = 'exp')),
-    N = factor(N), 
-    inc = factor(inc, levels = c(0, 1), labels = c('excluded', 'included'))
-    )
-
-ggplot(toplo, aes(x = N, y = coll, fill = inc)) + 
-  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
-  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  geom_boxplot(outlier.size = 0.5, size = 0.5) + 
-  facet_wrap(~parm, label = label_parsed, ncol = 2) + 
-  theme_minimal() + 
-  scale_fill_brewer(palette = 'Greys') + 
-  scale_y_continuous('Identifiability') +
-  scale_x_discrete('Parameters in set') + 
-  theme(
-    legend.title = element_blank(),
-    axis.line.x = element_line(),
-    axis.line.y = element_line(),
-    panel.grid.minor = element_blank(), 
-    panel.grid.major = element_blank(), 
-    legend.position = c(0.8, 0.1)
-  )
-
-@
-
-% identifiability boxplot, p1, z1 only
-<<p1z1identbox, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do} using only subsets from the first phytoplankon group and first zooplankton group. Plots in (a) show identifiability for only the phytoplankton and zooplankton categories and (b) shows identifiability by selecting the top 1 through 5 parameters regardless of category. Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.', fig.height = 8, fig.width = 4.5, echo = F, cache = TRUE, out.width = '0.5\\textwidth'>>=
-data(p1z1cat_ident)
-data(p1z1top_ident) 
-
-toplo1 <- p1z1cat_ident %>% 
-  lapply(., function(x) dplyr::select(x, N, coll)) %>% 
-  reshape2::melt(., id.var = c('N', 'coll')) %>% 
-  rename(Category = L1) %>% 
-  mutate(Category = factor(Category, 
-    levels = c('Phytoplankton', 'Zooplankton'),
-    labels = c('Phytoplankton', 'Zooplankton')
-    )) %>% 
-  filter(N <= 25) %>% # reduced for plot space
-  group_by(N, Category) %>% 
-  summarise(
-    ave = mean(coll), 
-    med = median(coll),
-    min = min(coll), 
-    max = max(coll)
-  )
-
-p1 <- ggplot(toplo1, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
-  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
-  scale_x_continuous(limits = c(1, 20)) +
-  theme_minimal() + 
-  theme(
-    axis.line.x = element_line(), 
-    axis.line.y = element_line(), 
-    axis.title.x = element_blank(), 
-    axis.title.y = element_blank()
-  ) + 
-  theme(legend.position = 'none') +
-  ggtitle('(a) By parameter category')
-
-# identifiability top 1, 2, 3, 4, 5 all categories combined
-toplo2 <-  reshape2::melt(p1z1top_ident, id.var = c('N', 'coll')) %>% 
-  select(N, coll, L1) %>% 
-  mutate(L1 = factor(L1, levels = paste0('top', 1:5), labels = paste0('Top ', 1:5))) %>% 
-  rename(npercat = L1) %>% 
-  group_by(N, npercat) %>% 
-  summarise(
-    ave = mean(coll), 
-    med = median(coll),
-    min = min(coll), 
-    max = max(coll)
-  )
-
-p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
-  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
-  scale_x_continuous(limits = c(1, 20)) +
-  theme_minimal() + 
-  theme(
-    axis.line.x = element_line(), 
-    axis.line.y = element_line(), 
-    axis.title.x = element_blank(), 
-    axis.title.y = element_blank(), 
-    legend.title = element_blank()
-  ) + 
-  ggtitle('(b) By top parameters, all categories')
-
-pleg <- g_legend(p2)
-p2 <- p2 + theme(legend.position = 'none')
-
-# align widths of plots in first column, first two
-pA <- ggplot_gtable(ggplot_build(p1))
-pB <- ggplot_gtable(ggplot_build(p2))
-maxWidth = grid::unit.pmax(pA$widths[2:3], pB$widths[2:3])
-
-# Set the widths
-pA$widths[2:3] <- maxWidth
-pB$widths[2:3] <- maxWidth
-
-grid.arrange(
-  arrangeGrob(pA, pB, ncol = 1, heights = c(0.45, 1)),
-  left = 'Identifiability', 
-  bottom = 'Parameters in set',
-  pleg, ncol = 2, widths = c(1, 0.15)
-)
-
-@
-
-% heuristic plots o2
-<<heurist, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters with three different heuristics. Parameters are selected by decreasing sensitivity for all examples (\\cref{tab:optsens,tab:tempsens,tab:phytosens,tab:zoopsens,tab:omsens}). The parameter selecions are blocked within each category (a), independent of category (b), or considering all categories equally (c). Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$ or if the maximum number of possible parameters is selected. See \\cref{tab:identall1} for values in (b).', fig.height = 8, fig.width = 8, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
-
-# plot of sequential identifiability by category
-
-data(tocal)
-data(sens_ests_cat)
-
-cats <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-
-# custom col scale
-mycols <- RColorBrewer::brewer.pal(5, 'Set2')
-names(mycols) <- cats
-cols <- scale_fill_manual(name = 'Category', values = mycols)
-
-# ggplot theme
-pthm <- theme_minimal() + 
-  theme(
-    axis.text.x = element_text(size = 6), 
-    axis.line.x = element_line(),
-    axis.line.y = element_line(), 
-    panel.grid.minor = element_blank(), 
-    panel.grid.major = element_blank(), 
-    axis.title.y = element_blank(), 
-    axis.title.x = element_blank()
-    )
-
-# top sensitive within categories
-toplo <- filter(tocal$cat) %>% 
-  split(., .$Category) %>% 
-  lapply(function(x){
-    
-    sel <- which(x$coll < 15)
-    x <- x[c(sel, max(sel) + 1), ] %>% 
-      na.omit
-    x
-    
-  }) %>% 
-  do.call('rbind', .)
-toplo$Category <- factor(toplo$Category, levels = cats, labels = cats)
-pcat <- ggplot(toplo, aes(x = Selected, y = coll)) + 
-  geom_line() + 
-  geom_point(size = 3, shape = 21, aes(fill = Category)) +
-  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
-  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  facet_wrap(~Category, ncol = 1, scales = 'free') + 
-  scale_x_continuous(breaks = c(1:25)) + 
-  scale_y_continuous('Identifiability') +
-  cols +
-  pthm +
-  theme(legend.position = 'none') +
-  ggtitle('(a) Blocked by category')
-
-# top sensitive
-toplo <- tocal$top
-sel <- which(toplo$coll < 15)
-toplo <- toplo[c(sel, rev(sel)[1] + 1), ]
-toplo$Category <- factor(toplo$Category, levels = cats, labels = cats)
-ptop <- ggplot(toplo, aes(x = Selected, y = coll)) + 
-  geom_line() + 
-  geom_point(size = 4, shape = 21, aes(fill = Category)) +
-  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
-  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  scale_x_continuous(breaks = 1:nrow(toplo)) + 
-  scale_y_continuous('Identifiability') + 
-  cols +
-  pthm +
-  theme(legend.position = 'none') +
-  ggtitle('(b) Independent of category')
-
-# top sensitive and category
-toplo <- tocal$cattop
-sel <- which(toplo$coll < 15)
-toplo <- toplo[c(sel, rev(sel)[1] + 1), ]
-toplo$Category <- factor(toplo$Category, levels = cats, labels = cats)
-pcattop <- ggplot(toplo, aes(x = Selected, y = coll)) + 
-  geom_line() + 
-  geom_point(size = 4, shape = 21, aes(fill = Category)) +
-  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
-  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  scale_x_continuous(breaks = 1:nrow(toplo)) + 
-  scale_y_continuous('Identifiability') +
-  cols +
-  pthm +
-  theme(legend.position = 'top') + 
-  guides(fill = guide_legend(nrow = 3)) +
-  ggtitle('(c) All categories equally')
-
-pleg <- g_legend(pcattop)
-pcattop <- pcattop +
-  theme(legend.position = 'none')
-
-grid.arrange(
-  pcat,
-  arrangeGrob(ptop, pcattop, pleg, ncol = 1, heights = c(1, 1, 0.6)), 
-  widths = c(1, 1),
-  ncol = 2, 
-  bottom = 'Parameters selected by sensitivity', 
-  left = 'Identifiability'
-)
-
-@
-
-% heuristic plots, all state
-<<heurist_stts, eval = F, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters for selected state variables. Parameters are selected by decreasing sensitivity indepent of parameter categories. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$.  See \\cref{tab:identall2} for values.', fig.height = 5, fig.width = 9, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
-data(tocal_all)
-
-# factor levels
-cats <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
-stts_lev <- c('NH4', 'Chla_mg_tot', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4')
-stts_lab <- c('Ammonium', 'Chlorophyll', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
-
-# custom col scale
-mycols <- RColorBrewer::brewer.pal(5, 'Set2')
-names(mycols) <- cats
-cols <- scale_fill_manual(name = 'Category', values = mycols)
-
-# ggplot theme
-pthm <- theme_minimal() + 
-  theme(
-    axis.text.x = element_text(size = 6), 
-    axis.line.x = element_line(),
-    axis.line.y = element_line(), 
-    panel.grid.minor = element_blank(), 
-    panel.grid.major = element_blank()
-    )
-
-# get all parameters for each state variable where coll < 15 plus one
-toplo <- tocal_all$top_all %>% 
-  reshape2::melt(., id.var = names(.[[1]])) %>% 
-  filter(!L1 %in% 'O2') %>% 
-  mutate(
-    L1 = factor(L1, levels = stts_lev, labels = stts_lab),
-    Category = factor(Category, levels = cats, labels = cats)
-  ) %>% 
-  split(., .$L1) %>% 
-  lapply(function(x){
-    # browser()
-    sel <- which(x$coll < 15)
-    x <- x[c(sel, max(sel) + 1), ] %>% 
-      na.omit
-    x
-    
-  }) %>% 
-  do.call('rbind', .)
-
-ggplot(toplo, aes(x = Selected, y = coll)) + 
-  geom_line() + 
-  geom_point(aes(fill = Category), shape = 21, size = 4) +
-  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
-  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  facet_wrap(~L1, scales= 'free', ncol = 4) + 
-  scale_y_continuous('Identifiability') + 
-  scale_x_continuous(
-    'Parameters selected by sensitivity',
-    breaks = toplo$Selected
-    ) + 
-  cols +
-  pthm +
-  theme(legend.position = c(0.9, 0.2))
-@
-\clearpage
-
-% supplementary material
-\beginsupplement
-
-<<sensalltile, eval = T, echo = F, fig.height = 7, fig.width = 6, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do}.'>>=
+<<sensalltile, eval = T, echo = F, fig.height = 7, fig.width = 6, out.width = '\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.'>>=
 data(sens_ests_cat_all)
 
 tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
@@ -1173,6 +703,239 @@ ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) +
   facet_grid(Category~., scales = 'free_y', space = 'free') + 
   guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
 
+@
+
+% identifiability boxplots
+<<identbox, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because only \\ac{do} was senstive to only one parameter.', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
+# identifiability by category (all parameters with >0 L1) 
+data(cat_ident_all)
+data(top_ident_all)
+
+# state variable, categories, and tops to plot (no temp ident because only one parameter)
+catnms <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Zooplankton')
+topnms <- paste0('top', 1:4)
+tmpcat <- cat_ident_all[['O2']] %>% 
+  .[names(.) %in% catnms]
+tmptop <- top_ident_all[['O2']] %>% 
+  .[names(.) %in% topnms]
+
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm")
+  )
+
+toplo <- tmpcat %>% 
+  lapply(., function(x) dplyr::select(x, N, coll)) %>% 
+  reshape2::melt(., id.var = c('N', 'coll')) %>% 
+  rename(Category = L1) %>% 
+  mutate(Category = factor(Category, 
+    levels = catnms,
+    labels = catnms
+    )) %>% 
+  filter(N <= 25) %>% # reduced for plot space
+  group_by(N, Category) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+p1 <- ggplot(toplo, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
+  mytheme +
+  theme(legend.position = 'none') + 
+  ggtitle('(a) By parameter category')
+
+# identifiability top 1, 2, 3, 4, 5 all categories combined
+toplo2 <-  reshape2::melt(tmptop, id.var = c('N', 'coll')) %>% 
+  select(N, coll, L1) %>% 
+  mutate(L1 = factor(L1, levels = topnms, labels = topnms)) %>% 
+  rename(npercat = L1) %>% 
+  group_by(N, npercat) %>% 
+  summarise(
+    ave = mean(coll), 
+    med = median(coll),
+    min = min(coll), 
+    max = max(coll)
+  )
+
+p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
+  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
+  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
+  mytheme + 
+  theme(legend.title = element_blank()) + 
+  ggtitle('(b) By top parameters, all categories')
+
+pleg <- g_legend(p2)
+p2 <- p2 + theme(legend.position = 'none')
+
+grid.arrange(
+  arrangeGrob(p1, p2, ncol = 2),
+  left = 'Identifiability', 
+  bottom = 'Parameters in set',
+  pleg, ncol = 2, widths = c(1, 0.1)
+)
+@
+
+% parameter exclusion temp
+<<exclex, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of organic matter parameters for subset combinations in \\cref{fig:identbox}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all eight parameters is in \\cref{fig:identbox}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 7.25, fig.width = 7.25, echo = F, cache = TRUE, out.width = "\\textwidth">>=
+data(cat_ident_all)
+
+tmpcat <- cat_ident_all[['O2']]
+
+toplo <-tmpcat$`Organic Matter` %>% 
+  gather('parm', 'inc', -N, -coll) %>% 
+  ungroup %>% 
+  filter(N < max(N)) %>% 
+  mutate(
+    parm = as.character(par_txt(parm, frm = 'exp')),
+    N = factor(N), 
+    inc = factor(inc, levels = c(0, 1), labels = c('excluded', 'included'))
+    )
+
+ggplot(toplo, aes(x = N, y = coll, fill = inc)) + 
+  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
+  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
+  geom_boxplot(outlier.size = 0.5, size = 0.5) + 
+  facet_wrap(~parm, label = label_parsed, ncol = 2) + 
+  theme_minimal() + 
+  scale_fill_brewer(palette = 'Greys') + 
+  scale_y_continuous('Identifiability', trans = 'log', breaks = c(0.1, 1, 10, 100, 1000)) +
+  scale_x_discrete('Parameters in set') + 
+  theme(
+    legend.title = element_blank(),
+    axis.line.x = element_line(),
+    axis.line.y = element_line(),
+    panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank(), 
+    legend.position = 'top', #c(0.8, 0.1),
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm")
+  )
+
+@
+
+% heuristic plots, all state
+<<heurist_stts, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of selecting parameters for all state variables. Parameters are selected by decreasing sensitivity independent of parameter categories. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\\gamma > 15$.', fig.height = 6, fig.width = 9, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
+data(tocal_all)
+
+# factor levels
+cats <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton')
+stts_lev <- c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
+
+# custom col scale
+mycols <- RColorBrewer::brewer.pal(5, 'Spectral')
+names(mycols) <- cats
+cols <- scale_fill_manual(name = 'Category', values = mycols)
+
+# ggplot theme
+pthm <- theme_minimal() + 
+  theme(
+    axis.text.x = element_text(size = 8), 
+    axis.line.x = element_line(),
+    axis.line.y = element_line(), 
+    panel.grid.minor = element_blank(), 
+    panel.grid.major = element_blank(),
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm")
+    )
+
+# get all parameters for each state variable where coll < 15 plus one
+toplo <- lapply(tocal_all, function(x) x$top) %>% 
+  reshape2::melt(., id.var = names(.[[1]])) %>% 
+  mutate(
+    L1 = factor(L1, levels = stts_lev, labels = stts_lab),
+    Category = factor(Category, levels = cats, labels = cats)
+  ) %>% 
+  split(., .$L1) %>% 
+  lapply(function(x){
+    # browser()
+    sel <- which(x$coll < 15)
+    x <- x[c(sel, max(sel) + 1), ] %>% 
+      na.omit
+    x
+    
+  }) %>% 
+  do.call('rbind', .) %>% 
+  data.frame %>% 
+  mutate(Parameter = as.character(par_txt(Parameter, frm = 'exp')))
+
+ggplot(toplo, aes(x = Selected, y = coll)) + 
+  geom_line() + 
+  geom_text_repel(aes(label = Parameter), size = 3,
+    parse = TRUE,
+    point.padding = unit(0, "lines"),
+    box.padding = unit(1, "lines"), 
+    force = 3
+    ) +
+  geom_point(aes(fill = Category), shape = 21, size = 4) +
+  geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
+  geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
+  facet_wrap(~L1, scales= 'free', ncol = 4) + 
+  scale_y_continuous('Identifiability') + 
+  scale_x_continuous(
+    'Parameters selected by sensitivity',
+    breaks = toplo$Selected, 
+    expand = c(.1, .1)
+    ) + 
+  cols +
+  pthm +
+  theme(legend.position = 'top')
+@
+\clearpage
+
+% supplementary material
+\beginsupplement
+
+% ammonium sensitivity all categories
+<<nh4sens, eval = T, cache = F>>=
+senstab(out_var = 'NH4', tablab = 'nh4sens', captxt = 'ammonium', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% chlorophyll sensitivity all categories
+<<chlsens, eval = T, cache = F>>=
+senstab(out_var = 'Chla_mg_tot', tablab = 'chlsens', captxt = '\\ac{chla}', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% irradiance sensitivity all categories
+<<irrsens, eval = T, cache = F>>=
+senstab(out_var = 'irradiance', tablab = 'irrsens', captxt = 'irradiance', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% nitrate sensitivity all categories
+<<no3sens, eval = T, cache = F>>=
+senstab(out_var = 'NO3', tablab = 'no3sens', captxt = 'nitrate', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% om1 sensitivity all categories
+<<om1sens, eval = T, cache = F>>=
+senstab(out_var = 'OM1', tablab = 'om1sens', captxt = 'particulate organic matter', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% om2 sensitivity all categories
+<<om2sens, eval = T, cache = F>>=
+senstab(out_var = 'OM2', tablab = 'om2sens', captxt = 'dissolved organic matter', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+% phosphatesensitivity all categories
+<<po4sens, eval = T, cache = F>>=
+senstab(out_var = 'PO4', tablab = 'po4sens', captxt = 'phosphate', digits = 2, pow = 2, tabsize = 'footnotesize')
 @
 
 \end{document}

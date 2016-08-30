@@ -1018,7 +1018,7 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
   cats <- totab$cats
   totab <- totab[,-c(1:2)]
   
-  cap.val<- paste('Sensitivities of', captxt, 'to perturbation of indivividual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+  cap.val<- paste('Sensitivity of', captxt, 'to perturbations of indivividual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
   
   latex( 
     totab,

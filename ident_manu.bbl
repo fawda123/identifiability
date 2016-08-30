@@ -276,6 +276,12 @@ Rabalais NN, Turner RE, Scavia D. 2002.
   {M}ississippi river.
 \newblock BioScience, 52(2):129--142.
 
+\bibitem[{RDCT (R Development Core Team)}, 2016]{RDCT16}
+{RDCT (R Development Core Team)}. 2016.
+\newblock {R: A language and environment for statistical computing, v3.3.1. R
+  Foundation for Statistical Computing, Vienna, Austria}.
+\newblock \url{http://www.R-project.org}.
+
 \bibitem[Refsgaard et~al., 2007]{Refsgaard07}
 Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
 \newblock Uncertainty in the environmental modelling process - a framework and
