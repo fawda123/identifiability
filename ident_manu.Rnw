@@ -54,7 +54,6 @@
 \acrodef{lcs}[LCS]{Louisiana continental shelf}
 \acrodef{marb}[MARB]{Mississippi-Atchafalaya River Basin}
 \acrodef{zerod}[0-D]{zero-dimensional}
-\acrodef{par}[PAR]{photosynthetically active radiation}
 
 %for supplemental figures/tables
 \newcommand{\beginsupplement}{%
@@ -222,7 +221,9 @@ The effects of observational and structural uncertainty on the sensitivity analy
 
 The effects of model structure on parameter sensitivity and identifiability were evaluated by including or excluding specific components of the model.  The FishTank model includes several processes that are based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes included in the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  For simplicity, parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
 
-The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
+\subsection{Extension to other state variables}
+
+The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables included \ac{chla}, irradiance, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}), fecal pellets (\textit{OM1\_fp}, \textit{OM2\_fp}), river sources \textit{OM1\_rp}, \textit{OM2\_rp}), and boundary conditions (\textit{OM1\_bc}, \textit{OM2\_bc}, see \citetalias{LehrterIR}). 
 
 \section{Results}
 %' 
@@ -397,41 +398,41 @@ The above analyses were repeated for additional state variables estimated by Fis
 %'   .[[2]]
 %' @
 %' 
-%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, \ac{par}, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
-
-% back of envelop calcs for number of relevant parms, all state variables
-<<echo = F>>=
-
-@
-We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
-
-Emphasize that parameters that have the greatest effect on collinearity are not those that have the highest sensitivity (contrast the identifiability by category vs identifiability by top parameters)  , also note that groups of parameters together can have large effects on collinearity, maybe some kind of bootstrap analysis could be done looking at doubletons, etc. The example in teh results highlights how redundant variables can be identified as a necessary part of the model calibration process.
-
-Why did identifiability decrease for top five parameters in each category after removing redundant phyto/zoop groups?
-
-\citep{Denman03} describes over-parameterization for multiple phyto groups, use this to emphasize collinearity issues with the phyto groups despite differing sensitivity values between groups
-
-Identifiability by category - varies with number of parameters in the category but some were more redundant than others (phytoplankton).  
-
-Questions specific to GOM - what initial conditions are important? How many phytoplankton groups do we need (e.g., related to structural uncertainty)?
-
-How does the assimilation of additional parameters (e.g., other state variables) during calibration influence the conclusions?  \citet{Wagener01} describes this as a potential approach to improving model performance by improving the availability of information for model calibration (p. 14).  
-
-How does uncertainty translate to what a model should provide (generality v precision)?  The first step - find out what can be optimized but then do not overfit....
-
-What about structural uncertainty - does sensitivity of a model to variation in a parameter imply parameter uncertainty and/or structural uncertainty?
-
-A final point about optimization with identifiable parameter sets - optimization to fit the data still does not ensure a correct model.  Failing in one way can be over-compensated by another feature, e.g., the parameter set that is optimized (see \cite{Flynn05}, p. 1207, third paragraph), also \citep{Durand02,Arhonditsis08}, also note that over-parameterized models are not necessarily bad, see \citep{Omlin01}, models must be validated for the uses which they were intended where a comparison of observed and predicted is the simplest approach and other methods should be used depending on analysis needs \citep{Rykiel96}
-
-\cite{Omlin01} state that the sensitivity, identifiability, estimation process is iterative (p. 113), need to rinse and repeat for proper calibration. 
-
-How to improve identifiability - get more/better observed data, include obs from other state variables in RSS minimization (eqn q in \cite{Omlin01})
-
-Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibration-constrained optimization \citep{Gallagher07}, \citep{Arhonditsis08}
-
-Our heuristic products are partially analogous to the Rainfall-Runoff Modelling Toolbox (RRMT) presented by \citep{Wagener01b}2001 (cited on page 15, in \citealt{Wagener01}), although ours is simple in comparison
+%' 
+%' % back of envelop calcs for number of relevant parms, all state variables
+%' <<echo = F>>=
+%' 
+%' @
+%' We showed only small subsets are identifiable, similar conclusions have been described by citations in \citep{Wagener01}, p. 14 for models that follow traditional calibration schemes (e.g., objective function minimization).
+%' 
+%' Emphasize that parameters that have the greatest effect on collinearity are not those that have the highest sensitivity (contrast the identifiability by category vs identifiability by top parameters)  , also note that groups of parameters together can have large effects on collinearity, maybe some kind of bootstrap analysis could be done looking at doubletons, etc. The example in teh results highlights how redundant variables can be identified as a necessary part of the model calibration process.
+%' 
+%' Why did identifiability decrease for top five parameters in each category after removing redundant phyto/zoop groups?
+%' 
+%' \citep{Denman03} describes over-parameterization for multiple phyto groups, use this to emphasize collinearity issues with the phyto groups despite differing sensitivity values between groups
+%' 
+%' Identifiability by category - varies with number of parameters in the category but some were more redundant than others (phytoplankton).  
+%' 
+%' Questions specific to GOM - what initial conditions are important? How many phytoplankton groups do we need (e.g., related to structural uncertainty)?
+%' 
+%' How does the assimilation of additional parameters (e.g., other state variables) during calibration influence the conclusions?  \citet{Wagener01} describes this as a potential approach to improving model performance by improving the availability of information for model calibration (p. 14).  
+%' 
+%' How does uncertainty translate to what a model should provide (generality v precision)?  The first step - find out what can be optimized but then do not overfit....
+%' 
+%' What about structural uncertainty - does sensitivity of a model to variation in a parameter imply parameter uncertainty and/or structural uncertainty?
+%' 
+%' A final point about optimization with identifiable parameter sets - optimization to fit the data still does not ensure a correct model.  Failing in one way can be over-compensated by another feature, e.g., the parameter set that is optimized (see \cite{Flynn05}, p. 1207, third paragraph), also \citep{Durand02,Arhonditsis08}, also note that over-parameterized models are not necessarily bad, see \citep{Omlin01}, models must be validated for the uses which they were intended where a comparison of observed and predicted is the simplest approach and other methods should be used depending on analysis needs \citep{Rykiel96}
+%' 
+%' \cite{Omlin01} state that the sensitivity, identifiability, estimation process is iterative (p. 113), need to rinse and repeat for proper calibration. 
+%' 
+%' How to improve identifiability - get more/better observed data, include obs from other state variables in RSS minimization (eqn q in \cite{Omlin01})
+%' 
+%' Alternative methods for uncertainty analysis - bayesian, MCMC, nonlinear calibration-constrained optimization \citep{Gallagher07}, \citep{Arhonditsis08}
+%' 
+%' Our heuristic products are partially analogous to the Rainfall-Runoff Modelling Toolbox (RRMT) presented by \citep{Wagener01b}2001 (cited on page 15, in \citealt{Wagener01}), although ours is simple in comparison
 
 \clearpage
 \begin{singlespace}
@@ -675,9 +676,6 @@ data(sens_ests_cat_all)
 
 tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
 
-lims <- with(tmp, quantile(error)) %>% 
-  as.numeric
-
 stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
 stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
 
@@ -715,7 +713,7 @@ ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) +
 @
 
 % identifiability boxplots
-<<identbox, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because only \\ac{do} was senstive to only one parameter.', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
+<<identbox, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
 data(top_ident_all)
@@ -912,6 +910,9 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
 % supplementary material
 \beginsupplement
 
+%%
+% sup tabs
+
 % ammonium sensitivity all categories
 <<nh4sens, eval = T, cache = F>>=
 senstab(out_var = 'NH4', tablab = 'nh4sens', captxt = 'ammonium', digits = 2, pow = 2, tabsize = 'footnotesize')
@@ -945,6 +946,121 @@ senstab(out_var = 'OM2', tablab = 'om2sens', captxt = 'dissolved organic matter'
 % phosphate sensitivity all categories
 <<po4sens, eval = T, cache = F>>=
 senstab(out_var = 'PO4', tablab = 'po4sens', captxt = 'phosphate', digits = 2, pow = 2, tabsize = 'footnotesize')
+@
+
+%%
+% sup figs
+
+% effects of structural uncertainty
+<<streval, fig.cap = 'Effects of model structure on parameter sensitivity.', fig.height = 8, fig.width = 8, out.width = '\\textwidth', eval = T, echo = F, warning = F, message = F>>=
+# structural
+data(struct_eval)
+
+swtc_levs <- paste0('Which_quota', 1:length(struct_eval))
+swtc_labs <- paste0('Which quota: ', c('Droop', 'Nyholm', 'Flynn'))
+
+toplo_all <- lapply(struct_eval, function(x) {
+  
+  tmp <- reshape2::melt(x[[2]], id.var = c('Parameter', 'error', 'Category'))
+  swtc <- paste0(names(x[[1]]), x[[1]])
+  
+  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+  
+  toplo <- mutate(tmp,
+      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
+      Parameter = as.character(par_txt(Parameter, frm = 'exp')),
+      swtc = as.character(swtc)
+    ) %>% 
+    rename(Sensitivity = error)
+
+  return(toplo)
+  
+  })
+toplo_all <- do.call('rbind', toplo_all)
+toplo_all <- mutate(toplo_all, swtc = factor(swtc, levels = swtc_levs, labels = swtc_labs))
+
+pbase <- theme(
+  panel.grid.major = element_blank(), 
+  panel.grid.minor = element_blank(), 
+  axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8), 
+  axis.text.y = element_text(size = 6),
+  legend.position = 'top', 
+  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt'), 
+  strip.background = element_blank(), 
+  strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0.5)
+  ) 
+
+pstr <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
+  geom_tile(colour = 'black') + 
+  pbase +
+  scale_y_discrete('Parameter', 
+    expand = c(0, 0),
+    breaks = toplo_all$Parameter, 
+    labels = parse(text = toplo_all$Parameter)
+    ) + 
+  scale_x_discrete('State variable', expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
+  facet_grid(Category~swtc, scales = 'free_y', space = 'free') + 
+  guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
+
+print(pstr)
+@
+
+% effects of initial conditions
+<<inieval, fig.cap = 'Effects of initial conditions on parameter sensitivity.', fig.height = 8, fig.width = 8, out.width = '\\textwidth', eval = T, echo = F, warning = F, message = F>>=
+# initial conditions
+data(ini_eval)
+
+ini_levs <- paste('Initial:', c('def', 'apr', 'sep'))
+ini_labs <- paste('Initial:', c('Default', 'April', 'September'))
+
+toplo_all <- sapply(1:length(ini_eval), function(x) {
+  
+  tmp <- reshape2::melt(ini_eval[[x]][[2]], id.var = c('Parameter', 'error', 'Category'))
+  ini <- names(ini_eval)[x]
+
+  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+  
+  toplo <- mutate(tmp,
+      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
+      Parameter = as.character(par_txt(Parameter, frm = 'exp')), 
+      ini = paste('Initial:', ini)
+    ) %>% 
+    rename(Sensitivity = error)
+
+  return(toplo)
+  
+  }, simplify = F)
+toplo_all <- do.call('rbind', toplo_all)
+toplo_all <- mutate(toplo_all, ini = factor(ini, levels = ini_levs, labels = ini_labs))
+
+pbase <- theme(
+  panel.grid.major = element_blank(), 
+  panel.grid.minor = element_blank(), 
+  axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8), 
+  axis.text.y = element_text(size = 6),
+  legend.position = 'top', 
+  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt'), 
+  strip.background = element_blank(), 
+  strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0.5)
+  ) 
+
+pini <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
+  geom_tile(colour = 'black') + 
+  pbase +
+  scale_y_discrete('Parameter', 
+    expand = c(0, 0),
+    breaks = toplo_all$Parameter, 
+    labels = parse(text = toplo_all$Parameter)
+    ) + 
+  scale_x_discrete('State variable', expand = c(0, 0)) +
+  scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
+  facet_grid(Category~ini, scales = 'free_y', space = 'free') + 
+  guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
+
+print(pini)
 @
 
 \end{document}
