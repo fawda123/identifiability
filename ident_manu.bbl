@@ -1,10 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Arhonditsis et~al., 2008]{Arhonditsis08}
-Arhonditsis GB, Perhar G, Zhang W, Massos E, Shi M, Das A. 2008.
-\newblock Addressing equifinality and uncertainty in eutrophication models.
-\newblock Water Resources Research, 44(1):W01420.
-
 \bibitem[Beck, 1987]{Beck87}
 Beck MB. 1987.
 \newblock Water quality modeling: A review of the analysis of uncertainty.
@@ -89,17 +84,6 @@ Fennel K, Hu J, Laurent A, Marta-Almeida M, Hetland R. 2013.
   {M}exico to sediment oxygen consumption and model nesting.
 \newblock Journal of Geophysical Research: Oceans, 118(2):990--1002.
 
-\bibitem[Flynn, 2005]{Flynn05}
-Flynn KJ. 2005.
-\newblock Castles built on sand: dysfunctionality in plankton models and the
-  inadequacy of dialogue between biologists and modellers.
-\newblock Journal of Plankton Research, 27(12):1205--1210.
-
-\bibitem[Gallagher and Doherty, 2007]{Gallagher07}
-Gallagher M, Doherty J. 2007.
-\newblock Parameter estimation and uncertainty analysis for a watershed model.
-\newblock Environmental Modelling and Software, 22(7):1000--1020.
-
 \bibitem[Ganju et~al., 2016]{Ganju16}
 Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
   Harris LA, Lake SJ, McCardell G, O'Donnell J, Ralston DK, Signell RP, Testa
@@ -132,11 +116,6 @@ Howarth RW, Billen G, Swaney D, Townsend A, Jaworski N, Lajtha K, Downing JA,
 \newblock Regional nitrogen budgets and riverine {N} \& {P} fluxes for the
   drainages to the {N}orth {A}tlantic {O}cean: natural and human influences.
 \newblock Biogeochemistry, 35(1):75--139.
-
-\bibitem[Jr., 1996]{Rykiel96}
-Jr. EJR. 1996.
-\newblock Testing ecological models: the meaning of validation.
-\newblock Ecological Modelling, 90(3):229--244.
 
 \bibitem[Just\'{i}c et~al., 1987]{Justic87}
 Just\'{i}c D, Legov\'{i}c T, Rottini-Sandrini L. 1987.

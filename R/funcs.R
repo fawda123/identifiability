@@ -909,7 +909,7 @@ par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
   splits <- cats[sels, ] %>% 
     .[match(parin, .$shrt), ] # this is important to make sure the output order matches with input
   
-  # gsub the shrt names differnet by category
+  # gsub the shrt names different by category
   subs <- apply(splits, 1,  function(x){
 
     # 1-6 are phytos, 7-8 are zoops (changed to 1-2)
@@ -950,14 +950,28 @@ par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
   .$shrt
 
   # remove subscripts if p1z1
-  if(p1z1) subs <- gsub('_p[1-6]$|_z[1-1]$', '', subs)
+  if(p1z1){
+    
+    # temperature has both phyto and zoop for p1z1, so do not remove subs for those
+    temps <- filter(cats, cats %in% 'Temperature') %>% 
+      .$shrt %>% 
+      as.character %>% 
+      gsub('\\(nospA\\+nospZ\\)_[1-8]$', '', .) %>% 
+      unique
+    sels <- grepl(paste(temps, collapse = '|'), subs)
+    
+    # remove subs for all but temp
+    subs[!sels] <- gsub('_p[1-6]$|_z[1-2]$', '', subs[!sels])
+    
+  }
 
   # convert output format for tex
   if(frm == 'tex'){
     
     out <- gsub('_([pz][1-9])$', '$_{\\1}$', subs)
+    out <- gsub('([1-9,a-z,A-Z])_', '\\1\\\\_', out)
     out <- paste0('\\textit{', out, '}')
-      
+
   }
   
   # convert output format as expressions for R
@@ -999,18 +1013,16 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
     mutate(Parameter = as.character(Parameter)) %>% 
     left_join(., tmpest, by = 'Parameter') %>% 
     left_join(., labs, by = 'Parameter') %>% 
-    select(cats, lngs, Parameter, vals, L1) %>% 
+    select(cats, lngs, Parameter, L1) %>% 
     arrange(cats, -L1) %>% 
     mutate(
       Parameter = par_txt(Parameter),
       lngs = gsub('^.*:\\s', '', lngs), 
-      lngs = gsub('_', '', lngs), 
-      vals = sapply(vals, scinot),
+      lngs = gsub('_', '', lngs),
       L1 = sapply(L1, scinot, digits = digits, pow = pow)
     ) %>% 
     rename(
-      Description = lngs, 
-      Value = vals
+      Description = lngs
     )
   
   # final table formatting
@@ -1018,7 +1030,7 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
   cats <- totab$cats
   totab <- totab[,-c(1:2)]
   
-  cap.val<- paste('Sensitivity of', captxt, 'to perturbations of indivividual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+  cap.val<- paste('Sensitivity of', captxt, 'to perturbations of individual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
   
   latex( 
     totab,
@@ -1033,4 +1045,22 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
     label = paste0('tab:', tablab)
     )
     
+}
+
+######
+# this is a convenience function to return the relevant parameters for sensitivity analysis
+par_tst <- function(){
+  
+  # parameters to eval
+  pars <- parcats2(as_df = TRUE)$shrt %>% 
+    as.character
+  
+  # remove irrelevant parameters, taken from 'ignore/noparams.csv'
+  rmpars <- c('Kw_1', 'Kcdom_1', 'Kspm_1', 'Kchla_1', 'aw490_1', 'astarOMR_1', 'astarOMBC_1', 'PARfac_1', 'KTg1(nospA+nospZ)_1', 'KTg1(nospA+nospZ)_2', 'KTg1(nospA+nospZ)_3', 'KTg1(nospA+nospZ)_4', 'KTg1(nospA+nospZ)_5', 'KTg1(nospA+nospZ)_6', 'KTg1(nospA+nospZ)_7', 'KTg1(nospA+nospZ)_8', 'KTg2(nospA+nospZ)_1', 'KTg2(nospA+nospZ)_2', 'KTg2(nospA+nospZ)_3', 'KTg2(nospA+nospZ)_4', 'KTg2(nospA+nospZ)_5', 'KTg2(nospA+nospZ)_6', 'KTg2(nospA+nospZ)_7', 'KTg2(nospA+nospZ)_8', 'Ea_R(nospA+nospZ)_1', 'Ea_R(nospA+nospZ)_2', 'Ea_R(nospA+nospZ)_3', 'Ea_R(nospA+nospZ)_4', 'Ea_R(nospA+nospZ)_5', 'Ea_R(nospA+nospZ)_6', 'Ea_R(nospA+nospZ)_7', 'Ea_R(nospA+nospZ)_8', 'beta_1', 'beta_2', 'beta_3', 'beta_4', 'beta_5', 'beta_6', 'QmaxN_1', 'QmaxN_2', 'QmaxN_3', 'QmaxN_4', 'QmaxN_5', 'QmaxN_6', 'QmaxP_1', 'QmaxP_2', 'QmaxP_3', 'QmaxP_4', 'QmaxP_5', 'QmaxP_6', 'nfQs_1', 'nfQs_2', 'nfQs_3', 'nfQs_4', 'nfQs_5', 'nfQs_6', 'A_wt_1', 'A_wt_2', 'A_wt_3', 'A_wt_4', 'A_wt_5', 'A_wt_6', 'KG1_R_1', 'KG2_R_1', 'KG1_BC_1', 'KG2_BC_1', 'pCO2_1', 'stoich_x1R_1', 'stoich_y1R_1', 'stoich_x2R_1', 'stoich_y2R_1', 'stoich_x1BC_1', 'stoich_y1BC_1', 'stoich_x2BC_1', 'stoich_y2BC_1', 'sink OM1_R_1', 'sink OM2_R_1', 'sink OM1_BC_1', 'sink OM2_BC_1', 'CF_SPM_1')
+  rmpars <- c(rmpars, 'respb_7') # there's an extra of this one
+  pars <- pars[!pars %in% rmpars]
+  pars <- grep('_1$|_7$', pars, value = TRUE) # get parameters for one phyto, one zoop (_7 is for temp) 
+  
+  return(pars)
+
 }

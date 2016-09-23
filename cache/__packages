@@ -1,8 +1,7 @@
 base
 knitr
-ggplot2
-WRTDStidal
 tidyr
+ggplot2
 dplyr
 gridExtra
 lattice

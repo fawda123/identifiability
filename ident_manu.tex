@@ -147,7 +147,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Tue Aug 30 15:34:01 2016 -0500
+  \\ Version Date:   Tue Sep 6 12:52:12 2016 -0500
 	}
 \date{}
 \maketitle
@@ -228,7 +228,7 @@ A set of heuristics was developed to balance the tradeoff in model complexity an
 
 \subsection{Observational and structural uncertainty}
 
-The effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability to infer the effects of observational and structural uncertainty on model output to create a more comprehensive evaluation.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplnakton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting.  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  Initial conditions were also changed to test the effects of different limiting nutrients by setting nitrogen and phosphorus values above or below concentrations defined by the standard Redfield ratio.  
+The effects of observational and structural uncertainty on the sensitivity analyses were evaluated for \ac{do}.  These analyses used changes in parameter uncertainty and identifiability from results using the model's default configuration to infer the effects of observational and structural uncertainty on model output.  First, observational uncertainty was evaluated by varying the initial conditions supplied to the model.  The initial conditions were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14} and uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on which nutrient is limiting.  Parameter sensitivity and identifiability was re-evaluated for \ac{do} by varying all initial conditions that were non-zero by 50\% and 200\% of the original values that were estimated from the observed data.  Initial conditions were also changed to test the effects of different limiting nutrients by setting nitrogen and phosphorus values above or below concentrations defined by the standard Redfield ratio.  
 
 The effects of model structure on parameter sensitivity and identifiability were evaluated by including or excluding specific components of the model.  The FishTank model includes several processes that are based on expected conditions or available data.  These `switches' are conceptually different from model parameters as they define the use of explicit equations or processes included in the model structure.  As such, a comparison of sensitivity and identifiability given different equations uses parameter uncertainty to begin addressing componenents of structural uncertainty.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  For simplicity, parameter identifiability was evaluated using three scenarios of simple, intermediate, and complex combinations of model switches.  
 
@@ -459,51 +459,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of \ac{do} to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \ac{do} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:dosens}} 
+\caption{Sensitivity of \ac{do} to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \ac{do} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:dosens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$6.27\times 10^{-4}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$3.22\times 10^{-4}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$5.35\times 10^{-6}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$7.41\times 10^{-4}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$4.91\times 10^{-5}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$4.34\times 10^{-5}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$1.8\times 10^{-4}$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.71$\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$0.03$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$0.03$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$0.03$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$0.01$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$0.01$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$0.01$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$7.44\times 10^{-3}$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$5.34\times 10^{-3}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$1.56\times 10^{-3}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$1.3\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$1.59\times 10^{-4}$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$7.63\times 10^{-5}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~maximum growth rate&\textit{umax}&$0.06$\tabularnewline
+~~mortality coefficient&\textit{mA}&$0.02$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.02$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.02$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.01$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$8.28\times 10^{-3}$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$8.15\times 10^{-3}$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$6.93\times 10^{-3}$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$4.41\times 10^{-3}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$4.25\times 10^{-3}$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$4.2\times 10^{-3}$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$4.19\times 10^{-3}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$4.05\times 10^{-3}$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$2.9\times 10^{-3}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$3.03\times 10^{-4}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$1.4\times 10^{-7}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$4.51\times 10^{-3}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$1.97\times 10^{-3}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$1.47\times 10^{-4}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$4.61\times 10^{-5}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$2.89\times 10^{-5}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.05$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.02$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.02$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$0.02$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.01$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$7.58\times 10^{-3}$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$5.19\times 10^{-3}$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$2.89\times 10^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$9.48\times 10^{-5}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$3.63\times 10^{-5}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.05$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.01$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$7.53\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$6.49\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$6.36\times 10^{-3}$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$8\times 10^{-4}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$2.9\times 10^{-4}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$2.44\times 10^{-4}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$6.1\times 10^{-3}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$3.59\times 10^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$3.11\times 10^{-3}$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$2.95\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$5.68\times 10^{-4}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$4.91\times 10^{-4}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$4.12\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$3.93\times 10^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -521,51 +529,69 @@ The above analyses were repeated for additional state variables estimated by Fis
 \multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
 \hline
 {Optics}&&&&&&&&&\tabularnewline
-~~\footnotesize{\textit{astar490}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
-~~\footnotesize{\textit{astarOMA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
-~~\footnotesize{\textit{astar490}}&$2$&$8.54$&$10.83$&-&-&-&$9.19$&$7.33$&-\tabularnewline
-~~\footnotesize{\textit{astarOMA}}&$2$&-&-&$3.86$&$1.43$&-&-&-&$3.63$\tabularnewline
-~~\footnotesize{\textit{astarOMZ}}&$3$&-&$13.7$&$3.93$&$3.78$&-&$13.31$&$13.12$&$3.73$\tabularnewline
+~~\footnotesize{\textit{astar490}}&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$\tabularnewline
+~~\footnotesize{\textit{astarOMA}}&$2$&$7.26$&$5.4$&-&$5.35$&-&$7.72$&$7.91$&-\tabularnewline
+~~\footnotesize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.81$\tabularnewline
+~~\footnotesize{\textit{astarOMA}}&$3$&-&-&$3.73$&-&-&-&-&$9.65$\tabularnewline
+~~\footnotesize{\textit{astarOMZ}}&$3$&$7.5$&$5.51$&-&$6.01$&-&$7.88$&$7.91$&-\tabularnewline
 \hline
 {Organic Matter}&&&&&&&&&\tabularnewline
-~~\footnotesize{\textit{KG1}}&$1$&-&-&-&-&-&$1$&-&$1$\tabularnewline
+~~\footnotesize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
 ~~\footnotesize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
 ~~\footnotesize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KNH4}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KstarO2}}&$1$&-&-&$1$&-&$1$&-&-&-\tabularnewline
-~~\footnotesize{\textit{KG1}}&$2$&-&$3.42$&$1.12$&$1.43$&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KG2}}&$2$&-&-&-&-&-&-&-&$6.03$\tabularnewline
-~~\footnotesize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.9$&$1.73$&-\tabularnewline
-~~\footnotesize{\textit{nitmax}}&$2$&$14.51$&-&-&-&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KG2}}&$3$&-&-&$5.31$&-&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KGcdom}}&$3$&$14.51$&-&-&-&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{KO2}}&$3$&-&-&-&$6.37$&-&$6.17$&$4.98$&-\tabularnewline
+~~\footnotesize{\textit{KstarO2}}&$1$&-&-&-&-&$1$&-&-&-\tabularnewline
+~~\footnotesize{\textit{nitmax}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG2}}&$2$&-&-&-&-&-&-&-&$13.44$\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.4$&-\tabularnewline
+~~\footnotesize{\textit{KNH4}}&$2$&$4.04$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KNO3}}&$2$&-&-&-&-&$9.1$&-&-&-\tabularnewline
+~~\footnotesize{\textit{KstarO2}}&$2$&-&-&$1.06$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG1}}&$3$&$4.1$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG2}}&$3$&-&-&$6.01$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.78$\tabularnewline
+~~\footnotesize{\textit{KO2}}&$3$&-&-&-&-&-&$14.25$&$12.35$&-\tabularnewline
+~~\footnotesize{\textit{KstarO2}}&$3$&-&$1.28$&-&$1.99$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KG2}}&$4$&-&-&-&$11.17$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$4$&-&-&$6.08$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KO2}}&$4$&-&-&-&-&-&-&-&$14.5$\tabularnewline
+~~\footnotesize{\textit{KstarO2}}&$4$&$4.29$&-&-&-&-&$14.34$&$13.61$&-\tabularnewline
+~~\footnotesize{\textit{KGcdom}}&$5$&$4.41$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KO2}}&$5$&-&-&$8.44$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{nitmax}}&$6$&-&-&$10.12$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KNH4}}&$7$&-&-&$10.17$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{KNO3}}&$8$&-&-&$13.94$&-&-&-&-&-\tabularnewline
 \hline
 {Phytoplankton}&&&&&&&&&\tabularnewline
-~~\footnotesize{\textit{alpha}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
-~~\footnotesize{\textit{Qc}}&$1$&-&-&$1$&$1$&$1$&-&-&-\tabularnewline
-~~\footnotesize{\textit{QminP}}&$1$&-&-&-&-&-&-&-&$1$\tabularnewline
-~~\footnotesize{\textit{alpha}}&$2$&-&-&$1.66$&$1.36$&$4.98$&-&-&-\tabularnewline
-~~\footnotesize{\textit{mA}}&$2$&-&-&-&-&-&-&-&$1.24$\tabularnewline
-~~\footnotesize{\textit{umax}}&$2$&$8.51$&$4.64$&-&-&-&$6.1$&$5.36$&-\tabularnewline
-~~\footnotesize{\textit{alpha}}&$3$&-&-&-&-&-&-&-&$4.73$\tabularnewline
-~~\footnotesize{\textit{mA}}&$3$&$9.18$&$5.26$&$7.56$&$2.7$&-&$7.13$&$6.72$&-\tabularnewline
-~~\footnotesize{\textit{respb}}&$4$&$13.74$&$9.62$&-&-&-&$13.32$&$14.3$&-\tabularnewline
-~~\footnotesize{\textit{vmaxP}}&$4$&-&-&-&-&-&-&-&$6.18$\tabularnewline
-~~\footnotesize{\textit{Qc}}&$5$&-&$13.06$&-&-&-&$13.35$&$14.39$&-\tabularnewline
+~~\footnotesize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\footnotesize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\footnotesize{\textit{ediblevector(Z1)}}&$2$&$1.13$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{mA}}&$2$&-&-&$1.16$&$1.28$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{Qc}}&$2$&-&-&-&-&$3.38$&-&-&-\tabularnewline
+~~\footnotesize{\textit{umax}}&$2$&-&$1.09$&-&-&-&$1.18$&$1.18$&-\tabularnewline
+~~\footnotesize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&-&$2.75$\tabularnewline
+~~\footnotesize{\textit{alpha}}&$3$&-&-&$1.43$&$1.98$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{ediblevector(Z1)}}&$3$&-&$2.14$&-&-&-&$3.22$&$2.87$&-\tabularnewline
+~~\footnotesize{\textit{umax}}&$3$&$1.23$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{alpha}}&$4$&$1.64$&$4.3$&-&-&-&-&$7.17$&-\tabularnewline
+~~\footnotesize{\textit{ediblevector(Z1)}}&$4$&-&-&$1.83$&$3.15$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{Qc}}&$4$&-&-&-&-&-&$5.2$&-&-\tabularnewline
+~~\footnotesize{\textit{alpha}}&$5$&-&-&-&-&-&$9.72$&-&-\tabularnewline
+~~\footnotesize{\textit{Qc}}&$5$&-&-&$3.18$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{vmaxN}}&$5$&$8$&$14.42$&-&-&-&-&$14.48$&-\tabularnewline
+~~\footnotesize{\textit{Athresh}}&$6$&$8.32$&-&-&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{respg}}&$6$&-&$14.56$&$3.65$&-&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{vmaxN}}&$7$&-&-&$4$&-&-&-&-&-\tabularnewline
 \hline
 {Zooplankton}&&&&&&&&&\tabularnewline
-~~\footnotesize{\textit{ZQc}}&$1$&-&$1$&$1$&$1$&-&$1$&$1$&-\tabularnewline
-~~\footnotesize{\textit{ZQn}}&$1$&$1$&-&-&-&$1$&-&-&-\tabularnewline
-~~\footnotesize{\textit{ZQp}}&$1$&-&-&-&-&-&-&-&$1$\tabularnewline
-~~\footnotesize{\textit{Zm}}&$2$&-&-&-&-&-&$2.76$&-&-\tabularnewline
-~~\footnotesize{\textit{Zrespb}}&$2$&-&$5.46$&-&$5.88$&-&-&-&$1.66$\tabularnewline
-~~\footnotesize{\textit{Zm}}&$3$&-&$14.16$&-&-&-&-&-&$4.21$\tabularnewline
-~~\footnotesize{\textit{ZQp}}&$3$&-&-&-&-&-&$2.76$&-&-\tabularnewline
-~~\footnotesize{\textit{ZQc}}&$4$&-&-&-&-&-&-&-&$5.23$\tabularnewline
-~~\footnotesize{\textit{ZQp}}&$4$&-&$14.2$&-&-&-&-&-&-\tabularnewline
-~~\footnotesize{\textit{Zrespb}}&$4$&-&-&-&-&-&$12.49$&-&-\tabularnewline
-~~\footnotesize{\textit{ZQn}}&$5$&-&-&-&-&-&$13.59$&-&-\tabularnewline
+~~\footnotesize{\textit{ZKa}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\footnotesize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\footnotesize{\textit{ZKa}}&$2$&-&$3.48$&-&-&-&$5.38$&$4.15$&-\tabularnewline
+~~\footnotesize{\textit{ZQn}}&$2$&-&-&$2.38$&$3.84$&$5.97$&-&-&$4.1$\tabularnewline
+~~\footnotesize{\textit{Zm}}&$3$&-&-&$2.74$&-&-&-&-&$11.52$\tabularnewline
+~~\footnotesize{\textit{Zumax}}&$3$&-&-&-&$5.94$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{Zm}}&$4$&-&-&-&$6.9$&-&-&-&-\tabularnewline
+~~\footnotesize{\textit{Zumax}}&$4$&-&-&$3.59$&-&-&-&-&-\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -583,50 +609,57 @@ The above analyses were repeated for additional state variables estimated by Fis
 \multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
 {Ammonium}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$8.51$\tabularnewline
-~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$9.18$\tabularnewline
-~~4&\footnotesize{\textit{KNH4}}&$1$\textsuperscript{OM}&$11.35$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{nitmax}}&$1$\textsuperscript{OM}&$1.17$\tabularnewline
+~~3&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.88$\tabularnewline
 \hline
 {Chlorophyll}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$4.64$\tabularnewline
-~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$5.26$\tabularnewline
-~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$9.62$\tabularnewline
-~~5&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$12.93$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$1.18$\tabularnewline
+~~3&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$2.1$\tabularnewline
 \hline
 {Dissolved Oxygen}&&&\tabularnewline
-~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~1&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$2.27$\tabularnewline
+~~3&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$2.37$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$2.41$\tabularnewline
+~~5&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$4.54$\tabularnewline
+~~6&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$4.9$\tabularnewline
+~~7&\footnotesize{\textit{Zm}}&$3$\textsuperscript{Z}&$4.92$\tabularnewline
+~~8&\footnotesize{\textit{Zumax}}&$4$\textsuperscript{Z}&$4.94$\tabularnewline
 \hline
 {Irradiance}&&&\tabularnewline
-~~1&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$1$\tabularnewline
-~~2&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1.15$\tabularnewline
-~~3&\footnotesize{\textit{alpha}}&$2$\textsuperscript{P}&$2.5$\tabularnewline
-~~4&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$2.92$\tabularnewline
+~~1&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$5.03$\tabularnewline
+~~3&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$7.98$\tabularnewline
+~~4&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$8.27$\tabularnewline
+~~5&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$10.08$\tabularnewline
+~~6&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$10.09$\tabularnewline
+~~7&\footnotesize{\textit{Zumax}}&$3$\textsuperscript{Z}&$10.83$\tabularnewline
 \hline
 {Nitrate}&&&\tabularnewline
-~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~1&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$4.79$\tabularnewline
+~~3&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$6.88$\tabularnewline
 \hline
 {OM1}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$6.1$\tabularnewline
-~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$7.13$\tabularnewline
-~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$13.32$\tabularnewline
-~~5&\footnotesize{\textit{Qc}}&$5$\textsuperscript{P}&$13.35$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$1.18$\tabularnewline
+~~3&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$3.18$\tabularnewline
+~~4&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$7.5$\tabularnewline
 \hline
 {OM2}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$5.36$\tabularnewline
-~~3&\footnotesize{\textit{mA}}&$3$\textsuperscript{P}&$6.72$\tabularnewline
-~~4&\footnotesize{\textit{respb}}&$4$\textsuperscript{P}&$14.3$\tabularnewline
-~~5&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$14.9$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$1.05$\tabularnewline
+~~3&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$2.74$\tabularnewline
+~~4&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.86$\tabularnewline
+~~5&\footnotesize{\textit{ZKa}}&$2$\textsuperscript{Z}&$5.44$\tabularnewline
 \hline
 {Phosphate}&&&\tabularnewline
-~~1&\footnotesize{\textit{QminP}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$1.24$\tabularnewline
-~~3&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$4.73$\tabularnewline
-~~4&\footnotesize{\textit{vmaxP}}&$4$\textsuperscript{P}&$6.18$\tabularnewline
-~~5&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$7.17$\tabularnewline
+~~1&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$4.9$\tabularnewline
+~~3&\footnotesize{\textit{vmaxP}}&$2$\textsuperscript{P}&$6.84$\tabularnewline
+~~4&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$14.13$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -644,50 +677,80 @@ The above analyses were repeated for additional state variables estimated by Fis
 \multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
 {Ammonium}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{KNH4}}&$1$\textsuperscript{OM}&$1.67$\tabularnewline
-~~3&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.96$\tabularnewline
-~~4&\footnotesize{\textit{ZQn}}&$1$\textsuperscript{Z}&$3.61$\tabularnewline
-~~5&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$4.97$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{nitmax}}&$1$\textsuperscript{OM}&$1.17$\tabularnewline
+~~3&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.88$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$3.45$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$4.23$\tabularnewline
 \hline
 {Chlorophyll}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.36$\tabularnewline
-~~3&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$6.39$\tabularnewline
-~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$13.97$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$1.18$\tabularnewline
+~~3&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$2.62$\tabularnewline
+~~4&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$3.25$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$5.91$\tabularnewline
+~~6&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$5.92$\tabularnewline
+~~7&\footnotesize{\textit{ZKa}}&$2$\textsuperscript{Z}&$10.99$\tabularnewline
+~~8&\footnotesize{\textit{KG1}}&$2$\textsuperscript{OM}&$11.01$\tabularnewline
+~~9&\footnotesize{\textit{astarOMA}}&$2$\textsuperscript{O}&$11.32$\tabularnewline
 \hline
 {Dissolved Oxygen}&&&\tabularnewline
-~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~1&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$2.27$\tabularnewline
+~~3&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$2.36$\tabularnewline
+~~4&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$4.05$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$4.1$\tabularnewline
+~~6&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$4.4$\tabularnewline
+~~7&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$5.08$\tabularnewline
+~~8&\footnotesize{\textit{KstarO2}}&$2$\textsuperscript{OM}&$5.87$\tabularnewline
+~~9&\footnotesize{\textit{astarOMZ}}&$2$\textsuperscript{O}&$6.08$\tabularnewline
+~~10&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$6.17$\tabularnewline
+~~11&\footnotesize{\textit{Zm}}&$3$\textsuperscript{Z}&$10.42$\tabularnewline
 \hline
 {Irradiance}&&&\tabularnewline
-~~1&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$1$\tabularnewline
-~~2&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1.15$\tabularnewline
-~~3&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$4.97$\tabularnewline
-~~4&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$5.14$\tabularnewline
-~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$6.62$\tabularnewline
-~~6&\footnotesize{\textit{alpha}}&$2$\textsuperscript{P}&$12.85$\tabularnewline
+~~1&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$5.03$\tabularnewline
+~~3&\footnotesize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$5.05$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$5.12$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$7.6$\tabularnewline
+~~6&\footnotesize{\textit{ZQn}}&$2$\textsuperscript{Z}&$10.92$\tabularnewline
+~~7&\footnotesize{\textit{mA}}&$2$\textsuperscript{P}&$10.94$\tabularnewline
+~~8&\footnotesize{\textit{KG1}}&$2$\textsuperscript{OM}&$10.94$\tabularnewline
+~~9&\footnotesize{\textit{astarOMA}}&$2$\textsuperscript{O}&$11.12$\tabularnewline
+~~10&\footnotesize{\textit{alpha}}&$3$\textsuperscript{P}&$12.29$\tabularnewline
 \hline
 {Nitrate}&&&\tabularnewline
-~~1&\footnotesize{\textit{Qc}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~1&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$4.79$\tabularnewline
+~~3&\footnotesize{\textit{KstarO2}}&$1$\textsuperscript{OM}&$6.71$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$7.63$\tabularnewline
 \hline
 {OM1}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.73$\tabularnewline
-~~3&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$2.77$\tabularnewline
-~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$6.91$\tabularnewline
-~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$6.91$\tabularnewline
-~~6&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$13.68$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$1.15$\tabularnewline
+~~3&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$3.88$\tabularnewline
+~~4&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$3.93$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$5.85$\tabularnewline
+~~6&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$9.9$\tabularnewline
+~~7&\footnotesize{\textit{ZKa}}&$2$\textsuperscript{Z}&$10.05$\tabularnewline
 \hline
 {OM2}&&&\tabularnewline
-~~1&\footnotesize{\textit{alpha}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$1.46$\tabularnewline
-~~3&\footnotesize{\textit{Tref(nospA+nospZ)}}&$1$\textsuperscript{T}&$2.53$\tabularnewline
-~~4&\footnotesize{\textit{astarOMA}}&$1$\textsuperscript{O}&$7.69$\tabularnewline
-~~5&\footnotesize{\textit{ZQc}}&$1$\textsuperscript{Z}&$7.87$\tabularnewline
+~~1&\footnotesize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
+~~2&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$1.05$\tabularnewline
+~~3&\footnotesize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.61$\tabularnewline
+~~4&\footnotesize{\textit{KG2}}&$1$\textsuperscript{OM}&$3.4$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$4.52$\tabularnewline
+~~6&\footnotesize{\textit{umax}}&$2$\textsuperscript{P}&$7.43$\tabularnewline
+~~7&\footnotesize{\textit{ZKa}}&$2$\textsuperscript{Z}&$7.62$\tabularnewline
+~~8&\footnotesize{\textit{KGcdom}}&$2$\textsuperscript{OM}&$12.42$\tabularnewline
 \hline
 {Phosphate}&&&\tabularnewline
-~~1&\footnotesize{\textit{QminP}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$1.3$\tabularnewline
+~~1&\footnotesize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
+~~2&\footnotesize{\textit{umax}}&$1$\textsuperscript{P}&$4.9$\tabularnewline
+~~3&\footnotesize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$5.63$\tabularnewline
+~~4&\footnotesize{\textit{KG1}}&$1$\textsuperscript{OM}&$7.55$\tabularnewline
+~~5&\footnotesize{\textit{astar490}}&$1$\textsuperscript{O}&$9.82$\tabularnewline
+~~6&\footnotesize{\textit{vmaxP}}&$2$\textsuperscript{P}&$11.26$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -770,51 +833,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of ammonium to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect ammonium are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:nh4sens}} 
+\caption{Sensitivity of ammonium to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect ammonium are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:nh4sens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.01$\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$0.01$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$4.77\times 10^{-5}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.03$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.61\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.48\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$0.61$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.78$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$43.95$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$9.63$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$1.32$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$0.9$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$0.56$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$0.31$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$0.3$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$0.21$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$0.05$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$0.04$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.02$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$9.3\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$6.4\times 10^{-3}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~mortality coefficient&\textit{mA}&$8.49$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$1.31$\tabularnewline
+~~maximum growth rate&\textit{umax}&$0.75$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.59$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.46$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.28$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.17$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.16$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.15$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.14$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.13$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.1$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.1$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.05$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$1.97\times 10^{-6}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$0.18$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$0.17$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$1.41\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$1\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$1.85\times 10^{-4}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$1.41$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.76$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.59$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.56$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.48$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.29$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.22$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.16$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.07\times 10^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$1.93\times 10^{-4}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$1.1$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$0.71$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.36$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.2$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.14$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.07$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$0.05$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$0.01$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.53$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$0.66$\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.07$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.07$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.06$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.06$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.03$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$5.42\times 10^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -825,48 +896,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of \ac{chla} to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \ac{chla} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:chlsens}} 
+\caption{Sensitivity of \ac{chla} to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \ac{chla} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:chlsens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.02$\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$0.02$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$6.77\times 10^{-5}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.02$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.45\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.13\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$0.96$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.6$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$132.89$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$20.34$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$1.9$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$1.33$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.91$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$0.37$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$4.69\times 10^{-3}$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$2.25\times 10^{-3}$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$2.13\times 10^{-3}$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$7.11\times 10^{-4}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$2.05\times 10^{-4}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$1.71\times 10^{-4}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$2.32\times 10^{-5}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~mortality coefficient&\textit{mA}&$13.94$\tabularnewline
+~~maximum growth rate&\textit{umax}&$1$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.95$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.62$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.54$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.26$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.25$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.24$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.17$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.14$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.12$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.1$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.07$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.03$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$0.02$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$1.57\times 10^{-6}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$6.79\times 10^{-5}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$1.46\times 10^{-5}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$1.07\times 10^{-5}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$6.48\times 10^{-6}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$1.03$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.95$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.57$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.54$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.41$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.24$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.17$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.14$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.29\times 10^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$1.01\times 10^{-4}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.58$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.02$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$1.69\times 10^{-3}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.38\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.96\times 10^{-4}$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$3.14\times 10^{-5}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.08$\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.03$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.02$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.01$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.51\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$9.86\times 10^{-4}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$3.23\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$2.86\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -877,51 +959,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of irradiance to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect irradiance are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:irrsens}} 
+\caption{Sensitivity of irradiance to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect irradiance are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:irrsens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$2.71\times 10^{-3}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$2.41\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$7.15\times 10^{-6}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.02$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.46\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.34\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$2.29\times 10^{-4}$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.03$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$8.09\times 10^{-3}$\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$7.65\times 10^{-3}$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$7.42\times 10^{-3}$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$2.13\times 10^{-3}$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$2.09\times 10^{-3}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$7.39\times 10^{-4}$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$5.74\times 10^{-4}$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$4.7\times 10^{-4}$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$4.44\times 10^{-4}$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$6.64\times 10^{-5}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$4.7\times 10^{-5}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$3.48\times 10^{-5}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$2.45\times 10^{-6}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~maximum growth rate&\textit{umax}&$0.13$\tabularnewline
+~~mortality coefficient&\textit{mA}&$0.05$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.04$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.04$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.03$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.02$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.01$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.01$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.01$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$9.49\times 10^{-3}$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$9.4\times 10^{-3}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$8.15\times 10^{-3}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$5.78\times 10^{-3}$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$4.45\times 10^{-3}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$1.04\times 10^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$2.03\times 10^{-7}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$7.23\times 10^{-6}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$1.05\times 10^{-6}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$9.27\times 10^{-7}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$4.47\times 10^{-7}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$2.43\times 10^{-8}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.17$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.06$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$0.04$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.04$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.03$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.02$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.01$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$9.72\times 10^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$9.29\times 10^{-5}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$2.11\times 10^{-5}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.05$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.6\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$1.61\times 10^{-4}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$1.31\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.82\times 10^{-5}$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$2.95\times 10^{-6}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$7.41\times 10^{-9}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$4.81\times 10^{-9}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.05$\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$3.95\times 10^{-3}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$1.23\times 10^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$9.87\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.61\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$4.94\times 10^{-5}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.59\times 10^{-6}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$1.38\times 10^{-6}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -932,50 +1022,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of nitrate to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect nitrate are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:no3sens}} 
+\caption{Sensitivity of nitrate to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect nitrate are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:no3sens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$5.03\times 10^{-4}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$2.58\times 10^{-4}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$8.38\times 10^{-7}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.03$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.54\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.43\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$1.79\times 10^{-6}$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.34$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.1$\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$0.02$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$9.21\times 10^{-3}$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$8.6\times 10^{-3}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$4.69\times 10^{-3}$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$4.56\times 10^{-3}$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$3.7\times 10^{-3}$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$1.91\times 10^{-3}$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$1.81\times 10^{-3}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$1.54\times 10^{-4}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$8.37\times 10^{-5}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$4.18\times 10^{-5}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~maximum growth rate&\textit{umax}&$49.33$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$1.54$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$1.1$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.37$\tabularnewline
+~~mortality coefficient&\textit{mA}&$0.31$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.26$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.22$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.17$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.13$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.13$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.13$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.12$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.11$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.08$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$9.1\times 10^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$4.01\times 10^{-7}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$1.28\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$4.96\times 10^{-4}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$3.02\times 10^{-5}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$1.53\times 10^{-5}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$5.55\times 10^{-6}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$34.61$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$2.21$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$1.1$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$0.38$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.35$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.29$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.21$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.12$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$4.7\times 10^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.05\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.05$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$7.09\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$4.36\times 10^{-3}$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$1.5\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$8.65\times 10^{-4}$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$7.43\times 10^{-4}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$3.34\times 10^{-4}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$3.23\times 10^{-4}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$1.27$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$0.05$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.05$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.03$\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.03$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.01$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$0.01$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$0.01$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -986,51 +1085,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of particulate organic matter to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect particulate organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om1sens}} 
+\caption{Sensitivity of particulate organic matter to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect particulate organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om1sens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.02$\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$0.02$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$5.94\times 10^{-5}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.03$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.72\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.49\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$0.92$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.86$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$102.96$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$18.21$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$1.62$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$1.2$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.95$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$0.35$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$0.16$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$0.1$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$0.09$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$0.09$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$8.86\times 10^{-3}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$3.49\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$1.09\times 10^{-3}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~mortality coefficient&\textit{mA}&$7.23$\tabularnewline
+~~maximum growth rate&\textit{umax}&$0.99$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.9$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.68$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.67$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.45$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.29$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.24$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.22$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.21$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.14$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.12$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.1$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.09$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$7.35\times 10^{-4}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$1.87\times 10^{-3}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$1.1\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$1.72\times 10^{-4}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$1.21\times 10^{-4}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$2.19\times 10^{-5}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$0.96$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.85$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.54$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.51$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.39$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.27$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.16$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.12$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$9.64\times 10^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.05\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.9$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.53$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.15$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.11$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$0.02$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$5.27\times 10^{-4}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$3.67\times 10^{-6}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$1.75\times 10^{-6}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.92$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.07$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.03$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.01$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$2.47\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$4.74\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$4.25\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -1041,51 +1148,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of dissolved organic matter to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect dissolved organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om2sens}} 
+\caption{Sensitivity of dissolved organic matter to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect dissolved organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om2sens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$0.02$\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$0.02$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$5.67\times 10^{-5}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$2.47\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$2.05\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$0.96$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$1.48$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$120$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$19.66$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$1.44$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$1.09$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$0.96$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$0.84$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$0.47$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$0.42$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$0.41$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$0.34$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$0.04$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$9.43\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$6.95\times 10^{-3}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~mortality coefficient&\textit{mA}&$14.26$\tabularnewline
+~~maximum growth rate&\textit{umax}&$1.24$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.95$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.86$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.86$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.68$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.36$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.29$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.25$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.24$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.23$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.21$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.14$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.11$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$0.02$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$4.36\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$8.74\times 10^{-3}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$7.52\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$1.1\times 10^{-3}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$2.72\times 10^{-4}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$3.18\times 10^{-5}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$1.02$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$0.98$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.58$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.57$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.42$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.17$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.13$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.12$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$0.04$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.68\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$0.98$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$0.53$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$0.18$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$0.13$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$0.02$\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$0.01$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$1.14\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$6.11\times 10^{-6}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.94$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.1$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.04$\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.04$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$1.98\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$6.14\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$5.23\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -1096,51 +1211,59 @@ The above analyses were repeated for additional state variables estimated by Fis
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab))%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of phosphate to perturbations of indivividual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect phosphate are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:po4sens}} 
+\caption{Sensitivity of phosphate to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect phosphate are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:po4sens}} 
 \begin{center}
-\begin{tabular}{llll}
+\begin{tabular}{lll}
 \hline\hline
-\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{L1}\tabularnewline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
-{\bfseries Optics}&&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$&$2.08\times 10^{-4}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$0.1$&$8.92\times 10^{-5}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$0.1$&$2.09\times 10^{-6}$\tabularnewline
+{\bfseries Optics}&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$9\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$5.36\times 10^{-4}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$4.79\times 10^{-4}$\tabularnewline
 \hline
-{\bfseries Temperature}&&&\tabularnewline
-~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)}&$22$&$3.19\times 10^{-4}$\tabularnewline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth(C)&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.16$\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.19\times 10^{-10}$&$0.02$\tabularnewline
-~~mortality coefficient&\textit{mA}&$0.1$&$0.01$\tabularnewline
-~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$8.42\times 10^{-17}$&$9.03\times 10^{-3}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$2.68\times 10^{-8}$&$7.23\times 10^{-3}$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$0.02$&$5.4\times 10^{-3}$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.86$&$5.23\times 10^{-3}$\tabularnewline
-~~maximum growth rate&\textit{umax}&$0.41$&$2.08\times 10^{-3}$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$1.35\times 10^{-6}$&$3.87\times 10^{-4}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$6.08\times 10^{-9}$&$1.63\times 10^{-4}$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$0.1$&$1.13\times 10^{-4}$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$1$&$1.04\times 10^{-4}$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$4.1\times 10^{-8}$&$8.56\times 10^{-5}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$4.51$&$1.19\times 10^{-5}$\tabularnewline
+{\bfseries Phytoplankton}&&\tabularnewline
+~~maximum growth rate&\textit{umax}&$1.06$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$0.58$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.25$\tabularnewline
+~~initial slope of the photosynthesis-irradiance relationship&\textit{alpha}&$0.23$\tabularnewline
+~~mortality coefficient&\textit{mA}&$0.2$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$0.18$\tabularnewline
+~~Phytoplankton threshold for grazing, is multiplied by VOLcell&\textit{Athresh}&$0.13$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$0.11$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$0.09$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$0.06$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$0.06$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$0.04$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$0.03$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$0.01$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$7.3\times 10^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$9.82\times 10^{-7}$\tabularnewline
 \hline
-{\bfseries Zooplankton}&&&\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.77\times 10^{-6}$&$2.99\times 10^{-3}$\tabularnewline
-~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$&$6.74\times 10^{-5}$\tabularnewline
-~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$7.2\times 10^{-4}$&$6.68\times 10^{-6}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.13\times 10^{-4}$&$1.32\times 10^{-6}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&$6.95\times 10^{-5}$&$3.59\times 10^{-7}$\tabularnewline
+{\bfseries Zooplankton}&&\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$1.8$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&$0.51$\tabularnewline
+~~Zooplankton mortality constant for quadratic mortality&\textit{Zm}&$0.35$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$0.26$\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.19$\tabularnewline
+~~proportion of grazed phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.15$\tabularnewline
+~~Zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.1$\tabularnewline
+~~Zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.06$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$6.39\times 10^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$3.93\times 10^{-5}$\tabularnewline
 \hline
-{\bfseries Organic Matter}&&&\tabularnewline
-~~turnover rate for OM1A and OM1G&\textit{KG1}&$50$&$6.07\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2G&\textit{KG2}&$50$&$2.38\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$10$&$8.4\times 10^{-4}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$10$&$7.05\times 10^{-4}$\tabularnewline
-~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.01$&$3.73\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$10$&$1.01\times 10^{-4}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1$&$2.44\times 10^{-7}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$0.52$&$1.29\times 10^{-7}$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1G&\textit{KG1}&$0.14$\tabularnewline
+~~turnover rate for OM2A and OM2G&\textit{KG2}&$0.06$\tabularnewline
+~~decay rate of CDOM, 1/day&\textit{KGcdom}&$0.02$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.01$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$9.96\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$7.66\times 10^{-4}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.75\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$1.71\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -1151,15 +1274,6 @@ The above analyses were repeated for additional state variables estimated by Fis
 % sup figs
 
 % effects of structural uncertainty
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\textwidth]{figs/streval-1} 
-
-}
-
-\caption[Effects of model structure on parameter sensitivity]{Effects of model structure on parameter sensitivity.}\label{fig:streval}
-\end{figure}
-
 
 
 % effects of initial conditions

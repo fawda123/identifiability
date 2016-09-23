@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  6 SEP 2016 12:50
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  23 SEP 2016 17:19
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -702,111 +702,87 @@ although it is yet undefined on input line 237.
  [11] (M:\docs\manuscripts\identifiability\ident_manu.bbl [12
 
 ]
-[13] [14] [15]) [16]
+[13] [14]) [15]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 464.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 468.
 
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 464--508
- [] 
- []
 
-[17] [18] [19] [20] <figs/combnex-1.pdf, id=394, 361.35pt x 361.35pt>
+LaTeX Warning: Text page 16 contains only floats.
+
+
+Overfull \vbox (4.76993pt too high) has occurred while \output is active []
+
+
+[16
+
+]
+
+LaTeX Warning: Float too large for page by 192.36993pt on input line 598.
+
+
+LaTeX Warning: Float too large for page by 16.47852pt on input line 666.
+
+
+LaTeX Warning: Float too large for page by 278.03302pt on input line 757.
+
+[17] [18] [19] <figs/combnex-1.pdf, id=387, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
 
 <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 706.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 769.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
- <figs/sensalltile-1.pdf, id=395, 433.62pt x 505.89pt>
+ <figs/sensalltile-1.pdf, id=388, 433.62pt x 505.89pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 717.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 780.
 (pdftex.def)             Requested size: 469.75502pt x 548.07445pt.
 
-<figs/identbox-1.pdf, id=404, 578.16pt x 505.89pt>
+<figs/identbox-1.pdf, id=397, 578.16pt x 505.89pt>
 File: figs/identbox-1.pdf Graphic file (type pdf)
  <use figs/identbox-1.pdf>
-Package pdftex.def Info: figs/identbox-1.pdf used on input line 729.
+Package pdftex.def Info: figs/identbox-1.pdf used on input line 792.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/exclex-1.pdf, id=407, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=400, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 741.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 804.
 (pdftex.def)             Requested size: 469.75502pt x 469.76653pt.
 
-<figs/heurist_stts-1.pdf, id=414, 650.43pt x 433.62pt>
+<figs/heurist_stts-1.pdf, id=407, 650.43pt x 433.62pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 753.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 816.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
- [21
-
+ [20
 
  <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>]
 
-LaTeX Warning: Text page 22 contains only floats.
+LaTeX Warning: Text page 21 contains only floats.
 
-[22 <M:/docs/manuscripts/identifiability/figs/sensalltile-1.pdf>] [23 <M:/docs/
-manuscripts/identifiability/figs/identbox-1.pdf>] [24 <M:/docs/manuscripts/iden
-tifiability/figs/exclex-1.pdf>] [25 <M:/docs/manuscripts/identifiability/figs/h
-eurist_stts-1.pdf>]
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 775--819
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 830--871
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 882--926
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 937--980
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 991--1035
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 1046--1090
- [] 
- []
-
-
-Overfull \hbox (8.38011pt too wide) in paragraph at lines 1101--1145
- [] 
- []
-
-<figs/streval-1.pdf, id=488, 578.16pt x 578.16pt>
-File: figs/streval-1.pdf Graphic file (type pdf)
- <use figs/streval-1.pdf>
-Package pdftex.def Info: figs/streval-1.pdf used on input line 1156.
-(pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
-
-<figs/inieval-1.pdf, id=489, 578.16pt x 578.16pt>
+[21 <M:/docs/manuscripts/identifiability/figs/sensalltile-1.pdf>] [22 <M:/docs/
+manuscripts/identifiability/figs/identbox-1.pdf>] [23 <M:/docs/manuscripts/iden
+tifiability/figs/exclex-1.pdf>] [24 <M:/docs/manuscripts/identifiability/figs/h
+eurist_stts-1.pdf>] <figs/inieval-1.pdf, id=480, 578.16pt x 578.16pt>
 File: figs/inieval-1.pdf Graphic file (type pdf)
- <use figs/inieval-1.pdf>
-Package pdftex.def Info: figs/inieval-1.pdf used on input line 1168.
-(pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1177.
 
-[26] [27] [28] [29] [30] [31] [32] [33 <M:/docs/manuscripts/identifiability/fig
-s/streval-1.pdf>] [34 <M:/docs/manuscripts/identifiability/figs/inieval-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1177.
+<use figs/inieval-1.pdf>
+Package pdftex.def Info: figs/inieval-1.pdf used on input line 1282.
+(pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1291.
+ [25
+
+ <M:/docs/manuscripts/identifiability/figs/inieval-1.pdf>] [26] [27] [28] [29] 
+[30] [31] [32]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1291.
+
 (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1177.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1177.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1291.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1291.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 5DFED3B9B98EBBD3C1398435D695A274;594.
@@ -814,36 +790,37 @@ Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1177.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1291.
  ) 
 Here is how much of TeX's memory you used:
- 11950 strings out of 493921
- 188590 string characters out of 3147282
- 364038 words of memory out of 3000000
- 14903 multiletter control sequences out of 15000+200000
+ 11922 strings out of 493921
+ 188121 string characters out of 3147282
+ 361038 words of memory out of 3000000
+ 14883 multiletter control sequences out of 15000+200000
  42812 words of font info for 88 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,12n,47p,2940b,626s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,12n,47p,2940b,594s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvet
-ic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (34 pages, 388889 bytes).
+msfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on ident_manu.pdf (32 pages, 385920 bytes).
 PDF statistics:
- 637 PDF objects out of 1000 (max. 8388607)
- 135 named destinations out of 1000 (max. 500000)
- 108 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 618 PDF objects out of 1000 (max. 8388607)
+ 128 named destinations out of 1000 (max. 500000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
