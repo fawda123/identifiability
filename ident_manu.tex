@@ -147,7 +147,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Fri Sep 23 17:24:42 2016 -0500
+  \\ Version Date:   Tue Sep 27 17:40:51 2016 -0500
 	}
 \date{}
 \maketitle
@@ -519,7 +519,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 
 % first heuristic, all states
-%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Parameter",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist1", rowname = parms, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms, rgroupTexCmd = NULL)%
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Parameter",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist1", rowname = parms, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms)%
 \begin{table}[!tbp]
 {\scriptsize
 \caption{Parameter identifiability (as $\gamma$, \cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable.\label{tab:heurist1}} 
@@ -528,14 +528,14 @@ The above analyses were repeated for additional state variables estimated by Fis
 \hline\hline
 \multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
 \hline
-{Optics}&&&&&&&&&\tabularnewline
+{\bfseries Optics}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{astar490}}&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$\tabularnewline
 ~~\scriptsize{\textit{astarOMA}}&$2$&$7.33$&$5.42$&-&$5.36$&-&$7.78$&$7.87$&-\tabularnewline
 ~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.73$\tabularnewline
 ~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&-&$10.04$\tabularnewline
 ~~\scriptsize{\textit{astarOMZ}}&$3$&$7.58$&$5.51$&-&$6.02$&-&$7.91$&$7.87$&-\tabularnewline
 \hline
-{Organic Matter}&&&&&&&&&\tabularnewline
+{\bfseries Organic Matter}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
 ~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
 ~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
@@ -555,7 +555,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 ~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
 ~~\scriptsize{\textit{KO2}}&$5$&$9.47$&-&$8.61$&-&-&-&-&-\tabularnewline
 \hline
-{Phytoplankton}&&&&&&&&&\tabularnewline
+{\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
 ~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
 ~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
@@ -577,7 +577,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 ~~\scriptsize{\textit{respg}}&$6$&-&-&$3.41$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{vmaxN}}&$7$&-&-&$3.97$&-&-&-&-&-\tabularnewline
 \hline
-{Zooplankton}&&&&&&&&&\tabularnewline
+{\bfseries Zooplankton}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{ZKa}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
 ~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&-&-&$7.3$&$5.43$&-\tabularnewline
@@ -593,7 +593,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 
 % second heuristic, all states
-%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist2", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms, rgroupTexCmd = NULL)%
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist2", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms)%
 \begin{table}[!tbp]
 {\scriptsize
 \caption{Parameter identifiability (as $\gamma$, \cref{gameq}) for relevant state variables.  Selections followed the second heuristic where parameters were selected independent of category from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton). See \cref{fig:heurist_stts} for a graphical illustration.\label{tab:heurist2}} 
@@ -602,53 +602,53 @@ The above analyses were repeated for additional state variables estimated by Fis
 \hline\hline
 \multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
-{Ammonium}&&&\tabularnewline
-~~1&\scriptsize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\scriptsize{\textit{nitmax}}&$1$\textsuperscript{OM}&$1.16$\tabularnewline
-~~3&\scriptsize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.9$\tabularnewline
+{\bfseries Ammonium}&&&\tabularnewline
+~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
+~~2&\scriptsize{\textit{nitmax}}&$1$\textsubscript{OM}&$1.16$\tabularnewline
+~~3&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$2.9$\tabularnewline
 \hline
-{Chlorophyll}&&&\tabularnewline
-~~1&\scriptsize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\scriptsize{\textit{Zumax}}&$1$\textsuperscript{Z}&$1.18$\tabularnewline
+{\bfseries Chlorophyll}&&&\tabularnewline
+~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
+~~2&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$1.18$\tabularnewline
 \hline
-{Dissolved Oxygen}&&&\tabularnewline
-~~1&\scriptsize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\scriptsize{\textit{ZKa}}&$1$\textsuperscript{Z}&$2.17$\tabularnewline
-~~3&\scriptsize{\textit{mA}}&$2$\textsuperscript{P}&$2.31$\tabularnewline
-~~4&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$2.37$\tabularnewline
-~~5&\scriptsize{\textit{ZQn}}&$2$\textsuperscript{Z}&$4.69$\tabularnewline
-~~6&\scriptsize{\textit{alpha}}&$3$\textsuperscript{P}&$4.91$\tabularnewline
-~~7&\scriptsize{\textit{Zm}}&$3$\textsuperscript{Z}&$6.73$\tabularnewline
-~~8&\scriptsize{\textit{Zumax}}&$4$\textsuperscript{Z}&$6.81$\tabularnewline
+{\bfseries Dissolved Oxygen}&&&\tabularnewline
+~~1&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$1$\tabularnewline
+~~2&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$2.17$\tabularnewline
+~~3&\scriptsize{\textit{mA}}&$2$\textsubscript{P}&$2.31$\tabularnewline
+~~4&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$2.37$\tabularnewline
+~~5&\scriptsize{\textit{ZQn}}&$2$\textsubscript{Z}&$4.69$\tabularnewline
+~~6&\scriptsize{\textit{alpha}}&$3$\textsubscript{P}&$4.91$\tabularnewline
+~~7&\scriptsize{\textit{Zm}}&$3$\textsubscript{Z}&$6.73$\tabularnewline
+~~8&\scriptsize{\textit{Zumax}}&$4$\textsubscript{Z}&$6.81$\tabularnewline
 \hline
-{Irradiance}&&&\tabularnewline
-~~1&\scriptsize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
-~~2&\scriptsize{\textit{umax}}&$1$\textsuperscript{P}&$4.41$\tabularnewline
-~~3&\scriptsize{\textit{ZQn}}&$2$\textsuperscript{Z}&$7.54$\tabularnewline
-~~4&\scriptsize{\textit{mA}}&$2$\textsuperscript{P}&$8.17$\tabularnewline
-~~5&\scriptsize{\textit{KGcdom}}&$1$\textsuperscript{OM}&$9.44$\tabularnewline
-~~6&\scriptsize{\textit{alpha}}&$3$\textsuperscript{P}&$9.66$\tabularnewline
-~~7&\scriptsize{\textit{Zumax}}&$3$\textsuperscript{Z}&$10.79$\tabularnewline
+{\bfseries Irradiance}&&&\tabularnewline
+~~1&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$1$\tabularnewline
+~~2&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$4.41$\tabularnewline
+~~3&\scriptsize{\textit{ZQn}}&$2$\textsubscript{Z}&$7.54$\tabularnewline
+~~4&\scriptsize{\textit{mA}}&$2$\textsubscript{P}&$8.17$\tabularnewline
+~~5&\scriptsize{\textit{KGcdom}}&$1$\textsubscript{OM}&$9.44$\tabularnewline
+~~6&\scriptsize{\textit{alpha}}&$3$\textsubscript{P}&$9.66$\tabularnewline
+~~7&\scriptsize{\textit{Zumax}}&$3$\textsubscript{Z}&$10.79$\tabularnewline
 \hline
-{Nitrate}&&&\tabularnewline
-~~1&\scriptsize{\textit{umax}}&$1$\textsuperscript{P}&$1$\tabularnewline
+{\bfseries Nitrate}&&&\tabularnewline
+~~1&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$1$\tabularnewline
 \hline
-{OM1}&&&\tabularnewline
-~~1&\scriptsize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\scriptsize{\textit{Zumax}}&$1$\textsuperscript{Z}&$1.15$\tabularnewline
-~~3&\scriptsize{\textit{KG1}}&$1$\textsuperscript{OM}&$3.87$\tabularnewline
+{\bfseries OM1}&&&\tabularnewline
+~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
+~~2&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$1.15$\tabularnewline
+~~3&\scriptsize{\textit{KG1}}&$1$\textsubscript{OM}&$3.87$\tabularnewline
 \hline
-{OM2}&&&\tabularnewline
-~~1&\scriptsize{\textit{mA}}&$1$\textsuperscript{P}&$1$\tabularnewline
-~~2&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsuperscript{T}&$1.05$\tabularnewline
-~~3&\scriptsize{\textit{umax}}&$2$\textsuperscript{P}&$2.46$\tabularnewline
-~~4&\scriptsize{\textit{Zumax}}&$1$\textsuperscript{Z}&$2.91$\tabularnewline
+{\bfseries OM2}&&&\tabularnewline
+~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
+~~2&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$1.05$\tabularnewline
+~~3&\scriptsize{\textit{umax}}&$2$\textsubscript{P}&$2.46$\tabularnewline
+~~4&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$2.91$\tabularnewline
 \hline
-{Phosphate}&&&\tabularnewline
-~~1&\scriptsize{\textit{ZKa}}&$1$\textsuperscript{Z}&$1$\tabularnewline
-~~2&\scriptsize{\textit{umax}}&$1$\textsuperscript{P}&$11.45$\tabularnewline
-~~3&\scriptsize{\textit{vmaxP}}&$2$\textsuperscript{P}&$11.48$\tabularnewline
-~~4&\scriptsize{\textit{ZQn}}&$2$\textsuperscript{Z}&$13.74$\tabularnewline
+{\bfseries Phosphate}&&&\tabularnewline
+~~1&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$1$\tabularnewline
+~~2&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$11.45$\tabularnewline
+~~3&\scriptsize{\textit{vmaxP}}&$2$\textsubscript{P}&$11.48$\tabularnewline
+~~4&\scriptsize{\textit{ZQn}}&$2$\textsubscript{Z}&$13.74$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -656,7 +656,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 
 % third heuristic, all states
-%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist3", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms, rgroupTexCmd = NULL)%
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selections by state variable",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist3", rowname = sels, rgroup = unique(stts),     n.rgroup = as.numeric(table(stts)), colheads = colnms)%
 \begin{table}[!tbp]
 {\scriptsize
 \caption{Parameter identifiability (as $\gamma$, \cref{gameq}) for relevant state variables.  Selections followed the third heuristic where parameters were selected equally within each category from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).\label{tab:heurist3}} 
@@ -665,21 +665,21 @@ The above analyses were repeated for additional state variables estimated by Fis
 \hline\hline
 \multicolumn{1}{l}{Selections by state variable}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{$\gamma$}\tabularnewline
 \hline
-{Ammonium}&&&\tabularnewline
+{\bfseries Ammonium}&&&\tabularnewline
 ~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{nitmax}}&$1$\textsubscript{OM}&$1.16$\tabularnewline
 ~~3&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$2.9$\tabularnewline
 ~~4&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$3.46$\tabularnewline
 ~~5&\scriptsize{\textit{astar490}}&$1$\textsubscript{O}&$4.25$\tabularnewline
 \hline
-{Chlorophyll}&&&\tabularnewline
+{\bfseries Chlorophyll}&&&\tabularnewline
 ~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$1.18$\tabularnewline
 ~~3&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$2.62$\tabularnewline
 ~~4&\scriptsize{\textit{KGcdom}}&$1$\textsubscript{OM}&$3.24$\tabularnewline
 ~~5&\scriptsize{\textit{astar490}}&$1$\textsubscript{O}&$5.98$\tabularnewline
 \hline
-{Dissolved Oxygen}&&&\tabularnewline
+{\bfseries Dissolved Oxygen}&&&\tabularnewline
 ~~1&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$2.17$\tabularnewline
 ~~3&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$2.29$\tabularnewline
@@ -688,7 +688,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 ~~6&\scriptsize{\textit{mA}}&$2$\textsubscript{P}&$4.42$\tabularnewline
 ~~7&\scriptsize{\textit{ZQn}}&$2$\textsubscript{Z}&$5.22$\tabularnewline
 \hline
-{Irradiance}&&&\tabularnewline
+{\bfseries Irradiance}&&&\tabularnewline
 ~~1&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$4.41$\tabularnewline
 ~~3&\scriptsize{\textit{KGcdom}}&$1$\textsubscript{OM}&$4.5$\tabularnewline
@@ -699,17 +699,17 @@ The above analyses were repeated for additional state variables estimated by Fis
 ~~8&\scriptsize{\textit{KG1}}&$2$\textsubscript{OM}&$14.65$\tabularnewline
 ~~9&\scriptsize{\textit{astarOMA}}&$2$\textsubscript{O}&$14.72$\tabularnewline
 \hline
-{Nitrate}&&&\tabularnewline
+{\bfseries Nitrate}&&&\tabularnewline
 ~~1&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$1$\tabularnewline
 \hline
-{OM1}&&&\tabularnewline
+{\bfseries OM1}&&&\tabularnewline
 ~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$1.15$\tabularnewline
 ~~3&\scriptsize{\textit{KG1}}&$1$\textsubscript{OM}&$3.87$\tabularnewline
 ~~4&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$3.93$\tabularnewline
 ~~5&\scriptsize{\textit{astar490}}&$1$\textsubscript{O}&$5.81$\tabularnewline
 \hline
-{OM2}&&&\tabularnewline
+{\bfseries OM2}&&&\tabularnewline
 ~~1&\scriptsize{\textit{mA}}&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$1.05$\tabularnewline
 ~~3&\scriptsize{\textit{Zumax}}&$1$\textsubscript{Z}&$2.61$\tabularnewline
@@ -718,7 +718,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 ~~6&\scriptsize{\textit{umax}}&$2$\textsubscript{P}&$6.02$\tabularnewline
 ~~7&\scriptsize{\textit{ZKa}}&$2$\textsubscript{Z}&$9.21$\tabularnewline
 \hline
-{Phosphate}&&&\tabularnewline
+{\bfseries Phosphate}&&&\tabularnewline
 ~~1&\scriptsize{\textit{ZKa}}&$1$\textsubscript{Z}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{umax}}&$1$\textsubscript{P}&$11.45$\tabularnewline
 ~~3&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$1$\textsubscript{T}&$13.71$\tabularnewline
@@ -730,64 +730,66 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 
 % change in sensitivity for different initial, structural conditions
-%latex.default(totab_all[, -c(1, 2)], file = "", rowlabel = "State variables by parameter category",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:inistrchg", rowname = stts, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms, rgroupTexCmd = NULL)%
+%latex.default(totab_all[, -c(1, 2)], file = "", rowlabel = "State variables by parameter category",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:inistrchg", rowname = stts, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms, cgroup = c("",         "Change"), n.cgroup = c(1, 3))%
 \begin{table}[!tbp]
 {\scriptsize
-\caption{Changes in mean sensitivity of state variables by parameter categories to different initial conditions and changes in structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \cref{fig:inistrsumm}.\label{tab:inistrchg}} 
+\caption{Changes in mean sensitivity of state variables by parameter categories to different initial conditions and structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \cref{fig:inistrsumm}.\label{tab:inistrchg}} 
 \begin{center}
-\begin{tabular}{lllll}
+\begin{tabular}{llclll}
 \hline\hline
-\multicolumn{1}{l}{State variables by parameter category}&\multicolumn{1}{c}{Default sensitivity}&\multicolumn{1}{c}{Initial: April}&\multicolumn{1}{c}{Initial: September}&\multicolumn{1}{c}{Structure: complex}\tabularnewline
+\multicolumn{1}{l}{\bfseries State variables by parameter category}&\multicolumn{1}{c}{\bfseries }&\multicolumn{1}{c}{\bfseries }&\multicolumn{3}{c}{\bfseries Change}\tabularnewline
+\cline{4-6}
+\multicolumn{1}{l}{}&\multicolumn{1}{c}{Default sensitivity}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Initial: April}&\multicolumn{1}{c}{Initial: September}&\multicolumn{1}{c}{Structure: complex}\tabularnewline
 \hline
-{Optics}&&&&\tabularnewline
-~~Ammonium&$0.01$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Chlorophyll&$0.01$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Dissolved Oxygen&$2.81\times 10^{-4}$&$\bm{2.11\times 10^{-4}}$&$\bm{1.46\times 10^{-4}}$&$\bm{1.93\times 10^{-4}}$\tabularnewline
-~~Irradiance&$0.01$&$-0$&$-0$&$-0$\tabularnewline
-~~Nitrate&$0.01$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~OM1&$0.01$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~OM2&$0.02$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Phosphate&$0$&$\bm{0}$&$\bm{0}$&$\bm{0}$\tabularnewline
+{\bfseries Optics}&&&&&\tabularnewline
+~~Ammonium&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~Chlorophyll&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~Dissolved Oxygen&$2.81\times 10^{-4}$&&$\bm{2.11\times 10^{-4}}$&$\bm{1.46\times 10^{-4}}$&$\bm{1.93\times 10^{-4}}$\tabularnewline
+~~Irradiance&$0.01$&&$-0$&$-0$&$-0$\tabularnewline
+~~Nitrate&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~OM1&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~OM2&$0.02$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~Phosphate&$0$&&$\bm{0}$&$\bm{0}$&$\bm{0}$\tabularnewline
 \hline
-{Organic Matter}&&&&\tabularnewline
-~~Ammonium&$0.31$&$-0.08$&$-0.04$&$\bm{2.22\times 10^{-4}}$\tabularnewline
-~~Chlorophyll&$0.02$&$-0.12$&$-0.14$&$\bm{0.01}$\tabularnewline
-~~Dissolved Oxygen&$0$&$\bm{6.75\times 10^{-4}}$&$-2.32\times 10^{-4}$&$\bm{0}$\tabularnewline
-~~Irradiance&$0.01$&$-0.01$&$-0.01$&$\bm{2.99\times 10^{-4}}$\tabularnewline
-~~Nitrate&$0.12$&$-0.06$&$-0.09$&$\bm{0.1}$\tabularnewline
-~~OM1&$0.13$&$-0.15$&$-0.12$&$-0.04$\tabularnewline
-~~OM2&$0.14$&$-0.07$&$-0.17$&$-0.05$\tabularnewline
-~~Phosphate&$0.03$&$-0.04$&$-0.06$&$\bm{0.02}$\tabularnewline
+{\bfseries Organic Matter}&&&&&\tabularnewline
+~~Ammonium&$0.31$&&$-0.08$&$-0.04$&$\bm{2.22\times 10^{-4}}$\tabularnewline
+~~Chlorophyll&$0.02$&&$-0.12$&$-0.14$&$\bm{0.01}$\tabularnewline
+~~Dissolved Oxygen&$0$&&$\bm{6.75\times 10^{-4}}$&$-2.32\times 10^{-4}$&$\bm{0}$\tabularnewline
+~~Irradiance&$0.01$&&$-0.01$&$-0.01$&$\bm{2.99\times 10^{-4}}$\tabularnewline
+~~Nitrate&$0.12$&&$-0.06$&$-0.09$&$\bm{0.1}$\tabularnewline
+~~OM1&$0.13$&&$-0.15$&$-0.12$&$-0.04$\tabularnewline
+~~OM2&$0.14$&&$-0.07$&$-0.17$&$-0.05$\tabularnewline
+~~Phosphate&$0.03$&&$-0.04$&$-0.06$&$\bm{0.02}$\tabularnewline
 \hline
-{Phytoplankton}&&&&\tabularnewline
-~~Ammonium&$0.8$&$\bm{0.02}$&$-0.3$&$-65.98$\tabularnewline
-~~Chlorophyll&$1.14$&$-1.23$&$-4.38$&$-104.24$\tabularnewline
-~~Dissolved Oxygen&$0.01$&$\bm{4.58\times 10^{-4}}$&$-0$&$-3.44\times 10^{-4}$\tabularnewline
-~~Irradiance&$0.02$&$\bm{0}$&$-0$&$-0.01$\tabularnewline
-~~Nitrate&$0.74$&$\bm{0.43}$&$\bm{0.45}$&$\bm{0.64}$\tabularnewline
-~~OM1&$0.76$&$-0.17$&$-0.46$&$-55.11$\tabularnewline
-~~OM2&$1.28$&$-0.34$&$-1.15$&$-128.93$\tabularnewline
-~~Phosphate&$0.17$&$-0.03$&$-0.05$&$\bm{0.14}$\tabularnewline
+{\bfseries Phytoplankton}&&&&&\tabularnewline
+~~Ammonium&$0.8$&&$\bm{0.02}$&$-0.3$&$-65.98$\tabularnewline
+~~Chlorophyll&$1.14$&&$-1.23$&$-4.38$&$-104.24$\tabularnewline
+~~Dissolved Oxygen&$0.01$&&$\bm{4.58\times 10^{-4}}$&$-0$&$-3.44\times 10^{-4}$\tabularnewline
+~~Irradiance&$0.02$&&$\bm{0}$&$-0$&$-0.01$\tabularnewline
+~~Nitrate&$0.74$&&$\bm{0.43}$&$\bm{0.45}$&$\bm{0.64}$\tabularnewline
+~~OM1&$0.76$&&$-0.17$&$-0.46$&$-55.11$\tabularnewline
+~~OM2&$1.28$&&$-0.34$&$-1.15$&$-128.93$\tabularnewline
+~~Phosphate&$0.17$&&$-0.03$&$-0.05$&$\bm{0.14}$\tabularnewline
 \hline
-{Temperature}&&&&\tabularnewline
-~~Ammonium&$0.79$&$\bm{0.69}$&$\bm{0.69}$&$-272.31$\tabularnewline
-~~Chlorophyll&$0.6$&$\bm{0.47}$&$\bm{0.45}$&$-114.51$\tabularnewline
-~~Dissolved Oxygen&$0.02$&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
-~~Irradiance&$0.03$&$\bm{0.02}$&$\bm{0.02}$&$-0.01$\tabularnewline
-~~Nitrate&$0.3$&$\bm{0.15}$&$\bm{0.16}$&$\bm{0.19}$\tabularnewline
-~~OM1&$0.86$&$\bm{0.68}$&$\bm{0.69}$&$-215.17$\tabularnewline
-~~OM2&$1.48$&$\bm{1.21}$&$\bm{1.2}$&$-900.26$\tabularnewline
-~~Phosphate&$0.16$&$\bm{0.11}$&$\bm{0.09}$&$\bm{0.11}$\tabularnewline
+{\bfseries Temperature}&&&&&\tabularnewline
+~~Ammonium&$0.79$&&$\bm{0.69}$&$\bm{0.69}$&$-272.31$\tabularnewline
+~~Chlorophyll&$0.6$&&$\bm{0.47}$&$\bm{0.45}$&$-114.51$\tabularnewline
+~~Dissolved Oxygen&$0.02$&&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
+~~Irradiance&$0.03$&&$\bm{0.02}$&$\bm{0.02}$&$-0.01$\tabularnewline
+~~Nitrate&$0.3$&&$\bm{0.15}$&$\bm{0.16}$&$\bm{0.19}$\tabularnewline
+~~OM1&$0.86$&&$\bm{0.68}$&$\bm{0.69}$&$-215.17$\tabularnewline
+~~OM2&$1.48$&&$\bm{1.21}$&$\bm{1.2}$&$-900.26$\tabularnewline
+~~Phosphate&$0.16$&&$\bm{0.11}$&$\bm{0.09}$&$\bm{0.11}$\tabularnewline
 \hline
-{Zooplankton}&&&&\tabularnewline
-~~Ammonium&$0.47$&$\bm{0.45}$&$\bm{0.44}$&$\bm{0.16}$\tabularnewline
-~~Chlorophyll&$0.39$&$\bm{0.26}$&$\bm{0.23}$&$\bm{0.2}$\tabularnewline
-~~Dissolved Oxygen&$0.01$&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Irradiance&$0.03$&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
-~~Nitrate&$1.06$&$\bm{1.02}$&$\bm{1.02}$&$\bm{0.98}$\tabularnewline
-~~OM1&$0.37$&$\bm{0.27}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
-~~OM2&$0.39$&$\bm{0.3}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
-~~Phosphate&$0.31$&$\bm{0.19}$&$\bm{0.17}$&$\bm{0.27}$\tabularnewline
+{\bfseries Zooplankton}&&&&&\tabularnewline
+~~Ammonium&$0.47$&&$\bm{0.45}$&$\bm{0.44}$&$\bm{0.16}$\tabularnewline
+~~Chlorophyll&$0.39$&&$\bm{0.26}$&$\bm{0.23}$&$\bm{0.2}$\tabularnewline
+~~Dissolved Oxygen&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
+~~Irradiance&$0.03$&&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
+~~Nitrate&$1.06$&&$\bm{1.02}$&$\bm{1.02}$&$\bm{0.98}$\tabularnewline
+~~OM1&$0.37$&&$\bm{0.27}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
+~~OM2&$0.39$&&$\bm{0.3}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
+~~Phosphate&$0.31$&&$\bm{0.19}$&$\bm{0.17}$&$\bm{0.27}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 

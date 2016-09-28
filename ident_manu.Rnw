@@ -508,8 +508,7 @@ latex(
   rowname = parms,
   rgroup = unique(cats),
   n.rgroup = as.numeric(table(cats)),
-  colheads = colnms,
-  rgroupTexCmd = NULL
+  colheads = colnms
   )
 @
 
@@ -536,7 +535,7 @@ totab <- lapply(tocal_all, function(x) x$top) %>%
   mutate(
     coll = sapply(coll, scinot), 
     Rank = sapply(rnk_incat, scinot), 
-    Rank = paste0(Rank, '\\textsuperscript{', Category, '}')
+    Rank = paste0(Rank, '\\textsubscript{', Category, '}')
     ) %>%
   select(stts, Selected, Parameter, Rank, coll) %>%
   mutate(
@@ -562,8 +561,7 @@ latex(
   rowname = sels,
   rgroup = unique(stts),
   n.rgroup = as.numeric(table(stts)),
-  colheads = colnms,
-  rgroupTexCmd = NULL
+  colheads = colnms
   )
 @
 
@@ -616,8 +614,7 @@ latex(
   rowname = sels,
   rgroup = unique(stts),
   n.rgroup = as.numeric(table(stts)),
-  colheads = colnms,
-  rgroupTexCmd = NULL
+  colheads = colnms
   )
 @
 
@@ -678,7 +675,7 @@ totab_all <- spread(totab_all, nms, Sensitivity) %>%
 # final table formatting
 cats <- as.character(totab_all$Category)
 stts<- totab_all$L1
-cap_val<- 'Changes in mean sensitivity of state variables by parameter categories to different initial conditions and changes in structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \\cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \\cref{fig:inistrsumm}.'
+cap_val<- 'Changes in mean sensitivity of state variables by parameter categories to different initial conditions and structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \\cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \\cref{fig:inistrsumm}.'
 colnms <- c('Default sensitivity', 'Initial: April', 'Initial: September', 'Structure: complex')
 
 latex( 
@@ -693,7 +690,8 @@ latex(
   rgroup = unique(cats),
   n.rgroup = as.numeric(table(cats)),
   colheads = colnms,
-  rgroupTexCmd = NULL
+  cgroup = c('', 'Change'),
+  n.cgroup = c(1, 3)
   )  
 
 @
@@ -784,17 +782,19 @@ ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) +
 
 % identifiability boxplots
 <<identbox, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
+
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
 data(top_ident_all)
 
 # state variable, categories, and tops to plot (no temp ident because only one parameter)
 catnms <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Zooplankton')
-topnms <- paste0('top', 1:4)
+toplevs <- paste0('top', 1:4)
+toplabs <- paste('Top', 1:4)
 tmpcat <- cat_ident_all[['O2']] %>% 
   .[names(.) %in% catnms]
 tmptop <- top_ident_all[['O2']] %>% 
-  .[names(.) %in% topnms]
+  .[names(.) %in% toplevs]
 
 # default theme
 mytheme <- theme_minimal() + 
@@ -825,10 +825,15 @@ toplo <- tmpcat %>%
     max = max(coll)
   )
 
+cols <- RColorBrewer::brewer.pal(11, 'Spectral')
+lncol <- 'darkgrey'
+sz <- 2
+
 p1 <- ggplot(toplo, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = lncol) + 
+  geom_point(aes(y = ave, shape = 'Ave'), fill = cols[5], colour = lncol, size = sz) + 
+  geom_point(aes(y = med, shape = 'Med'), fill = cols[3], colour = lncol, size = sz) + 
+  scale_shape_manual(values = c(21, 24)) + 
   facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
   mytheme +
   theme(legend.position = 'none') + 
@@ -837,7 +842,7 @@ p1 <- ggplot(toplo, aes(x = N, group = N)) +
 # identifiability top 1, 2, 3, 4, 5 all categories combined
 toplo2 <-  reshape2::melt(tmptop, id.var = c('N', 'coll')) %>% 
   select(N, coll, L1) %>% 
-  mutate(L1 = factor(L1, levels = topnms, labels = topnms)) %>% 
+  mutate(L1 = factor(L1, levels = toplevs, labels = toplabs)) %>% 
   rename(npercat = L1) %>% 
   group_by(N, npercat) %>% 
   summarise(
@@ -848,9 +853,11 @@ toplo2 <-  reshape2::melt(tmptop, id.var = c('N', 'coll')) %>%
   )
 
 p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
-  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = 'darkgrey') + 
-  geom_point(aes(y = ave, shape = 'Ave'), colour = 'black') + 
-  geom_point(aes(y = med, shape = 'Med'), colour = 'black') + 
+  geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = lncol) + 
+  geom_point(aes(y = ave, shape = 'Ave', fill = 'Ave'), colour = lncol, size = sz) + 
+  geom_point(aes(y = med, shape = 'Med', fill = 'Med'), colour = lncol, size = sz) + 
+  scale_shape_manual(name = '', labels = c('Ave', 'Med'), values = c(21, 24)) + 
+  scale_fill_manual(name = '', labels = c('Ave', 'Med'), values = cols[c(5, 3)]) +
   facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
   mytheme + 
   theme(legend.title = element_blank()) + 
@@ -889,7 +896,7 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
   geom_boxplot(outlier.size = 0.5, size = 0.5) + 
   facet_wrap(~parm, label = label_parsed, ncol = 2) + 
   theme_minimal() + 
-  scale_fill_brewer(palette = 'Greys') + 
+  scale_fill_brewer(palette = 'Spectral') + 
   scale_y_continuous('Identifiability', trans = 'log', breaks = c(0.1, 1, 10, 100, 1000)) +
   scale_x_discrete('Parameters in set') + 
   theme(

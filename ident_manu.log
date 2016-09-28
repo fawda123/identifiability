@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  27 SEP 2016 17:39
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  28 SEP 2016 08:20
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -717,44 +717,47 @@ Overfull \vbox (4.76993pt too high) has occurred while \output is active []
 
 [16
 
-] [17] [18] [19] [20] <figs/combnex-1.pdf, id=404, 361.35pt x 361.35pt>
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 531.
+ [17] [18] [19] [20] <figs/combnex-1.pdf, id=404, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
 
 <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 805.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 807.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
 <figs/sensalltile-1.pdf, id=405, 252.945pt x 433.62pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 816.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 818.
 (pdftex.def)             Requested size: 328.82707pt x 563.71255pt.
 
 <figs/identbox-1.pdf, id=414, 578.16pt x 505.89pt>
 File: figs/identbox-1.pdf Graphic file (type pdf)
  <use figs/identbox-1.pdf>
-Package pdftex.def Info: figs/identbox-1.pdf used on input line 828.
+Package pdftex.def Info: figs/identbox-1.pdf used on input line 830.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
 <figs/exclex-1.pdf, id=417, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 840.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 842.
 (pdftex.def)             Requested size: 469.75502pt x 469.76653pt.
 
 <figs/heurist_stts-1.pdf, id=424, 650.43pt x 433.62pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 852.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 854.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
 
 <figs/inistrsumm-1.pdf, id=427, 505.89pt x 505.89pt>
 File: figs/inistrsumm-1.pdf Graphic file (type pdf)
 
 <use figs/inistrsumm-1.pdf>
-Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 864.
+Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 866.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
  [21
 
@@ -771,17 +774,17 @@ pdf>] [27] [28] [29] [30] [31] [32] [33]
 File: figs/inistreval-1.pdf Graphic file (type pdf)
 
 <use figs/inistreval-1.pdf>
-Package pdftex.def Info: figs/inistreval-1.pdf used on input line 1330.
+Package pdftex.def Info: figs/inistreval-1.pdf used on input line 1332.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1339.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1341.
  [34
 
 
  <M:/docs/manuscripts/identifiability/figs/inistreval-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1339.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1341.
  (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1339.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1339.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1341.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1341.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 5DFED3B9B98EBBD3C1398435D695A274;594.
@@ -789,14 +792,14 @@ Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1339.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1341.
  ) 
 Here is how much of TeX's memory you used:
- 11940 strings out of 493921
- 188466 string characters out of 3147282
+ 11943 strings out of 493921
+ 188499 string characters out of 3147282
  361038 words of memory out of 3000000
- 14895 multiletter control sequences out of 15000+200000
- 43989 words of font info for 89 fonts, out of 3000000 for 9000
+ 14897 multiletter control sequences out of 15000+200000
+ 45615 words of font info for 91 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,14n,47p,2940b,594s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
@@ -823,7 +826,7 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.
 urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (34 pages, 461854 bytes).
+Output written on ident_manu.pdf (34 pages, 462600 bytes).
 PDF statistics:
  670 PDF objects out of 1000 (max. 8388607)
  132 named destinations out of 1000 (max. 500000)
