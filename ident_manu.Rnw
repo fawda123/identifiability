@@ -537,18 +537,20 @@ totab <- lapply(tocal_all, function(x) x$top) %>%
     Rank = sapply(rnk_incat, scinot), 
     Rank = paste0(Rank, '\\textsubscript{', Category, '}')
     ) %>%
-  select(stts, Selected, Parameter, Rank, coll) %>%
+  select(stts, Selected, Parameter, error, Rank, coll) %>%
   mutate(
     stts = as.character(stts),
     Parameter = paste0('\\scriptsize{', Parameter, '}')
     ) %>% 
-  arrange(stts, Selected)
+  arrange(stts, Selected) %>% 
+  rename(L1 = error) %>% 
+  mutate(L1 = sapply(L1, scinot))
     
 # final table formatting
 stts <- as.character(totab$stts)
 sels <- totab$Selected
-cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the second heuristic where parameters were selected independent of category from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton). See \\cref{fig:heurist_stts} for a graphical illustration.'
-colnms <- c('Parameter', 'Rank', '$\\gamma$')
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the second heuristic where parameters were selected independent of category from most to least sensitive (L1, \\cref{l1}), until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton). See \\cref{fig:heurist_stts} for a graphical illustration.'
+colnms <- c('Parameter', 'L1', 'Rank', '$\\gamma$')
 
 latex( 
   totab[, -c(1, 2)],
@@ -590,18 +592,20 @@ totab <- lapply(tocal_all, function(x) x$cattop) %>%
     Rank = sapply(rnk_incat, scinot), 
     Rank = paste0(Rank, '\\textsubscript{', Category, '}')
     ) %>%
-  select(stts, Selected, Parameter, Rank, coll) %>%
+  select(stts, Selected, Parameter, error, Rank, coll) %>%
   mutate(
     stts = as.character(stts),
     Parameter = paste0('\\scriptsize{', Parameter, '}')
     ) %>% 
-  arrange(stts, Selected)
+  arrange(stts, Selected) %>% 
+  rename(L1 = error) %>% 
+  mutate(L1 = sapply(L1, scinot))
     
 # final table formatting
 stts <- as.character(totab$stts)
 sels <- totab$Selected
-cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the third heuristic where parameters were selected equally within each category from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).'
-colnms <- c('Parameter', 'Rank', '$\\gamma$')
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) for relevant state variables.  Selections followed the third heuristic where parameters were selected equally within each category from most to least sensitive (L1, \\cref{l1}), until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable (O: optics, OM: organic matter, P: phytoplankton, T: temperature, Z: zooplankton).'
+colnms <- c('Parameter', 'L1', 'Rank', '$\\gamma$')
 
 latex( 
   totab[, -c(1, 2)],
@@ -780,8 +784,8 @@ ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) +
 
 @
 
-% identifiability boxplots
-<<identbox, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
+% identifiability plot
+<<identplo, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
 
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
@@ -871,6 +875,120 @@ grid.arrange(
   left = 'Identifiability', 
   bottom = 'Parameters in set',
   pleg, ncol = 2, widths = c(1, 0.1)
+)
+@
+
+% identifiability plot, all state variables
+<<identploall, eval = T, fig.cap = 'Average identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\\gamma = 1$, see \\cref{fig:inistreval}).', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
+
+# identifiability by category (all parameters with >0 L1) 
+data(cat_ident_all)
+data(top_ident_all)
+
+# state variable, categories, and tops to plot (no temp ident because only one parameter)
+catnms <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Zooplankton')
+toplevs <- paste0('top', 1:4)
+toplabs <- paste('Top', 1:4)
+
+stts_lev <- c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4')
+stts_lab <- c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
+  
+# default theme
+mytheme <- theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.x = element_blank(), 
+    axis.title.y = element_blank(),
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm")
+  )
+
+toplo <- sapply(1:length(cat_ident_all), function(x){ 
+  
+  out <- cat_ident_all[[x]] %>% 
+    .[names(.) %in% catnms] %>% 
+    lapply(function(y) dplyr::select(y, N, coll)) %>% 
+    reshape2::melt(., id.var = c('N', 'coll')) %>% 
+    rename(Category = L1) %>% 
+    mutate(Category = factor(Category, 
+      levels = catnms,
+      labels = catnms
+      )) %>% 
+    filter(N <= 25) %>% # reduced for plot space
+    group_by(N, Category) %>% 
+    summarise(
+      ave = mean(coll),   
+      med = median(coll),
+      min = min(coll), 
+      max = max(coll)
+      )
+  data.frame(stvar = names(cat_ident_all)[x], out, stringsAsFactors = F)
+  
+  }, simplify = F) %>% 
+  do.call('rbind', .) %>% 
+  mutate(`State variable` = factor(stvar, levels = stts_lev, labels = stts_lab))
+
+stvars <- unique(toplo$`State variable`)
+mycols <- RColorBrewer::brewer.pal(8, 'Spectral')
+names(mycols) <- stvars
+fils <- scale_fill_manual(name = 'State variable', values = mycols)
+
+lncol <- 'darkgrey'
+sz <- 3
+
+p1 <- ggplot(toplo, aes(x = N, group = N)) + 
+  geom_line(aes(y = ave, group = `State variable`), colour = lncol) + 
+  geom_point(aes(y = ave, fill = `State variable`), shape = 21, colour = lncol, 
+    size = sz
+    ) + 
+  fils + 
+  facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
+  mytheme +
+  scale_y_continuous(trans = 'log10') + 
+  theme(legend.position = 'none') + 
+  ggtitle('(a) By parameter category')
+
+toplo2 <- sapply(1:length(top_ident_all), function(x){ 
+  
+  out <- top_ident_all[[x]] %>% 
+    .[names(.) %in% toplevs] %>% 
+    reshape2::melt(id.var = c('N', 'coll')) %>% 
+    select(N, coll, L1) %>% 
+    mutate(L1 = factor(L1, levels = toplevs, labels = toplabs)) %>% 
+    rename(npercat = L1) %>% 
+    group_by(N, npercat) %>% 
+    summarise(
+      ave = mean(coll), 
+      med = median(coll),
+      min = min(coll), 
+      max = max(coll)
+    )
+  data.frame(stvar = names(top_ident_all)[x], out, stringsAsFactors = F)
+  
+  }, simplify = F) %>% 
+  do.call('rbind', .) %>% 
+  mutate(`State variable` = factor(stvar, levels = stts_lev, labels = stts_lab))
+
+p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
+  geom_line(aes(y = ave, group = `State variable`), colour = lncol) + 
+  geom_point(aes(y = ave, fill = `State variable`), shape = 21, colour = lncol, 
+    size = sz
+    ) + 
+  fils + 
+  facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
+  mytheme +
+  scale_y_continuous(trans = 'log10') + 
+  ggtitle('(b) By top parameters, all categories')
+
+pleg <- g_legend(p2)
+p2 <- p2 + theme(legend.position = 'none')
+
+grid.arrange(
+  arrangeGrob(p1, p2, ncol = 2, bottom = 'Parameters in set'),
+  left = 'Identifiability',
+  pleg, ncol = 2, widths = c(1, 0.2)
 )
 @
 
