@@ -800,8 +800,8 @@ parcats2 <- function(as_df = FALSE){
       'CF_SPM_1'
       ), 
     lngs = c(
-      'KG1: turnover rate for OM1_A and OM1_G',	
-      'KG2: turnover rate for OM2_A and OM2_G',
+      'KG1: turnover rate for OM1_A and OM1_Z',	
+      'KG2: turnover rate for OM2_A and OM2_Z',
       'KG1_R: OM1 turnover rate for riverine',
       'KG2_R: OM2 turnover rate for riverine',
       'KG1_BC: OM1 turnover rate for initial and bc',
@@ -990,7 +990,7 @@ par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
 
 ######
 # function for sensitivity tables, no phyto, zoop groupings
-senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabsize = 'normalsize', pow = 3, digits = 2){
+senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabsize = 'normalsize', pow = 3, digits = 2, foot.val = NULL){
 
   library(Hmisc)
   library(dplyr)
@@ -1042,7 +1042,8 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
     rgroup = unique(cats),
     n.rgroup = as.numeric(table(cats)),
     size = tabsize,
-    label = paste0('tab:', tablab)
+    label = paste0('tab:', tablab), 
+    insert.bottom = foot.val
     )
     
 }
