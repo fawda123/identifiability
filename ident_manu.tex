@@ -151,7 +151,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Mon Nov 28 17:05:13 2016 -0600
+  \\ Version Date:   Tue Nov 29 13:48:43 2016 -0600
 	}
 \date{}
 \maketitle
@@ -234,78 +234,19 @@ A set of heuristics was developed that address the tradeoff in model complexity 
 
 In addition to parameter uncertainty, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated by changing the initial conditions and structural components, respectively, from the default model setup.  First, observational uncertainty (i.e., effects of observed data on model output) was evaluated by varying the initial conditions that were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14}. Uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on the limiting nutrient.  Parameter sensitivity was re-evaluated by varying all initial conditions that were non-zero by different seasonal means based on averages of water quality data across stations and years.  April and September seasonal averages of the observed data were used to evaluate the effects of conditions that were typical of spring and late summer on the \ac{lcs} (\cref{tab:inits}).  
 
-The effects of model structure on parameter sensitivity (i.e., structural uncertainty) were evaluated by changing specific components of the model.  The FishTank model includes several ecosystem processes or characteristics that can be included based on expected conditions, available data, or desired complexity.  These `switches' are conceptually different from model parameters as they allow the inclusion or exclusion of explicit equations or processes.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  Parameter sensitivity was evaluated by comparing the results from the default model setup to an alternative, more complex, setup that included additional processes with added switches (\cref{tab:strcs}).  
+The effects of model structure on parameter sensitivity (i.e., structural uncertainty) were evaluated by changing specific components of the model.  The FishTank model includes several ecosystem processes or characteristics that can be included based on expected conditions, available data, or desired complexity.  These `switches' are conceptually different from model parameters as they allow the inclusion or exclusion of explicit equations or processes.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  
+
+Parameter sensitivity was evaluated by comparing the results from the default model setup to an alternative, more complex setup with alternative switches (\cref{tab:strcs}).  The scenarios used different equations to represent structural relationships of phytoplankton growth patterns with temperature, nutrient uptake, cell quotas, \ac{chla} to carbon ratios, photosynthesis dynamics, and specific growth limits. The default scenario modelled phytoplankton growth with temperature as a sigmoidal function \citep{Eldridge10}, nutrient uptake as Michaelis-Menten kinetics \citep{Dugdale67}, internal cell quotas following \citet{Droop73}, \ac{chla} to carbon ratios as a simple regression \citep{Murrell14}, light-dependence of photosynthesis with photoinhibition \citep{Platt80}, and a specific growth rate following Leibig's law of the minimum.  Conversely, the complex scenario used switches that modelled relationships between phytoplankton growth with temperature using the Arrhenius model \citep{Geider97}, nutrient uptake as proposed by \citet{Lehman75} and modified in \citet{Geider98}, internal cell quotas following \citet{Flynn03}, \ac{chla} to carbon ratios following \citet{Cloern95}, light-dependence of photosynthesis that is nutrient dependent \citep{Flynn03}, and a specific growth rate that is nutrient dependent.  Complete details are provided as supplementary material to \citetalias{LehrterIR}.
 
 \subsection{Extension to other state variables}
 
 The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables that were evaluated were \ac{chla}, irradiance, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}) and fecal pellets from zooplankton (\textit{OM1\_Z}, \textit{OM2\_Z}, see \citetalias{LehrterIR}). 
 
 \section{Results}
-%' 
-%' % for inline
-%' <<echo = FALSE, eavl = F, cache = F>>=
-%' data(sens_ests)
-%' data(sens_ests_cat)
-%' 
-%' # number of parameters in each category
-%' bycat <- table(sens_ests_cat$Category)
-%' nms <- names(bycat)
-%' bycat <- as.numeric(bycat)
-%' names(bycat) <- nms
-%' bycat <- toeng(bycat)
-%' 
-%' # percent of parameters in each category
-%' lncats <- table(sens_ests_cat$Category) %>% 
-%'   `/` (table(sort(parcats2(as_df = TRUE)$cats))) %>% 
-%'   `*` (100) %>% 
-%'   form_fun(nsm_val = 0) %>% 
-%'   as.list %>% 
-%'   lapply(., paste0, '\\%')
-%' 
-%' # L1 range
-%' sensrng <- with(sens_ests_cat, which(error %in% range(error))) %>% 
-%'   sens_ests_cat[., ] %>% 
-%'   mutate(
-%'     error = sapply(error, scinot),
-%'     Parameter = par_txt(Parameter)
-%'     )
-%' 
-%' # L1 range within categories
-%' sensrngcat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
-%'   lapply(., function(x){
-%'     
-%'     with(x, which(error %in% range(error))) %>% 
-%'       x[., ] %>% 
-%'       mutate(
-%'         Parameter = par_txt(Parameter), 
-%'         error = sapply(error, scinot)
-%'       )
-%'     
-%'     }
-%'   )
-%' 
-%' # average L1, all and by category
-%' sensave <- scinot(mean(sens_ests_cat$error))
-%' sensave_cat <- split(sens_ests_cat, sens_ests_cat$Category) %>% 
-%'   lapply(., function(x) scinot(mean(x$error)))
-%'     
-%' # phyto errors
-%' phytogrps <- filter(sens_ests_cat, Category == 'Phytoplankton') %>% 
-%'   separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
-%'   group_by(grp) %>%
-%'   summarise(grpave = mean(error)) %>% 
-%'   arrange(-grpave) %>% 
-%'   mutate(grpave = sapply(grpave, scinot))
-%' 
-%' # zoop errors 
-%' zoopgrps <- filter(sens_ests_cat, Category == 'Zooplankton') %>% 
-%'   separate(Parameter, c('parm', 'grp'), sep = '_') %>% 
-%'   group_by(grp) %>%
-%'   summarise(grpave = mean(error)) %>% 
-%'   arrange(-grpave) %>% 
-%'   mutate(grpave = sapply(grpave, scinot))
-%' @
-%' 
+
+% for inline
+
+ 
 %' \subsection{Local sensitivity analysis}
 %' 
 %' Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in nrow(sens_ests_cat) of 178 parameters (round(100 * nrow(sens_ests_cat)/178, 0)\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to bycat$Optics parameters for optics (lncats$Optics of all optic parameters, \cref{tab:optsens}), bycat$`Organic Matter` for organic matter (lncats$`Organic Matter`, \cref{tab:omsens}), bycat$Phytoplankton for phytoplankton (lncats$Phytoplankton, \cref{tab:phytosens}), bycat$Temperature for temperature (lncats$Temperature, \cref{tab:tempsens}), and bycat$Zooplankton for zooplankton (lncats$Zooplankton, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ sensrng$error[1] for sensrng$Parameter[1] (tolower(sensrng$Category[1])) to sensrng$error[2] for sensrng$Parameter[2] (tolower(sensrng$Category[2])), whereas average sensitivity among all parameters was $L1 = $ sensave.  Within categories, sensitivity ranged from sensrngcat$Optics$error[1] (sensrngcat$Optics$Parameter[1]) to sensrngcat$Optics$error[2] (sensrngcat$Optics$Parameter[2]) for optics, sensrngcat$`Organic Matter`$error[1] (sensrngcat$`Organic Matter`$Parameter[1]) to sensrngcat$`Organic Matter`$error[2] (sensrngcat$`Organic Matter`$Parameter[2]) for organic matter, sensrngcat$Phytoplankton$error[1] (sensrngcat$Phytoplankton$Parameter[1]) to sensrngcat$Phytoplankton$error[2] (sensrngcat$Phytoplankton$Parameter[2]) for phytopankton, sensrngcat$Temperature$error[1] (sensrngcat$Temperature$Parameter[1]) to sensrngcat$Temperature$error[2] (sensrngcat$Temperature$Parameter[2]) for temperature, and sensrngcat$Zooplankton$error[1] (sensrngcat$Zooplankton$Parameter[1]) to sensrngcat$Zooplankton$error[2] (sensrngcat$Zooplankton$Parameter[2]) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ sensave_cat$Optics for optics, sensave_cat$`Organic Matter` for organic matter, sensave_cat$Phytoplankton for phytoplankton, sensave_cat$Temperature for temperature, and sensave_cat$Zooplankton for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ phytogrps[1, 2], phytogrps[2, 2]), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ zoopgrps[1, 2], zoopgrps[2, 2] for groups one and two).
@@ -483,18 +424,18 @@ Silica&$71.4$&$5.84$&$9.77$\tabularnewline
 % structural conditions
 %latex.default(swtch[, -1], file = "", rowlabel = "Switch type",     caption = cap_val, caption.loc = "top", label = "tab:strcs",     rowname = swtch[, 1])%
 \begin{table}[!tbp]
-\caption{Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity.\label{tab:strcs}} 
+\caption{Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity. Complete details and equations are provided as supplementary material to \citetalias{LehrterIR}.\label{tab:strcs}} 
 \begin{center}
 \begin{tabular}{lll}
 \hline\hline
 \multicolumn{1}{l}{Switch type}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{Complex}\tabularnewline
 \hline
-Temperature&sigmoidal&Arrenhius\tabularnewline
-Uptake&Michaelis-Menten&Geider\tabularnewline
-Quota&Droop&Flynn\tabularnewline
-Chla:C&regression&Cloern\tabularnewline
-Photosynthesis&photoinhibition&nutrient dependent\tabularnewline
-Growth&minimum&\textit{umax} is nutrient dependent\tabularnewline
+Temperature&sigmoidal {\scriptsize \citep{Eldridge10}}&Arrenhius {\scriptsize \citep{Geider97}}\tabularnewline
+Uptake&Michaelis-Menten {\scriptsize \citep{Dugdale67}}&Geider {\scriptsize \citep{Lehman75,Geider98}}\tabularnewline
+Quota&Droop {\scriptsize \citep{Droop73}}&Flynn {\scriptsize \citep{Flynn03}}\tabularnewline
+Chla:C&regression {\scriptsize \citep{Murrell14}}&Cloern {\scriptsize \citep{Cloern95}}\tabularnewline
+Photosynthesis&photoinhibition {\scriptsize \citep{Platt80}}&nutrient dependent\tabularnewline
+Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \hline
 \end{tabular}\end{center}
 

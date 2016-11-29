@@ -47,6 +47,16 @@ Diaz RJ, Rosenberg R. 2011.
 \newblock Introduction to environmental and economic consequences of hypoxia.
 \newblock International Journal of Water Resources Development, 27(1):71--82.
 
+\bibitem[Droop, 1973]{Droop73}
+Droop MR. 1973.
+\newblock Some thoughts on nutrient limitation in algae.
+\newblock Journal of Phycology, 9:264--272.
+
+\bibitem[Dugdale and Goering, 1967]{Dugdale67}
+Dugdale RC, Goering JJ. 1967.
+\newblock Uptake of new and regenerated nitrogen in primary productivity.
+\newblock Limnology and Oceanography, 12:196--206.
+
 \bibitem[Durand et~al., 2002]{Durand02}
 Durand P, Gascuel-Odoux C, Cordier MO. 2002.
 \newblock Parameterisation of hydrological models: a review and lessons learned
@@ -84,6 +94,12 @@ Fennel K, Hu J, Laurent A, Marta-Almeida M, Hetland R. 2013.
   {M}exico to sediment oxygen consumption and model nesting.
 \newblock Journal of Geophysical Research: Oceans, 118(2):990--1002.
 
+\bibitem[Flynn, 2003]{Flynn03}
+Flynn KJ. 2003.
+\newblock Modelling multi-nutrient interactions in phytoplankton; balancing
+  simplicity and realism.
+\newblock Progress in Oceanography, 56(2):249--279.
+
 \bibitem[Ganju et~al., 2016]{Ganju16}
 Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
   Harris LA, Lake SJ, McCardell G, O'Donnell J, Ralston DK, Signell RP, Testa
@@ -91,6 +107,19 @@ Ganju NK, Brush MJ, Rashleigh B, Aretxabaleta AL, del Barrio P, Grear JS,
 \newblock Progress and challenges in coupled hydrodynamic-ecological estuarine
   modeling.
 \newblock Estuaries and Coasts, 39(2):311--332.
+
+\bibitem[Geider et~al., 1997]{Geider97}
+Geider RJ, MacIntyre HL, Kana TM. 1997.
+\newblock A dynamic model of phytoplankton growth and acclimation: responses of
+  the balanced growth rate and the chlorophyll \textit{a}:carbon ratio to
+  light, nutrient-limitation and temperature.
+\newblock Marine Ecology Progress Series, 148:187--200.
+
+\bibitem[Geider et~al., 1998]{Geider98}
+Geider RJ, MacIntyre HL, Kana TM. 1998.
+\newblock A dynamic regulatory model of phytoplanktonic acclimation to light,
+  nutrients, and temperature.
+\newblock Limnology and Oceanography, 43(4):679--694.
 
 \bibitem[Hagy and Murrell, 2007]{Hagy07}
 Hagy JD, Murrell MC. 2007.
@@ -128,6 +157,12 @@ Kirchner JW. 2006.
 \newblock Getting the right answers for the right reasons: Linking
   measurements, analyses, and models to advance the science of hydrology.
 \newblock Water Resources Research, 42(3):W03S04.
+
+\bibitem[Lehman et~al., 1975]{Lehman75}
+Lehman JT, Botkin DB, Likens GE. 1975.
+\newblock The assumptions and rationales of a computer model of phytoplankton
+  population dynamics.
+\newblock Limnology and Oceanography, 20(3):343--364.
 
 \bibitem[Lehrter et~al., view]{LehrterIR}
 Lehrter JC, Ko DS, Lowe L, Penta B. In review.
@@ -248,6 +283,12 @@ Petrucci G, Bonhomme C. 2014.
   semi-distributed modelling: trade-offs among complexity, calibration and
   geographical data.
 \newblock Journal of Hydrology, 517:997--1007.
+
+\bibitem[Platt et~al., 1980]{Platt80}
+Platt T, Gallegos CL, Harrison WG. 1980.
+\newblock Photoinhibition of photosynthesis in natural assemblages of marine
+  phytoplankton.
+\newblock Journal of Marine Research, 38:687--701.
 
 \bibitem[Rabalais et~al., 2002]{Rabalais02}
 Rabalais NN, Turner RE, Scavia D. 2002.
