@@ -442,6 +442,69 @@ The above analyses were repeated for additional state variables estimated by Fis
 %%%%%%
 % tables
 
+% initial conditions evaluated 
+<<inits, eval = T, cache = F>>=
+data(ini_eval)
+
+inits <- lapply(ini_eval, function(x) unlist(x[[1]])) %>% 
+  do.call('rbind', .) %>% 
+  t %>% 
+  data.frame(vars = row.names(.), .) %>% 
+  mutate(
+    Default = sapply(def, scinot),
+    April = sapply(apr, scinot), 
+    September = sapply(sep, scinot)
+  ) %>% 
+  select(-def, -apr, -sep) %>% 
+  mutate(
+    vars = factor(vars, 
+      labels = c('Ammonium', 'Dissolved Inorganic Carbon', 'Dissolved Oygen','Nitrate', 'Phosphate', 'Silica'),
+      levels = c('NH4', 'DIC', 'O2', 'NO3', 'PO4', 'Si')
+    ), 
+    vars = as.character(vars)
+  )
+
+cap_val <- 'Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \\ac{lcs}.  All units are $\\mu$mol L$^{-1}$.'
+
+latex( 
+  inits[, -1],
+  file = '',
+  rowlabel = 'Variables',
+  caption = cap_val,
+  caption.loc = 'top',
+  label = 'tab:inits',
+  rowname = inits[, 1]
+  )  
+@
+
+% structural conditions
+<<strcs, eval = T, cache = F>>=
+swtch <- data.frame(
+  lab = c('Temperature', 'Uptake', 'Quota', 'Chla:C', 'Photosynthesis', 'Growth'),
+  sim = c('sigmoidal', 'Michaelis-Menten', 'Droop', 'regression', 'photoinhibition', 'minimum'),
+  com = c('Arrenhius', 'Geider', 'Flynn', 'Cloern', 'nutrient dependent', '\\textit{umax} is nutrient dependent'), 
+  stringsAsFactors = F
+  ) %>% 
+  rename(
+    `Switch type` = lab, 
+    Default = sim, 
+    Complex = com
+  )
+
+cap_val <- 'Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity.'
+
+latex( 
+  swtch[, -1],
+  file = '',
+  rowlabel = 'Switch type',
+  caption = cap_val,
+  caption.loc = 'top',
+  label = 'tab:strcs',
+  rowname = swtch[, 1]
+  ) 
+
+@
+
 % do sensitivity all categories
 <<dosens, eval = T, cache = F>>=
 senstab(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', digits = 2, pow = 2, tabsize = 'footnotesize', foot.val = '\\footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts')
@@ -747,20 +810,38 @@ p2 <- ggplot(toplo, aes(x = numparms, y = sels, fill = combs)) +
 p2
 @
 
-<<sensalltile, eval = T, echo = F, fig.height = 6, fig.width = 3.5, out.width = '0.7\\textwidth', fig.cap = 'Sensitivity values (L1, \\cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.'>>=
-data(sens_ests_cat_all)
+% effects of changing initial and structural conditions
+<<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in parameter values using default conditions, changes in initial conditions (April, September seasonal means, \\cref{tab:inits}), and changes in structural complexity (\\cref{tab:strcs}). Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 7, fig.width = 8, out.width = '\\textwidth', eval = T, echo = F, warning = F, message = F>>=
+# initial conditions
+data(ini_eval)
+data(struct_eval)
 
-tmp <- reshape2::melt(sens_ests_cat_all, id.var = c('Parameter', 'error', 'Category'))
+to_eval <- lapply(ini_eval, function(x) x[[2]]) %>% 
+  c(., struct = list(struct_eval))
 
-stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
-stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+eval_levs <- c('def', 'apr', 'sep', 'struct')
+eval_labs <- c('Default', 'Initial: April', 'Initial: September', 'Structure: complex')
 
-toplo <- mutate(tmp,
-    L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab))
-  ) %>% 
-  rename(Sensitivity = error)
+toplo_all <- sapply(1:length(to_eval), function(x) {
+  
+  tmp <- reshape2::melt(to_eval[[x]], id.var = c('Parameter', 'error', 'Category'))
+  nms <- names(to_eval)[x]
 
-toplo1 <- mutate(toplo, Parameter = as.character(par_txt(Parameter, frm = 'exp')))
+  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
+  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
+  
+  toplo <- mutate(tmp,
+      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
+      Parameter = as.character(par_txt(Parameter, frm = 'exp')), 
+      nms = nms
+    ) %>% 
+    rename(Sensitivity = error)
+
+  return(toplo)
+  
+  }, simplify = F)
+toplo_all <- do.call('rbind', toplo_all)
+toplo_all <- mutate(toplo_all, nms = factor(nms, levels = eval_levs, labels = eval_labs))
 
 pbase <- theme(
   panel.grid.major = element_blank(), 
@@ -773,19 +854,20 @@ pbase <- theme(
   strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0.5)
   ) 
 
-ggplot(toplo1, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
+p <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
   geom_tile(colour = 'black') + 
   pbase +
   scale_y_discrete('Parameter', 
     expand = c(0, 0),
-    breaks = toplo1$Parameter, 
-    labels = parse(text = toplo1$Parameter)
+    breaks = toplo_all$Parameter, 
+    labels = parse(text = toplo_all$Parameter)
     ) + 
   scale_x_discrete('State variable', expand = c(0, 0)) +
   scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
-  facet_grid(Category~., scales = 'free_y', space = 'free') + 
+  facet_grid(Category~nms, scales = 'free_y', space = 'free') + 
   guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
 
+print(p)
 @
 
 % identifiability plot
@@ -1103,6 +1185,7 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
   cols +
   pthm +
   theme(legend.position = 'top')
+
 @
 
 % summary of initial/structural changes on parameter sensitivity
@@ -1221,131 +1304,10 @@ senstab(out_var = 'OM2', tablab = 'om2sens', captxt = 'dissolved organic matter'
 senstab(out_var = 'PO4', tablab = 'po4sens', captxt = 'phosphate', digits = 2, pow = 2, tabsize = 'footnotesize')
 @
 
-% initial conditions evaluated 
-<<inits, eval = T, cache = F>>=
-data(ini_eval)
-
-inits <- lapply(ini_eval, function(x) unlist(x[[1]])) %>% 
-  do.call('rbind', .) %>% 
-  t %>% 
-  data.frame(vars = row.names(.), .) %>% 
-  mutate(
-    Default = sapply(def, scinot),
-    April = sapply(apr, scinot), 
-    September = sapply(sep, scinot)
-  ) %>% 
-  select(-def, -apr, -sep) %>% 
-  mutate(
-    vars = factor(vars, 
-      labels = c('Ammonium', 'Dissolved Inorganic Carbon', 'Dissolved Oygen','Nitrate', 'Phosphate', 'Silica'),
-      levels = c('NH4', 'DIC', 'O2', 'NO3', 'PO4', 'Si')
-    ), 
-    vars = as.character(vars)
-  )
-
-cap_val <- 'Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \\ac{lcs}.  All units are $\\mu$mol L$^{-1}$.'
-
-latex( 
-  inits[, -1],
-  file = '',
-  rowlabel = 'Variables',
-  caption = cap_val,
-  caption.loc = 'top',
-  label = 'tab:inits',
-  rowname = inits[, 1]
-  )  
-@
-
-% structural conditions
-<<strcs, eval = T, cache = F>>=
-swtch <- data.frame(
-  lab = c('Temperature', 'Uptake', 'Quota', 'Chla:C', 'Photosynthesis', 'Growth'),
-  sim = c('sigmoidal', 'Michaelis-Menten', 'Droop', 'regression', 'photoinhibition', 'minimum'),
-  com = c('Arrenhius', 'Geider', 'Flynn', 'Cloern', 'nutrient dependent', '\\textit{umax} is nutrient dependent'), 
-  stringsAsFactors = F
-  ) %>% 
-  rename(
-    `Switch type` = lab, 
-    Default = sim, 
-    Complex = com
-  )
-
-cap_val <- 'Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity.'
-
-latex( 
-  swtch[, -1],
-  file = '',
-  rowlabel = 'Switch type',
-  caption = cap_val,
-  caption.loc = 'top',
-  label = 'tab:strcs',
-  rowname = swtch[, 1]
-  ) 
-
-@
 \clearpage
 
 %%
 % sup figs
-
-% effects of changing initial and structural conditions
-<<inistreval, fig.cap = 'Effects of initial and structural conditions on parameter sensitivity.', fig.height = 7, fig.width = 8, out.width = '\\textwidth', eval = T, echo = F, warning = F, message = F>>=
-# initial conditions
-data(ini_eval)
-data(struct_eval)
-
-to_eval <- lapply(ini_eval, function(x) x[[2]]) %>% 
-  c(., struct = list(struct_eval))
-
-eval_levs <- c('def', 'apr', 'sep', 'struct')
-eval_labs <- c('Default', 'Initial: April', 'Initial: September', 'Structure: complex')
-
-toplo_all <- sapply(1:length(to_eval), function(x) {
-  
-  tmp <- reshape2::melt(to_eval[[x]], id.var = c('Parameter', 'error', 'Category'))
-  nms <- names(to_eval)[x]
-
-  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
-  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate'))
-  
-  toplo <- mutate(tmp,
-      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
-      Parameter = as.character(par_txt(Parameter, frm = 'exp')), 
-      nms = nms
-    ) %>% 
-    rename(Sensitivity = error)
-
-  return(toplo)
-  
-  }, simplify = F)
-toplo_all <- do.call('rbind', toplo_all)
-toplo_all <- mutate(toplo_all, nms = factor(nms, levels = eval_levs, labels = eval_labs))
-
-pbase <- theme(
-  panel.grid.major = element_blank(), 
-  panel.grid.minor = element_blank(), 
-  axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8), 
-  axis.text.y = element_text(size = 6),
-  legend.position = 'top', 
-  plot.margin = grid::unit(c(2, 2, 2, 2), 'pt'), 
-  strip.background = element_blank(), 
-  strip.text.y = element_text(angle = 0, hjust = 0, vjust = 0.5)
-  ) 
-
-p <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) + 
-  geom_tile(colour = 'black') + 
-  pbase +
-  scale_y_discrete('Parameter', 
-    expand = c(0, 0),
-    breaks = toplo_all$Parameter, 
-    labels = parse(text = toplo_all$Parameter)
-    ) + 
-  scale_x_discrete('State variable', expand = c(0, 0)) +
-  scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
-  facet_grid(Category~nms, scales = 'free_y', space = 'free') + 
-  guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
-
-print(p)
-@
+% NULL
 
 \end{document}

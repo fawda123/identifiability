@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  28 NOV 2016 17:03
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  29 NOV 2016 13:47
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -417,7 +417,7 @@ Package: paralist 2013/06/09 v2.4 Extended list environments
 \plparsep=\skip59
 \pl@lab=\toks24
 )
-(C:/PROGRA~1/R/R-33~1.2/share/texmf/tex/latex\Sweave.sty
+(C:/PROGRA~1/R/R-32~1.4RE/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
@@ -548,28 +548,28 @@ tim
 LaTeX Warning: Label `acro:zerod@cref' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 129.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 128.
 
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 129.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 128.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
@@ -624,7 +624,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 129.
+Package hyperref Info: Link coloring ON on input line 128.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -633,9 +633,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count134
 )
-LaTeX Info: Redefining \ref on input line 129.
-LaTeX Info: Redefining \pageref on input line 129.
-LaTeX Info: Redefining \nameref on input line 129.
+LaTeX Info: Redefining \ref on input line 128.
+LaTeX Info: Redefining \pageref on input line 128.
+LaTeX Info: Redefining \nameref on input line 128.
 
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 (M:\docs\manuscripts\identifiability\ident_manu.out)
@@ -644,159 +644,158 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 159.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 158.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 159.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 159.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 158.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 158.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 159.
+(Font)              <14.4> on input line 158.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 159.
+(Font)              <7> on input line 158.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 159.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 158.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 159.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 158.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 159.
+(Font)              <12> on input line 158.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 159.
+(Font)              <8> on input line 158.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 159.
+(Font)              <6> on input line 158.
  [1
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 162.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 161.
 Package acronym Info: Label `acro:zerod' newly defined as it shall be overridde
 n
-although it is yet undefined on input line 163.
+although it is yet undefined on input line 162.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 167.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 166.
 Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
-although it is yet undefined on input line 169.
+although it is yet undefined on input line 168.
 Package acronym Info: Label `acro:gom' newly defined as it shall be overridden
-although it is yet undefined on input line 169.
+although it is yet undefined on input line 168.
 Package acronym Info: Label `acro:marb' newly defined as it shall be overridden
 
-although it is yet undefined on input line 169.
+although it is yet undefined on input line 168.
  [2
 
 ] [3]
-Package acronym Info: Label `acro:zerod' overridden on input line 175.
+Package acronym Info: Label `acro:zerod' overridden on input line 174.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
-although it is yet undefined on input line 176.
+although it is yet undefined on input line 175.
  [4] [5]
 Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
 
-although it is yet undefined on input line 188.
+although it is yet undefined on input line 187.
  [6] [7]
 [8] [9] [10]
 Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
 
-although it is yet undefined on input line 242.
+although it is yet undefined on input line 241.
  [11] (M:\docs\manuscripts\identifiability\ident_manu.bbl [12
 
 ]
 [13] [14]) [15]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 469.
+(Font)              <5> on input line 510.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 473.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 514.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 536.
- [16] [17] [18] [19] [20]
-<figs/combnex-1.pdf, id=412, 361.35pt x 361.35pt>
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 577.
+ [16] [17] [18] [19] [20] [21]
+<figs/combnex-1.pdf, id=416, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 812.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 853.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=413, 252.945pt x 433.62pt>
+<figs/sensalltile-1.pdf, id=417, 578.16pt x 505.89pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 823.
-(pdftex.def)             Requested size: 328.82707pt x 563.71255pt.
-
-<figs/identplo-1.pdf, id=422, 578.16pt x 505.89pt>
-File: figs/identplo-1.pdf Graphic file (type pdf)
- <use figs/identplo-1.pdf>
-Package pdftex.def Info: figs/identplo-1.pdf used on input line 835.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 865.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=425, 650.43pt x 578.16pt>
+<figs/identplo-1.pdf, id=430, 578.16pt x 505.89pt>
+File: figs/identplo-1.pdf Graphic file (type pdf)
+ <use figs/identplo-1.pdf>
+Package pdftex.def Info: figs/identplo-1.pdf used on input line 877.
+(pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
+
+<figs/identploall-1.pdf, id=433, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
-Package pdftex.def Info: figs/identploall-1.pdf used on input line 847.
+Package pdftex.def Info: figs/identploall-1.pdf used on input line 889.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=430, 523.9575pt x 523.9575pt>
+
+LaTeX Warning: Reference `fig:inistreval' on page 1 undefined on input line 893
+.
+
+
+LaTeX Warning: Reference `fig:inistreval' on page 1 undefined on input line 893
+.
+
+<figs/exclex-1.pdf, id=436, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 859.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 901.
 (pdftex.def)             Requested size: 469.75502pt x 469.76653pt.
 
-<figs/heurist_stts-1.pdf, id=437, 650.43pt x 433.62pt>
+<figs/heurist_stts-1.pdf, id=443, 650.43pt x 433.62pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 871.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 913.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
 
-<figs/inistrsumm-1.pdf, id=440, 505.89pt x 505.89pt>
+<figs/inistrsumm-1.pdf, id=446, 505.89pt x 505.89pt>
 File: figs/inistrsumm-1.pdf Graphic file (type pdf)
 
 <use figs/inistrsumm-1.pdf>
-Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 883.
+Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 925.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
- [21
+ [22
 
 
- <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>]
+ <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>] [23 <M:/docs/manuscr
+ipts/identifiability/figs/sensalltile-1.pdf>]
+[24 <M:/docs/manuscripts/identifiability/figs/identplo-1.pdf>] [25 <M:/docs/man
+uscripts/identifiability/figs/identploall-1.pdf>] [26 <M:/docs/manuscripts/iden
+tifiability/figs/exclex-1.pdf>] [27 <M:/docs/manuscripts/identifiability/figs/h
+eurist_stts-1.pdf>] [28 <M:/docs/manuscripts/identifiability/figs/inistrsumm-1.
+pdf>] [29] [30] [31] [32] [33] [34] [35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1389.
 
-LaTeX Warning: Text page 22 contains only floats.
-
-[22 <M:/docs/manuscripts/identifiability/figs/sensalltile-1.pdf>] [23 <M:/docs/
-manuscripts/identifiability/figs/identplo-1.pdf>] [24 <M:/docs/manuscripts/iden
-tifiability/figs/identploall-1.pdf>] [25 <M:/docs/manuscripts/identifiability/f
-igs/exclex-1.pdf>] [26 <M:/docs/manuscripts/identifiability/figs/heurist_stts-1
-.pdf>] [27 <M:/docs/manuscripts/identifiability/figs/inistrsumm-1.pdf>]
-[28] [29] [30] [31] [32] [33] [34] [35]
-<figs/inistreval-1.pdf, id=574, 578.16pt x 505.89pt>
-File: figs/inistreval-1.pdf Graphic file (type pdf)
-
-<use figs/inistreval-1.pdf>
-Package pdftex.def Info: figs/inistreval-1.pdf used on input line 1390.
-(pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1399.
- [36
-
-
- <M:/docs/manuscripts/identifiability/figs/inistreval-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1399.
- (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1399.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1399.
+(M:\docs\manuscripts\identifiability\ident_manu.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1389.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 5DFED3B9B98EBBD3C1398435D695A274;594.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1399.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1389.
  ) 
 Here is how much of TeX's memory you used:
- 11966 strings out of 493921
- 188877 string characters out of 3147282
- 375038 words of memory out of 3000000
- 14914 multiletter control sequences out of 15000+200000
+ 11955 strings out of 493921
+ 188682 string characters out of 3147282
+ 379038 words of memory out of 3000000
+ 14906 multiletter control sequences out of 15000+200000
  45615 words of font info for 91 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  44i,14n,47p,2940b,594s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -824,9 +823,9 @@ iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.
 urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a
 .pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (36 pages, 510337 bytes).
+Output written on ident_manu.pdf (35 pages, 500278 bytes).
 PDF statistics:
- 698 PDF objects out of 1000 (max. 8388607)
- 137 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 686 PDF objects out of 1000 (max. 8388607)
+ 135 named destinations out of 1000 (max. 500000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -21,7 +21,6 @@
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
 \newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
-\let\hlipl\hlkwb
 
 \usepackage{framed}
 \makeatletter
@@ -152,7 +151,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Mon Nov 28 16:09:57 2016 -0600
+  \\ Version Date:   Mon Nov 28 17:05:13 2016 -0600
 	}
 \date{}
 \maketitle
@@ -460,6 +459,48 @@ The above analyses were repeated for additional state variables estimated by Fis
 %%%%%%
 % tables
 
+% initial conditions evaluated 
+%latex.default(inits[, -1], file = "", rowlabel = "Variables",     caption = cap_val, caption.loc = "top", label = "tab:inits",     rowname = inits[, 1])%
+\begin{table}[!tbp]
+\caption{Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \ac{lcs}.  All units are $\mu$mol L$^{-1}$.\label{tab:inits}} 
+\begin{center}
+\begin{tabular}{llll}
+\hline\hline
+\multicolumn{1}{l}{Variables}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{April}&\multicolumn{1}{c}{September}\tabularnewline
+\hline
+Dissolved Inorganic Carbon&$2134$&$2096.5$&$2133.37$\tabularnewline
+Ammonium&$1.09$&$1.79$&$0.35$\tabularnewline
+Nitrate&$71.4$&$3.75$&$2.04$\tabularnewline
+Dissolved Oygen&$172$&$194.47$&$152.57$\tabularnewline
+Phosphate&$1.81$&$0.23$&$0.42$\tabularnewline
+Silica&$71.4$&$5.84$&$9.77$\tabularnewline
+\hline
+\end{tabular}\end{center}
+
+\end{table}
+
+
+% structural conditions
+%latex.default(swtch[, -1], file = "", rowlabel = "Switch type",     caption = cap_val, caption.loc = "top", label = "tab:strcs",     rowname = swtch[, 1])%
+\begin{table}[!tbp]
+\caption{Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity.\label{tab:strcs}} 
+\begin{center}
+\begin{tabular}{lll}
+\hline\hline
+\multicolumn{1}{l}{Switch type}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{Complex}\tabularnewline
+\hline
+Temperature&sigmoidal&Arrenhius\tabularnewline
+Uptake&Michaelis-Menten&Geider\tabularnewline
+Quota&Droop&Flynn\tabularnewline
+Chla:C&regression&Cloern\tabularnewline
+Photosynthesis&photoinhibition&nutrient dependent\tabularnewline
+Growth&minimum&\textit{umax} is nutrient dependent\tabularnewline
+\hline
+\end{tabular}\end{center}
+
+\end{table}
+
+
 % do sensitivity all categories
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
 \begin{table}[!tbp]
@@ -520,7 +561,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 \hline
 \end{tabular}\end{center}}
 
-\footnotesize *Temperaure parameters apply to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts\end{table}
+\footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts\end{table}
 
 
 % first heuristic, all states
@@ -533,63 +574,63 @@ The above analyses were repeated for additional state variables estimated by Fis
 \hline\hline
 \multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
 \hline
-{\bfseries Optics}&&&&&&&&&\tabularnewline
+{\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
+~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&$1.98$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{alpha}}&$4$&$3.55$&$4.57$&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&$10.11$&-&-\tabularnewline
 ~~\scriptsize{\textit{astar490}}&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$\tabularnewline
 ~~\scriptsize{\textit{astarOMA}}&$2$&$7.33$&$5.42$&-&$5.36$&-&$7.78$&$7.87$&-\tabularnewline
-~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.73$\tabularnewline
+\hline
+{\bfseries Optics}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&-&$10.04$\tabularnewline
+~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.73$\tabularnewline
 ~~\scriptsize{\textit{astarOMZ}}&$3$&$7.58$&$5.51$&-&$6.02$&-&$7.91$&$7.87$&-\tabularnewline
+~~\scriptsize{\textit{Athresh}}&$6$&$11.27$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&-&-&-&$2.9$&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&$4.09$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
+~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$3$&$4.09$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
+~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&-&$13.43$\tabularnewline
+~~\scriptsize{\textit{KG2}}&$3$&-&-&-&$8.19$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.39$&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.75$\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$4$&$4.19$&-&$6.12$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KNH4}}&$2$&$4.03$&-&-&-&-&-&-&-\tabularnewline
 \hline
 {\bfseries Organic Matter}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
-~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$1$&-&-&-&-&$1$&-&-&-\tabularnewline
-~~\scriptsize{\textit{nitmax}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&-&$13.43$\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.39$&-\tabularnewline
-~~\scriptsize{\textit{KNH4}}&$2$&$4.03$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG1}}&$3$&$4.09$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$3$&-&-&-&$8.19$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.75$\tabularnewline
 ~~\scriptsize{\textit{KO2}}&$3$&-&-&-&-&-&$14.07$&$11.96$&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$3$&-&-&$6.04$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$4$&$4.19$&-&$6.12$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{KO2}}&$4$&-&-&-&-&-&-&-&$14.68$\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
 ~~\scriptsize{\textit{KO2}}&$5$&$9.47$&-&$8.61$&-&-&-&-&-\tabularnewline
-\hline
-{\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$1$&-&-&-&-&$1$&-&-&-\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$3$&-&-&$6.04$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
 ~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
 ~~\scriptsize{\textit{mA}}&$2$&-&-&$1.19$&$1.29$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{nitmax}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Qc}}&$2$&-&-&-&-&$11.57$&-&-&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$2$&-&-&-&-&-&-&$1.21$&-\tabularnewline
-~~\scriptsize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&-&$7.45$\tabularnewline
-~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&$1.98$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&-&-&-&$2.9$&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&$3.26$&-&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$4$&$3.55$&$4.57$&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&$4.09$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Qc}}&$4$&-&-&-&-&-&$4.98$&-&-\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&-&-&-&$4.9$&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&$10.11$&-&-\tabularnewline
 ~~\scriptsize{\textit{Qc}}&$5$&-&-&$2.9$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$5$&$8.14$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{Athresh}}&$6$&$11.27$&-&-&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{respg}}&$6$&-&-&$3.41$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\scriptsize{\textit{umax}}&$2$&-&-&-&-&-&-&$1.21$&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&$3.26$&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&-&-&-&$4.9$&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$5$&$8.14$&-&-&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{vmaxN}}&$7$&-&-&$3.97$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&-&$7.45$\tabularnewline
 \hline
 {\bfseries Zooplankton}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{ZKa}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
-~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
 ~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&-&-&$7.3$&$5.43$&-\tabularnewline
-~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&$6.32$&$9.76$&-&-&$8.54$\tabularnewline
 ~~\scriptsize{\textit{Zm}}&$3$&-&-&$4.57$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{Zumax}}&$3$&-&-&-&$6.93$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Zm}}&$4$&-&-&-&$11.86$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&$6.32$&$9.76$&-&-&$8.54$\tabularnewline
+~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\scriptsize{\textit{Zumax}}&$3$&-&-&-&$6.93$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$4$&-&-&$5.2$&-&-&-&-&-\tabularnewline
 \hline
 \end{tabular}\end{center}}
@@ -818,13 +859,14 @@ The above analyses were repeated for additional state variables estimated by Fis
 
 
 
+% effects of changing initial and structural conditions
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=0.7\textwidth]{figs/sensalltile-1} 
+{\centering \includegraphics[width=\textwidth]{figs/sensalltile-1} 
 
 }
 
-\caption{Sensitivity values (L1, \cref{l1}) for local analyses of all state variables. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \cref{tab:dosens} for L1 values for \ac{do} and \cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.}\label{fig:sensalltile}
+\caption{Sensitivity values (L1, \cref{l1}) of all state variables to changes in parameter values using default conditions, changes in initial conditions (April, September seasonal means, \cref{tab:inits}), and changes in structural complexity (\cref{tab:strcs}). Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \cref{tab:dosens} for L1 values for \ac{do} and \cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.}\label{fig:sensalltile}
 \end{figure}
 
 
@@ -1338,62 +1380,10 @@ The above analyses were repeated for additional state variables estimated by Fis
 \end{table}
 
 
-% initial conditions evaluated 
-%latex.default(inits[, -1], file = "", rowlabel = "Variables",     caption = cap_val, caption.loc = "top", label = "tab:inits",     rowname = inits[, 1])%
-\begin{table}[!tbp]
-\caption{Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \ac{lcs}.  All units are $\mu$mol L$^{-1}$.\label{tab:inits}} 
-\begin{center}
-\begin{tabular}{llll}
-\hline\hline
-\multicolumn{1}{l}{Variables}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{April}&\multicolumn{1}{c}{September}\tabularnewline
-\hline
-Dissolved Inorganic Carbon&$2134$&$2096.5$&$2133.37$\tabularnewline
-Ammonium&$1.09$&$1.79$&$0.35$\tabularnewline
-Nitrate&$71.4$&$3.75$&$2.04$\tabularnewline
-Dissolved Oygen&$172$&$194.47$&$152.57$\tabularnewline
-Phosphate&$1.81$&$0.23$&$0.42$\tabularnewline
-Silica&$71.4$&$5.84$&$9.77$\tabularnewline
-\hline
-\end{tabular}\end{center}
-
-\end{table}
-
-
-% structural conditions
-%latex.default(swtch[, -1], file = "", rowlabel = "Switch type",     caption = cap_val, caption.loc = "top", label = "tab:strcs",     rowname = swtch[, 1])%
-\begin{table}[!tbp]
-\caption{Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity.\label{tab:strcs}} 
-\begin{center}
-\begin{tabular}{lll}
-\hline\hline
-\multicolumn{1}{l}{Switch type}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{Complex}\tabularnewline
-\hline
-Temperature&sigmoidal&Arrenhius\tabularnewline
-Uptake&Michaelis-Menten&Geider\tabularnewline
-Quota&Droop&Flynn\tabularnewline
-Chla:C&regression&Cloern\tabularnewline
-Photosynthesis&photoinhibition&nutrient dependent\tabularnewline
-Growth&minimum&\textit{umax} is nutrient dependent\tabularnewline
-\hline
-\end{tabular}\end{center}
-
-\end{table}
-
 \clearpage
 
 %%
 % sup figs
-
-% effects of changing initial and structural conditions
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\textwidth]{figs/inistreval-1} 
-
-}
-
-\caption[Effects of initial and structural conditions on parameter sensitivity]{Effects of initial and structural conditions on parameter sensitivity.}\label{fig:inistreval}
-\end{figure}
-
-
+% NULL
 
 \end{document}
