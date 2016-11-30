@@ -1065,3 +1065,107 @@ par_tst <- function(){
   return(pars)
 
 }
+
+######
+# summarize L1 values for local  by state variable, parameter categories
+# used for inline text in manuscript
+# input files is sens_ests_cat_all for scatall
+#
+# output is list for each state variable
+# each state variable has:
+#   txt: chr string for inline text of variable name
+#   tot: total number of sensitive parameters
+#   bycat: list of number of sensitive parameters in each category
+#   lncat: list of percentage of sensitive parameters in each category
+#   sensrng: tibble with min/max sensitivity across categories
+#   sensrngcat: list of tibbles with min/max sensitivity within categories
+#   sensave: numeric of overall sensitivity
+#   sensavecat; list of average sensitivity by categories
+loc_summ <- function(scatall){
+  
+  # number of parameters in each category that were evaluated
+  p1z1pars <- par_tst()
+  nparms <- parcats2(as_df = TRUE) %>% 
+    filter(shrt %in% p1z1pars) %>% 
+    .$cats %>% 
+    table
+  
+  # names for inline txt of each state variable
+  txts <- list(
+    'NH4' = 'ammonium', 
+    'Chla_mg_tot' = '\\ac{chla}',
+    'O2' = '\\ac{do}', 
+    'irradiance' = 'irradiance',
+    'NO3' = 'nitrate ',
+    'OM1' = '\\ac{pom}',
+    'OM2' = '\\ac{dom}', 
+    'PO4' = 'phosphate'
+    )
+  
+  # output list to fill
+  out_ls <- vector('list', length = length(scatall))
+  names(out_ls) <- names(scatall)
+  
+  # iterate through state variables, elements in list
+  for(nm in names(scatall)){
+    
+    # select the state variable from the list
+    tmp <- scatall[[nm]]
+    
+    # name for inline text
+    txt <- txts[[nm]]
+    
+    # total sensitive
+    tot <- nrow(tmp)
+    
+    # number of parameters in each category
+    bycat <- table(tmp$Category)
+    nms <- names(bycat)
+    bycat <- as.numeric(bycat)
+    names(bycat) <- nms
+    bycat <- toeng(bycat)
+
+    # percent of parameters in each category
+    lncat <- table(tmp$Category) %>%
+      `/` (nparms[names(.)]) %>%
+      `*` (100) %>%
+      form_fun(nsm_val = 0) %>%
+      as.list %>%
+      lapply(., paste0, '\\%')
+    
+    # L1 range
+    sensrng <- with(tmp, which(error %in% range(error))) %>%
+      tmp[., ] %>%
+      mutate(
+       error = sapply(error, scinot),
+       Parameter = par_txt(Parameter)
+       )
+    
+    # L1 range within categories
+    sensrngcat <- split(tmp, tmp$Category) %>%
+      lapply(., function(x){
+    
+      with(x, which(error %in% range(error))) %>%
+        x[., ] %>%
+        mutate(
+          Parameter = par_txt(Parameter),
+          error = sapply(error, scinot)
+        )
+    
+      }
+    )
+
+    # average L1, all and by category
+    sensave <- mean(tmp$error)
+    sensavecat <- split(tmp, tmp$Category) %>%
+      lapply(., function(x) mean(x$error))
+    
+    # append to output
+    out <- list(txt = txt, tot = tot, bycat = bycat, lncat = lncat, sensrng = sensrng, sensrngcat = sensrngcat, sensave = sensave, sensavecat = sensavecat)
+    out_ls[[nm]] <- out
+    
+  }
+  
+  return(out_ls)
+  
+}

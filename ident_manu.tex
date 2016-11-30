@@ -21,6 +21,7 @@
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
 \newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
 
 \usepackage{framed}
 \makeatletter
@@ -74,7 +75,7 @@
 \usepackage{pdflscape}
 \usepackage{bm}
 \usepackage{fixltx2e}
-% \usepackage{showlabels}
+\usepackage[inline]{showlabels}
 \bibpunct{(}{)}{,}{a}{}{,}
 
 % page margins and section title formatting
@@ -99,9 +100,11 @@
 \acrodef{chla}[chl-\textit{a}]{chlorophyll \textit{a}}
 \acrodef{cgem}[CGEM]{Coastal General Ecosystem Model}
 \acrodef{do}[O$_2$]{dissolved oxygen}
+\acrodef{dom}[DOM]{dissolved organic matter}
 \acrodef{gom}[GOM]{Gulf of Mexico}
 \acrodef{lcs}[LCS]{Louisiana continental shelf}
 \acrodef{marb}[MARB]{Mississippi-Atchafalaya River Basin}
+\acrodef{pom}[POM]{particulate organic matter}
 \acrodef{zerod}[0-D]{zero-dimensional}
 
 %for supplemental figures/tables
@@ -151,7 +154,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Tue Nov 29 13:48:43 2016 -0600
+  \\ Version Date:   Tue Nov 29 17:13:44 2016 -0600
 	}
 \date{}
 \maketitle
@@ -190,6 +193,7 @@ The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the b
 
 Results from FishTank are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups as affected by nutrient uptake rates, organic matter inputs and losses, inherent optical properties, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIR}).  A total of 108 equations are estimated at each time step to return a value for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution.  These parameters define relationships among fixed effects in the equations and represent ecological properties described by the model that influence hypoxia formation.  Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.
 
+% number of parameters evaluated, total and by category
 
 
 The sensitivity of \ac{do} to perturbations of all relevant parameters for the 108 equations was estimated using a five minute timestep of FishTank simulations from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to describe complexity in community structure and foodweb dynamics.  However, structural equations for each group are identical such that chosen parameter values primarily control differences between the groups, e.g., large-bodied or small-bodied plankton, slow-growing or fast-growing plankton, etc.  Initial analyses indicated that parameter sensitivity of dissolved oxygen was identical within the six phytoplankton and zooplankton groups.  To remove obvious redundancies in the model, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final parameter set that was evaluated included 51 parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ 4 parameters), organic matter (12), phytoplankton (22), temperature (2), and zooplankton (11).  A full description of the model parameters is available as an appendix in \citetalias{LehrterIR}.  
@@ -236,25 +240,27 @@ In addition to parameter uncertainty, the effects of observational and structura
 
 The effects of model structure on parameter sensitivity (i.e., structural uncertainty) were evaluated by changing specific components of the model.  The FishTank model includes several ecosystem processes or characteristics that can be included based on expected conditions, available data, or desired complexity.  These `switches' are conceptually different from model parameters as they allow the inclusion or exclusion of explicit equations or processes.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIR}.  
 
-Parameter sensitivity was evaluated by comparing the results from the default model setup to an alternative, more complex setup with alternative switches (\cref{tab:strcs}).  The scenarios used different equations to represent structural relationships of phytoplankton growth patterns with temperature, nutrient uptake, cell quotas, \ac{chla} to carbon ratios, photosynthesis dynamics, and specific growth limits. The default scenario modelled phytoplankton growth with temperature as a sigmoidal function \citep{Eldridge10}, nutrient uptake as Michaelis-Menten kinetics \citep{Dugdale67}, internal cell quotas following \citet{Droop73}, \ac{chla} to carbon ratios as a simple regression \citep{Murrell14}, light-dependence of photosynthesis with photoinhibition \citep{Platt80}, and a specific growth rate following Leibig's law of the minimum.  Conversely, the complex scenario used switches that modelled relationships between phytoplankton growth with temperature using the Arrhenius model \citep{Geider97}, nutrient uptake as proposed by \citet{Lehman75} and modified in \citet{Geider98}, internal cell quotas following \citet{Flynn03}, \ac{chla} to carbon ratios following \citet{Cloern95}, light-dependence of photosynthesis that is nutrient dependent \citep{Flynn03}, and a specific growth rate that is nutrient dependent.  Complete details are provided as supplementary material to \citetalias{LehrterIR}.
+Parameter sensitivity was evaluated by comparing the results from the default model setup to a more complex setup with alternative switches (\cref{tab:strcs}).  The scenarios used switches for different equations to represent structural relationships of phytoplankton growth patterns with temperature, nutrient uptake, cell quotas, \ac{chla} to carbon ratios, photosynthesis dynamics, and specific growth limits. The default scenario modelled phytoplankton growth with temperature as a sigmoidal function \citep{Eldridge10}, nutrient uptake as Michaelis-Menten kinetics \citep{Dugdale67}, internal cell quotas following \citet{Droop73}, \ac{chla} to carbon ratios as a simple regression \citep{Murrell14}, light-dependence of photosynthesis with photoinhibition \citep{Platt80}, and a specific growth rate following Leibig's law of the minimum.  Conversely, the complex scenario used switches that modelled relationships between phytoplankton growth with temperature using the Arrhenius model \citep{Geider97}, nutrient uptake as proposed by \citet{Lehman75} and modified in \citet{Geider98}, internal cell quotas following \citet{Flynn03}, \ac{chla} to carbon ratios following \citet{Cloern95}, light-dependence of photosynthesis that is nutrient dependent \citep{Flynn03}, and a specific growth rate that is nutrient dependent.  Complete details are provided as supplementary material to \citetalias{LehrterIR}.
 
 \subsection{Extension to other state variables}
 
-The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables that were evaluated were \ac{chla}, irradiance, nitrate, ammonium, particulate organic matter, dissolved organic matter, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}) and fecal pellets from zooplankton (\textit{OM1\_Z}, \textit{OM2\_Z}, see \citetalias{LehrterIR}). 
+The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables that were evaluated were ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}) and fecal pellets from zooplankton (\textit{OM1\_Z}, \textit{OM2\_Z}, see \citetalias{LehrterIR}). 
 
 \section{Results}
 
 % for inline
 
  
-%' \subsection{Local sensitivity analysis}
-%' 
-%' Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in nrow(sens_ests_cat) of 178 parameters (round(100 * nrow(sens_ests_cat)/178, 0)\% of total) in FishTank (see \cref{fig:sensalltile} for other state variables). Within each parameter category, \ac{do} was sensitive to bycat$Optics parameters for optics (lncats$Optics of all optic parameters, \cref{tab:optsens}), bycat$`Organic Matter` for organic matter (lncats$`Organic Matter`, \cref{tab:omsens}), bycat$Phytoplankton for phytoplankton (lncats$Phytoplankton, \cref{tab:phytosens}), bycat$Temperature for temperature (lncats$Temperature, \cref{tab:tempsens}), and bycat$Zooplankton for zooplankton (lncats$Zooplankton, \cref{tab:zoopsens}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ sensrng$error[1] for sensrng$Parameter[1] (tolower(sensrng$Category[1])) to sensrng$error[2] for sensrng$Parameter[2] (tolower(sensrng$Category[2])), whereas average sensitivity among all parameters was $L1 = $ sensave.  Within categories, sensitivity ranged from sensrngcat$Optics$error[1] (sensrngcat$Optics$Parameter[1]) to sensrngcat$Optics$error[2] (sensrngcat$Optics$Parameter[2]) for optics, sensrngcat$`Organic Matter`$error[1] (sensrngcat$`Organic Matter`$Parameter[1]) to sensrngcat$`Organic Matter`$error[2] (sensrngcat$`Organic Matter`$Parameter[2]) for organic matter, sensrngcat$Phytoplankton$error[1] (sensrngcat$Phytoplankton$Parameter[1]) to sensrngcat$Phytoplankton$error[2] (sensrngcat$Phytoplankton$Parameter[2]) for phytopankton, sensrngcat$Temperature$error[1] (sensrngcat$Temperature$Parameter[1]) to sensrngcat$Temperature$error[2] (sensrngcat$Temperature$Parameter[2]) for temperature, and sensrngcat$Zooplankton$error[1] (sensrngcat$Zooplankton$Parameter[1]) to sensrngcat$Zooplankton$error[2] (sensrngcat$Zooplankton$Parameter[2]) for zooplankton (\cref{fig:sensplo}, bottom).  Average sensitivity values in each category were $L1 = $ sensave_cat$Optics for optics, sensave_cat$`Organic Matter` for organic matter, sensave_cat$Phytoplankton for phytoplankton, sensave_cat$Temperature for temperature, and sensave_cat$Zooplankton for zooplankton.  Within the six phytoplankton groups, \ac{do} was sensitive to the same parameters within each group although the sensitivity magnitudes varied. Average sensitivity across parameters in each phytoplankton groups showed that \ac{do} was most sensitive to the first and third phytoplankton groups (average $L1 = $ phytogrps[1, 2], phytogrps[2, 2]), whereas sensitivity to parameters in the remaining groups was much lower (all with average $L1 < 1$). Sensitivity of \ac{do} did not vary considerably between parameters in the two zooplankton groups (average $L1 = $ zoopgrps[1, 2], zoopgrps[2, 2] for groups one and two).
-%' 
-%' Response of \ac{do} to parameter perturbations was not uniform across the time series.  \Cref{fig:sensplo} shows variation for the top parameters within each category.  Because FishTank does not include a spatial component, the estimated \ac{do} trend describes a closed, heterotrophic system where respiration processes eventually remove all \ac{do} from the model space.  The initial decrease in the time series reflects change from the initial conditions outside of the growing seasons (i.e., January, February), the spring/summer increase represents production associated with expected seasonal growth, and the remaining time series from August to the end of year shows complete removal of \ac{do} as respiration processes dominate metabolic activity. Although this time series is not a realistic depiction of an actual system, the biogeochemical model behaves as expected in the absence of the hydrodynamic model.  Accordingly, the interpretation of sensitivity results from the simple model has relevance in an ecological context.  As expected, parameter perturbations had the largest effect during the summer months, although the effects varied.  An inrease in 50\% from the parameter default values generally caused a reduction in \ac{do} during the summer, with the exception of the zooplankton parameter, sensrngcat$Zooplankton$Parameter[2], which caused an increase in \ac{do}.  The phytoplankton parameter, sensrngcat$Phytoplankton$Parameter[2], had the largest effect such that the \ac{do} time series was similar to the default output in April/May, whereas a dramatic decrease was observed in the remaining months.  The effects of perturbations early in the time series (January, February) showed similar patterns such that a reduction in \ac{do} was most common, particularly for the optics (sensrngcat$Optics$Parameter[2]) and phytoplankton (sensrngcat$Phytoplankton$Parameter[2]) parameters.
-%' 
-%' \subsection{Subset identifiability}
-%' 
+\subsection{Local sensitivity analysis}
+
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 38 of the 51 (75\% of total) evaluated parameters in FishTank (default panel \cref{fig:sensalltile}, \cref{tab:dosens}). Within each parameter category, \ac{do} was sensitive to three parameters for optics (75\% of all optic parameters), eight for organic matter (67\%), 16 for phytoplankton (73\%), one for temperature (50\%), and 10 for zooplankton (91\%). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ $8.34\times 10^{-8}$ for \textit{QminP} (phytoplankton) to $0.05$ for \textit{umax} (phytoplankton), whereas average sensitivity among all parameters was $L1 = $ $0.01$. Within categories (excluding temperature), sensitivity ranged from $4.39\times 10^{-5}$ (\textit{astarOMA}) to $7.51\times 10^{-4}$ (\textit{astar490}) for optics, $4.17\times 10^{-4}$ (\textit{KNH4}) to $0.01$ (\textit{KG1}) for organic matter, $8.34\times 10^{-8}$ (\textit{QminP}) to $0.05$ (\textit{umax}) for phytoplankton, and $3.69\times 10^{-5}$ (\textit{ZQp}) to $0.05$ (\textit{ZKa}) for zooplankton.  Average sensitivity values in each category were $L1 = $ $2.81\times 10^{-4}$ for optics, $0$ for organic matter, $0.02$ for temperature, $0.01$ for phytoplankton, and $0.01$ for zooplankton.
+
+
+
+Local sensitivity analyses for the additional state variables (ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus) had similar results as \ac{do} with some exceptions (\cref{fig:sensalltile,tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens}).  All additional variables were sensitive to the same parameters (38 of 51 evaluated), although average sensitivity differed between variables.  Average $L1$ ranged from $0.02$ for irradiance (\cref{tab:irrsens}) to $0.71$ for \ac{dom} (\cref{tab:om2sens}).  All average sensitivity values for the state variables were higher than the average for \ac{do} ($L1$ = $0.01$).  For each variable, $L1$ ranged from $2.24\times 10^{-6}$ (\textit{QminP}) to $8.49$ (\textit{mA}) for ammonium (\cref{tab:nh4sens}), $1.38\times 10^{-6}$ (\textit{QminP}) to $13.94$ (\textit{mA}) for \ac{chla} (\cref{tab:chlsens}), $1.92\times 10^{-7}$ (\textit{QminP}) to $0.13$ (\textit{ZKa}) for irradiance (\cref{tab:irrsens}), $6.67\times 10^{-7}$ (\textit{QminP}) to $8.49$ (\textit{umax}) for nitrate (\cref{tab:no3sens}), $6.41\times 10^{-5}$ (\textit{KNH4}) to $7.22$ (\textit{mA}) for \ac{pom} (\cref{tab:om1sens}),  $7.41\times 10^{-5}$ (\textit{KNH4}) to $14.25$ (\textit{mA}) for \ac{dom} (\cref{tab:om2sens}), and $8.21\times 10^{-7}$ (\textit{QminP}) to $1.47$ (\textit{ZKa}) for phosphate (\cref{tab:po4sens}).  For the parameter categories, ammonium was most sensitive to phytoplankton parameters (average $L1$ = $0.8$ across all parameters in the category), \ac{chla} to phytoplankton ($L1$ = ), irradiance to zooplankton ($L1$ = $0.03$), nitrate to zooplankton ($L1$ = $1.06$), \ac{pom} to temperature ($L1$ = $0.86$), \ac{dom} to temperature ($L1$ = $1.48$), and phosphate to zooplankton ($L1$ = $0.31$).  Finally, average sensititivy between parameter categories independent of the state variables ranged from $0.01$ for optics (average $L1$ across all variables) to $0.62$ for phytoplankton. 
+
+\subsection{Subset identifiability}
+
 %' <<eval = F>>=
 %' data(cat_ident)
 %' data(top_ident)
@@ -354,7 +360,7 @@ The above analyses were repeated for additional state variables estimated by Fis
 %'   .[[2]]
 %' @
 %' 
-%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ scinot(h1_id$Optics[[1]], digits = 0), $\gamma =$  h1_id$Optics[[2]]) and organic matter ($n = $ scinot(h1_id$`Organic Matter`[[1]], digits = 0), $\gamma =$  h1_id$`Organic Matter`[[2]]) categories were selected, whereas toeng(h1_id$Phytoplankton[[1]])[[1]] were selected for phytoplankton ($\gamma = $ h1_id$Phytoplankton[[2]]), toeng(h1_id$Temperature[[1]])[[1]] for temperature ($\gamma = $ h1_id$Temperature[[2]]), and toeng(h1_id$Zooplankton[[1]])[[1]] for zooplankton ($\gamma = $ h1_id$Zooplankton[[2]]).  For the second selection heuristic, toeng(h2_id[[1]])[[1]] parameters were selected ($\gamma = $ h2_id[[2]], with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, toeng(h3_id[[1]])[[1]] parameters were selected ($\gamma = $ h3_id[[2]]) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including par_txt(h2_brk[1]) caused in increase in $\gamma$ from scinot(h2_brk[3], digits = 1) to scinot(h2_brk[2], digits = 1) and equal selection within cateogies showed that including par_txt(h3_brk[1]) caused in increase in $\gamma$ from scinot(h3_brk[3], digits = 1) to scinot(h3_brk[2], digits = 1).  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, particulate organic matter, dissolved organic matter, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ scinot(h1_id$Optics[[1]], digits = 0), $\gamma =$  h1_id$Optics[[2]]) and organic matter ($n = $ scinot(h1_id$`Organic Matter`[[1]], digits = 0), $\gamma =$  h1_id$`Organic Matter`[[2]]) categories were selected, whereas toeng(h1_id$Phytoplankton[[1]])[[1]] were selected for phytoplankton ($\gamma = $ h1_id$Phytoplankton[[2]]), toeng(h1_id$Temperature[[1]])[[1]] for temperature ($\gamma = $ h1_id$Temperature[[2]]), and toeng(h1_id$Zooplankton[[1]])[[1]] for zooplankton ($\gamma = $ h1_id$Zooplankton[[2]]).  For the second selection heuristic, toeng(h2_id[[1]])[[1]] parameters were selected ($\gamma = $ h2_id[[2]], with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, toeng(h3_id[[1]])[[1]] parameters were selected ($\gamma = $ h3_id[[2]]) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including par_txt(h2_brk[1]) caused in increase in $\gamma$ from scinot(h2_brk[3], digits = 1) to scinot(h2_brk[2], digits = 1) and equal selection within cateogies showed that including par_txt(h3_brk[1]) caused in increase in $\gamma$ from scinot(h3_brk[3], digits = 1) to scinot(h3_brk[2], digits = 1).  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, \ac{pom}, \ac{dom}, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
 
 \section{Discussion}
 %' 
@@ -515,63 +521,63 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \hline\hline
 \multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
 \hline
-{\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&$1.98$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$4$&$3.55$&$4.57$&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&$10.11$&-&-\tabularnewline
+{\bfseries Optics}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{astar490}}&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$\tabularnewline
 ~~\scriptsize{\textit{astarOMA}}&$2$&$7.33$&$5.42$&-&$5.36$&-&$7.78$&$7.87$&-\tabularnewline
-\hline
-{\bfseries Optics}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&-&$10.04$\tabularnewline
 ~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.73$\tabularnewline
+~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&-&$10.04$\tabularnewline
 ~~\scriptsize{\textit{astarOMZ}}&$3$&$7.58$&$5.51$&-&$6.02$&-&$7.91$&$7.87$&-\tabularnewline
-~~\scriptsize{\textit{Athresh}}&$6$&$11.27$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&-&-&-&$2.9$&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&$4.09$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
-~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG1}}&$3$&$4.09$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&-&$13.43$\tabularnewline
-~~\scriptsize{\textit{KG2}}&$3$&-&-&-&$8.19$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.39$&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.75$\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$4$&$4.19$&-&$6.12$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KNH4}}&$2$&$4.03$&-&-&-&-&-&-&-\tabularnewline
 \hline
 {\bfseries Organic Matter}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{KO2}}&$3$&-&-&-&-&-&$14.07$&$11.96$&-\tabularnewline
-~~\scriptsize{\textit{KO2}}&$4$&-&-&-&-&-&-&-&$14.68$\tabularnewline
-~~\scriptsize{\textit{KO2}}&$5$&$9.47$&-&$8.61$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
+~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{KstarO2}}&$1$&-&-&-&-&$1$&-&-&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$3$&-&-&$6.04$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
-~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
-~~\scriptsize{\textit{mA}}&$2$&-&-&$1.19$&$1.29$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{nitmax}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{Qc}}&$2$&-&-&-&-&$11.57$&-&-&-\tabularnewline
-~~\scriptsize{\textit{Qc}}&$4$&-&-&-&-&-&$4.98$&-&-\tabularnewline
-~~\scriptsize{\textit{Qc}}&$5$&-&-&$2.9$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{respg}}&$6$&-&-&$3.41$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&-&$13.43$\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.39$&-\tabularnewline
+~~\scriptsize{\textit{KNH4}}&$2$&$4.03$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$3$&$4.09$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG2}}&$3$&-&-&-&$8.19$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.75$\tabularnewline
+~~\scriptsize{\textit{KO2}}&$3$&-&-&-&-&-&$14.07$&$11.96$&-\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$3$&-&-&$6.04$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$4$&$4.19$&-&$6.12$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KO2}}&$4$&-&-&-&-&-&-&-&$14.68$\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
+~~\scriptsize{\textit{KO2}}&$5$&$9.47$&-&$8.61$&-&-&-&-&-\tabularnewline
+\hline
+{\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
+~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
 ~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
+~~\scriptsize{\textit{mA}}&$2$&-&-&$1.19$&$1.29$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Qc}}&$2$&-&-&-&-&$11.57$&-&-&-\tabularnewline
 ~~\scriptsize{\textit{umax}}&$2$&-&-&-&-&-&-&$1.21$&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&$3.26$&-&-\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&-&-&-&$4.9$&-\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$5$&$8.14$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$7$&-&-&$3.97$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&-&$7.45$\tabularnewline
+~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&$1.98$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&-&-&-&$2.9$&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&$3.26$&-&-\tabularnewline
+~~\scriptsize{\textit{alpha}}&$4$&$3.55$&$4.57$&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&$4.09$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Qc}}&$4$&-&-&-&-&-&$4.98$&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&-&-&-&$4.9$&-\tabularnewline
+~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&$10.11$&-&-\tabularnewline
+~~\scriptsize{\textit{Qc}}&$5$&-&-&$2.9$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$5$&$8.14$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Athresh}}&$6$&$11.27$&-&-&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{respg}}&$6$&-&-&$3.41$&-&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$7$&-&-&$3.97$&-&-&-&-&-\tabularnewline
 \hline
 {\bfseries Zooplankton}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{ZKa}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
-~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&-&-&$7.3$&$5.43$&-\tabularnewline
-~~\scriptsize{\textit{Zm}}&$3$&-&-&$4.57$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{Zm}}&$4$&-&-&-&$11.86$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&$6.32$&$9.76$&-&-&$8.54$\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&-&-&$7.3$&$5.43$&-\tabularnewline
+~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&$6.32$&$9.76$&-&-&$8.54$\tabularnewline
+~~\scriptsize{\textit{Zm}}&$3$&-&-&$4.57$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$3$&-&-&-&$6.93$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Zm}}&$4$&-&-&-&$11.86$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$4$&-&-&$5.2$&-&-&-&-&-\tabularnewline
 \hline
 \end{tabular}\end{center}}
@@ -1136,7 +1142,7 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of particulate organic matter to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect particulate organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om1sens}} 
+\caption{Sensitivity of \ac{pom} to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \ac{pom} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om1sens}} 
 \begin{center}
 \begin{tabular}{lll}
 \hline\hline
@@ -1199,7 +1205,7 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
 \begin{table}[!tbp]
 {\footnotesize
-\caption{Sensitivity of dissolved organic matter to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect dissolved organic matter are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om2sens}} 
+\caption{Sensitivity of \acl{dom} to perturbations of individual parameters.  Sensitivities are based on a 50\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \cref{l1}).  Parameters that did not affect \acl{dom} are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.\label{tab:om2sens}} 
 \begin{center}
 \begin{tabular}{lll}
 \hline\hline
