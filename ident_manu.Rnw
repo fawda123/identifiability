@@ -251,7 +251,7 @@ locO2$sensave <- scinot(locO2$sensave)
  
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{locO2$tot} of the \Sexpr{length(p1z1pars)} (\Sexpr{round(100 * locO2$tot/length(p1z1pars), 0)}\% of total) evaluated parameters in FishTank (default panel \cref{fig:sensalltile}, \cref{tab:dosens}). Within each parameter category, \ac{do} was sensitive to \Sexpr{locO2$bycat$Optics} parameters for optics (\Sexpr{locO2$lncat$Optics} of all optic parameters), \Sexpr{locO2$bycat$`Organic Matter`} for organic matter (\Sexpr{locO2$lncat$`Organic Matter`}), \Sexpr{locO2$bycat$Phytoplankton} for phytoplankton (\Sexpr{locO2$lncat$Phytoplankton}), \Sexpr{locO2$bycat$Temperature} for temperature (\Sexpr{locO2$lncat$Temperature}), and \Sexpr{locO2$bycat$Zooplankton} for zooplankton (\Sexpr{locO2$lncat$Zooplankton}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{locO2$sensrng$error[1]} for \Sexpr{locO2$sensrng$Parameter[1]} (\Sexpr{tolower(locO2$sensrng$Category[1])}) to \Sexpr{locO2$sensrng$error[2]} for \Sexpr{locO2$sensrng$Parameter[2]} (\Sexpr{tolower(locO2$sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{locO2$sensave}. Within categories (excluding temperature), sensitivity ranged from \Sexpr{locO2$sensrngcat$Optics$error[1]} (\Sexpr{locO2$sensrngcat$Optics$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Optics$error[2]} (\Sexpr{locO2$sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{locO2$sensrngcat$`Organic Matter`$error[1]} (\Sexpr{locO2$sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{locO2$sensrngcat$`Organic Matter`$error[2]} (\Sexpr{locO2$sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{locO2$sensrngcat$Phytoplankton$error[1]} (\Sexpr{locO2$sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Phytoplankton$error[2]} (\Sexpr{locO2$sensrngcat$Phytoplankton$Parameter[2]}) for phytoplankton, and \Sexpr{locO2$sensrngcat$Zooplankton$error[1]} (\Sexpr{locO2$sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Zooplankton$error[2]} (\Sexpr{locO2$sensrngcat$Zooplankton$Parameter[2]}) for zooplankton.  Average sensitivity values in each category were $L1 = $ \Sexpr{locO2$sensavecat$Optics} for optics, \Sexpr{locO2$sensavecat$`Organic Matter`} for organic matter, \Sexpr{locO2$sensavecat$Temperature} for temperature, \Sexpr{locO2$sensavecat$Phytoplankton} for phytoplankton, and \Sexpr{locO2$sensavecat$Zooplankton} for zooplankton.
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in \Sexpr{locO2$tot} of the \Sexpr{length(p1z1pars)} (\Sexpr{round(100 * locO2$tot/length(p1z1pars), 0)}\% of total) evaluated parameters in FishTank (default panel \cref{fig:sensalltile}, \cref{tab:dosens}). Within each parameter category, \ac{do} was sensitive to \Sexpr{locO2$bycat$Optics} parameters for optics (\Sexpr{locO2$lncat$Optics} of all optic parameters), \Sexpr{locO2$bycat$`Organic Matter`} for organic matter (\Sexpr{locO2$lncat$`Organic Matter`}), \Sexpr{locO2$bycat$Phytoplankton} for phytoplankton (\Sexpr{locO2$lncat$Phytoplankton}), \Sexpr{locO2$bycat$Temperature} for temperature (\Sexpr{locO2$lncat$Temperature}), and \Sexpr{locO2$bycat$Zooplankton} for zooplankton (\Sexpr{locO2$lncat$Zooplankton}). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, sensitivity values ranged from $L1 = $ \Sexpr{locO2$sensrng$error[1]} for \Sexpr{locO2$sensrng$Parameter[1]} (\Sexpr{tolower(locO2$sensrng$Category[1])}) to \Sexpr{locO2$sensrng$error[2]} for \Sexpr{locO2$sensrng$Parameter[2]} (\Sexpr{tolower(locO2$sensrng$Category[2])}), whereas average sensitivity among all parameters was $L1 = $ \Sexpr{locO2$sensave}. Within categories (excluding temperature), sensitivity ranged from \Sexpr{locO2$sensrngcat$Optics$error[1]} (\Sexpr{locO2$sensrngcat$Optics$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Optics$error[2]} (\Sexpr{locO2$sensrngcat$Optics$Parameter[2]}) for optics, \Sexpr{locO2$sensrngcat$`Organic Matter`$error[1]} (\Sexpr{locO2$sensrngcat$`Organic Matter`$Parameter[1]}) to \Sexpr{locO2$sensrngcat$`Organic Matter`$error[2]} (\Sexpr{locO2$sensrngcat$`Organic Matter`$Parameter[2]}) for organic matter, \Sexpr{locO2$sensrngcat$Phytoplankton$error[1]} (\Sexpr{locO2$sensrngcat$Phytoplankton$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Phytoplankton$error[2]} (\Sexpr{locO2$sensrngcat$Phytoplankton$Parameter[2]}) for phytoplankton, and \Sexpr{locO2$sensrngcat$Zooplankton$error[1]} (\Sexpr{locO2$sensrngcat$Zooplankton$Parameter[1]}) to \Sexpr{locO2$sensrngcat$Zooplankton$error[2]} (\Sexpr{locO2$sensrngcat$Zooplankton$Parameter[2]}) for zooplankton (\cref{tab:dosens}).  Average sensitivity values in each category were $L1 = $ \Sexpr{locO2$sensavecat$Optics} for optics, \Sexpr{locO2$sensavecat$`Organic Matter`} for organic matter, \Sexpr{locO2$sensavecat$Temperature} for temperature, \Sexpr{locO2$sensavecat$Phytoplankton} for phytoplankton, and \Sexpr{locO2$sensavecat$Zooplankton} for zooplankton.
 
 <<echo = F>>=
 locChla_mg_tot <- loc$Chla_mg_tot
@@ -297,39 +297,51 @@ names(avecat) <- tolower(names(avecat))
 
 @
 
-Local sensitivity analyses for the additional state variables (ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus) had similar results as \ac{do} with some exceptions (\cref{fig:sensalltile,tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens}).  All additional variables were sensitive to the same parameters (\Sexpr{locO2$tot} of \Sexpr{length(p1z1pars)} evaluated), although average sensitivity differed between variables.  Average $L1$ ranged from \Sexpr{scinot(aveall[2])} for \Sexpr{names(aveall)[2]} (\cref{tab:irrsens}) to \Sexpr{scinot(aveall[length(aveall)])} for \Sexpr{names(aveall)[length(aveall)]} (\cref{tab:om2sens}).  All average sensitivity values for the state variables were higher than the average for \ac{do} ($L1$ = \Sexpr{scinot(aveall[1])}).  For each variable, $L1$ ranged from \Sexpr{locNH4$sensrng[1, 2]} (\Sexpr{locNH4$sensrng[1, 1]}) to \Sexpr{locNH4$sensrng[2, 2]} (\Sexpr{locNH4$sensrng[2, 1]}) for ammonium (\cref{tab:nh4sens}), \Sexpr{locChla_mg_tot$sensrng[1, 2]} (\Sexpr{locChla_mg_tot$sensrng[1, 1]}) to \Sexpr{locChla_mg_tot$sensrng[2, 2]} (\Sexpr{locChla_mg_tot$sensrng[2, 1]}) for \ac{chla} (\cref{tab:chlsens}), \Sexpr{locirradiance$sensrng[1, 2]} (\Sexpr{locirradiance$sensrng[1, 1]}) to \Sexpr{locirradiance$sensrng[2, 2]} (\Sexpr{locirradiance$sensrng[2, 1]}) for irradiance (\cref{tab:irrsens}), \Sexpr{locNO3$sensrng[1, 2]} (\Sexpr{locNO3$sensrng[1, 1]}) to \Sexpr{locNO3$sensrng[2, 2]} (\Sexpr{locNO3$sensrng[2, 1]}) for nitrate (\cref{tab:no3sens}), \Sexpr{locOM1$sensrng[1, 2]} (\Sexpr{locOM1$sensrng[1, 1]}) to \Sexpr{locOM1$sensrng[2, 2]} (\Sexpr{locOM1$sensrng[2, 1]}) for \ac{pom} (\cref{tab:om1sens}),  \Sexpr{locOM2$sensrng[1, 2]} (\Sexpr{locOM2$sensrng[1, 1]}) to \Sexpr{locOM2$sensrng[2, 2]} (\Sexpr{locOM2$sensrng[2, 1]}) for \ac{dom} (\cref{tab:om2sens}), and \Sexpr{locPO4$sensrng[1, 2]} (\Sexpr{locPO4$sensrng[1, 1]}) to \Sexpr{locPO4$sensrng[2, 2]} (\Sexpr{locPO4$sensrng[2, 1]}) for phosphate (\cref{tab:po4sens}).  For the parameter categories, ammonium was most sensitive to \Sexpr{names(maxcat$NH4)} parameters (average $L1$ = \Sexpr{maxcat$NH4} across all parameters in the category), \ac{chla} to \Sexpr{names(maxcat$Chla_mg_tot)} ($L1$ = \Sexpr{maxcat$Chla_mg_tat}), irradiance to \Sexpr{names(maxcat$irradiance)} ($L1$ = \Sexpr{maxcat$irradiance}), nitrate to \Sexpr{names(maxcat$NO3)} ($L1$ = \Sexpr{maxcat$NO3}), \ac{pom} to \Sexpr{names(maxcat$OM1)} ($L1$ = \Sexpr{maxcat$OM1}), \ac{dom} to \Sexpr{names(maxcat$OM2)} ($L1$ = \Sexpr{maxcat$OM2}), and phosphate to \Sexpr{names(maxcat$PO4)} ($L1$ = \Sexpr{maxcat$PO4}).  Finally, average sensititivy between parameter categories independent of the state variables ranged from \Sexpr{avecat[1]} for \Sexpr{names(avecat)[1]} (average $L1$ across all variables) to \Sexpr{avecat[length(avecat)]} for \Sexpr{names(avecat)[length(avecat)]}. 
+Local sensitivity analyses for the additional state variables (ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus) had similar results as \ac{do} with some exceptions (\cref{fig:sensalltile,tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens}).  All additional variables were sensitive to the same parameters (\Sexpr{locO2$tot} of \Sexpr{length(p1z1pars)} evaluated), although average sensitivity differed between variables.  Average $L1$ ranged from \Sexpr{scinot(aveall[2])} for \Sexpr{names(aveall)[2]} (\cref{tab:irrsens}) to \Sexpr{scinot(aveall[length(aveall)])} for \Sexpr{names(aveall)[length(aveall)]} (\cref{tab:om2sens}).  All average sensitivity values for the state variables were higher than the average for \ac{do} ($L1$ = \Sexpr{scinot(aveall[1])}).  For each variable, $L1$ ranged from \Sexpr{locNH4$sensrng[1, 2]} (\Sexpr{locNH4$sensrng[1, 1]}) to \Sexpr{locNH4$sensrng[2, 2]} (\Sexpr{locNH4$sensrng[2, 1]}) for ammonium (\cref{tab:nh4sens}), \Sexpr{locChla_mg_tot$sensrng[1, 2]} (\Sexpr{locChla_mg_tot$sensrng[1, 1]}) to \Sexpr{locChla_mg_tot$sensrng[2, 2]} (\Sexpr{locChla_mg_tot$sensrng[2, 1]}) for \ac{chla} (\cref{tab:chlsens}), \Sexpr{locirradiance$sensrng[1, 2]} (\Sexpr{locirradiance$sensrng[1, 1]}) to \Sexpr{locirradiance$sensrng[2, 2]} (\Sexpr{locirradiance$sensrng[2, 1]}) for irradiance (\cref{tab:irrsens}), \Sexpr{locNO3$sensrng[1, 2]} (\Sexpr{locNO3$sensrng[1, 1]}) to \Sexpr{locNO3$sensrng[2, 2]} (\Sexpr{locNO3$sensrng[2, 1]}) for nitrate (\cref{tab:no3sens}), \Sexpr{locOM1$sensrng[1, 2]} (\Sexpr{locOM1$sensrng[1, 1]}) to \Sexpr{locOM1$sensrng[2, 2]} (\Sexpr{locOM1$sensrng[2, 1]}) for \ac{pom} (\cref{tab:om1sens}),  \Sexpr{locOM2$sensrng[1, 2]} (\Sexpr{locOM2$sensrng[1, 1]}) to \Sexpr{locOM2$sensrng[2, 2]} (\Sexpr{locOM2$sensrng[2, 1]}) for \ac{dom} (\cref{tab:om2sens}), and \Sexpr{locPO4$sensrng[1, 2]} (\Sexpr{locPO4$sensrng[1, 1]}) to \Sexpr{locPO4$sensrng[2, 2]} (\Sexpr{locPO4$sensrng[2, 1]}) for phosphate (\cref{tab:po4sens}).  For the parameter categories, ammonium was most sensitive to \Sexpr{names(maxcat$NH4)} parameters (average $L1$ = \Sexpr{maxcat$NH4} across all parameters in the category), \ac{chla} to \Sexpr{names(maxcat$Chla_mg_tot)} ($L1$ = \Sexpr{maxcat$Chla_mg_tot}), irradiance to \Sexpr{names(maxcat$irradiance)} ($L1$ = \Sexpr{maxcat$irradiance}), nitrate to \Sexpr{names(maxcat$NO3)} ($L1$ = \Sexpr{maxcat$NO3}), \ac{pom} to \Sexpr{names(maxcat$OM1)} ($L1$ = \Sexpr{maxcat$OM1}), \ac{dom} to \Sexpr{names(maxcat$OM2)} ($L1$ = \Sexpr{maxcat$OM2}), and phosphate to \Sexpr{names(maxcat$PO4)} ($L1$ = \Sexpr{maxcat$PO4}).  Finally, average sensititivy between parameter categories independent of the state variables ranged from \Sexpr{avecat[1]} for \Sexpr{names(avecat)[1]} (average $L1$ across all variables) to \Sexpr{avecat[length(avecat)]} for \Sexpr{names(avecat)[length(avecat)]}. 
 
 \subsection{Subset identifiability}
 
-%' <<eval = F>>=
-%' data(cat_ident)
-%' data(top_ident)
-%' 
-%' # percent combos less than gamma 15, 10 by category
-%' collcatpers <- lapply(cat_ident, function(x){
-%'   
-%'   colls <- x$coll
-%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-%'   c(l15, l10)
-%'   
-%'   })
-%' 
-%' # percent combos less than gamma 15, 10 by top in each category
-%' colltoppers <- lapply(top_ident, function(x){
-%'   
-%'   colls <- x$coll
-%'   l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
-%'   l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
-%'   c(l15, l10)
-%'   
-%'   })
-%' 
-%' maxtempcoll <- scinot(max(cat_ident$Temperature$coll))
-%' @
-%' 
-%' The identifiability analyses suggested that most parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Parameter identifiability (as $\gamma$) increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identbox}).  By category, identifiability was lowest for parameter subsets in the phytoplankton (\Sexpr{collcatpers$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Phytoplankton[2]}\% less than $\gamma = 10$)  and zooplankton categories (\Sexpr{collcatpers$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{collcatpers$Zooplankton[2]}\%, less than $\gamma = 10$), whereas a majority of combinations for temperature were identifiable (\Sexpr{collcatpers$Temperature[1]}\% less than $\gamma = 15$, \Sexpr{collcatpers$Temperature[2]}\%, less than $\gamma = 10$).  All subset combinations for optics and organic matter parameters had $\gamma < 10$.  All parameter subsets for choosing the top, top two, and top three parameters in each category were identifiable (\cref{fig:identbox}), whereas a majority were identifiable for choosing the top four (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\% less than $\gamma = 10$) and top five (\Sexpr{colltoppers$top4[1]}\% less than $\gamma = 15$, \Sexpr{colltoppers$top4[2]}\%, less than $\gamma = 10$) parameters.  
-%' 
+<<eval = T>>=
+data(cat_ident_all)
+data(top_ident_all)
+
+# percent combos less than gamma 15, 10 by state variable, by parameter category
+# temperature category not evaluated, only one paramaeter
+collcatpers <- lapply(cat_ident_all, function(stvar){
+  
+  lapply(stvar[!names(stvar) %in% 'Temperature'], function(x){
+
+    colls <- x$coll
+    l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+    l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+    c(l15, l10)
+
+  })
+  
+})
+
+# percent combos less than gamma 15, 10 by state variable, by top in each category
+colltoppers <- lapply(top_ident_all, function(stvar){
+  
+  lapply(stvar, function(x){
+
+    colls <- x$coll
+    l15 <- scinot(100 * sum(colls < 15)/length(colls), digits = 1)
+    l10 <- scinot(100 * sum(colls < 10)/length(colls), digits = 1)
+    c(l15, l10)
+
+  })
+  
+})
+
+catpersO2 <- collcatpers$O2
+toppersO2 <- colltoppers$O2
+@
+
+The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Results for \ac{do} are provided first to demonstrate general concepts for the identifiability analyses, followed by an extension to the remaining state variables.  Parameter identifiability (as $\gamma$) for \ac{do} increased at different rates depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets (from two to many parameters) in the phytoplankton (\Sexpr{catpersO2$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Phytoplankton[2]}\% less than $\gamma = 10$) and zooplankton categories (\Sexpr{catpersO2$Zooplankton[1]}\%, less than $\gamma = 15$, \Sexpr{catpersO2$Zooplankton[2]}\%, less than $\gamma = 10$), whereas a all combinations were identifiable for optics (\Sexpr{catpersO2$Optics[1]}\%, less than $\gamma = 15$, \Sexpr{catpersO2$Optics[2]}\%, less than $\gamma = 10$) and a majority identifiable for organic matter (\Sexpr{catpersO2$`Organic Matter`[1]}\%, less than $\gamma = 15$, \Sexpr{catpersO2$`Organic Matter`[2]}\%, less than $\gamma = 10$) combinations were identifiable. Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was \Sexpr{toppersO2$top1[1]}\% less than $\gamma = 15$ and \Sexpr{toppersO2$top1[2]}\% less than $\gamma = 10$ for the top parameters in each category, \Sexpr{toppersO2$top2[1]}\% and \Sexpr{toppersO2$top2[2]}\% for the top two, \Sexpr{toppersO2$top3[1]}\% and \Sexpr{toppersO2$top3[2]}\% for the top three, and \Sexpr{toppersO2$top4[1]}\% and \Sexpr{toppersO2$top4[2]}\% for the fop four.
+
+An alternative view of the results in \cref{fig:identplo} to identify percent combinations that were identifiable as a function of number of parameters in each subset is show in 
+
 %' <<eval = F>>=
 %' temp_coll <- par_txt(c('Tref(nospA+nospZ)_1', 'Tref(nospA+nospZ)_2', 'Tref(nospA+nospZ)_3', 'Tref(nospA+nospZ)_4', 'Tref(nospA+nospZ)_5', 'Tref(nospA+nospZ)_6', 'Tref(nospA+nospZ)_7', 'Tref(nospA+nospZ)_8'))
 %' @
@@ -401,6 +413,8 @@ Local sensitivity analyses for the additional state variables (ammonium, \ac{chl
 %' @
 %' 
 %' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, \ac{pom}, \ac{dom}, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+
+\subsection{Observational and structural uncertainty}
 
 \section{Discussion}
 %' 

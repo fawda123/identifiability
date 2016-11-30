@@ -42,22 +42,39 @@ form_fun <- function(x, rnd_val = 2, dig_val = 2, nsm_val = 2, ...) {
 # from https://dankelley.github.io/r/2015/03/22/scinot.html
 scinot <- function(x, pow = 3, digits = 2, showDollar = TRUE)
 {
+  
   x <- as.numeric(x)
-  sign <- ""
-  if (x < 0) {
-      sign <- "-"
-      x <- -x
-  }
-  exponent <- floor(log10(x))
-  if (exponent & abs(exponent) > pow) {
-      xx <- round(x / 10^exponent, digits=digits)
-      e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
+  
+  # only do this is x is not equal to zero
+  if(x != 0){
+    
+    sign <- ""
+    if (x < 0) {
+        sign <- "-"
+        x <- -x
+    }
+    exponent <- floor(log10(x))
+    if (exponent & abs(exponent) > pow) {
+        xx <- round(x / 10^exponent, digits=digits)
+        e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
+    } else {
+        xx <- round(x, digits=digits)
+        e <- ""
+    }
+    
+    out <- paste(sign, xx, e, sep="")
+    
   } else {
-      xx <- round(x, digits=digits)
-      e <- ""
+    
+    out <- x
+    
   }
-  if (showDollar) paste("$", sign, xx, e, "$", sep="")
-  else paste(sign, xx, e, sep="")
+  
+  # add dollars if true
+  if (showDollar) out <- paste("$", out, "$", sep="")
+  
+  return(out)
+  
 }
 
 # alternative list structure for parameter categories
