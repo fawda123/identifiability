@@ -154,7 +154,7 @@
 	\\{\textit {\normalsize Phone: 919-541-3985,}}
 	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
   \vspace{1in} 
-  \\ Version Date:   Thu Dec 1 12:24:21 2016 -0600
+  \\ Version Date:   Thu Dec 1 15:17:07 2016 -0600
 	}
 \date{}
 \maketitle
@@ -263,9 +263,9 @@ Local sensitivity analyses for the additional state variables (ammonium, \ac{chl
 
 
 
-The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Results for \ac{do} are provided first to demonstrate general concepts for the identifiability analyses, followed by an extension to the remaining state variables.  Parameter identifiability (as $\gamma$) for \ac{do} increased at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets (from two to many parameters) in the phytoplankton ($60$\% less than $\gamma = 15$, $43$\% less than $\gamma = 10$) and zooplankton categories ($53.1$\% less than $\gamma = 15$, $40$\% less than $\gamma = 10$), whereas a all combinations were identifiable for optics ($100$\% less than $\gamma = 15$, $100$\% less than $\gamma = 10$) and a majority identifiable for organic matter ($91.9$\% less than $\gamma = 15$, $76.5$\% less than $\gamma = 10$) combinations were identifiable. Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was $100$\% less than $\gamma = 15$ and $100$\% less than $\gamma = 10$ for the top parameters in each category, $90.6$\% and $80.7$\% for the top two, $80.7$\% and $70.9$\% for the top three, and $55.8$\% and $45.7$\% for the fop four.  Results for the remaining state variables had similar patterns in identifability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable for all selection heuristics (highest $\gamma$), whereas \ac{do} was most identifiable.
+The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Results for \ac{do} are provided first to demonstrate general concepts for the identifiability analyses, followed by an extension to the remaining state variables.  Parameter identifiability (as $\gamma$) for \ac{do} increased at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets (from two to many parameters) in the phytoplankton ($60$\% less than $\gamma = 15$, $43$\% less than $\gamma = 10$) and zooplankton categories ($53.1$\% less than $\gamma = 15$, $40$\% less than $\gamma = 10$), whereas all combinations were identifiable for optics ($100$\% less than $\gamma = 15$, $100$\% less than $\gamma = 10$) and a majority identifiable for organic matter ($91.9$\% less than $\gamma = 15$, $76.5$\% less than $\gamma = 10$) combinations were identifiable. Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was $100$\% less than $\gamma = 15$ and $100$\% less than $\gamma = 10$ for the top parameters in each category, $90.6$\% and $80.7$\% for the top two, $80.7$\% and $70.9$\% for the top three, and $55.8$\% and $45.7$\% for the fop four.  Results for the remaining state variables had similar patterns in identifability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable for all selection heuristics (highest $\gamma$), whereas \ac{do} was most identifiable.
 
-An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is conceptually similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided general rules for $\gamma$ thresholds, such that exact values beyond which model calibration fails could vary for the given model and optimization method.  The selected $\gamma$ thresholds are somewhat arbitrary, although the results show differences that have implications for parameter selection for model calibration.  In general, identifiability decreases with the addition of parameters, although the rate of decrease depends on the selected threshold for $\gamma$. Notable differences in identifiability are also observed by selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
+An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is conceptually similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided general rules for $\gamma$ thresholds \citep{Brun01,Omlin01}, such that exact values beyond which model calibration fails could vary for the given model and optimization method.  The selected $\gamma$ thresholds are somewhat arbitrary, although the results show differences that have implications for parameter selection for model calibration.  In general, identifiability decreases with the addition of parameters, although the rate of decrease depends on the selected threshold for $\gamma$. More conservative values for $\gamma$ (e.g., $\gamma = 5$) were more sensitive to the number of parameters in a subset.  Notable differences in identifiability were also observed by selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
 
 
 
@@ -273,44 +273,15 @@ An evaluation of the effects of individual parameters on $\gamma$ further sugges
 
 \subsection{Parameter selection}
 
-%' <<eval = F>>=
-%' data(tocal)
-%' 
-%' # n parms and ident for each selection heuristic
-%' h1_id <- tocal$cat %>% 
-%'   split(., .$Category) %>% 
-%'   lapply(function(x){
-%'     x <- x[x$coll < 15, ]
-%'     list(nrow(x), scinot(max(x$coll), digits = 1))
-%'   }) 
-%' h2_id <- filter(tocal$top, coll < 15) %>%
-%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-%'   .[c(2, 3)]
-%' h3_id <- filter(tocal$cattop, coll < 15) %>%
-%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-%'   .[c(2, 3)]
-%' 
-%' # which parameter broke selection for h2, h3
-%' h2_brk <- tocal$top
-%' sel <- which(h2_brk$coll < 15)
-%' h2_brk <- h2_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-%'   arrange(-coll) %>% 
-%'   .[1:2, ] %>% 
-%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-%'   .[[2]]
-%' # which parameter broke selection for h2, h3
-%' h3_brk <- tocal$cattop
-%' sel <- which(h3_brk$coll < 15)
-%' h3_brk <- h3_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-%'   arrange(-coll) %>% 
-%'   .[1:2, ] %>% 
-%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-%'   .[[2]]
-%' @
-%' 
-%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ scinot(h1_id$Optics[[1]], digits = 0), $\gamma =$  h1_id$Optics[[2]]) and organic matter ($n = $ scinot(h1_id$`Organic Matter`[[1]], digits = 0), $\gamma =$  h1_id$`Organic Matter`[[2]]) categories were selected, whereas toeng(h1_id$Phytoplankton[[1]])[[1]] were selected for phytoplankton ($\gamma = $ h1_id$Phytoplankton[[2]]), toeng(h1_id$Temperature[[1]])[[1]] for temperature ($\gamma = $ h1_id$Temperature[[2]]), and toeng(h1_id$Zooplankton[[1]])[[1]] for zooplankton ($\gamma = $ h1_id$Zooplankton[[2]]).  For the second selection heuristic, toeng(h2_id[[1]])[[1]] parameters were selected ($\gamma = $ h2_id[[2]], with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, toeng(h3_id[[1]])[[1]] parameters were selected ($\gamma = $ h3_id[[2]]) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including par_txt(h2_brk[1]) caused in increase in $\gamma$ from scinot(h2_brk[3], digits = 1) to scinot(h2_brk[2], digits = 1) and equal selection within cateogies showed that including par_txt(h3_brk[1]) caused in increase in $\gamma$ from scinot(h3_brk[3], digits = 1) to scinot(h3_brk[2], digits = 1).  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, \ac{pom}, \ac{dom}, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+
+
+The above results demonstrated that each state variables differed in the magnitudes of sensitivity for each parameter and the number of identifiable subsets, where the latter varied by identifiability thresholds and parameter selection criteria.  These results further underscore the need for explicit selection heuristics for parameters to calibrate for improving model performance. Results for each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) applied to each state variable differed in the number of selected parameters and distribution of parameters within each category (\cref{tab:heurist1,tab:heurist2,tab:heurist3}).  In general, a corresponendence was observed between the number of parameters that were selected given the threhold of $\gamma = 15$ and relative identifiability between the state variables.  As noted above, nitrate was the least identifiable variable (\cref{fig:identploall}), whereas other variables (e.g., \ac{do}, irradiance) were more identifiable.  The constraints on relative identifiability between variables were demonstrated with the selection heuristics.  For example, heuristics for nitrate typically selected only one or two parameters that met the criteria as compared to more identifiable variables that included several parameters that were identifiable. Overall, the first selection heuristic demonstrated that the number of parameters chosen by parameter category differed independently of the state variables (\cref{tab:heurist1}). The number of selected parameters averaged across state variable in decreasing order was 4.25 parameters (phytoplankton), 3.5 (organic matter), 2.75 (optics), and 2.38 (zooplankton).  These rankings were independent of parameter sensitivity and identifiability in each category.  The second and third selection heuristics (\cref{tab:heurist2,tab:heurist3}) were similar, although more parameters were generally selected for the third heuristic.
+
+\Cref{fig:heurist_stts} demonstrates parameter selection for all state variables following the second heuristic where parameters were chosen by decreasing sensitivity independent of parameter categories (exact values are shown in \cref{tab:heurist2}).  The y-axis on the plot shows the relative identifiability values with the addition of parameters from one to many on the x-axis (from left to right).  The second to last parameter for each variable is the last parameter selected within the potential threshold of $\gamma = 15$.  Interestingly, the last parameter shown for most of the state variables caused a relatively large increase in $\gamma$ that was disproportionate to the combined identifiability of the preceding parameter set. For most variables, the phytoplankton edibility vector for zooplankton, \textit{ediblevector(Z1)}, caused a dramatic increase in $\gamma$ with inclusion in the parameter set.  In addition to demonstrating the approach for selection with the second heuristic, \cref{fig:heurist_stts} provides an alternative approach to identifying parameters that are disporportionately redundant within a given parameter set.  This infomation is useful if additional parameter selection rules are developed ndependently of those proposed herein. 
 
 \subsection{Observational and structural uncertainty}
+
+Both the relative $L1$ estimates and number of parameters that affected state variables were sensitive to variation in the initial conditions (observation effects) and structural changes in the model.  Visual comparison of sensitivity values ($L1$) for the default model setup showed that all state variables were sensitive to \textit{vmaxSi} after changing the initial conditions to April or September conditions (\cref{fig:sensalltile}).  State variables were also sensitive to \textit{Ksi} for only the September conditions. Changing the model structure from the default (simple) to the complex setup showed state variables were also sensitive to \textit{KQn} and \textit{Tref(nospA+nospZ)$_{z1}$}.  Changes in the sensitivity of individual parameters were also observed, most notably as a disproportionate increase in $L1$ for ammonium, \ac{chla}, \ac{pom}, and \ac{dom} to \textit{mA} and \textit{Tref(nospA+nospZ)$_{p1}$} using the complex model setup.  Summaries by parameter categories of the effects of initial conditions and structural changes are shown in \cref{tab:inistrchg,fig:inistrsumm}. Changes in average sensitivity using April and September initial conditions showed most variables were less sensitive to parameters in the optics, temperature, and zooplankton categories, whereas increased sensitivity was generally observed for parameters in the organic matter and phytoplankton categories.  Some exceptions were observed, such as a decrease in nitrogen sensitivity to phytoplankton parameters.  Effects of structural complexity were most apparent as an increase in sensitivity of state variables to phytoplankton and temperature parameters, as noted for the individual variables in \cref{fig:sensalltile}. 
 
 \section{Discussion}
 %' 
@@ -465,9 +436,9 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 %latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Parameter",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:heurist1", rowname = parms, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms)%
 \begin{table}[!tbp]
 {\scriptsize
-\caption{Parameter identifiability (as $\gamma$, \cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable.\label{tab:heurist1}} 
+\caption{Parameter identifiability (as $\gamma$, \cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable. Duplicate parameters and ranks in the first two columns apply only to $\gamma$ values in the same row (i.e., the top-ranked parameter could vary for each variable).\label{tab:heurist1}} 
 \begin{center}
-\begin{tabular}{llllllllll}
+\begin{tabular}{lrllllllll}
 \hline\hline
 \multicolumn{1}{l}{Parameter}&\multicolumn{1}{c}{Rank}&\multicolumn{1}{c}{Ammonium}&\multicolumn{1}{c}{Chl-\textit{a}}&\multicolumn{1}{c}{O$_2$}&\multicolumn{1}{c}{Irradiance}&\multicolumn{1}{c}{Nitrate}&\multicolumn{1}{c}{OM1}&\multicolumn{1}{c}{OM2}&\multicolumn{1}{c}{Phosphate}\tabularnewline
 \hline
@@ -685,54 +656,54 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \multicolumn{1}{l}{}&\multicolumn{1}{c}{Default sensitivity}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Initial: April}&\multicolumn{1}{c}{Initial: September}&\multicolumn{1}{c}{Structure: complex}\tabularnewline
 \hline
 {\bfseries Optics}&&&&&\tabularnewline
-~~Ammonium&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Chlorophyll&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Dissolved Oxygen&$2.81\times 10^{-4}$&&$\bm{2.11\times 10^{-4}}$&$\bm{1.46\times 10^{-4}}$&$\bm{1.93\times 10^{-4}}$\tabularnewline
-~~Irradiance&$0.01$&&$-0$&$-0$&$-0$\tabularnewline
-~~Nitrate&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~OM1&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~OM2&$0.02$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Phosphate&$0$&&$\bm{0}$&$\bm{0}$&$\bm{0}$\tabularnewline
+~~Ammonium&$0.01$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~Chlorophyll&$0.01$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~Dissolved Oxygen&$2.81\times 10^{-4}$&&$-2.11\times 10^{-4}$&$-1.46\times 10^{-4}$&$-1.93\times 10^{-4}$\tabularnewline
+~~Irradiance&$0.01$&&$\bm{0}$&$\bm{0}$&$\bm{0}$\tabularnewline
+~~Nitrate&$0.01$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~OM1&$0.01$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~OM2&$0.02$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~Phosphate&$0$&&$-0$&$-0$&$-0$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&&&&\tabularnewline
-~~Ammonium&$0.31$&&$-0.08$&$-0.04$&$\bm{2.22\times 10^{-4}}$\tabularnewline
-~~Chlorophyll&$0.02$&&$-0.12$&$-0.14$&$\bm{0.01}$\tabularnewline
-~~Dissolved Oxygen&$0$&&$\bm{6.75\times 10^{-4}}$&$-2.32\times 10^{-4}$&$\bm{0}$\tabularnewline
-~~Irradiance&$0.01$&&$-0.01$&$-0.01$&$\bm{2.99\times 10^{-4}}$\tabularnewline
-~~Nitrate&$0.12$&&$-0.06$&$-0.09$&$\bm{0.1}$\tabularnewline
-~~OM1&$0.13$&&$-0.15$&$-0.12$&$-0.04$\tabularnewline
-~~OM2&$0.14$&&$-0.07$&$-0.17$&$-0.05$\tabularnewline
-~~Phosphate&$0.03$&&$-0.04$&$-0.06$&$\bm{0.02}$\tabularnewline
+~~Ammonium&$0.31$&&$\bm{0.08}$&$\bm{0.04}$&$-2.22\times 10^{-4}$\tabularnewline
+~~Chlorophyll&$0.02$&&$\bm{0.12}$&$\bm{0.14}$&$-0.01$\tabularnewline
+~~Dissolved Oxygen&$0$&&$-6.75\times 10^{-4}$&$\bm{2.32\times 10^{-4}}$&$-0$\tabularnewline
+~~Irradiance&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$-2.99\times 10^{-4}$\tabularnewline
+~~Nitrate&$0.12$&&$\bm{0.06}$&$\bm{0.09}$&$-0.1$\tabularnewline
+~~OM1&$0.13$&&$\bm{0.15}$&$\bm{0.12}$&$\bm{0.04}$\tabularnewline
+~~OM2&$0.14$&&$\bm{0.07}$&$\bm{0.17}$&$\bm{0.05}$\tabularnewline
+~~Phosphate&$0.03$&&$\bm{0.04}$&$\bm{0.06}$&$-0.02$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&&&&\tabularnewline
-~~Ammonium&$0.8$&&$\bm{0.02}$&$-0.3$&$-65.98$\tabularnewline
-~~Chlorophyll&$1.14$&&$-1.23$&$-4.38$&$-104.24$\tabularnewline
-~~Dissolved Oxygen&$0.01$&&$\bm{4.58\times 10^{-4}}$&$-0$&$-3.44\times 10^{-4}$\tabularnewline
-~~Irradiance&$0.02$&&$\bm{0}$&$-0$&$-0.01$\tabularnewline
-~~Nitrate&$0.74$&&$\bm{0.43}$&$\bm{0.45}$&$\bm{0.64}$\tabularnewline
-~~OM1&$0.76$&&$-0.17$&$-0.46$&$-55.11$\tabularnewline
-~~OM2&$1.28$&&$-0.34$&$-1.15$&$-128.93$\tabularnewline
-~~Phosphate&$0.17$&&$-0.03$&$-0.05$&$\bm{0.14}$\tabularnewline
+~~Ammonium&$0.8$&&$-0.02$&$\bm{0.3}$&$\bm{65.98}$\tabularnewline
+~~Chlorophyll&$1.14$&&$\bm{1.23}$&$\bm{4.38}$&$\bm{104.24}$\tabularnewline
+~~Dissolved Oxygen&$0.01$&&$-4.58\times 10^{-4}$&$\bm{0}$&$\bm{3.44\times 10^{-4}}$\tabularnewline
+~~Irradiance&$0.02$&&$-0$&$\bm{0}$&$\bm{0.01}$\tabularnewline
+~~Nitrate&$0.74$&&$-0.43$&$-0.45$&$-0.64$\tabularnewline
+~~OM1&$0.76$&&$\bm{0.17}$&$\bm{0.46}$&$\bm{55.11}$\tabularnewline
+~~OM2&$1.28$&&$\bm{0.34}$&$\bm{1.15}$&$\bm{128.93}$\tabularnewline
+~~Phosphate&$0.17$&&$\bm{0.03}$&$\bm{0.05}$&$-0.14$\tabularnewline
 \hline
 {\bfseries Temperature}&&&&&\tabularnewline
-~~Ammonium&$0.79$&&$\bm{0.69}$&$\bm{0.69}$&$-272.31$\tabularnewline
-~~Chlorophyll&$0.6$&&$\bm{0.47}$&$\bm{0.45}$&$-114.51$\tabularnewline
-~~Dissolved Oxygen&$0.02$&&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
-~~Irradiance&$0.03$&&$\bm{0.02}$&$\bm{0.02}$&$-0.01$\tabularnewline
-~~Nitrate&$0.3$&&$\bm{0.15}$&$\bm{0.16}$&$\bm{0.19}$\tabularnewline
-~~OM1&$0.86$&&$\bm{0.68}$&$\bm{0.69}$&$-215.17$\tabularnewline
-~~OM2&$1.48$&&$\bm{1.21}$&$\bm{1.2}$&$-900.26$\tabularnewline
-~~Phosphate&$0.16$&&$\bm{0.11}$&$\bm{0.09}$&$\bm{0.11}$\tabularnewline
+~~Ammonium&$0.79$&&$-0.69$&$-0.69$&$\bm{272.31}$\tabularnewline
+~~Chlorophyll&$0.6$&&$-0.47$&$-0.45$&$\bm{114.51}$\tabularnewline
+~~Dissolved Oxygen&$0.02$&&$-0.02$&$-0.02$&$-0.01$\tabularnewline
+~~Irradiance&$0.03$&&$-0.02$&$-0.02$&$\bm{0.01}$\tabularnewline
+~~Nitrate&$0.3$&&$-0.15$&$-0.16$&$-0.19$\tabularnewline
+~~OM1&$0.86$&&$-0.68$&$-0.69$&$\bm{215.17}$\tabularnewline
+~~OM2&$1.48$&&$-1.21$&$-1.2$&$\bm{900.26}$\tabularnewline
+~~Phosphate&$0.16$&&$-0.11$&$-0.09$&$-0.11$\tabularnewline
 \hline
 {\bfseries Zooplankton}&&&&&\tabularnewline
-~~Ammonium&$0.47$&&$\bm{0.45}$&$\bm{0.44}$&$\bm{0.16}$\tabularnewline
-~~Chlorophyll&$0.39$&&$\bm{0.26}$&$\bm{0.23}$&$\bm{0.2}$\tabularnewline
-~~Dissolved Oxygen&$0.01$&&$\bm{0.01}$&$\bm{0.01}$&$\bm{0.01}$\tabularnewline
-~~Irradiance&$0.03$&&$\bm{0.02}$&$\bm{0.02}$&$\bm{0.01}$\tabularnewline
-~~Nitrate&$1.06$&&$\bm{1.02}$&$\bm{1.02}$&$\bm{0.98}$\tabularnewline
-~~OM1&$0.37$&&$\bm{0.27}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
-~~OM2&$0.39$&&$\bm{0.3}$&$\bm{0.28}$&$\bm{0.18}$\tabularnewline
-~~Phosphate&$0.31$&&$\bm{0.19}$&$\bm{0.17}$&$\bm{0.27}$\tabularnewline
+~~Ammonium&$0.47$&&$-0.45$&$-0.44$&$-0.16$\tabularnewline
+~~Chlorophyll&$0.39$&&$-0.26$&$-0.23$&$-0.2$\tabularnewline
+~~Dissolved Oxygen&$0.01$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
+~~Irradiance&$0.03$&&$-0.02$&$-0.02$&$-0.01$\tabularnewline
+~~Nitrate&$1.06$&&$-1.02$&$-1.02$&$-0.98$\tabularnewline
+~~OM1&$0.37$&&$-0.27$&$-0.28$&$-0.18$\tabularnewline
+~~OM2&$0.39$&&$-0.3$&$-0.28$&$-0.18$\tabularnewline
+~~Phosphate&$0.31$&&$-0.19$&$-0.17$&$-0.27$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 
@@ -787,7 +758,7 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 
 }
 
-\caption{Average identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\gamma = 1$, see \cref{fig:inistreval}).}\label{fig:identploall}
+\caption[Average identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for all state variables]{Average identifiability (as $\gamma$, \cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\gamma = 1$).}\label{fig:identploall}
 \end{figure}
 
 

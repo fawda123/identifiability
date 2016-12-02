@@ -338,9 +338,9 @@ catpersO2 <- collcatpers$O2
 toppersO2 <- colltoppers$O2
 @
 
-The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Results for \ac{do} are provided first to demonstrate general concepts for the identifiability analyses, followed by an extension to the remaining state variables.  Parameter identifiability (as $\gamma$) for \ac{do} increased at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets (from two to many parameters) in the phytoplankton (\Sexpr{catpersO2$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Phytoplankton[2]}\% less than $\gamma = 10$) and zooplankton categories (\Sexpr{catpersO2$Zooplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Zooplankton[2]}\% less than $\gamma = 10$), whereas a all combinations were identifiable for optics (\Sexpr{catpersO2$Optics[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Optics[2]}\% less than $\gamma = 10$) and a majority identifiable for organic matter (\Sexpr{catpersO2$`Organic Matter`[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$`Organic Matter`[2]}\% less than $\gamma = 10$) combinations were identifiable. Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was \Sexpr{toppersO2$top1[1]}\% less than $\gamma = 15$ and \Sexpr{toppersO2$top1[2]}\% less than $\gamma = 10$ for the top parameters in each category, \Sexpr{toppersO2$top2[1]}\% and \Sexpr{toppersO2$top2[2]}\% for the top two, \Sexpr{toppersO2$top3[1]}\% and \Sexpr{toppersO2$top3[2]}\% for the top three, and \Sexpr{toppersO2$top4[1]}\% and \Sexpr{toppersO2$top4[2]}\% for the fop four.  Results for the remaining state variables had similar patterns in identifability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable for all selection heuristics (highest $\gamma$), whereas \ac{do} was most identifiable.
+The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$, providing further justification for using selection heuristics for parameter optimization.  Results for \ac{do} are provided first to demonstrate general concepts for the identifiability analyses, followed by an extension to the remaining state variables.  Parameter identifiability (as $\gamma$) for \ac{do} increased at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets (from two to many parameters) in the phytoplankton (\Sexpr{catpersO2$Phytoplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Phytoplankton[2]}\% less than $\gamma = 10$) and zooplankton categories (\Sexpr{catpersO2$Zooplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Zooplankton[2]}\% less than $\gamma = 10$), whereas all combinations were identifiable for optics (\Sexpr{catpersO2$Optics[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Optics[2]}\% less than $\gamma = 10$) and a majority identifiable for organic matter (\Sexpr{catpersO2$`Organic Matter`[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$`Organic Matter`[2]}\% less than $\gamma = 10$) combinations were identifiable. Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was \Sexpr{toppersO2$top1[1]}\% less than $\gamma = 15$ and \Sexpr{toppersO2$top1[2]}\% less than $\gamma = 10$ for the top parameters in each category, \Sexpr{toppersO2$top2[1]}\% and \Sexpr{toppersO2$top2[2]}\% for the top two, \Sexpr{toppersO2$top3[1]}\% and \Sexpr{toppersO2$top3[2]}\% for the top three, and \Sexpr{toppersO2$top4[1]}\% and \Sexpr{toppersO2$top4[2]}\% for the fop four.  Results for the remaining state variables had similar patterns in identifability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable for all selection heuristics (highest $\gamma$), whereas \ac{do} was most identifiable.
 
-An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is conceptually similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided general rules for $\gamma$ thresholds, such that exact values beyond which model calibration fails could vary for the given model and optimization method.  The selected $\gamma$ thresholds are somewhat arbitrary, although the results show differences that have implications for parameter selection for model calibration.  In general, identifiability decreases with the addition of parameters, although the rate of decrease depends on the selected threshold for $\gamma$. Notable differences in identifiability are also observed by selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
+An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is conceptually similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided general rules for $\gamma$ thresholds \citep{Brun01,Omlin01}, such that exact values beyond which model calibration fails could vary for the given model and optimization method.  The selected $\gamma$ thresholds are somewhat arbitrary, although the results show differences that have implications for parameter selection for model calibration.  In general, identifiability decreases with the addition of parameters, although the rate of decrease depends on the selected threshold for $\gamma$. More conservative values for $\gamma$ (e.g., $\gamma = 5$) were more sensitive to the number of parameters in a subset.  Notable differences in identifiability were also observed by selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
 
 <<eval = T>>=
 om_coll <- par_txt(paste0(c('KG1', 'KG2', 'KGcdom', 'KNH4', 'KNO3', 'KO2', 'KstarO2', 'nitmax'), '_1'))
@@ -350,44 +350,38 @@ An evaluation of the effects of individual parameters on $\gamma$ further sugges
 
 \subsection{Parameter selection}
 
-%' <<eval = F>>=
-%' data(tocal)
-%' 
-%' # n parms and ident for each selection heuristic
-%' h1_id <- tocal$cat %>% 
-%'   split(., .$Category) %>% 
-%'   lapply(function(x){
-%'     x <- x[x$coll < 15, ]
-%'     list(nrow(x), scinot(max(x$coll), digits = 1))
-%'   }) 
-%' h2_id <- filter(tocal$top, coll < 15) %>%
-%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-%'   .[c(2, 3)]
-%' h3_id <- filter(tocal$cattop, coll < 15) %>%
-%'   list(nrow(.), scinot(max(.$coll), digits = 1)) %>% 
-%'   .[c(2, 3)]
-%' 
-%' # which parameter broke selection for h2, h3
-%' h2_brk <- tocal$top
-%' sel <- which(h2_brk$coll < 15)
-%' h2_brk <- h2_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-%'   arrange(-coll) %>% 
-%'   .[1:2, ] %>% 
-%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-%'   .[[2]]
-%' # which parameter broke selection for h2, h3
-%' h3_brk <- tocal$cattop
-%' sel <- which(h3_brk$coll < 15)
-%' h3_brk <- h3_brk[c(sel, rev(sel)[1] + 1), ] %>% 
-%'   arrange(-coll) %>% 
-%'   .[1:2, ] %>% 
-%'   list(c(as.character(.$Parameter[1]), .$coll)) %>% 
-%'   .[[2]]
-%' @
-%' 
-%' Each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) for \ac{do} differed in the number of selected parameters and distribution of parameters within each category (if applicable, \cref{fig:heurist,tab:identall1}).  For the first selection heuristic, all sensitive parameters from the optics ($n = $ \Sexpr{scinot(h1_id$Optics[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$Optics[[2]]}) and organic matter ($n = $ \Sexpr{scinot(h1_id$`Organic Matter`[[1]], digits = 0)}, $\gamma =$  \Sexpr{h1_id$`Organic Matter`[[2]]}) categories were selected, whereas \Sexpr{toeng(h1_id$Phytoplankton[[1]])[[1]]} were selected for phytoplankton ($\gamma = $ \Sexpr{h1_id$Phytoplankton[[2]]}), \Sexpr{toeng(h1_id$Temperature[[1]])[[1]]} for temperature ($\gamma = $ \Sexpr{h1_id$Temperature[[2]]}), and \Sexpr{toeng(h1_id$Zooplankton[[1]])[[1]]} for zooplankton ($\gamma = $ \Sexpr{h1_id$Zooplankton[[2]]}).  For the second selection heuristic, \Sexpr{toeng(h2_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h2_id[[2]]}, with a majority from the phytoplankton category, \cref{tab:identall1}).  For the third heuristic, \Sexpr{toeng(h3_id[[1]])[[1]]} parameters were selected ($\gamma = $ \Sexpr{h3_id[[2]]}) with equal representation between categories. For the second and third selection heuristics, an individual parameter caused a disproportianate increase in $\gamma$ that forced the selection to stop.  Selection independent of category showed that including \Sexpr{par_txt(h2_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h2_brk[3], digits = 1)} to \Sexpr{scinot(h2_brk[2], digits = 1)} and equal selection within cateogies showed that including \Sexpr{par_txt(h3_brk[1])} caused in increase in $\gamma$ from \Sexpr{scinot(h3_brk[3], digits = 1)} to \Sexpr{scinot(h3_brk[2], digits = 1)}.  Finally, parameter selection for other state variables (\ac{chla}, irradiance, nitrate, ammonium, \ac{pom}, \ac{dom}, phosphorus) also showed that a limited number of parameters were identifiable (for brevity, only results using the second set of selection heuristics are shown, \cref{fig:heurist_stts,tab:identall2}).  Less than ten parameters were selected for each of the remaining state variables with most selected from the phytoplankton category.  Interestingly, no parameters from the temperature category were selected.  
+<<eval = T>>=
+data(tocal_all)
+ 
+# average number of parmaeters in each category for first heurist
+# independent of state variable
+catave <- lapply(tocal_all, 
+  function(x){
+  
+    x$cat %>% 
+    group_by(Category) %>% 
+    summarise(cnt = sum(coll < 15))
+  
+  }) %>% 
+  reshape2::melt(., id.var = names(.[[1]])) %>% 
+  group_by(Category) %>% 
+  summarise(cnt = mean(cnt)) %>% 
+  arrange(cnt) %>% 
+  mutate(
+    Category = tolower(Category),
+    cnt = round(cnt, 2)
+    ) %>% 
+  arrange(cnt)
+
+@
+
+The above results demonstrated that each state variables differed in the magnitudes of sensitivity for each parameter and the number of identifiable subsets, where the latter varied by identifiability thresholds and parameter selection criteria.  These results further underscore the need for explicit selection heuristics for parameters to calibrate for improving model performance. Results for each of the three selection heuristics (blocked by parameter category, independent of category, all categories equally) applied to each state variable differed in the number of selected parameters and distribution of parameters within each category (\cref{tab:heurist1,tab:heurist2,tab:heurist3}).  In general, a corresponendence was observed between the number of parameters that were selected given the threhold of $\gamma = 15$ and relative identifiability between the state variables.  As noted above, nitrate was the least identifiable variable (\cref{fig:identploall}), whereas other variables (e.g., \ac{do}, irradiance) were more identifiable.  The constraints on relative identifiability between variables were demonstrated with the selection heuristics.  For example, heuristics for nitrate typically selected only one or two parameters that met the criteria as compared to more identifiable variables that included several parameters that were identifiable. Overall, the first selection heuristic demonstrated that the number of parameters chosen by parameter category differed independently of the state variables (\cref{tab:heurist1}). The number of selected parameters averaged across state variable in decreasing order was \Sexpr{catave[4, 2]} parameters (\Sexpr{catave[4, 1]}), \Sexpr{catave[3, 2]} (\Sexpr{catave[3, 1]}), \Sexpr{catave[2, 2]} (\Sexpr{catave[2, 1]}), and \Sexpr{catave[1, 2]} (\Sexpr{catave[1, 1]}).  These rankings were independent of parameter sensitivity and identifiability in each category.  The second and third selection heuristics (\cref{tab:heurist2,tab:heurist3}) were similar, although more parameters were generally selected for the third heuristic.
+
+\Cref{fig:heurist_stts} demonstrates parameter selection for all state variables following the second heuristic where parameters were chosen by decreasing sensitivity independent of parameter categories (exact values are shown in \cref{tab:heurist2}).  The y-axis on the plot shows the relative identifiability values with the addition of parameters from one to many on the x-axis (from left to right).  The second to last parameter for each variable is the last parameter selected within the potential threshold of $\gamma = 15$.  Interestingly, the last parameter shown for most of the state variables caused a relatively large increase in $\gamma$ that was disproportionate to the combined identifiability of the preceding parameter set. For most variables, the phytoplankton edibility vector for zooplankton, \Sexpr{par_txt('ediblevector(Z1)_1')}, caused a dramatic increase in $\gamma$ with inclusion in the parameter set.  In addition to demonstrating the approach for selection with the second heuristic, \cref{fig:heurist_stts} provides an alternative approach to identifying parameters that are disporportionately redundant within a given parameter set.  This infomation is useful if additional parameter selection rules are developed ndependently of those proposed herein. 
 
 \subsection{Observational and structural uncertainty}
+
+Both the relative $L1$ estimates and number of parameters that affected state variables were sensitive to variation in the initial conditions (observation effects) and structural changes in the model.  Visual comparison of sensitivity values ($L1$) for the default model setup showed that all state variables were sensitive to \Sexpr{par_txt('vmaxSi_1')} after changing the initial conditions to April or September conditions (\cref{fig:sensalltile}).  State variables were also sensitive to \Sexpr{par_txt('Ksi_1')} for only the September conditions. Changing the model structure from the default (simple) to the complex setup showed state variables were also sensitive to \Sexpr{par_txt('KQn_1')} and \Sexpr{par_txt('Tref(nospA+nospZ)_7')}.  Changes in the sensitivity of individual parameters were also observed, most notably as a disproportionate increase in $L1$ for ammonium, \ac{chla}, \ac{pom}, and \ac{dom} to \Sexpr{par_txt('mA_1')} and \Sexpr{par_txt('Tref(nospA+nospZ)_1')} using the complex model setup.  Summaries by parameter categories of the effects of initial conditions and structural changes are shown in \cref{tab:inistrchg,fig:inistrsumm}. Changes in average sensitivity using April and September initial conditions showed most variables were less sensitive to parameters in the optics, temperature, and zooplankton categories, whereas increased sensitivity was generally observed for parameters in the organic matter and phytoplankton categories.  Some exceptions were observed, such as a decrease in nitrogen sensitivity to phytoplankton parameters.  Effects of structural complexity were most apparent as an increase in sensitivity of state variables to phytoplankton and temperature parameters, as noted for the individual variables in \cref{fig:sensalltile}. 
 
 \section{Discussion}
 %' 
@@ -534,8 +528,7 @@ totab <- lapply(tocal_all, function(x) x$cat) %>%
   do.call('rbind', .) %>%
   mutate(
     coll = sapply(coll, scinot), 
-    Rank = sapply(rnk_incat, scinot), 
-    Rank = paste0(Rank)
+    Rank = rnk_incat
     ) %>%
   group_by(stts) %>% 
   nest %>% 
@@ -552,7 +545,7 @@ totab <- lapply(tocal_all, function(x) x$cat) %>%
 # final table formatting
 parms <- totab$Parameter
 cats <- as.character(totab$Category)
-cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable.'
+cap_val<- 'Parameter identifiability (as $\\gamma$, \\cref{gameq}) by category for relevant state variables.  Selections followed the first heuristic where parameters were selected within categories from most to least sensitive until $\\gamma > 15$.  Rank describes the relative parameter sensitivity in each category for each state variable. Duplicate parameters and ranks in the first two columns apply only to $\\gamma$ values in the same row (i.e., the top-ranked parameter could vary for each variable).'
 colnms <- c('Rank', 'Ammonium', 'Chl-\\textit{a}', 'O$_2$', 'Irradiance', 'Nitrate', 'OM1', 'OM2', 'Phosphate')
 
 latex( 
@@ -718,15 +711,15 @@ totab_all <- spread(totab_all, nms, Sensitivity) %>%
   group_by(Category, L1) %>% 
   summarise(
     mean_def = mean(Default, na.rm = TRUE),
-    iniapr_dif = mean_def - mean(`Initial: April`, na.rm = TRUE),
+    iniapr_dif = mean(`Initial: April`, na.rm = TRUE) - mean_def,
     iniapr_sgn = sign(iniapr_dif),
     iniapr_dif = sapply(iniapr_dif, scinot),
     iniapr_dif = ifelse(iniapr_sgn == -1, iniapr_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', iniapr_dif))),
-    inisep_dif = mean_def - mean(`Initial: September`, na.rm = TRUE),
+    inisep_dif = mean(`Initial: September`, na.rm = TRUE) - mean_def,
     inisep_sgn = sign(inisep_dif),
     inisep_dif = sapply(inisep_dif, scinot),
     inisep_dif = ifelse(inisep_sgn == -1, inisep_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', inisep_dif))),
-    strcom_dif = mean_def - mean(`Structure: complex`, na.rm = TRUE),
+    strcom_dif = mean(`Structure: complex`, na.rm = TRUE) - mean_def,
     strcom_sgn = sign(strcom_dif),
     strcom_dif = sapply(strcom_dif, scinot),
     strcom_dif = ifelse(strcom_sgn == -1, strcom_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', strcom_dif))),
@@ -959,7 +952,7 @@ grid.arrange(
 @
 
 % identifiability plot, all state variables
-<<identploall, eval = T, fig.cap = 'Average identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\\gamma = 1$, see \\cref{fig:inistreval}).', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
+<<identploall, eval = T, fig.cap = 'Average identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
 
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
