@@ -308,6 +308,11 @@ Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
   guidance.
 \newblock Environmental Modelling \& Software, 22(11):1543--1556.
 
+\bibitem[Reichert and Omlin, 1997]{Reichert97}
+Reichert P, Omlin M. 1997.
+\newblock On the usefulness of over parameterized ecological models.
+\newblock Ecological Modelling, 95(2):289--299.
+
 \bibitem[Scavia et~al., 2004]{Scavia04}
 Scavia D, Justic D, Bierman VJ. 2004.
 \newblock Reducing hypoxia in the {G}ulf of {M}exico: Advice from three models.
@@ -349,11 +354,23 @@ Warner JC, Geyer WR, Lerczak JA. 2005.
 \newblock Numerical modeling of an estuary: a comprehensive skill assessment.
 \newblock Journal of Geophysical Research: Oceans, 110(C5):13.
 
+\bibitem[Wheater et~al., 1986]{Wheater86}
+Wheater HS, Bishop KH, Beck MB. 1986.
+\newblock The identification of conceptual hydrological models for surface
+  water acidification.
+\newblock Hydrological Processes, 1(1):89--109.
+
 \bibitem[Wiseman et~al., 1997]{Wiseman97}
 Wiseman WJ, Rabalais NN, Turner RE, Dinnel SP, MacNaughton A. 1997.
 \newblock Seasonal and interannual variability within the {L}ouisiana coastal
   current: stratification and hypoxia.
 \newblock Journal of Marine Systems, 12(1-4):237--248.
+
+\bibitem[Ye et~al., 1997]{Ye97}
+Ye W, Bates BC, Viney NR, Sivapalan M, Jakeman AJ. 1997.
+\newblock Performance of conceptual rainfall-runoff models in low yielding
+  ephemeral catchments.
+\newblock Water Resources Research, 33(1):153--166.
 
 \bibitem[Zhao et~al., 2010]{Zhao10}
 Zhao L, Chen C, Vallino J, Hopkinson C, Beardsley RC, Lin H, Lerczak J. 2010.
