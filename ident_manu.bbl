@@ -25,6 +25,13 @@ Brun R, Reichert P, K\"{u}nsch HR. 2001.
   models.
 \newblock Water Resources Research, 37(4):1015--1030.
 
+\bibitem[Clark et~al., 2001]{Clark01}
+Clark JS, Carpenter SR, Barber M, Collins S, Dobson A, Foley JA, Lodge DM,
+  Pascual M, Pielke R, Pizer W, Pringle C, Reid WV, Rose KA, Sala O,
+  Schlesinger WH, Wall DH, Wear D. 2001.
+\newblock Ecological forecasts: an emerging imperative.
+\newblock Science, 293(5530):657--660.
+
 \bibitem[Cloern et~al., 1995]{Cloern95}
 Cloern JE, Grenz C, Vidergar-Lucas L. 1995.
 \newblock An empirical model of the phytoplankton:carbon ratio - the conversion
@@ -80,6 +87,13 @@ Estrada V, Diaz M. 2010.
 \newblock Global sensitivity analysis in the development of first
   principle-based eutrophication models.
 \newblock Environmental Modelling and Software, 25:1539--1551.
+
+\bibitem[Fahnenstiel et~al., 1995]{Fahnenstiel95}
+Fahnenstiel GL, McCormick MJ, Lang GA, Redalje DG, Lohrenz SE, Markowitz M,
+  Wagoner B, Carrick HJ. 1995.
+\newblock Taxon-specific growth and loss rates for dominant phytoplankton
+  populations from the northern {G}ulf of {M}exico.
+\newblock Marine Ecology Progress Series, 117(1-3):229--239.
 
 \bibitem[Fasham et~al., 2006]{Fasham06}
 Fasham MJR, Flynn KJ, Pondaven P, Anderson TR, Boyd PW. 2006.
@@ -302,6 +316,11 @@ Rabalais NN, Turner RE, Scavia D. 2002.
   Foundation for Statistical Computing, Vienna, Austria}.
 \newblock \url{http://www.R-project.org}.
 
+\bibitem[Reckhow et~al., 1990]{Reckhow90}
+Reckhow KH, Clements JT, Dodd RC. 1990.
+\newblock Statistical evaluation of mechanistic water-quality models.
+\newblock Journal of Environmental Engineering, 116(2):250--268.
+
 \bibitem[Refsgaard et~al., 2007]{Refsgaard07}
 Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
 \newblock Uncertainty in the environmental modelling process - a framework and
@@ -312,6 +331,13 @@ Refsgaard JC, van~der Sluijs JP, H{\o}jberg AL, Vanrolleghem PA. 2007.
 Reichert P, Omlin M. 1997.
 \newblock On the usefulness of over parameterized ecological models.
 \newblock Ecological Modelling, 95(2):289--299.
+
+\bibitem[Roelke, 2000]{Roelke00}
+Roelke DL. 2000.
+\newblock Copepod food-quality threshold as a mechanism influencing
+  phytoplankton succession and accumulation of biomass, and secondary
+  productivity: a modeling study with management implications.
+\newblock Ecological Modelling, 134:245--274.
 
 \bibitem[Scavia et~al., 2004]{Scavia04}
 Scavia D, Justic D, Bierman VJ. 2004.
