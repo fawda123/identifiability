@@ -40,7 +40,7 @@ form_fun <- function(x, rnd_val = 2, dig_val = 2, nsm_val = 2, ...) {
 # digits numeric for rounding
 # showdollar logical if output is enclosed in dollar for latex
 # from https://dankelley.github.io/r/2015/03/22/scinot.html
-scinot <- function(x, pow = 3, digits = 2, showDollar = TRUE)
+scinot <- function(x, pow = 2, digits = 2, showDollar = TRUE)
 {
   
   x <- as.numeric(x)
