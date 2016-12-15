@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  14 DEC 2016 07:58
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  15 DEC 2016 13:07
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -539,18 +539,19 @@ LaTeX Info: Redefining \bm on input line 204.
 Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
 LaTeX Info: Redefining \em on input line 420.
 )
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\showlabels\showlabels.sty
-Package: showlabels 2013/12/06 v1.6.6
-
-Package: `showlabels' v1.6.6 <2013/12/06>
-\SL@labelposition=\count128
-) (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\upquote\upquote.sty
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\upquote\upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
 (M:\docs\manuscripts\identifiability\ident_manu.aux
 
+LaTeX Warning: Label `acro:gom@cref' multiply defined.
+
+
 LaTeX Warning: Label `acro:zerod@cref' multiply defined.
+
+
+LaTeX Warning: Label `acro:cgem@cref' multiply defined.
 
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 137.
@@ -582,16 +583,16 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count129
+\scratchcounter=\count128
 \scratchdimen=\dimen160
 \scratchbox=\box30
-\nofMPsegments=\count130
-\nofMParguments=\count131
+\nofMPsegments=\count129
+\nofMParguments=\count130
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count132
+\MPscratchCnt=\count131
 \MPscratchDim=\dimen161
-\MPnumerator=\count133
-\makeMPintoPDFobject=\count134
+\MPnumerator=\count132
+\makeMPintoPDFobject=\count133
 \everyMPtoPDFconversion=\toks26
 )
 *geometry* driver: auto-detecting
@@ -636,7 +637,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count135
+\c@section@level=\count134
 )
 LaTeX Info: Redefining \ref on input line 137.
 LaTeX Info: Redefining \pageref on input line 137.
@@ -677,108 +678,104 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 170.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 171.
-
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
 Package acronym Info: Label `acro:zerod' newly defined as it shall be overridde
 n
 although it is yet undefined on input line 171.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 175.
-Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
-although it is yet undefined on input line 177.
+Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
+
+although it is yet undefined on input line 173.
 Package acronym Info: Label `acro:gom' newly defined as it shall be overridden
-although it is yet undefined on input line 177.
+although it is yet undefined on input line 173.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 176.
+Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
+although it is yet undefined on input line 178.
+Package acronym Info: Label `acro:gom' overridden on input line 178.
 Package acronym Info: Label `acro:marb' newly defined as it shall be overridden
 
-although it is yet undefined on input line 177.
+although it is yet undefined on input line 178.
  [2
 
 ] [3] [4]
-Package acronym Info: Label `acro:zerod' overridden on input line 183.
+Package acronym Info: Label `acro:zerod' overridden on input line 184.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
-although it is yet undefined on input line 184.
+although it is yet undefined on input line 185.
 Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
 
-although it is yet undefined on input line 188.
+although it is yet undefined on input line 189.
 Package acronym Info: Label `acro:pom' newly defined as it shall be overridden
-although it is yet undefined on input line 188.
+although it is yet undefined on input line 189.
 Package acronym Info: Label `acro:dom' newly defined as it shall be overridden
-although it is yet undefined on input line 188.
+although it is yet undefined on input line 189.
  [5]
-Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
-
-although it is yet undefined on input line 196.
-
-[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+Package acronym Info: Label `acro:cgem' overridden on input line 197.
+ [6] [7]
+[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
 (M:\docs\manuscripts\identifiability\ident_manu.bbl [22
 
 ] [23] [24] [25])
-Overfull \hbox (9.84094pt too wide) in paragraph at lines 351--362
+Overfull \hbox (9.84094pt too wide) in paragraph at lines 352--363
  [] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 373.
+(Font)              <5> on input line 374.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 377.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 378.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 440.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 441.
 [26] [27] [28] [29] [30] [31] [32]
-<figs/combnex-1.pdf, id=649, 361.35pt x 361.35pt>
+<figs/combnex-1.pdf, id=650, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 718.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 719.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=650, 578.16pt x 505.89pt>
+<figs/sensalltile-1.pdf, id=651, 578.16pt x 505.89pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 730.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 731.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identplo-1.pdf, id=663, 578.16pt x 505.89pt>
+<figs/identplo-1.pdf, id=664, 578.16pt x 505.89pt>
 File: figs/identplo-1.pdf Graphic file (type pdf)
  <use figs/identplo-1.pdf>
-Package pdftex.def Info: figs/identplo-1.pdf used on input line 742.
+Package pdftex.def Info: figs/identplo-1.pdf used on input line 743.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=666, 650.43pt x 578.16pt>
+<figs/identploall-1.pdf, id=667, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
-Package pdftex.def Info: figs/identploall-1.pdf used on input line 754.
+Package pdftex.def Info: figs/identploall-1.pdf used on input line 755.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/percthresh-1.pdf, id=669, 650.43pt x 578.16pt>
+<figs/percthresh-1.pdf, id=670, 650.43pt x 578.16pt>
 File: figs/percthresh-1.pdf Graphic file (type pdf)
 
 <use figs/percthresh-1.pdf>
-Package pdftex.def Info: figs/percthresh-1.pdf used on input line 766.
+Package pdftex.def Info: figs/percthresh-1.pdf used on input line 767.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=672, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=673, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 778.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 779.
 (pdftex.def)             Requested size: 469.75502pt x 469.76653pt.
 
-<figs/heurist_stts-1.pdf, id=679, 650.43pt x 433.62pt>
+<figs/heurist_stts-1.pdf, id=680, 650.43pt x 433.62pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 790.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 791.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
 
-<figs/inistrsumm-1.pdf, id=682, 505.89pt x 505.89pt>
+<figs/inistrsumm-1.pdf, id=683, 505.89pt x 505.89pt>
 File: figs/inistrsumm-1.pdf Graphic file (type pdf)
 
 <use figs/inistrsumm-1.pdf>
-Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 802.
+Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 803.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
  [33
 
@@ -790,12 +787,12 @@ tifiability/figs/percthresh-1.pdf>] [38 <M:/docs/manuscripts/identifiability/fi
 gs/exclex-1.pdf>] [39 <M:/docs/manuscripts/identifiability/figs/heurist_stts-1.
 pdf>] [40 <M:/docs/manuscripts/identifiability/figs/inistrsumm-1.pdf>] [41]
 [42] [43] [44] [45] [46] [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1266.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1266.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1267.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1267.
 
 (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1266.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1266.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1267.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1267.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: B93A04AACE101E85745F9CF7031C87AF;1180.
@@ -803,16 +800,16 @@ Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1266.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1267.
  ) 
 Here is how much of TeX's memory you used:
- 12172 strings out of 493921
- 191849 string characters out of 3147282
- 388297 words of memory out of 3000000
- 15072 multiletter control sequences out of 15000+200000
- 46130 words of font info for 93 fonts, out of 3000000 for 9000
+ 12078 strings out of 493921
+ 190378 string characters out of 3147282
+ 387169 words of memory out of 3000000
+ 14985 multiletter control sequences out of 15000+200000
+ 45615 words of font info for 91 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,14n,49p,2289b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,14n,47p,2251b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb><C:/Program Files/MiKT
@@ -833,14 +830,13 @@ y10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
-rw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8
-a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (47 pages, 606300 bytes).
+9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ident_manu.pdf (47 pages, 592748 bytes).
 PDF statistics:
- 934 PDF objects out of 1000 (max. 8388607)
- 176 named destinations out of 1000 (max. 500000)
+ 932 PDF objects out of 1000 (max. 8388607)
+ 178 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
