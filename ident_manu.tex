@@ -1,4 +1,4 @@
-\documentclass[letterpaper,12pt,oneside]{article}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass[preprint]{elsarticle}\usepackage[]{graphicx}\usepackage[]{color}
 %% maxwidth is the original width if it is less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -50,43 +50,18 @@
 
 \usepackage{alltt}
 \usepackage[paperwidth=8.5in,paperheight=11in,top=1in,bottom=1in,left=1in,right=1in]{geometry}
-\usepackage{setspace}
 \usepackage[colorlinks=true,allcolors=Blue]{hyperref}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{indentfirst}
-\usepackage{titlesec}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{verbatim}
-\usepackage{rotating}
-\usepackage{tabularx}
-\usepackage{outlines}
 \usepackage{lineno}
-\usepackage{array}
-\usepackage{times}
 \usepackage{cleveref}
 \usepackage{acronym}
-\usepackage[position=t]{subfig}
 \usepackage{paralist}
-\usepackage[noae]{Sweave}
-\usepackage{natbib}
-\usepackage{array}
-\usepackage{pdflscape}
 \usepackage{bm}
 \usepackage{fixltx2e}
 % \usepackage[inline]{showlabels}
-\bibpunct{(}{)}{,}{a}{}{,}
 
-% page margins and section title formatting
-\linespread{1.5}
-\setlength{\footskip}{0.5in}
-\titleformat*{\section}{\Large\bf\em}
-\titleformat*{\subsection}{\singlespace\large\bf}
-\titleformat*{\subsubsection}{\singlespace\normalsize\bf\em}
-\titlespacing{\section}{0in}{0in}{0in}
-\titlespacing{\subsection}{0in}{0in}{0in}
-\titlespacing{\subsubsection}{0in}{0in}{0in}
+% biblio options
+\bibliographystyle{elsarticle-harv}
+\biboptions{authoryear}
 
 % cleveref options
 \crefname{table}{Table}{Tables}
@@ -121,6 +96,22 @@
   \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
   \sectionmark{#1}}
 
+% macro fix for multiple asterisks for corr author
+\makeatletter
+\def\@author#1{\g@addto@macro\elsauthors{\normalsize%
+    \def\baselinestretch{1}%
+    \upshape\authorsep#1\unskip\textsuperscript{%
+      \ifx\@fnmark\@empty\else\unskip\sep\@fnmark\let\sep=,\fi
+      \ifx\@corref\@empty\else\unskip\sep\@corref\let\sep=,\fi
+      }%
+    \def\authorsep{\unskip,\space}%
+    \global\let\@fnmark\@empty
+    \global\let\@corref\@empty  %% Added
+    \global\let\sep\@empty}%
+    \@eadauthor={#1}
+}
+\makeatother
+
 %knitr options
 
 
@@ -136,42 +127,38 @@
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
-\raggedbottom
-\linenumbers
-\raggedright
-\urlstyle{same}
-\setlength{\parindent}{0.5in}
-\renewcommand\refname{References \vspace{12pt}}
+\begin{frontmatter}
 
-\begin{singlespace}
-\title{{\bf {\Large Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico}}}
-\author{
-  {\bf {\normalsize Marcus W. Beck$^1$, John C. Lehrter$^2$, Lisa L. Lowe$^3$}}
-  \\\\{\textit {\normalsize $^1$USEPA National Health and Environmental Effects Research Laboratory}}
-  \\{\textit {\normalsize Gulf Ecology Division, 1 Sabine Island Drive, Gulf Breeze, FL 32561}}
-	\\{\textit {\normalsize Phone: 850-934-2480, Fax: 850-934-2401}}
-	\\{\textit {\normalsize Email: \href{mailto:beck.marcus@epa.gov}{beck.marcus@epa.gov}}}
-	  \\\\{\textit {\normalsize $^2$Dauphin Island Sea Lab, University of South Alabama}}
-  \\{\textit {\normalsize Dauphin Island, AL 36528}}
-	\\{\textit {\normalsize Phone: 251-861-2141 ext. 7567}}
-	\\{\textit {\normalsize Email: \href{mailto:jlehrter@disl.org}{jlehrter@disl.org}}}
-	\\\\{\textit {\normalsize $^3$Lockheed Martin IS \& GS - Civil, supporting the USEPA}}
-	\\{\textit {\normalsize Resarch Triangle Park, NC 27709}}
-	\\{\textit {\normalsize Phone: 919-541-3985,}}
-	\\{\textit {\normalsize Email: \href{mailto:lowe.lisa@epa.gov}{lowe.lisa@epa.gov}}}
-  \vspace{1in} 
-  \\ Version Date:   Wed Dec 14 07:59:53 2016 -0600
-	}
+\title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
+\tnotetext[mytitlenote]{Version: Thu Dec 15 15:47:19 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/f47752c773b8b0d1c90abe57d41f57038201ea42}{f47752c773b8b0d1c90abe57d41f57038201ea42}}
+
 \date{}
-\maketitle
-\end{singlespace}
-\clearpage
+
+\author{Marcus W. Beck\corref{mycorrespondingauthor}}
+\address{USEPA National Health and Environmental Effects Research Laboratory, Gulf Ecology Division, 1 Sabine Island Drive, Gulf Breeze, FL 32561}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{beck.marcus@epa.gov}
+
+\author{John C. Lehrter}
+\address{Dauphin Island Sea Lab, University of South Alabama, Dauphin Island, AL 36528}
+\ead{jlehrter@disl.org}
+
+\author{Lisa L. Lowe}
+\address{Lockheed Martin IS \& GS - Civil supporting the USEPA, Research Triangle Park, NC 27709}
+\ead{lowe.lisa@epa.gov}
 
 \begin{abstract}
 \noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Consequently, significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study provides a context for understanding quantitative limitations of coupled hydrodynamic-ecological models by evaluating parameter sensitivity and identifability of a \ac{zerod} unit of a larger spatio-temporal model of hypoxia on the \acl{lcs} of Gulf of Mexico.  The analysis provides a contrast of numeric and ecological certainty in parameter subsets using a systematic framework to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using local sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set were characterized as having unique effects on the model output. As a result, we provide a set of parameter selection heuristics that can be used to identify parameters for model calibration that depend on relative sensitivity and ecological categories within the biogeochemical equations. Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in evaluations of water quality models.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
 \end{abstract}
-Keywords: \ac{cgem}, \ac{gom}, Hypoxia, Identifiability, Sensitivity
+
+\begin{keyword}
+\ac{cgem}, \ac{gom}, Hypoxia, Identifiability, Sensitivity
+\end{keyword}
+
+\end{frontmatter}
+
 \acresetall
+\linenumbers
 
 \section{Introduction}
 
@@ -312,11 +299,8 @@ An evaluation of parameter uncertainty and identifiability of relevant parameter
 
 Specific approaches can be used to improve and build on the results presented herein, in addition to the more general considerations noted above. An evaluation of model precision following calibration with relevant parameter subsets could provide additional information that supports results from the sensitivity analyses.  For simplicity, our analysis did not calibrate model parameters and an explicit assumption was that parameter subsets with $\gamma$ below 10 or 15 were identifiable.  To our knowledge, this threshold has not been rigorously evaluated and it is likely to vary between parameter subsets and the chosen calibration method.  Variation in parameter estimates given the calibration method and different identifiability thresholds could affect the interpration of model output.  Further, the extent to which results for the \ac{zerod} model extrapolate to the larger three-dimensional model should be evaluated.  Although the above analyses were facilitated using the \ac{zerod} model (i.e, quick execution times, ease of changing model parameters), lack of physical transport or spatial components potentially limits extrapolation of the results. Uncertainy in parameter estimates at lower dimensions could be magnified as errors propagate to larger scales or site-specific observations for model calibration are not appropriate across a hydrodynamic grid \citep{Harvey00,Lehrter10}. The effects of structural or observational uncertainty should also be evaluated in the context of the larger model.  Our simple approach to examine changes in the initial conditions and switches used in the model showed that sensitivity estimates of individual parameters differed relative to the original model configuration, having further implications for characterizing identifiability.
 
-\clearpage
-\begin{singlespace}
-\bibliographystyle{apalike_mine}
 \bibliography{refs}
-\end{singlespace}
+\clearpage
 
 %%%%%%
 % tables
@@ -776,7 +760,7 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 % parameter exclusion temp
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=\textwidth]{figs/exclex-1} 
+{\centering \includegraphics[width=0.8\textwidth]{figs/exclex-1} 
 
 }
 

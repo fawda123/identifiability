@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  15 DEC 2016 13:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  16 DEC 2016 10:08
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -13,10 +13,13 @@ german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\elsarticle\elsarticle.cls
+Document Class: elsarticle 2009/09/17, 1.2.0: Elsevier Ltd
+\@bls=\dimen102
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -28,7 +31,7 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
-\bibindent=\dimen102
+\bibindent=\dimen103
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -59,8 +62,48 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
 ))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\pifont.sty"
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\upzd.fd"
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\upsy.fd"
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+\c@tnote=\count88
+\c@fnote=\count89
+\c@cnote=\count90
+\c@ead=\count91
+\c@author=\count92
+\@eadauthor=\toks15
+\c@affn=\count93
+\absbox=\box26
+\keybox=\box27
+\Columnwidth=\dimen106
+\space@left=\dimen107
+\els@boxa=\box28
+\els@boxb=\box29
+\leftMargin=\dimen108
+\@enLab=\toks16
+\@sep=\skip43
+\@@sep=\skip44
+
+(M:\docs\manuscripts\identifiability\ident_manu.spl)
+(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip45
+\bibsep=\skip46
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count94
+)
+\splwrite=\write3
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
@@ -72,11 +115,11 @@ Package color Info: Driver file: pdftex.def on input line 130.
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\framed\framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip43
-\fb@frw=\dimen105
-\fb@frh=\dimen106
-\FrameRule=\dimen107
-\FrameSep=\dimen108
+\OuterFrameSep=\skip47
+\fb@frw=\dimen109
+\fb@frh=\dimen110
+\FrameRule=\dimen111
+\FrameSep=\dimen112
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\alltt.sty"
 Package: alltt 1997/06/16 v2.0g defines alltt environment
@@ -95,23 +138,20 @@ Package ifvtex Info: VTeX not detected.
 ("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
-\Gm@bindingoffset=\dimen109
-\Gm@wd@mp=\dimen110
-\Gm@odd@mp=\dimen111
-\Gm@even@mp=\dimen112
-\Gm@layoutwidth=\dimen113
-\Gm@layoutheight=\dimen114
-\Gm@layouthoffset=\dimen115
-\Gm@layoutvoffset=\dimen116
-\Gm@dimlist=\toks15
+\Gm@cnth=\count95
+\Gm@cntv=\count96
+\c@Gm@tempcnt=\count97
+\Gm@bindingoffset=\dimen113
+\Gm@wd@mp=\dimen114
+\Gm@odd@mp=\dimen115
+\Gm@even@mp=\dimen116
+\Gm@layoutwidth=\dimen117
+\Gm@layoutheight=\dimen118
+\Gm@layouthoffset=\dimen119
+\Gm@layoutvoffset=\dimen120
+\Gm@dimlist=\toks17
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\setspace\setspace.sty
-Package: setspace 2011/12/19 v6.7a set line spacing
-)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -164,14 +204,14 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen117
-\Hy@linkcounter=\count91
-\Hy@pagecounter=\count92
+\@linkdim=\dimen121
+\Hy@linkcounter=\count98
+\Hy@pagecounter=\count99
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count93
+\Hy@SavedSpaceFactor=\count100
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -184,17 +224,17 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count94
+\c@Hy@tempcnt=\count101
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen118
-\Fld@menulength=\count95
-\Field@Width=\dimen119
-\Fld@charsize=\dimen120
+\XeTeXLinkMargin=\dimen122
+\Fld@menulength=\count102
+\Field@Width=\dimen123
+\Fld@charsize=\dimen124
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -204,145 +244,42 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count96
-\c@Item=\count97
-\c@Hfootnote=\count98
+\Hy@abspage=\count103
+\c@Item=\count104
+\c@Hfootnote=\count105
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count99
-\c@bookmark@seq@number=\count100
+\Fld@listcount=\count106
+\c@bookmark@seq@number=\count107
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip44
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package xcolor Info: Package option `usenames' ignored on input line 216.
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-LaTeX Info: Redefining \color on input line 702.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\indentfirst.sty"
-Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\titlesec\titlesec.sty
-Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box26
-\beforetitleunit=\skip45
-\aftertitleunit=\skip46
-\ttl@plus=\dimen121
-\ttl@minus=\dimen122
-\ttl@toksa=\toks16
-\titlewidth=\dimen123
-\titlewidthlast=\dimen124
-\titlewidthfirst=\dimen125
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
-\bigstrutjot=\dimen126
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
-Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen127
-\lightrulewidth=\dimen128
-\cmidrulewidth=\dimen129
-\belowrulesep=\dimen130
-\belowbottomsep=\dimen131
-\aboverulesep=\dimen132
-\abovetopsep=\dimen133
-\cmidrulesep=\dimen134
-\cmidrulekern=\dimen135
-\defaultaddspace=\dimen136
-\@cmidla=\count101
-\@cmidlb=\count102
-\@aboverulesep=\dimen137
-\@belowrulesep=\dimen138
-\@thisruleclass=\count103
-\@lastruleclass=\count104
-\@thisrulewidth=\dimen139
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
-Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks17
-\verbatim@line=\toks18
-\verbatim@in@stream=\read1
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\rotating\rotating.sty
-Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\c@r@tfl@t=\count105
-\rotFPtop=\skip47
-\rotFPbot=\skip48
-\rot@float@box=\box27
-\rot@mess@toks=\toks19
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\tabularx.sty"
-Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen140
-\extrarowheight=\dimen141
-\NC@list=\toks20
-\extratabsurround=\skip49
-\backup@length=\skip50
-)
-\TX@col@width=\dimen142
-\TX@old@table=\dimen143
-\TX@old@col=\dimen144
-\TX@target=\dimen145
-\TX@delta=\dimen146
-\TX@cols=\count106
-\TX@ftn=\toks21
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\outlines\outlines.sty
-Package: outlines 2012/1/23 1.1 Ch. Pecheur
+\Hy@SectionHShift=\skip48
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\lineno\lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count107
-\output=\toks22
-\linenoprevgraf=\count108
-\linenumbersep=\dimen147
-\linenumberwidth=\dimen148
-\c@linenumber=\count109
-\c@pagewiselinenumber=\count110
-\c@LN@truepage=\count111
-\c@internallinenumber=\count112
-\c@internallinenumbers=\count113
-\quotelinenumbersep=\dimen149
-\bframerule=\dimen150
-\bframesep=\dimen151
-\bframebox=\box28
+\linenopenalty=\count108
+\output=\toks18
+\linenoprevgraf=\count109
+\linenumbersep=\dimen125
+\linenumberwidth=\dimen126
+\c@linenumber=\count110
+\c@pagewiselinenumber=\count111
+\c@LN@truepage=\count112
+\c@internallinenumber=\count113
+\c@internallinenumbers=\count114
+\quotelinenumbersep=\dimen127
+\bframerule=\dimen128
+\bframesep=\dimen129
+\bframebox=\box30
 LaTeX Info: Redefining \\ on input line 3056.
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\cleveref\cleveref.sty
 Package: cleveref 2013/03/22 v0.18.9 Intelligent cross-referencing
@@ -366,166 +303,21 @@ Package: suffix 2006/07/15 1.5 Variant command support
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\xstring\xstring.sty
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\generic\xstring\xstring.tex
-\@xs@message=\write3
-\integerpart=\count114
-\decimalpart=\count115
+\@xs@message=\write4
+\integerpart=\count115
+\decimalpart=\count116
 )
 Package: xstring 2013/07/29  v1.7b  String manipulations (C Tellechea)
 )
-\AC@clearlist=\toks23
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\subfig\subfig.sty
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
-Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
-
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
-Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen152
-\captionmargin@=\dimen153
-\captionwidth=\dimen154
-\caption@tempdima=\dimen155
-\caption@indent=\dimen156
-\caption@parindent=\dimen157
-\caption@hangindent=\dimen158
-)
-\c@ContinuedFloat=\count116
-Package caption Info: hyperref package is loaded.
-Package caption Info: rotating package is loaded.
-)
-\c@KVtest=\count117
-\sf@farskip=\skip51
-\sf@captopadj=\dimen159
-\sf@capskip=\skip52
-\sf@nearskip=\skip53
-\c@subfigure=\count118
-\c@subfigure@save=\count119
-\c@lofdepth=\count120
-\c@subtable=\count121
-\c@subtable@save=\count122
-\c@lotdepth=\count123
-\sf@top=\skip54
-\sf@bottom=\skip55
+\AC@clearlist=\toks19
 )
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\paralist\paralist.sty
 Package: paralist 2013/06/09 v2.4 Extended list environments
-\pltopsep=\skip56
-\plpartopsep=\skip57
-\plitemsep=\skip58
-\plparsep=\skip59
-\pl@lab=\toks24
-)
-(C:/PROGRA~1/R/R-33~1.2/share/texmf/tex/latex\Sweave.sty
-Package: Sweave 
-
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyvrb\fancyvrb.sty
-Package: fancyvrb 2008/02/07
-
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)
-\FV@CodeLineNo=\count124
-\FV@InFile=\read2
-\FV@TabBox=\box29
-\c@FancyVerbLine=\count125
-\FV@StepNumber=\count126
-\FV@OutFile=\write4
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
-Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-)
-LaTeX Info: Redefining \oldstylenums on input line 266.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
-
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
-))
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip60
-\bibsep=\skip61
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count127
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
-Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+\pltopsep=\skip49
+\plpartopsep=\skip50
+\plitemsep=\skip51
+\plparsep=\skip52
+\pl@lab=\toks20
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\bm.sty"
 Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
@@ -554,46 +346,33 @@ LaTeX Warning: Label `acro:zerod@cref' multiply defined.
 LaTeX Warning: Label `acro:cgem@cref' multiply defined.
 
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 137.
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 137.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 137.
-
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 137.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 137.
-
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
-(C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+ (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count128
-\scratchdimen=\dimen160
-\scratchbox=\box30
-\nofMPsegments=\count129
-\nofMParguments=\count130
-\everyMPshowfont=\toks25
-\MPscratchCnt=\count131
-\MPscratchDim=\dimen161
-\MPnumerator=\count132
-\makeMPintoPDFobject=\count133
-\everyMPtoPDFconversion=\toks26
+\scratchcounter=\count117
+\scratchdimen=\dimen130
+\scratchbox=\box31
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen131
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks22
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -614,12 +393,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=36.135pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=24.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -629,170 +408,222 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 137.
+\AtBeginShipoutBox=\box32
+Package hyperref Info: Link coloring ON on input line 128.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count134
+\c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 137.
-LaTeX Info: Redefining \pageref on input line 137.
-LaTeX Info: Redefining \nameref on input line 137.
+LaTeX Info: Redefining \ref on input line 128.
+LaTeX Info: Redefining \pageref on input line 128.
+LaTeX Info: Redefining \nameref on input line 128.
 
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 \@outlinefile=\write5
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 167.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 167.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 167.
-
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-)
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 167.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 167.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 167.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 167.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 167.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 167.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 167.
- [1
-
-{C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 170.
 Package acronym Info: Label `acro:zerod' newly defined as it shall be overridde
 n
-although it is yet undefined on input line 171.
+although it is yet undefined on input line 151.
 Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
 
-although it is yet undefined on input line 173.
+although it is yet undefined on input line 155.
 Package acronym Info: Label `acro:gom' newly defined as it shall be overridden
-although it is yet undefined on input line 173.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 176.
+although it is yet undefined on input line 155.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 158.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 158.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 158.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 158.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 158.
 Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
-although it is yet undefined on input line 178.
-Package acronym Info: Label `acro:gom' overridden on input line 178.
+although it is yet undefined on input line 165.
+Package acronym Info: Label `acro:gom' overridden on input line 165.
 Package acronym Info: Label `acro:marb' newly defined as it shall be overridden
 
-although it is yet undefined on input line 178.
- [2
+although it is yet undefined on input line 165.
+ [1
 
-] [3] [4]
-Package acronym Info: Label `acro:zerod' overridden on input line 184.
+
+{C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+Package acronym Info: Label `acro:zerod' overridden on input line 171.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
-although it is yet undefined on input line 185.
+although it is yet undefined on input line 172.
 Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
 
-although it is yet undefined on input line 189.
+although it is yet undefined on input line 176.
 Package acronym Info: Label `acro:pom' newly defined as it shall be overridden
-although it is yet undefined on input line 189.
+although it is yet undefined on input line 176.
 Package acronym Info: Label `acro:dom' newly defined as it shall be overridden
-although it is yet undefined on input line 189.
- [5]
-Package acronym Info: Label `acro:cgem' overridden on input line 197.
- [6] [7]
-[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
-(M:\docs\manuscripts\identifiability\ident_manu.bbl [22
-
-] [23] [24] [25])
-Overfull \hbox (9.84094pt too wide) in paragraph at lines 352--363
+although it is yet undefined on input line 176.
+Package acronym Info: Label `acro:cgem' overridden on input line 184.
+ [3] [4] [5] [6] [7] [8]
+[9] [10] (M:\docs\manuscripts\identifiability\ident_manu.bbl [11] [12] [13]
+[14]) [15]
+Overfull \hbox (12.81592pt too wide) in paragraph at lines 336--347
  [] 
  []
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 374.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 378.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 441.
-[26] [27] [28] [29] [30] [31] [32]
-<figs/combnex-1.pdf, id=650, 361.35pt x 361.35pt>
+[16] [17] [18] [19] [20] [21]
+<figs/combnex-1.pdf, id=603, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 719.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 703.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=651, 578.16pt x 505.89pt>
+<figs/sensalltile-1.pdf, id=604, 578.16pt x 505.89pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 731.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 715.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identplo-1.pdf, id=664, 578.16pt x 505.89pt>
+<figs/identplo-1.pdf, id=617, 578.16pt x 505.89pt>
 File: figs/identplo-1.pdf Graphic file (type pdf)
  <use figs/identplo-1.pdf>
-Package pdftex.def Info: figs/identplo-1.pdf used on input line 743.
+Package pdftex.def Info: figs/identplo-1.pdf used on input line 727.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=667, 650.43pt x 578.16pt>
+<figs/identploall-1.pdf, id=620, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
-Package pdftex.def Info: figs/identploall-1.pdf used on input line 755.
+Package pdftex.def Info: figs/identploall-1.pdf used on input line 739.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/percthresh-1.pdf, id=670, 650.43pt x 578.16pt>
+<figs/percthresh-1.pdf, id=623, 650.43pt x 578.16pt>
 File: figs/percthresh-1.pdf Graphic file (type pdf)
 
 <use figs/percthresh-1.pdf>
-Package pdftex.def Info: figs/percthresh-1.pdf used on input line 767.
+Package pdftex.def Info: figs/percthresh-1.pdf used on input line 751.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=673, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=626, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 779.
-(pdftex.def)             Requested size: 469.75502pt x 469.76653pt.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 763.
+(pdftex.def)             Requested size: 375.80544pt x 375.81802pt.
 
-<figs/heurist_stts-1.pdf, id=680, 650.43pt x 433.62pt>
+<figs/heurist_stts-1.pdf, id=633, 650.43pt x 433.62pt>
 File: figs/heurist_stts-1.pdf Graphic file (type pdf)
 
 <use figs/heurist_stts-1.pdf>
-Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 791.
+Package pdftex.def Info: figs/heurist_stts-1.pdf used on input line 775.
 (pdftex.def)             Requested size: 469.75502pt x 313.17879pt.
 
-<figs/inistrsumm-1.pdf, id=683, 505.89pt x 505.89pt>
+<figs/inistrsumm-1.pdf, id=636, 505.89pt x 505.89pt>
 File: figs/inistrsumm-1.pdf Graphic file (type pdf)
 
 <use figs/inistrsumm-1.pdf>
-Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 803.
+Package pdftex.def Info: figs/inistrsumm-1.pdf used on input line 787.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
- [33
+ [22
 
- <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>] [34 <M:/docs/manuscr
+
+ <M:/docs/manuscripts/identifiability/figs/combnex-1.pdf>] [23 <M:/docs/manuscr
 ipts/identifiability/figs/sensalltile-1.pdf>]
-[35 <M:/docs/manuscripts/identifiability/figs/identplo-1.pdf>] [36 <M:/docs/man
-uscripts/identifiability/figs/identploall-1.pdf>] [37 <M:/docs/manuscripts/iden
-tifiability/figs/percthresh-1.pdf>] [38 <M:/docs/manuscripts/identifiability/fi
-gs/exclex-1.pdf>] [39 <M:/docs/manuscripts/identifiability/figs/heurist_stts-1.
-pdf>] [40 <M:/docs/manuscripts/identifiability/figs/inistrsumm-1.pdf>] [41]
-[42] [43] [44] [45] [46] [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1267.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1267.
-
-(M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1267.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1267.
+[24 <M:/docs/manuscripts/identifiability/figs/identplo-1.pdf>] [25 <M:/docs/man
+uscripts/identifiability/figs/identploall-1.pdf>] [26 <M:/docs/manuscripts/iden
+tifiability/figs/percthresh-1.pdf>] [27 <M:/docs/manuscripts/identifiability/fi
+gs/exclex-1.pdf>] [28 <M:/docs/manuscripts/identifiability/figs/heurist_stts-1.
+pdf>] [29 <M:/docs/manuscripts/identifiability/figs/inistrsumm-1.pdf>]pdfTeX wa
+rning (ext4): destination with the same identifier (name{table.1}) has been alr
+eady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.808 ..., and organic matter.\label{tab:nh4sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.808 ..., and organic matter.\label{tab:nh4sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.2}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.871 ..., and organic matter.\label{tab:chlsens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.2}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.871 ..., and organic matter.\label{tab:chlsens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.3}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.934 ..., and organic matter.\label{tab:irrsens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.3}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.934 ..., and organic matter.\label{tab:irrsens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.4}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.997 ..., and organic matter.\label{tab:no3sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.4}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.997 ..., and organic matter.\label{tab:no3sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.5}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1060 ... and organic matter.\label{tab:om1sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.5}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1060 ... and organic matter.\label{tab:om1sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.6}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1123 ... and organic matter.\label{tab:om2sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.6}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1123 ... and organic matter.\label{tab:om2sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.7}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1186 ... and organic matter.\label{tab:po4sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.7}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1186 ... and organic matter.\label{tab:po4sens}}
+                                                   [30] [31] [32] [33] [34]
+[35] [36]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1251.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1251.
+ (M:\docs\manuscripts\identifiability\ident_manu.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1251.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1251.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: B93A04AACE101E85745F9CF7031C87AF;1180.
@@ -800,43 +631,47 @@ Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1267.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1251.
  ) 
 Here is how much of TeX's memory you used:
- 12078 strings out of 493921
- 190378 string characters out of 3147282
- 387169 words of memory out of 3000000
- 14985 multiletter control sequences out of 15000+200000
- 45615 words of font info for 91 fonts, out of 3000000 for 9000
+ 9073 strings out of 493921
+ 142128 string characters out of 3147282
+ 326859 words of memory out of 3000000
+ 12085 multiletter control sequences out of 15000+200000
+ 15333 words of font info for 52 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,14n,47p,2251b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmbx6.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+ 34i,14n,34p,2251b,600s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy5.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
 6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><C:/Program Fil
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ident_manu.pdf (47 pages, 592748 bytes).
+s/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmti7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
+8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on ident_manu.pdf (36 pages, 696051 bytes).
 PDF statistics:
- 932 PDF objects out of 1000 (max. 8388607)
- 178 named destinations out of 1000 (max. 500000)
+ 894 PDF objects out of 1000 (max. 8388607)
+ 162 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
