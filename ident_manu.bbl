@@ -6,13 +6,13 @@
 
 \bibitem[{Beck(1987)}]{Beck87}
 Beck, M.~B., 1987. Water quality modeling: A review of the analysis of
-  uncertainty. Water Resources Research 23~(8), 1393--1442.
+  uncertainty. Water Resour. Res. 23~(8), 1393--1442.
 
 \bibitem[{Bianchi et~al.(2010)Bianchi, DiMarco, Jr, Hetland, Chapman, Day, and
   Allison}]{Bianchi10}
 Bianchi, T.~S., DiMarco, S.~F., Jr, J. H.~C., Hetland, R.~D., Chapman, P., Day,
   J.~W., Allison, M.~A., 2010. The science of hypoxia in the {N}orthern {G}ulf
-  of {M}exico: a review. Science of the Total Environment 408~(7), 1471--1484.
+  of {M}exico: a review. Sci. Total. Environ. 408~(7), 1471--1484.
 
 \bibitem[{Bierman et~al.(1994)Bierman, Hinz, Zhu, Wiseman, Rabalais, and
   Turner}]{Bierman94}
@@ -23,8 +23,8 @@ Bierman, V.~J., Hinz, S.~C., Zhu, D.~W., Wiseman, W.~J., Rabalais, N.~N.,
 
 \bibitem[{Brun et~al.(2001)Brun, Reichert, and K\"{u}nsch}]{Brun01}
 Brun, R., Reichert, P., K\"{u}nsch, H.~R., 2001. Practical identifiability
-  analysis of large environmental simulation models. Water Resources Research
-  37~(4), 1015--1030.
+  analysis of large environmental simulation models. Water Resour. Res. 37~(4),
+  1015--1030.
 
 \bibitem[{Clark et~al.(2001)Clark, Carpenter, Barber, Collins, Dobson, Foley,
   Lodge, Pascual, Pielke, Pizer, Pringle, Reid, Rose, Sala, Schlesinger, Wall,
@@ -32,82 +32,80 @@ Brun, R., Reichert, P., K\"{u}nsch, H.~R., 2001. Practical identifiability
 Clark, J.~S., Carpenter, S.~R., Barber, M., Collins, S., Dobson, A., Foley,
   J.~A., Lodge, D.~M., Pascual, M., Pielke, R., Pizer, W., Pringle, C., Reid,
   W.~V., Rose, K.~A., Sala, O., Schlesinger, W.~H., Wall, D.~H., Wear, D.,
-  2001. Ecological forecasts: an emerging imperative. Science 293~(5530),
+  2001. Ecological forecasts: an emerging imperative. Sci. 293~(5530),
   657--660.
 
 \bibitem[{Cloern et~al.(1995)Cloern, Grenz, and Vidergar-Lucas}]{Cloern95}
 Cloern, J.~E., Grenz, C., Vidergar-Lucas, L., 1995. An empirical model of the
   phytoplankton:carbon ratio - the conversion factor between productivity and
-  growth rate. Limnology and Oceanography 40~(7), 1313--1321.
+  growth rate. Limnol. Oceanogr. 40~(7), 1313--1321.
 
 \bibitem[{Denman(2003)}]{Denman03}
 Denman, K.~L., 2003. Modelling planktonic ecosystems: parameterizing
-  complexity. Progress in Oceanography 57~(3-4), 429--452.
+  complexity. Prog. Oceanogr. 57~(3-4), 429--452.
 
 \bibitem[{Diaz and Rosenberg(1995)}]{Diaz95}
 Diaz, R.~J., Rosenberg, R., 1995. Marine benthic hypoxia: A review of its
   ecological effects and the behavioural responses of benthic macrofauna.
-  Oceanography and Marine Biology 33, 245--303.
+  Oceanogr. Mar. Biology 33, 245--303.
 
 \bibitem[{Diaz and Rosenberg(2011)}]{Diaz11}
 Diaz, R.~J., Rosenberg, R., 2011. Introduction to environmental and economic
-  consequences of hypoxia. International Journal of Water Resources Development
-  27~(1), 71--82.
+  consequences of hypoxia. Int. J. Water Resour. Dev. 27~(1), 71--82.
 
 \bibitem[{Droop(1973)}]{Droop73}
-Droop, M.~R., 1973. Some thoughts on nutrient limitation in algae. Journal of
-  Phycology 9, 264--272.
+Droop, M.~R., 1973. Some thoughts on nutrient limitation in algae. J. Phycol.
+  9, 264--272.
 
 \bibitem[{Dugdale and Goering(1967)}]{Dugdale67}
 Dugdale, R.~C., Goering, J.~J., 1967. Uptake of new and regenerated nitrogen in
-  primary productivity. Limnology and Oceanography 12, 196--206.
+  primary productivity. Limnol. Oceanogr. 12, 196--206.
 
 \bibitem[{Durand et~al.(2002)Durand, Gascuel-Odoux, and Cordier}]{Durand02}
 Durand, P., Gascuel-Odoux, C., Cordier, M.~O., 2002. Parameterisation of
   hydrological models: a review and lessons learned from studies of an
-  agricultural catchment ({N}aisin, {F}rance. Agronomie 22~(2), 217--228.
+  agricultural catchment ({N}aisin, {F}rance. Agron. 22~(2), 217--228.
 
 \bibitem[{Eldridge and Roelke(2010)}]{Eldridge10}
 Eldridge, P.~M., Roelke, D.~L., 2010. Origins and scales of hypoxia on the
   {L}ouisiana shelf: importance of seasonal plankton dynamics and river
-  nutrients and discharge. Ecological Modelling 221~(7), 1028--1042.
+  nutrients and discharge. Ecol. Model. 221~(7), 1028--1042.
 
 \bibitem[{Eppley et~al.(1969)Eppley, Rogers, and McCarthy}]{Eppley69}
 Eppley, R.~W., Rogers, J.~N., McCarthy, J., 1969. Half-saturation constants for
-  uptake of nitrate and ammonium by marine phytoplankton. Limnology and
-  Oceanography 14~(6), 912--920.
+  uptake of nitrate and ammonium by marine phytoplankton. Limnol. Oceanogr.
+  14~(6), 912--920.
 
 \bibitem[{Estrada and Diaz(2010)}]{Estrada10}
 Estrada, V., Diaz, M., 2010. Global sensitivity analysis in the development of
-  first principle-based eutrophication models. Environmental Modelling and
-  Software 25, 1539--1551.
+  first principle-based eutrophication models. Environ. Model. Softw. 25,
+  1539--1551.
 
 \bibitem[{Fahnenstiel et~al.(1995)Fahnenstiel, McCormick, Lang, Redalje,
   Lohrenz, Markowitz, Wagoner, and Carrick}]{Fahnenstiel95}
 Fahnenstiel, G.~L., McCormick, M.~J., Lang, G.~A., Redalje, D.~G., Lohrenz,
   S.~E., Markowitz, M., Wagoner, B., Carrick, H.~J., 1995. Taxon-specific
   growth and loss rates for dominant phytoplankton populations from the
-  northern {G}ulf of {M}exico. Marine Ecology Progress Series 117~(1-3),
-  229--239.
+  northern {G}ulf of {M}exico. Mar. Ecol. Prog. Ser. 117~(1-3), 229--239.
 
 \bibitem[{Fasham et~al.(2006)Fasham, Flynn, Pondaven, Anderson, and
   Boyd}]{Fasham06}
 Fasham, M. J.~R., Flynn, K.~J., Pondaven, P., Anderson, T.~R., Boyd, P.~W.,
   2006. Development of a robust marine ecosystem model to predict the role of
   iron in biogeochemical cycles: A comparison of results for iron-replete and
-  iron-limited areas, and the {SOIREE} iron-enrichment experiment. Deep-Sea
-  Research I 53, 333--366.
+  iron-limited areas, and the {SOIREE} iron-enrichment experiment. Deep. Res. I
+  53, 333--366.
 
 \bibitem[{Fennel et~al.(2013)Fennel, Hu, Laurent, Marta-Almeida, and
   Hetland}]{Fennel13}
 Fennel, K., Hu, J., Laurent, A., Marta-Almeida, M., Hetland, R., 2013.
   Sensitivity of hypoxia predictions for the northern {G}ulf of {M}exico to
-  sediment oxygen consumption and model nesting. Journal of Geophysical
-  Research: Oceans 118~(2), 990--1002.
+  sediment oxygen consumption and model nesting. J. Geophys. Res. Ocean.
+  118~(2), 990--1002.
 
 \bibitem[{Flynn(2003)}]{Flynn03}
 Flynn, K.~J., 2003. Modelling multi-nutrient interactions in phytoplankton;
-  balancing simplicity and realism. Progress in Oceanography 56~(2), 249--279.
+  balancing simplicity and realism. Prog. Oceanogr. 56~(2), 249--279.
 
 \bibitem[{Ganju et~al.(2016)Ganju, Brush, Rashleigh, Aretxabaleta, del Barrio,
   Grear, Harris, Lake, McCardell, O'Donnell, Ralston, Signell, Testa, and
@@ -116,26 +114,26 @@ Ganju, N.~K., Brush, M.~J., Rashleigh, B., Aretxabaleta, A.~L., del Barrio, P.,
   Grear, J.~S., Harris, L.~A., Lake, S.~J., McCardell, G., O'Donnell, J.,
   Ralston, D.~K., Signell, R.~P., Testa, J.~M., Vaudrey, J. M.~P., 2016.
   Progress and challenges in coupled hydrodynamic-ecological estuarine
-  modeling. Estuaries and Coasts 39~(2), 311--332.
+  modeling. Estuaries Coasts 39~(2), 311--332.
 
 \bibitem[{Geider et~al.(1997)Geider, MacIntyre, and Kana}]{Geider97}
 Geider, R.~J., MacIntyre, H.~L., Kana, T.~M., 1997. A dynamic model of
   phytoplankton growth and acclimation: responses of the balanced growth rate
   and the chlorophyll \textit{a}:carbon ratio to light, nutrient-limitation and
-  temperature. Marine Ecology Progress Series 148, 187--200.
+  temperature. Mar. Ecol. Prog. Ser. 148, 187--200.
 
 \bibitem[{Geider et~al.(1998)Geider, MacIntyre, and Kana}]{Geider98}
 Geider, R.~J., MacIntyre, H.~L., Kana, T.~M., 1998. A dynamic regulatory model
-  of phytoplanktonic acclimation to light, nutrients, and temperature.
-  Limnology and Oceanography 43~(4), 679--694.
+  of phytoplanktonic acclimation to light, nutrients, and temperature. Limnol.
+  Oceanogr. 43~(4), 679--694.
 
 \bibitem[{Hagy and Murrell(2007)}]{Hagy07}
 Hagy, J.~D., Murrell, M.~C., 2007. Susceptibility of a northern {G}ulf of
-  {M}exico estuary to hypoxia: An analysis using box models. Estuarine Coastal
-  and Shelf Science 74, 239--253.
+  {M}exico estuary to hypoxia: An analysis using box models. Estuar. Coast.
+  Shelf Sci. 74, 239--253.
 
 \bibitem[{Harvey(2000)}]{Harvey00}
-Harvey, L. D.~D., 2000. Upscaling in global change research. Climatic Change
+Harvey, L. D.~D., 2000. Upscaling in global change research. Clim. Chang.
   44~(3), 225--263.
 
 \bibitem[{Hilborn and Mangel(1997)}]{Hilborn97}
@@ -144,8 +142,8 @@ Hilborn, R., Mangel, M., 1997. The Ecological Detective: Confronting Models
 
 \bibitem[{Hodur(1997)}]{Hodur97}
 Hodur, R.~M., 1997. The {N}aval {R}esearch {L}aboratory's {C}oupled
-  {O}cean/{A}tmosphere {M}esoscale {P}rediction {S}ystem ({COAMPS}). Monthly
-  Weather Review 125, 1414--1430.
+  {O}cean/{A}tmosphere {M}esoscale {P}rediction {S}ystem ({COAMPS}). Mon.
+  Weather. Rev. 125, 1414--1430.
 
 \bibitem[{Howarth et~al.(1996)Howarth, Billen, Swaney, Townsend, Jaworski,
   Lajtha, Downing, Elmgren, Caraco, Jordan, Berendse, Freney, Kudeyarov,
@@ -154,28 +152,28 @@ Howarth, R.~W., Billen, G., Swaney, D., Townsend, A., Jaworski, N., Lajtha, K.,
   Downing, J.~A., Elmgren, R., Caraco, N., Jordan, T., Berendse, F., Freney,
   J., Kudeyarov, V., Murdoch, P., Zhao-Liang, Z., 1996. Regional nitrogen
   budgets and riverine {N} \& {P} fluxes for the drainages to the {N}orth
-  {A}tlantic {O}cean: natural and human influences. Biogeochemistry 35~(1),
+  {A}tlantic {O}cean: natural and human influences. Biogeochem. 35~(1),
   75--139.
 
 \bibitem[{Just\'{i}c et~al.(1987)Just\'{i}c, Legov\'{i}c, and
   Rottini-Sandrini}]{Justic87}
 Just\'{i}c, D., Legov\'{i}c, T., Rottini-Sandrini, L., 1987. Trends in oxygen
   content 1911--1984 and occurrence of benthic mortality in the northern
-  {A}driatic {S}ea. Estuarine, Coastal and Shelf Science 25~(4), 435--445.
+  {A}driatic {S}ea. Estuar. Coast. Shelf Sci. 25~(4), 435--445.
 
 \bibitem[{Kirchner(2006)}]{Kirchner06}
 Kirchner, J.~W., 2006. Getting the right answers for the right reasons: Linking
   measurements, analyses, and models to advance the science of hydrology. Water
-  Resources Research 42~(3), W03S04.
+  Resour. Res. 42~(3), W03S04.
 
 \bibitem[{Lehman et~al.(1975)Lehman, Botkin, and Likens}]{Lehman75}
 Lehman, J.~T., Botkin, D.~B., Likens, G.~E., 1975. The assumptions and
-  rationales of a computer model of phytoplankton population dynamics.
-  Limnology and Oceanography 20~(3), 343--364.
+  rationales of a computer model of phytoplankton population dynamics. Limnol.
+  Oceanogr. 20~(3), 343--364.
 
 \bibitem[{Lehrter and Cebrian(2010)}]{Lehrter10}
 Lehrter, J.~C., Cebrian, J., 2010. Uncertainty propagation in an ecosystem
-  nutrient budget. Ecological Applications 20~(2), 508--524.
+  nutrient budget. Ecol. Appl. 20~(2), 508--524.
 
 \bibitem[{Lehrter et~al.(In press)Lehrter, Ko, Lowe, and Penta}]{LehrterIP}
 Lehrter, J.~C., Ko, D.~S., Lowe, L., Penta, B., In press. Predicted effects of
@@ -189,11 +187,11 @@ Lehrter, J.~C., Ko, D.~S., Lowe, L., Penta, B., In press. Predicted effects of
 Lehrter, J.~C., Ko, D.~S., Murrell, M.~C., III, J. D.~H., Schaeffer, B.~A.,
   Greene, R.~M., Gould, R.~W., Penta, B., 2013. Nutrient distributions,
   transports, and budgets on the inner margin of a river-dominated continental
-  shelf. Journal of Geophysical Research 118~(10), 4822--4838.
+  shelf. J. Geophys. Res. 118~(10), 4822--4838.
 
 \bibitem[{Levins(1966)}]{Levins66}
-Levins, R., 1966. The strategy of model building in population biology.
-  American Scientist 54~(4), 421--431.
+Levins, R., 1966. The strategy of model building in population biology. Am.
+  Sci. 54~(4), 421--431.
 
 \bibitem[{Lipton and Hicks(2003)}]{Lipton03}
 Lipton, D., Hicks, R., 2003. The cost of stress: low dissolved oxygen and
@@ -204,7 +202,7 @@ Lipton, D., Hicks, R., 2003. The cost of stress: low dissolved oxygen and
   Dagg}]{Lohrenz08}
 Lohrenz, S.~E., Redalje, D.~G., Cai, W.~J., Acker, J., Dagg, M., 2008. A
   retrospective analysis of nutrients and phytoplankton productivity in the
-  {M}ississippi {R}iver plume. Continental Shelf Research 28~(12), 1466--1475.
+  {M}ississippi {R}iver plume. Cont. Shelf Res. 28~(12), 1466--1475.
 
 \bibitem[{Martin(2000)}]{Martin00}
 Martin, P.~J., 2000. Description of the navy coastal ocean model version 1.0.
@@ -230,69 +228,68 @@ Murrell, M.~C., Beddick, D.~L., Devereux, R., Greene, R.~M., III, J. D.~H.,
 \bibitem[{Murrell et~al.(2013)Murrell, Stanley, Lehrter, and Hagy}]{Murrell13}
 Murrell, M.~C., Stanley, R.~S., Lehrter, J.~C., Hagy, J.~D., 2013. Plankton
   community respiration, net ecosystem metabolism, and oxygen dynamics on the
-  {L}ouisiana continental shelf: Implications for hypoxia. Continental Shelf
-  Research 52, 27--38.
+  {L}ouisiana continental shelf: Implications for hypoxia. Cont. Shelf Res. 52,
+  27--38.
 
 \bibitem[{Nossent and Bauwens(2012)}]{Nossent12}
 Nossent, J., Bauwens, W., 2012. Multi-variable sensitivity and identifiability
   analysis for a complex environmental model in view of integrated water
-  quantity and water quality modeling. Water Science \& Technology 65~(3),
-  539--549.
+  quantity and water quality modeling. Water Sci. Technol. 65~(3), 539--549.
 
 \bibitem[{Obenour et~al.(2015)Obenour, Michalak, and Scavia}]{Obenour15}
 Obenour, D.~R., Michalak, A.~M., Scavia, D., 2015. Assessing biophysical
-  controls on {G}ulf of {M}exico hypoxia through probabilistic modeling.
-  Ecological Applications 25~(2), 492--505.
+  controls on {G}ulf of {M}exico hypoxia through probabilistic modeling. Ecol.
+  Appl. 25~(2), 492--505.
 
 \bibitem[{Omlin et~al.(2001{\natexlab{a}})Omlin, Brun, and Reichert}]{Omlin01}
 Omlin, M., Brun, R., Reichert, P., 2001{\natexlab{a}}. Biogeochemical model of
   {L}ake {Z}\"{u}rich: sensitivity, identifiability and uncertainty analysis.
-  Ecological Modelling 141~(1-3), 105--123.
+  Ecol. Model. 141~(1-3), 105--123.
 
 \bibitem[{Omlin et~al.(2001{\natexlab{b}})Omlin, Reichert, and
   Forster}]{Omlin01b}
 Omlin, M., Reichert, P., Forster, R., 2001{\natexlab{b}}. Biogeochemical model
-  of {L}ake {Z}\"{u}rich: model equations and results. Ecological Modelling
-  141~(1-3), 77--103.
+  of {L}ake {Z}\"{u}rich: model equations and results. Ecol. Model. 141~(1-3),
+  77--103.
 
 \bibitem[{Paerl et~al.(1998)Paerl, Pinckney, Fear, and Peierls}]{Paerl98}
 Paerl, H.~W., Pinckney, J.~L., Fear, J.~M., Peierls, B.~L., 1998. Ecosystem
   responses to internal and watershed organic matter loading: consequences for
   hypoxia in the eutrophying {N}euse {R}iver {E}stuary, {N}orth {C}arolina,
-  {USA}. Marine Ecology Progress Series 166, 17--25.
+  {USA}. Mar. Ecol. Prog. Ser. 166, 17--25.
 
 \bibitem[{Pauer et~al.(2016)Pauer, Feist, Anstead, DePetro, Melendez, Lehrter,
   Murrell, Zhang, and Ko}]{Pauer16}
 Pauer, J.~J., Feist, T.~J., Anstead, A.~M., DePetro, P.~A., Melendez, W.,
   Lehrter, J.~C., Murrell, M.~C., Zhang, X., Ko, D.~S., 2016. A modeling study
   examining the impact of nutrient boundaries on primary production on the
-  {L}ouisiana continental shelf. Ecological Modelling 328, 136--147.
+  {L}ouisiana continental shelf. Ecol. Model. 328, 136--147.
 
 \bibitem[{Penta et~al.(2008)Penta, Lee, Kudela, Palacios, Gray, Jolliff, and
   Shulman}]{Penta08}
 Penta, B., Lee, Z., Kudela, R.~M., Palacios, S.~L., Gray, D.~J., Jolliff,
   J.~K., Shulman, I.~G., 2008. An underwater light attenuation scheme for
-  marine ecosystem models. Optical Express 16~(21), 16581--16591.
+  marine ecosystem models. Opt. Express 16~(21), 16581--16591.
 
 \bibitem[{Penta et~al.(2009)Penta, Lee, Kudela, Palacios, Gray, Jolliff, and
   Shulman}]{Penta09}
 Penta, B., Lee, Z., Kudela, R.~M., Palacios, S.~L., Gray, D.~J., Jolliff,
   J.~K., Shulman, I.~G., 2009. An underwater light attenuation scheme for
-  marine ecosystem models: errata. Optical Express 17~(25), 23351--23351.
+  marine ecosystem models: errata. Opt. Express 17~(25), 23351--23351.
 
 \bibitem[{Petrucci and Bonhomme(2014)}]{Petrucci14}
 Petrucci, G., Bonhomme, C., 2014. The dilemma of spatial representation for
   urban hydrology semi-distributed modelling: trade-offs among complexity,
-  calibration and geographical data. Journal of Hydrology 517, 997--1007.
+  calibration and geographical data. J. Hydrol. 517, 997--1007.
 
 \bibitem[{Platt et~al.(1980)Platt, Gallegos, and Harrison}]{Platt80}
 Platt, T., Gallegos, C.~L., Harrison, W.~G., 1980. Photoinhibition of
-  photosynthesis in natural assemblages of marine phytoplankton. Journal of
-  Marine Research 38, 687--701.
+  photosynthesis in natural assemblages of marine phytoplankton. J. Mar. Res.
+  38, 687--701.
 
 \bibitem[{Rabalais et~al.(2002)Rabalais, Turner, and Scavia}]{Rabalais02}
 Rabalais, N.~N., Turner, R.~E., Scavia, D., 2002. Beyond science into policy:
-  {G}ulf of {M}exico hypoxia and the {M}ississippi river. BioScience 52~(2),
+  {G}ulf of {M}exico hypoxia and the {M}ississippi river. Biosci. 52~(2),
   129--142.
 
 \bibitem[{{RDCT (R Development Core Team)}(2016)}]{RDCT16}
@@ -302,24 +299,23 @@ Rabalais, N.~N., Turner, R.~E., Scavia, D., 2002. Beyond science into policy:
 
 \bibitem[{Reckhow et~al.(1990)Reckhow, Clements, and Dodd}]{Reckhow90}
 Reckhow, K.~H., Clements, J.~T., Dodd, R.~C., 1990. Statistical evaluation of
-  mechanistic water-quality models. Journal of Environmental Engineering
-  116~(2), 250--268.
+  mechanistic water-quality models. J. Environ. Eng. 116~(2), 250--268.
 
 \bibitem[{Refsgaard et~al.(2007)Refsgaard, van~der Sluijs, H{\o}jberg, and
   Vanrolleghem}]{Refsgaard07}
 Refsgaard, J.~C., van~der Sluijs, J.~P., H{\o}jberg, A.~L., Vanrolleghem,
   P.~A., 2007. Uncertainty in the environmental modelling process - a framework
-  and guidance. Environmental Modelling \& Software 22~(11), 1543--1556.
+  and guidance. Environ. Model. Softw. 22~(11), 1543--1556.
 
 \bibitem[{Reichert and Omlin(1997)}]{Reichert97}
 Reichert, P., Omlin, M., 1997. On the usefulness of over parameterized
-  ecological models. Ecological Modelling 95~(2), 289--299.
+  ecological models. Ecol. Model. 95~(2), 289--299.
 
 \bibitem[{Roelke(2000)}]{Roelke00}
 Roelke, D.~L., 2000. Copepod food-quality threshold as a mechanism influencing
   phytoplankton succession and accumulation of biomass, and secondary
-  productivity: a modeling study with management implications. Ecological
-  Modelling 134, 245--274.
+  productivity: a modeling study with management implications. Ecol. Model.
+  134, 245--274.
 
 \bibitem[{Scavia et~al.(2004)Scavia, Justic, and Bierman}]{Scavia04}
 Scavia, D., Justic, D., Bierman, V.~J., 2004. Reducing hypoxia in the {G}ulf of
@@ -327,25 +323,23 @@ Scavia, D., Justic, D., Bierman, V.~J., 2004. Reducing hypoxia in the {G}ulf of
 
 \bibitem[{Snowling and Kramer(2001)}]{Snowling01}
 Snowling, S.~D., Kramer, J.~R., 2001. Evaluating modelling uncertainty for
-  model selection. Ecological Modelling 138, 17--30.
+  model selection. Ecol. Model. 138, 17--30.
 
 \bibitem[{Soetaert and Petzoldt(2010)}]{Soetaert10}
 Soetaert, K., Petzoldt, T., 2010. Inverse modelling, sensitivity, and {M}onte
-  {C}arlo analysis in {R} using package {FME}. Journal of Statistical Software
-  33~(3), 1--28.
+  {C}arlo analysis in {R} using package {FME}. J. Stat. Softw. 33~(3), 1--28.
 
 \bibitem[{Wade et~al.(2008)Wade, Jackson, and Butterfield}]{Wade08}
 Wade, A.~J., Jackson, B.~M., Butterfield, D., 2008. Over-parameterised,
   uncertain `mathematical marionettes' - how can we best use catchment water
   quality models? {A}n example of an 80-year catchment-scale nutrient balance.
-  Science of the Total Environment 400~(1-3), 52--74.
+  Sci. Total. Environ. 400~(1-3), 52--74.
 
 \bibitem[{Wagener et~al.(2001{\natexlab{a}})Wagener, Boyle, Lees, Wheater,
   Gupta, and Sorooshian}]{Wagener01}
 Wagener, T., Boyle, D.~P., Lees, M.~J., Wheater, H.~S., Gupta, H.~V.,
   Sorooshian, S., 2001{\natexlab{a}}. A framework for development and
-  application of hydrological models. Hydrology and Earth System Sciences
-  5~(1), 13--26.
+  application of hydrological models. Hydrol. Earth Syst. Sci. 5~(1), 13--26.
 
 \bibitem[{Wagener et~al.(2001{\natexlab{b}})Wagener, Lees, and
   Wheater}]{Wagener01b}
@@ -357,31 +351,30 @@ Wagener, T., Lees, M.~J., Wheater, H.~S., 2001{\natexlab{b}}. A toolkit for the
 
 \bibitem[{Warner et~al.(2005)Warner, Geyer, and Lerczak}]{Warner05}
 Warner, J.~C., Geyer, W.~R., Lerczak, J.~A., 2005. Numerical modeling of an
-  estuary: a comprehensive skill assessment. Journal of Geophysical Research:
-  Oceans 110~(C5), 13.
+  estuary: a comprehensive skill assessment. J. Geophys. Res. Ocean. 110~(C5),
+  13.
 
 \bibitem[{Wheater et~al.(1986)Wheater, Bishop, and Beck}]{Wheater86}
 Wheater, H.~S., Bishop, K.~H., Beck, M.~B., 1986. The identification of
-  conceptual hydrological models for surface water acidification. Hydrological
-  Processes 1~(1), 89--109.
+  conceptual hydrological models for surface water acidification. Hydrol.
+  Process. 1~(1), 89--109.
 
 \bibitem[{Wiseman et~al.(1997)Wiseman, Rabalais, Turner, Dinnel, and
   MacNaughton}]{Wiseman97}
 Wiseman, W.~J., Rabalais, N.~N., Turner, R.~E., Dinnel, S.~P., MacNaughton, A.,
   1997. Seasonal and interannual variability within the {L}ouisiana coastal
-  current: stratification and hypoxia. Journal of Marine Systems 12~(1-4),
-  237--248.
+  current: stratification and hypoxia. J. Mar. Syst. 12~(1-4), 237--248.
 
 \bibitem[{Ye et~al.(1997)Ye, Bates, Viney, Sivapalan, and Jakeman}]{Ye97}
 Ye, W., Bates, B.~C., Viney, N.~R., Sivapalan, M., Jakeman, A.~J., 1997.
   Performance of conceptual rainfall-runoff models in low yielding ephemeral
-  catchments. Water Resources Research 33~(1), 153--166.
+  catchments. Water Resour. Res. 33~(1), 153--166.
 
 \bibitem[{Zhao et~al.(2010)Zhao, Chen, Vallino, Hopkinson, Beardsley, Lin, and
   Lerczak}]{Zhao10}
 Zhao, L., Chen, C., Vallino, J., Hopkinson, C., Beardsley, R.~C., Lin, H.,
   Lerczak, J., 2010. Wetland-estuarine-shelf interactions on the {P}lum
-  {I}sland {S}ound and {M}errimack {R}iver in the {M}assachusetts coast.
-  Journal of Geophysical Research 115~(C10), 13.
+  {I}sland {S}ound and {M}errimack {R}iver in the {M}assachusetts coast. J.
+  Geophys. Res. 115~(C10), 13.
 
 \end{thebibliography}

@@ -59,6 +59,8 @@
 \usepackage{fixltx2e}
 % \usepackage[inline]{showlabels}
 
+\journal{Ecological Modelling}
+
 % biblio options
 \bibliographystyle{elsarticle-harv}
 \biboptions{authoryear}
@@ -118,7 +120,7 @@
 % R dependencies
 
 
-% get the version based on commit date
+% get the version from git log
 
 
 % get online bib file
@@ -130,7 +132,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Thu Dec 15 15:47:19 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/f47752c773b8b0d1c90abe57d41f57038201ea42}{f47752c773b8b0d1c90abe57d41f57038201ea42}}
+\tnotetext[mytitlenote]{Version: Fri Dec 16 10:08:47 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/5e43ad8aba3a34ec8163993b8c3ffa785e1f0fcd}{5e43ad8aba3a34ec8163993b8c3ffa785e1f0fcd}}
 
 \date{}
 
@@ -148,7 +150,7 @@
 \ead{lowe.lisa@epa.gov}
 
 \begin{abstract}
-\noindent Bio-geo-chemical models are useful tools in environmental sciences that can guide management and policy-making. Consequently, significant time and resources are spent developing these models in system-specific contexts. The optimization of model parameters to maximize precision, including transferability of these models to different systems, are fundamental concerns in the development and application of these tools. This study provides a context for understanding quantitative limitations of coupled hydrodynamic-ecological models by evaluating parameter sensitivity and identifability of a \ac{zerod} unit of a larger spatio-temporal model of hypoxia on the \acl{lcs} of Gulf of Mexico.  The analysis provides a contrast of numeric and ecological certainty in parameter subsets using a systematic framework to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using local sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set were characterized as having unique effects on the model output. As a result, we provide a set of parameter selection heuristics that can be used to identify parameters for model calibration that depend on relative sensitivity and ecological categories within the biogeochemical equations. Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in evaluations of water quality models.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
+\noindent The optimization of parameters and transferability to different systems are fundamental concerns in the application of biogeochemical models. This study provides a context for understanding quantitative limitations of coupled hydrodynamic-ecological models by evaluating parameter sensitivity and identifability of a \ac{zerod} unit of a larger spatio-temporal model of hypoxia on the \acl{lcs} of Gulf of Mexico.  The analysis provides a contrast of numeric and ecological certainty in parameter subsets using a systematic framework to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using local sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set were characterized as having unique effects on the model output. As a result, we provide a set of parameter selection heuristics that can be used to identify parameters for model calibration that depend on relative sensitivity and ecological categories within the biogeochemical equations. Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in evaluations of water quality models.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
 \end{abstract}
 
 \begin{keyword}
@@ -299,7 +301,7 @@ An evaluation of parameter uncertainty and identifiability of relevant parameter
 
 Specific approaches can be used to improve and build on the results presented herein, in addition to the more general considerations noted above. An evaluation of model precision following calibration with relevant parameter subsets could provide additional information that supports results from the sensitivity analyses.  For simplicity, our analysis did not calibrate model parameters and an explicit assumption was that parameter subsets with $\gamma$ below 10 or 15 were identifiable.  To our knowledge, this threshold has not been rigorously evaluated and it is likely to vary between parameter subsets and the chosen calibration method.  Variation in parameter estimates given the calibration method and different identifiability thresholds could affect the interpration of model output.  Further, the extent to which results for the \ac{zerod} model extrapolate to the larger three-dimensional model should be evaluated.  Although the above analyses were facilitated using the \ac{zerod} model (i.e, quick execution times, ease of changing model parameters), lack of physical transport or spatial components potentially limits extrapolation of the results. Uncertainy in parameter estimates at lower dimensions could be magnified as errors propagate to larger scales or site-specific observations for model calibration are not appropriate across a hydrodynamic grid \citep{Harvey00,Lehrter10}. The effects of structural or observational uncertainty should also be evaluated in the context of the larger model.  Our simple approach to examine changes in the initial conditions and switches used in the model showed that sensitivity estimates of individual parameters differed relative to the original model configuration, having further implications for characterizing identifiability.
 
-\bibliography{refs}
+\bibliography{refsshr}
 \clearpage
 
 %%%%%%
