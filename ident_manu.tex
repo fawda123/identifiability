@@ -50,6 +50,7 @@
 
 \usepackage{alltt}
 \usepackage[paperwidth=8.5in,paperheight=11in,top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage{setspace}
 \usepackage[colorlinks=true,allcolors=Blue]{hyperref}
 \usepackage{lineno}
 \usepackage{cleveref}
@@ -114,6 +115,8 @@
 }
 \makeatother
 
+\linespread{1.5}
+
 %knitr options
 
 
@@ -132,7 +135,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Fri Dec 16 10:08:47 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/5e43ad8aba3a34ec8163993b8c3ffa785e1f0fcd}{5e43ad8aba3a34ec8163993b8c3ffa785e1f0fcd}}
+\tnotetext[mytitlenote]{Version: Wed Dec 21 10:59:02 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/d3eb2370a7cc79abbb571fc9216ed07baa4c881b}{d3eb2370a7cc79abbb571fc9216ed07baa4c881b}}
 
 \date{}
 
@@ -148,6 +151,10 @@
 \author{Lisa L. Lowe}
 \address{Lockheed Martin IS \& GS - Civil supporting the USEPA, Research Triangle Park, NC 27709}
 \ead{lowe.lisa@epa.gov}
+
+\author{Brandon M. Jarvis}
+\address{USEPA National Health and Environmental Effects Research Laboratory, Gulf Ecology Division, 1 Sabine Island Drive, Gulf Breeze, FL 32561}
+\ead{jarvis.brandon@epa.gov}
 
 \begin{abstract}
 \noindent The optimization of parameters and transferability to different systems are fundamental concerns in the application of biogeochemical models. This study provides a context for understanding quantitative limitations of coupled hydrodynamic-ecological models by evaluating parameter sensitivity and identifability of a \ac{zerod} unit of a larger spatio-temporal model of hypoxia on the \acl{lcs} of Gulf of Mexico.  The analysis provides a contrast of numeric and ecological certainty in parameter subsets using a systematic framework to infer larger trends in dissolved oxygen dynamics over time, having implications for understanding factors that contribute to environmental conditions that are detrimental to aquatic resources.  In particular, we focus on issues of parameter identifiability using local sensitivity analyses to provide quantitative descriptions of numerical constraints on model precision.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set were characterized as having unique effects on the model output. As a result, we provide a set of parameter selection heuristics that can be used to identify parameters for model calibration that depend on relative sensitivity and ecological categories within the biogeochemical equations. Although these concerns have been expressed in the literature, they are rarely explicitly addressed or included in evaluations of water quality models.  In addition to immediate implications for regional models, we provide a framework for describing the effects of parameter uncertainty and identifiability that can be applied to similar models to better inform environmental management.
@@ -300,6 +307,7 @@ Results from the identifiability analyses provided additional insight into the i
 An evaluation of parameter uncertainty and identifiability of relevant parameter sets is a preliminary and simplistic approach to improving model predictions.  In general, uncertainty analyses that lead to improved models are ultimately expected to increase our understanding of properties defining ecological relationships.  The extension of simple parameter sensitivity analyses to the generalization of ecosystem properties requires additional analysis and potential model refinement, at the core of which is the balance between generality and precision. We emphasize that the utility of a specific model depends on the question and objective for application to a specific system.  For the above analysis, the FishTank model, as part of the larger \ac{cgem} application, was evaluated in the context of hypoxia effects on ecosystem condition and function.  At the core of the simple model is a set of biogeochemical equations that characterize the system in relation to planktonic groups, nutrient requirements, and water-column metabolism.  Our results have shown that relatively small subsets of parameters are identifiable given the complexity of the model, and as a result, we have provided a general approach to select parameter subsets depending on the ecological context (i.e., selection by parameter category, selection for specific state variables).  Thus, the results described above have relevance for further model refinement with the specific goal of better understanding ecological dynamics that moderate hypoxia on the northern \ac{gom}.  However, the general principles of sensitivity and parameter identifiability have broad applicability beyond this context and we argue that such methods should be more universally applied as an initial approach to quantify numerical constraints of biogeochemical models.  
 
 Specific approaches can be used to improve and build on the results presented herein, in addition to the more general considerations noted above. An evaluation of model precision following calibration with relevant parameter subsets could provide additional information that supports results from the sensitivity analyses.  For simplicity, our analysis did not calibrate model parameters and an explicit assumption was that parameter subsets with $\gamma$ below 10 or 15 were identifiable.  To our knowledge, this threshold has not been rigorously evaluated and it is likely to vary between parameter subsets and the chosen calibration method.  Variation in parameter estimates given the calibration method and different identifiability thresholds could affect the interpration of model output.  Further, the extent to which results for the \ac{zerod} model extrapolate to the larger three-dimensional model should be evaluated.  Although the above analyses were facilitated using the \ac{zerod} model (i.e, quick execution times, ease of changing model parameters), lack of physical transport or spatial components potentially limits extrapolation of the results. Uncertainy in parameter estimates at lower dimensions could be magnified as errors propagate to larger scales or site-specific observations for model calibration are not appropriate across a hydrodynamic grid \citep{Harvey00,Lehrter10}. The effects of structural or observational uncertainty should also be evaluated in the context of the larger model.  Our simple approach to examine changes in the initial conditions and switches used in the model showed that sensitivity estimates of individual parameters differed relative to the original model configuration, having further implications for characterizing identifiability.
+\clearpage
 
 \bibliography{refsshr}
 \clearpage
@@ -326,7 +334,6 @@ Phosphate&$1.81$&$0.23$&$0.42$\tabularnewline
 Silica&$71.4$&$5.84$&$9.77$\tabularnewline
 \hline
 \end{tabular}\end{center}
-
 \end{table}
 
 
@@ -347,7 +354,6 @@ Photosynthesis&photoinhibition {\scriptsize \citep{Platt80}}&nutrient dependent\
 Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \hline
 \end{tabular}\end{center}
-
 \end{table}
 
 
@@ -410,7 +416,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$4.17\times 10^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts\end{table}
 
 
@@ -484,7 +489,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$4$&-&-&$5.2$&-&-&-&-&-\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -547,7 +551,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~3&\scriptsize{\textit{KG1}}&$0.92$&$1$\textsubscript{OM}&$3.87$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -621,7 +624,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~5&\scriptsize{\textit{astar490}}&$0.03$&$1$\textsubscript{O}&$5.81$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -688,7 +690,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~Phosphate&$0.31$&&$-0.19$&$-0.17$&$-0.27$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -862,7 +863,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~half-saturation concentration for NO3 used in denitrification&\textit{KNO3}&$7.55\times 10^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -925,7 +925,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$2.97\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -988,7 +987,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$1.48\times 10^{-6}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -1051,7 +1049,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$9.87\times 10^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -1114,7 +1111,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$6.41\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -1177,7 +1173,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$7.41\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
@@ -1240,7 +1235,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~NH4 rate constant for nitrification&\textit{KNH4}&$2.64\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-
 \end{table}
 
 
