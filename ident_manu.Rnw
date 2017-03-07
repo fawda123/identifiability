@@ -65,6 +65,18 @@
 }
 \makeatother
 
+% fix warning if acronyms are reset after abstract
+\makeatletter
+\renewcommand*\@verridelabel[1]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\undonewlabel{#1}}%
+  \protected@write\@auxout{}{\string\undonewlabel{#1@cref}}%Added for cleverref
+  \label{#1}%
+  \@overriddenmessage rs{#1}%
+  \@esphack
+}%
+\makeatother
+
 \linespread{1.5}
 
 %knitr options
@@ -146,8 +158,8 @@ writeLines(refs, con = file('refs.bib'))
 
 \end{frontmatter}
 
-\acresetall
 \linenumbers
+\acresetall
 
 \section{Introduction}
 
@@ -226,17 +238,17 @@ A set of heuristics was developed that address the tradeoff in model complexity 
 \item or considering all categories equally.
 \end{inparaenum} The selection rules produced seven subsets of parameters that could further be used to optimize model calibration.
 
-\subsection{Observational and structural uncertainty}
-
-In addition to parameter uncertainty, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated by changing the initial conditions and structural components, respectively, from the default model setup.  First, observational uncertainty (i.e., effects of observed data on model output) was evaluated by varying the initial conditions that were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14}. Uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on the limiting nutrient.  Parameter sensitivity was re-evaluated by varying all initial conditions that were non-zero by different seasonal means based on averages of water quality data across stations and years.  April and September seasonal averages of the observed data were used to evaluate the effects of conditions that were typical of spring and late summer on the \ac{lcs} (\cref{tab:inits}).  
-
-The effects of model structure on parameter sensitivity (i.e., structural uncertainty) were evaluated by changing specific components of the model.  The FishTank model includes several ecosystem processes or characteristics that can be included based on expected conditions, available data, or desired complexity.  These `switches' are conceptually different from model parameters as they allow the inclusion or exclusion of explicit equations or processes.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIP}.  
-
-Parameter sensitivity was evaluated by comparing the results from the default model setup to a more complex setup with alternative switches (\cref{tab:strcs}).  The scenarios used switches for different equations to represent structural relationships of phytoplankton growth patterns with temperature, nutrient uptake, cell quotas, \ac{chla} to carbon ratios, photosynthesis dynamics, and specific growth limits. The default scenario modelled phytoplankton growth with temperature as a sigmoidal function \citep{Eldridge10}, nutrient uptake as Michaelis-Menten kinetics \citep{Dugdale67}, internal cell quotas following \citet{Droop73}, \ac{chla} to carbon ratios as a simple regression \citep{Murrell14}, light-dependence of photosynthesis with photoinhibition \citep{Platt80}, and a specific growth rate following Leibig's law of the minimum.  Conversely, the complex scenario used switches that modelled relationships between phytoplankton growth with temperature using the Arrhenius model \citep{Geider97}, nutrient uptake as proposed by \citet{Lehman75} and modified in \citet{Geider98}, internal cell quotas following \citet{Flynn03}, \ac{chla} to carbon ratios following \citet{Cloern95}, light-dependence of photosynthesis that is nutrient dependent \citep{Flynn03}, and a specific growth rate that is nutrient dependent.  Complete details of model switches are provided as supplementary material to \citetalias{LehrterIP}.
-
 \subsection{Extension to other state variables}
 
 The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables that were evaluated were ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}) and fecal pellets from zooplankton (\textit{OM1\_Z}, \textit{OM2\_Z}, see \citetalias{LehrterIP}). 
+
+\subsection{Model calibration with parameter subsets}
+
+% we want to show that the results have relevance for the larger three-dimensional model and that model output for calibration to different parameters sets will have differing precision given 1) differences in sensitivity to included ina  subsets and 2) differences given proportion of parameters selected from different categories.  
+
+% we use a time series from Weeks Bay NERRS because data are continuous, initial conditions were modified to match weeks bay conditions.  DO time series was filtered to remove tidal advection component and air/sea gas exhange was used.  This is not a perfect example but works for our purposes to demonstrate differeing precision as directly related to identifiability of subsets and paramter types in a subset.  
+% note that we are not concerned with the magnitude of the error but the differences in error between parameter subsets and number of runs to convergence.  
+
 
 \section{Results}
 
@@ -390,10 +402,6 @@ The above results demonstrated that state variables differed in the magnitudes o
 
 \Cref{fig:heurist_stts} demonstrates parameter selection for all state variables following the second heuristic where parameters were chosen by decreasing sensitivity independent of parameter categories (exact values are shown in \cref{tab:heurist2}).  The y-axis shows the relative identifiability with the addition of parameters from one to many on the x-axis (from left to right).  The second to last parameter for each variable is the last parameter selected within the potential threshold of $\gamma = 15$.  Interestingly, the last parameter shown for most of the state variables caused a relatively large increase in $\gamma$ that was disproportionate to the combined identifiability of the preceding parameter set. For most variables, the phytoplankton edibility vector for zooplankton (\Sexpr{par_txt('ediblevector(Z1)_1')}) caused a dramatic increase in $\gamma$ with inclusion in the parameter set.  In addition to demonstrating the approach for selection with the second heuristic, \cref{fig:heurist_stts} provides an alternative method of identifying parameters that are disproportionately redundant within a given parameter set (i.e., large contribution to $\gamma$).  This infomation is useful if additional parameter selection rules are developed independently of those proposed herein. 
 
-\subsection{Observational and structural uncertainty}
-
-Both the relative $L1$ estimates and number of parameters that affected state variables were sensitive to variation in the initial conditions (observation effects) and structural changes in the model.  Visual comparison of sensitivity values ($L1$) for the default model setup showed that all state variables were sensitive to \Sexpr{par_txt('vmaxSi_1')} after changing the initial conditions to April or September conditions (\cref{fig:sensalltile}).  State variables were also sensitive to \Sexpr{par_txt('Ksi_1')} for only the September conditions. Changing the model structure from the default (simple) to the complex setup showed state variables were also sensitive to \Sexpr{par_txt('KQn_1')} and \Sexpr{par_txt('Tref(nospA+nospZ)_7')}.  Changes in the sensitivity of individual parameters were also observed, most notably as a disproportionate increase in $L1$ for ammonium, \ac{chla}, \ac{pom}, and \ac{dom} to \Sexpr{par_txt('mA_1')} and \Sexpr{par_txt('Tref(nospA+nospZ)_1')} using the complex model setup.  Summaries by parameter categories of the effects of initial conditions and structural changes are shown in \cref{tab:inistrchg,fig:inistrsumm}. Changes in average sensitivity using April and September initial conditions showed most variables were less sensitive to parameters in the optics, temperature, and zooplankton categories, whereas increased sensitivity was generally observed for parameters in the organic matter and phytoplankton categories.  Some exceptions were observed, such as a decrease in nitrogen sensitivity to phytoplankton parameters (\cref{tab:inistrchg}).  Effects of structural complexity were most apparent as an increase in sensitivity of state variables to phytoplankton and temperature parameters, as noted for the individual variables in \cref{fig:sensalltile}. 
-
 \section{Discussion}
 
 \subsection{Implications of sensitivity and identifiability analyses}
@@ -424,69 +432,6 @@ Specific approaches can be used to improve and build on the results presented he
 % tables
 
 \invisiblesection{Tables}
-
-% initial conditions evaluated 
-<<inits, eval = T, cache = F>>=
-data(ini_eval)
-
-inits <- lapply(ini_eval, function(x) unlist(x[[1]])) %>% 
-  do.call('rbind', .) %>% 
-  t %>% 
-  data.frame(vars = row.names(.), .) %>% 
-  mutate(
-    Default = sapply(def, scinot),
-    April = sapply(apr, scinot), 
-    September = sapply(sep, scinot)
-  ) %>% 
-  select(-def, -apr, -sep) %>% 
-  mutate(
-    vars = factor(vars, 
-      labels = c('Ammonium', 'Dissolved Inorganic Carbon', 'Dissolved Oygen','Nitrate', 'Phosphate', 'Silica'),
-      levels = c('NH4', 'DIC', 'O2', 'NO3', 'PO4', 'Si')
-    ), 
-    vars = as.character(vars)
-  )
-
-cap_val <- 'Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \\ac{lcs}.  All units are $\\mu$mol L$^{-1}$.'
-
-latex( 
-  inits[, -1],
-  file = '',
-  rowlabel = 'Variables',
-  caption = cap_val,
-  caption.loc = 'top',
-  label = 'tab:inits',
-  rowname = inits[, 1]
-  )  
-@
-
-% structural conditions
-<<strcs, eval = T, cache = F>>=
-swtch <- data.frame(
-  lab = c('Temperature', 'Uptake', 'Quota', 'Chla:C', 'Photosynthesis', 'Specific growth rate'),
-  sim = c('sigmoidal {\\scriptsize \\citep{Eldridge10}}', 'Michaelis-Menten {\\scriptsize \\citep{Dugdale67}}', 'Droop {\\scriptsize \\citep{Droop73}}', 'regression {\\scriptsize \\citep{Murrell14}}', 'photoinhibition {\\scriptsize \\citep{Platt80}}', "Leibig's minimum"),
-  com = c('Arrenhius {\\scriptsize \\citep{Geider97}}', 'Geider {\\scriptsize \\citep{Lehman75,Geider98}}', 'Flynn {\\scriptsize \\citep{Flynn03}}', 'Cloern {\\scriptsize \\citep{Cloern95}}', 'nutrient dependent', 'nutrient dependent'), 
-  stringsAsFactors = F
-  ) %>% 
-  rename(
-    `Switch type` = lab, 
-    Default = sim, 
-    Complex = com
-  )
-
-cap_val <- 'Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity. Complete details and equations are provided as supplementary material to \\citetalias{LehrterIP}.'
-
-latex( 
-  swtch[, -1],
-  file = '',
-  rowlabel = 'Switch type',
-  caption = cap_val,
-  caption.loc = 'top',
-  label = 'tab:strcs',
-  rowname = swtch[, 1]
-  ) 
-
-@
 
 % do sensitivity all categories
 <<dosens, eval = T, cache = F>>=
@@ -539,6 +484,7 @@ totab <- lapply(tocal_all, function(x) x$cat) %>%
   spread(stts, coll, fill = '-') %>% 
   group_by(Parameter) %>% 
   arrange(Category, Rank)
+totab <- totab[, c('Category', 'Parameter', 'Rank', rev(stts_lab))]
     
 # final table formatting
 parms <- totab$Parameter
@@ -671,84 +617,6 @@ latex(
   )
 @
 
-% change in sensitivity for different initial, structural conditions
-<<inistrchg, eval = T, cache = F>>=
-# initial conditions
-data(ini_eval)
-data(struct_eval)
-
-to_eval <- lapply(ini_eval, function(x) x[[2]]) %>% 
-  c(., struct = list(struct_eval))
-
-eval_levs <- c('def', 'apr', 'sep', 'struct')
-eval_labs <- c('Default', 'Initial: April', 'Initial: September', 'Structure: complex')
-
-totab_all <- sapply(1:length(to_eval), function(x) {
-  
-  tmp <- reshape2::melt(to_eval[[x]], id.var = c('Parameter', 'error', 'Category'))
-  nms <- names(to_eval)[x]
-
-  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
-  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'POM', 'DOM', 'Phosphate'))
-  
-  toplo <- mutate(tmp,
-      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
-      Parameter = as.character(par_txt(Parameter, frm = 'exp')), 
-      nms = nms
-    ) %>% 
-    rename(Sensitivity = error)
-
-  return(toplo)
-  
-  }, simplify = F)
-totab_all <- do.call('rbind', totab_all)
-totab_all <- mutate(totab_all, nms = factor(nms, levels = eval_levs, labels = eval_labs))
-
-# summarize
-totab_all <- spread(totab_all, nms, Sensitivity) %>% 
-  group_by(Category, L1) %>% 
-  summarise(
-    mean_def = mean(Default, na.rm = TRUE),
-    iniapr_dif = mean(`Initial: April`, na.rm = TRUE) - mean_def,
-    iniapr_sgn = sign(iniapr_dif),
-    iniapr_dif = sapply(iniapr_dif, scinot),
-    iniapr_dif = ifelse(iniapr_sgn == -1, iniapr_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', iniapr_dif))),
-    inisep_dif = mean(`Initial: September`, na.rm = TRUE) - mean_def,
-    inisep_sgn = sign(inisep_dif),
-    inisep_dif = sapply(inisep_dif, scinot),
-    inisep_dif = ifelse(inisep_sgn == -1, inisep_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', inisep_dif))),
-    strcom_dif = mean(`Structure: complex`, na.rm = TRUE) - mean_def,
-    strcom_sgn = sign(strcom_dif),
-    strcom_dif = sapply(strcom_dif, scinot),
-    strcom_dif = ifelse(strcom_sgn == -1, strcom_dif, gsub('\\$$', '}$', gsub('^\\$', '$\\\\bm{', strcom_dif))),
-    mean_def = sapply(mean_def, scinot)
-  ) %>% 
-  select(-iniapr_sgn, -inisep_sgn, -strcom_sgn)  
-
-# final table formatting
-cats <- as.character(totab_all$Category)
-stts<- totab_all$L1
-cap_val<- 'Changes in mean sensitivity of state variables by parameter categories to different initial conditions and structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \\cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \\cref{fig:inistrsumm}.'
-colnms <- c('Default sensitivity', 'Initial: April', 'Initial: September', 'Structure: complex')
-
-latex( 
-  totab_all[, -c(1, 2)],
-  file = '',
-  rowlabel = 'State variables by parameter category',
-  caption = cap_val,
-  caption.loc = 'top',
-  size = 'scriptsize',
-  label = 'tab:inistrchg',
-  rowname = stts,
-  rgroup = unique(cats),
-  n.rgroup = as.numeric(table(cats)),
-  colheads = colnms,
-  cgroup = c('', 'Change'),
-  n.cgroup = c(1, 3)
-  )  
-
-@
-
 \clearpage
 
 %%%%%%
@@ -797,7 +665,7 @@ p2
 @
 
 % effects of changing initial and structural conditions
-<<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in parameter values using default conditions, changes in initial conditions (April, September seasonal means, \\cref{tab:inits}), and changes in structural complexity (\\cref{tab:strcs}). Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 7, fig.width = 8, out.width = '\\textwidth', eval = T, echo = F, warning = F, message = F>>=
+<<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in a 50\\% increase in parameter values. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 6, fig.width = 4, out.width = '0.7\\textwidth', eval = T, echo = F, warning = F, message = F>>=
 # initial conditions
 data(ini_eval)
 data(struct_eval)
@@ -829,11 +697,14 @@ toplo_all <- sapply(1:length(to_eval), function(x) {
 toplo_all <- do.call('rbind', toplo_all)
 toplo_all <- mutate(toplo_all, nms = factor(nms, levels = eval_levs, labels = eval_labs))
 
+# get only the default results
+toplo_all <- filter(toplo_all, nms %in% 'Default')
+
 pbase <- theme(
   panel.grid.major = element_blank(), 
   panel.grid.minor = element_blank(), 
   axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, size = 8), 
-  axis.text.y = element_text(size = 6),
+  axis.text.y = element_text(size = 8),
   legend.position = 'top', 
   plot.margin = grid::unit(c(2, 2, 2, 2), 'pt'), 
   strip.background = element_blank(), 
@@ -850,7 +721,7 @@ p <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) +
     ) + 
   scale_x_discrete('State variable', expand = c(0, 0)) +
   scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
-  facet_grid(Category~nms, scales = 'free_y', space = 'free') + 
+  facet_grid(Category~., scales = 'free_y', space = 'free') + 
   guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
 
 print(p)
@@ -1324,79 +1195,6 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
   pthm +
   theme(legend.position = 'top')
 
-@
-
-% summary of initial/structural changes on parameter sensitivity
-<<inistrsumm, eval = T, fig.cap = 'Summaries of changes in parameter sensitivity values (L1, \\cref{l1}) from the default model conditions.  Sensitivity was re-evaluated using initial conditions as seasonal means for April and September, and added structural complexity.  Sensitivity is summarized as the minimum, median, and maximum for each state variable separated by parameter categories. Changes in average sensitivity from the default model conditions are in \\cref{tab:inistrchg}.', fig.height = 7, fig.width = 7, echo = F, cache = TRUE, out.width = '\\textwidth'>>=
-
-# initial conditions
-data(ini_eval)
-data(struct_eval)
-
-to_eval <- lapply(ini_eval, function(x) x[[2]]) %>% 
-  c(., struct = list(struct_eval))
-
-eval_levs <- c('def', 'apr', 'sep', 'struct')
-eval_labs <- c('Default', 'Initial: April', 'Initial: September', 'Structure: complex')
-
-toplo_all <- sapply(1:length(to_eval), function(x) {
-  
-  tmp <- reshape2::melt(to_eval[[x]], id.var = c('Parameter', 'error', 'Category'))
-  nms <- names(to_eval)[x]
-
-  stts_lev <- rev(c('NH4', 'Chla_mg_tot', 'O2', 'irradiance', 'NO3', 'OM1', 'OM2', 'PO4'))
-  stts_lab <- rev(c('Ammonium', 'Chlorophyll', 'Dissolved Oxygen', 'Irradiance', 'Nitrate', 'POM', 'DOM', 'Phosphate'))
-  
-  toplo <- mutate(tmp,
-      L1 = factor(L1, levels = rev(stts_lev), labels = rev(stts_lab)),
-      Parameter = as.character(par_txt(Parameter, frm = 'exp')), 
-      nms = nms
-    ) %>% 
-    rename(Sensitivity = error)
-
-  return(toplo)
-  
-  }, simplify = F)
-toplo_all <- do.call('rbind', toplo_all)
-toplo_all <- mutate(toplo_all, nms = factor(nms, levels = eval_levs, labels = eval_labs))
-
-# summarize
-toplo_all <- group_by(toplo_all, Category, L1, nms) %>% 
-  summarise(
-    med_val = median(Sensitivity, na.rm = TRUE),
-    ave_val = mean(Sensitivity, na.rm = TRUE), 
-    min_val = quantile(Sensitivity, 0, na.rm = TRUE), 
-    max_val = quantile(Sensitivity, 1, na.rm = TRUE)
-  )
-    
-pbase <- theme_minimal() + 
-  theme(
-    legend.position = 'top',
-    axis.text.x = element_text(size = 8), 
-    axis.line.x = element_line(),
-    axis.line.y = element_line(), 
-    # panel.grid.minor =   element_blank(), 
-    # panel.grid.major = element_blank(),
-    axis.ticks.x = element_line(),
-    axis.ticks.y = element_line(),
-    axis.ticks.length = unit(.1, "cm")
-    )
-
-mycols <- RColorBrewer::brewer.pal(5, 'Spectral')
-names(mycols) <- cats
-fils<- scale_fill_manual(name = 'Category', values = mycols)
-cols <- scale_colour_manual(name = 'Category', values = mycols)
-
-ddge_wd <- 0.7
-ggplot(toplo_all, aes(x = L1)) + 
-  geom_errorbar(aes(ymin = min_val, ymax = max_val, group = Category), colour = 'black', width = 0, position = position_dodge(width = ddge_wd)) +
-  geom_point(aes(y = med_val, fill = Category), colour = 'black', pch = 21, position = position_dodge(width = ddge_wd), size = 3) + 
-  scale_y_continuous('Sensitivity', trans = 'log10') + 
-  scale_x_discrete('State variable') + 
-  facet_wrap( ~ nms, ncol = 1) +
-  cols +
-  fils + 
-  pbase
 @
 
 \clearpage

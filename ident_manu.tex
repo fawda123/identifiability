@@ -115,6 +115,18 @@
 }
 \makeatother
 
+% fix warning if acronyms are reset after abstract
+\makeatletter
+\renewcommand*\@verridelabel[1]{%
+  \@bsphack
+  \protected@write\@auxout{}{\string\undonewlabel{#1}}%
+  \protected@write\@auxout{}{\string\undonewlabel{#1@cref}}%Added for cleverref
+  \label{#1}%
+  \@overriddenmessage rs{#1}%
+  \@esphack
+}%
+\makeatother
+
 \linespread{1.5}
 
 %knitr options
@@ -135,7 +147,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Wed Dec 21 10:59:02 2016 -0600, \href{https://github.com/fawda123/identifiability/commit/d3eb2370a7cc79abbb571fc9216ed07baa4c881b}{d3eb2370a7cc79abbb571fc9216ed07baa4c881b}}
+\tnotetext[mytitlenote]{Version: Mon Mar 6 11:12:53 2017 -0600, \href{https://github.com/fawda123/identifiability/commit/4a06dbf55054203e59978de8be41053a6c7b9ba1}{4a06dbf55054203e59978de8be41053a6c7b9ba1}}
 
 \date{}
 
@@ -166,8 +178,8 @@
 
 \end{frontmatter}
 
-\acresetall
 \linenumbers
+\acresetall
 
 \section{Introduction}
 
@@ -175,7 +187,7 @@ Hypoxia formation in bottom waters of coastal oceans occurs primarily from exces
 
 The development and application of a model represents a tradeoff between characteristics expected from the output or provided by the structural components. An idealized model is sufficiently generalizable across systems, provides results that are precise given the inputs, and includes components that are realistic descriptions of actual processes \citep{Levins66}. Given that these characteristics cannot be simultaneously achieved, models are developed in partial dependence of reality and theoretical constructs, completely separate from both, or dependent on one or the other \citep{Morrison99,Ganju16}.  These challenges are analagous to the well-known bias-variance tradeoff in statistical models that balances the competing objectives of over- and under-fitting to an observed dataset. Process-based models are more commonly imbalanced between reality and theory, such that most are over-parameterized in an attempt to completely describe reality \citep{Denman03,Nossent12,Petrucci14}.  Such over-parameterization, including use of many  structural equations, can have serious implications for practical applications.  Quantitative limitations of over-parameterization are analagous to degrees of freedom in standard statistical models as free parameters cannot be numerically estimated when constrained to an observed dataset \citep{Kirchner06}.  More importantly, over-parameterization can limit use across systems outside of the data domain and impose uncertainty in model predictions as realistic values for every variable may not be known or inaccurately applied from existing studies \citep{Durand02,Refsgaard07,Wade08}. The application of process-based models to describe hypoxia dynamics has not been immune to these challenges and comprehensive approaches are needed to develop models that more carefully balance theory with reality \citep[e.g.,][]{Snowling01}.  
 
-Standard approaches for uncertainty analysis can be used to begin addressing model complexity issues.  In the most general sense, uncertainty is evaluated relative to the effects of input conditions or the observed data used to calibrate a model, changes in parameter values, or variation in the structural components (i.e., observational, parameter, or structural uncertainty) \citep{Beck87}.  Evaluating parameter uncertainty is by far the most common and simplest means of evaluating model behavior.  Although uncertainty analyses should be integrated throughout model development and application, parameters are more often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is sometimes called inverse modelling where results from sensitivity analyses are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability', where only a subset of parameters can be numerically constrained to the data as compared to the entire parameter set.  Redundancies in parameter effects lead to unidentifiable models where optimal solutions may be empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}. An unidentifiable parameter or parameter set has effects on model output that can be undone or compensated for by alteration of other parameters.  The concept of identifiable parameter subsets is not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in model development \citep{Fasham06}.  Moreover, the inclusion of sensitivity and identifiability analyses in model tuning will require the adoption of conservative selection rules for parameters to calibrate given the number of unique combinations of parameter subsets for most models \citep[e.g.,][]{Wagener01, Wagener01b}.  
+Standard approaches for uncertainty analysis can be used to begin addressing model complexity issues.  In the most general sense, uncertainty is evaluated relative to the effects of input conditions or the observed data used to calibrate a model, changes in parameter values, or variation in the structural components (i.e., observational, parameter, or structural uncertainty) \citep{Beck87}.  Evaluating parameter uncertainty is by far the most common and simplest means of evaluating model behavior.  Although uncertainty analyses should be integrated throughout model development and application, parameters are more often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is sometimes called inverse modelling where results from sensitivity analyses are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability', where only a subset of identifiable parameters can be numerically constrained to the data as compared to the entire set.  Redundancies in parameter effects lead to unidentifiable models where optimal solutions may be empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}. An unidentifiable parameter or parameter set has effects on model output that can be undone or compensated for by alteration of other parameters.  The concept of identifiable parameter subsets is not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in model development \citep{Fasham06}.  Moreover, the inclusion of sensitivity and identifiability analyses in model tuning will require the adoption of conservative selection rules for parameters to calibrate given the number of unique combinations of parameter subsets for most models \citep[e.g.,][]{Wagener01, Wagener01b}.  
 
 This study describes a parameter sensitivity analysis to evaluate identifiability of parameter subsets for a bio-geo-chemical model of hypoxia for the northern \ac{gom}.  We evaluate a simple \ac{zerod} unit of a larger spatial-temporal model to explore relationships between multiple parameter sets and hypoxia dynamics on the \ac{lcs}.  Specifically, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the larger parameter set can be optimized for a given research question or dataset.  We provide explicit guidance for choosing such subsets of the parameter space given constraints on identifiability as directly related to sensitivity analyses.  The objectives are to \begin{inparaenum}[1\upshape)]
 \item identify the parameters that have the greatest influence on \ac{do} using local sensitivity analysis,
@@ -190,7 +202,7 @@ These principles were also applied to other state variables predicted by the mod
 
 Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^{-3}$), occur seasonally in bottom waters in the northern \ac{gom}.  The \ac{lcs} receives high nutrient loads from the \ac{marb} that drains a significant portion of the continental United States.  Nutrient-stimulated primary production in surface waters increases biological oxygen demand in bottom waters as sinking organic matter is decomposed \citep{Bierman94,Murrell13}.  The hypoxic area averages 15,540 km$^2$ annually (1993-2015) with minimum concentrations observed from late spring to early fall.  Seasonal variation is strongly related to carbon and nutrient export from the \ac{marb} \citep{Lohrenz08,Bianchi10}, whereas hydrologic variation, currents, and wind patterns can affect vertical salinity gradients that contribute to the formation of hypoxia \citep{Wiseman97,Paerl98,Obenour15}. 
 
-This study evaluated the core unit of a recently developed hydrodynamic and ecological model that describes horizontal and vertical transport and mixing of state variables relevant for hypoxia in the northern \ac{gom}.  The \ac{cgem} includes elements from the Navy Coastal Ocean Model \citep{Martin00} for hydrodynamics on the \ac{lcs} and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf (depth $\leq$ 100 m, with additional hybrid layers at deeper depths).  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.  Atmospheric and hydrological boundary conditions described in \citet{Hodur97} and \citet{Lehrter13} are also included in \ac{cgem}.
+This study evaluated the core unit of a recently developed hydrodynamic and ecological model that describes horizontal and vertical transport and mixing of state variables relevant for hypoxia in the northern \ac{gom}.  The \ac{cgem} includes elements from the Navy Coastal Ocean Model \citep{Martin00} for hydrodynamics on the \ac{lcs} and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf (depth $\leq$ 100 m, with additional hybrid layers at deeper depths).  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.  Atmospheric and hydrologic boundary conditions described in \citet{Hodur97} and \citet{Lehrter13} are also included in \ac{cgem}.
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any form of physical transport (i.e., advection, mixing, or surface flux) nor sediment diagenesis.  Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Accordingly, the sensitivity and identifiability analyses described below are informative for both the \ac{lcs} gridded model as well as potential applications to different systems.  The FishTank model provides estimates for the 36 state variables described above using a \ac{zerod} parcel that is uniformly mixed as a closed system.  A set of initial conditions is provided on execution of the model that is based on observations of relevant variables obtained from research cruises in the northern \ac{gom} during April, June, and September of 2006 \citep[Table 1 in][]{Murrell14}. 
 
@@ -237,17 +249,17 @@ A set of heuristics was developed that address the tradeoff in model complexity 
 \item or considering all categories equally.
 \end{inparaenum} The selection rules produced seven subsets of parameters that could further be used to optimize model calibration.
 
-\subsection{Observational and structural uncertainty}
-
-In addition to parameter uncertainty, the effects of observational and structural uncertainty on the sensitivity analyses were evaluated by changing the initial conditions and structural components, respectively, from the default model setup.  First, observational uncertainty (i.e., effects of observed data on model output) was evaluated by varying the initial conditions that were based on observational data from research cruises in the northern \ac{gom} \citep{Murrell14}. Uncertainty in these data translates directly to uncertainty that can influence results of the sensitivity analysis.  For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) will vary given the initial nutrient concentrations \citep{Eppley69}.  Further, changes in the ratio between nitrogen and phosphorus could affect sensitivity depending on the limiting nutrient.  Parameter sensitivity was re-evaluated by varying all initial conditions that were non-zero by different seasonal means based on averages of water quality data across stations and years.  April and September seasonal averages of the observed data were used to evaluate the effects of conditions that were typical of spring and late summer on the \ac{lcs} (\cref{tab:inits}).  
-
-The effects of model structure on parameter sensitivity (i.e., structural uncertainty) were evaluated by changing specific components of the model.  The FishTank model includes several ecosystem processes or characteristics that can be included based on expected conditions, available data, or desired complexity.  These `switches' are conceptually different from model parameters as they allow the inclusion or exclusion of explicit equations or processes.  Switches in FishTank include different structural equations for the vertical attenuation of light through the water column (inherent or apparent optical properties, \citealt{Penta09,Eldridge10}) and chlorophyll to carbon ratio models (fixed or dynamic given light and nutrients, \citealt{Cloern95}).  Several switches also affect phytoplankton growth including different models for specific growth and effects of temperature, light dependence, nutrient uptake, and internal cell quotas \citepalias[][references therein]{LehrterIP}.  
-
-Parameter sensitivity was evaluated by comparing the results from the default model setup to a more complex setup with alternative switches (\cref{tab:strcs}).  The scenarios used switches for different equations to represent structural relationships of phytoplankton growth patterns with temperature, nutrient uptake, cell quotas, \ac{chla} to carbon ratios, photosynthesis dynamics, and specific growth limits. The default scenario modelled phytoplankton growth with temperature as a sigmoidal function \citep{Eldridge10}, nutrient uptake as Michaelis-Menten kinetics \citep{Dugdale67}, internal cell quotas following \citet{Droop73}, \ac{chla} to carbon ratios as a simple regression \citep{Murrell14}, light-dependence of photosynthesis with photoinhibition \citep{Platt80}, and a specific growth rate following Leibig's law of the minimum.  Conversely, the complex scenario used switches that modelled relationships between phytoplankton growth with temperature using the Arrhenius model \citep{Geider97}, nutrient uptake as proposed by \citet{Lehman75} and modified in \citet{Geider98}, internal cell quotas following \citet{Flynn03}, \ac{chla} to carbon ratios following \citet{Cloern95}, light-dependence of photosynthesis that is nutrient dependent \citep{Flynn03}, and a specific growth rate that is nutrient dependent.  Complete details of model switches are provided as supplementary material to \citetalias{LehrterIP}.
-
 \subsection{Extension to other state variables}
 
 The above analyses were repeated for additional state variables estimated by FishTank to provide further descriptions of ecological dynamics that are relevant for hypoxia.  In addition to \ac{do}, other state variables that were evaluated were ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus.  Particulate and dissolved organic matter were estimated as the summation of the respective outputs for organic matter from phytoplankon (\textit{OM1\_A}, \textit{OM2\_A}) and fecal pellets from zooplankton (\textit{OM1\_Z}, \textit{OM2\_Z}, see \citetalias{LehrterIP}). 
+
+\subsection{Model calibration with parameter subsets}
+
+% we want to show that the results have relevance for the larger three-dimensional model and that model output for calibration to different parameters sets will have differing precision given 1) differences in sensitivity to included ina  subsets and 2) differences given proportion of parameters selected from different categories.  
+
+% we use a time series from Weeks Bay NERRS because data are continuous, initial conditions were modified to match weeks bay conditions.  DO time series was filtered to remove tidal advection component and air/sea gas exhange was used.  This is not a perfect example but works for our purposes to demonstrate differeing precision as directly related to identifiability of subsets and paramter types in a subset.  
+% note that we are not concerned with the magnitude of the error but the differences in error between parameter subsets and number of runs to convergence.  
+
 
 \section{Results}
 
@@ -282,10 +294,6 @@ The above results demonstrated that state variables differed in the magnitudes o
 
 \Cref{fig:heurist_stts} demonstrates parameter selection for all state variables following the second heuristic where parameters were chosen by decreasing sensitivity independent of parameter categories (exact values are shown in \cref{tab:heurist2}).  The y-axis shows the relative identifiability with the addition of parameters from one to many on the x-axis (from left to right).  The second to last parameter for each variable is the last parameter selected within the potential threshold of $\gamma = 15$.  Interestingly, the last parameter shown for most of the state variables caused a relatively large increase in $\gamma$ that was disproportionate to the combined identifiability of the preceding parameter set. For most variables, the phytoplankton edibility vector for zooplankton (\textit{ediblevector(Z1)}) caused a dramatic increase in $\gamma$ with inclusion in the parameter set.  In addition to demonstrating the approach for selection with the second heuristic, \cref{fig:heurist_stts} provides an alternative method of identifying parameters that are disproportionately redundant within a given parameter set (i.e., large contribution to $\gamma$).  This infomation is useful if additional parameter selection rules are developed independently of those proposed herein. 
 
-\subsection{Observational and structural uncertainty}
-
-Both the relative $L1$ estimates and number of parameters that affected state variables were sensitive to variation in the initial conditions (observation effects) and structural changes in the model.  Visual comparison of sensitivity values ($L1$) for the default model setup showed that all state variables were sensitive to \textit{vmaxSi} after changing the initial conditions to April or September conditions (\cref{fig:sensalltile}).  State variables were also sensitive to \textit{Ksi} for only the September conditions. Changing the model structure from the default (simple) to the complex setup showed state variables were also sensitive to \textit{KQn} and \textit{Tref(nospA+nospZ)$_{z1}$}.  Changes in the sensitivity of individual parameters were also observed, most notably as a disproportionate increase in $L1$ for ammonium, \ac{chla}, \ac{pom}, and \ac{dom} to \textit{mA} and \textit{Tref(nospA+nospZ)$_{p1}$} using the complex model setup.  Summaries by parameter categories of the effects of initial conditions and structural changes are shown in \cref{tab:inistrchg,fig:inistrsumm}. Changes in average sensitivity using April and September initial conditions showed most variables were less sensitive to parameters in the optics, temperature, and zooplankton categories, whereas increased sensitivity was generally observed for parameters in the organic matter and phytoplankton categories.  Some exceptions were observed, such as a decrease in nitrogen sensitivity to phytoplankton parameters (\cref{tab:inistrchg}).  Effects of structural complexity were most apparent as an increase in sensitivity of state variables to phytoplankton and temperature parameters, as noted for the individual variables in \cref{fig:sensalltile}. 
-
 \section{Discussion}
 
 \subsection{Implications of sensitivity and identifiability analyses}
@@ -316,46 +324,6 @@ Specific approaches can be used to improve and build on the results presented he
 % tables
 
 \invisiblesection{Tables}
-
-% initial conditions evaluated 
-%latex.default(inits[, -1], file = "", rowlabel = "Variables",     caption = cap_val, caption.loc = "top", label = "tab:inits",     rowname = inits[, 1])%
-\begin{table}[!tbp]
-\caption{Initial conditions that were varied to evaluate effects of observational uncertainty on parameter sensitivity.  April and September values are based on seasonal averages from water quality samples of the \ac{lcs}.  All units are $\mu$mol L$^{-1}$.\label{tab:inits}} 
-\begin{center}
-\begin{tabular}{llll}
-\hline\hline
-\multicolumn{1}{l}{Variables}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{April}&\multicolumn{1}{c}{September}\tabularnewline
-\hline
-Dissolved Inorganic Carbon&$2.13\times 10^{3}$&$2.1\times 10^{3}$&$2.13\times 10^{3}$\tabularnewline
-Ammonium&$1.09$&$1.79$&$0.35$\tabularnewline
-Nitrate&$71.4$&$3.75$&$2.04$\tabularnewline
-Dissolved Oygen&$172$&$194.47$&$152.57$\tabularnewline
-Phosphate&$1.81$&$0.23$&$0.42$\tabularnewline
-Silica&$71.4$&$5.84$&$9.77$\tabularnewline
-\hline
-\end{tabular}\end{center}
-\end{table}
-
-
-% structural conditions
-%latex.default(swtch[, -1], file = "", rowlabel = "Switch type",     caption = cap_val, caption.loc = "top", label = "tab:strcs",     rowname = swtch[, 1])%
-\begin{table}[!tbp]
-\caption{Model switches that were used to evaluate effects of structural uncertainty on parameter sensitivity. Complete details and equations are provided as supplementary material to \citetalias{LehrterIP}.\label{tab:strcs}} 
-\begin{center}
-\begin{tabular}{lll}
-\hline\hline
-\multicolumn{1}{l}{Switch type}&\multicolumn{1}{c}{Default}&\multicolumn{1}{c}{Complex}\tabularnewline
-\hline
-Temperature&sigmoidal {\scriptsize \citep{Eldridge10}}&Arrenhius {\scriptsize \citep{Geider97}}\tabularnewline
-Uptake&Michaelis-Menten {\scriptsize \citep{Dugdale67}}&Geider {\scriptsize \citep{Lehman75,Geider98}}\tabularnewline
-Quota&Droop {\scriptsize \citep{Droop73}}&Flynn {\scriptsize \citep{Flynn03}}\tabularnewline
-Chla:C&regression {\scriptsize \citep{Murrell14}}&Cloern {\scriptsize \citep{Cloern95}}\tabularnewline
-Photosynthesis&photoinhibition {\scriptsize \citep{Platt80}}&nutrient dependent\tabularnewline
-Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
-\hline
-\end{tabular}\end{center}
-\end{table}
-
 
 % do sensitivity all categories
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
@@ -431,47 +399,47 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \hline
 {\bfseries Optics}&&&&&&&&&\tabularnewline
 ~~\scriptsize{\textit{astar490}}&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$&$1$\tabularnewline
-~~\scriptsize{\textit{astarOMA}}&$2$&$7.33$&$5.42$&-&$7.87$&$5.36$&-&-&$7.78$\tabularnewline
-~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&$4.73$&-\tabularnewline
-~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&$10.04$&-\tabularnewline
-~~\scriptsize{\textit{astarOMZ}}&$3$&$7.58$&$5.51$&-&$7.87$&$6.02$&-&-&$7.91$\tabularnewline
+~~\scriptsize{\textit{astarOMA}}&$2$&$7.33$&$5.42$&-&$5.36$&-&$7.78$&$7.87$&-\tabularnewline
+~~\scriptsize{\textit{astarOMZ}}&$2$&-&-&$1.39$&-&-&-&-&$4.73$\tabularnewline
+~~\scriptsize{\textit{astarOMA}}&$3$&-&-&$3.87$&-&-&-&-&$10.04$\tabularnewline
+~~\scriptsize{\textit{astarOMZ}}&$3$&$7.58$&$5.51$&-&$6.02$&-&$7.91$&$7.87$&-\tabularnewline
 \hline
 {\bfseries Organic Matter}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&-&$1$&$1$\tabularnewline
-~~\scriptsize{\textit{KG2}}&$1$&-&-&-&$1$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&-&$1$&-&-&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$1$&-&-&-&-&-&$1$&-&-\tabularnewline
+~~\scriptsize{\textit{KG1}}&$1$&-&-&$1$&-&-&$1$&-&$1$\tabularnewline
+~~\scriptsize{\textit{KG2}}&$1$&-&-&-&-&-&-&$1$&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$1$&-&$1$&-&$1$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$1$&-&-&-&-&$1$&-&-&-\tabularnewline
 ~~\scriptsize{\textit{nitmax}}&$1$&$1$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&-&$1.93$&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&$13.43$&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&$1.39$&-&-&-&$1.47$\tabularnewline
+~~\scriptsize{\textit{KG1}}&$2$&-&$1.12$&-&$1.93$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KG2}}&$2$&-&-&$6$&-&-&-&-&$13.43$\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$2$&-&-&-&-&-&$1.47$&$1.39$&-\tabularnewline
 ~~\scriptsize{\textit{KNH4}}&$2$&$4.03$&-&-&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{KG1}}&$3$&$4.09$&-&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KG2}}&$3$&-&-&-&-&$8.19$&-&-&-\tabularnewline
-~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&$13.75$&-\tabularnewline
-~~\scriptsize{\textit{KO2}}&$3$&-&-&-&$11.96$&-&-&-&$14.07$\tabularnewline
+~~\scriptsize{\textit{KG2}}&$3$&-&-&-&$8.19$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{KGcdom}}&$3$&-&-&-&-&-&-&-&$13.75$\tabularnewline
+~~\scriptsize{\textit{KO2}}&$3$&-&-&-&-&-&$14.07$&$11.96$&-\tabularnewline
 ~~\scriptsize{\textit{KstarO2}}&$3$&-&-&$6.04$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{KGcdom}}&$4$&$4.19$&-&$6.12$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{KO2}}&$4$&-&-&-&-&-&-&$14.68$&-\tabularnewline
-~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&-&$10.65$&-&-&$14.08$\tabularnewline
+~~\scriptsize{\textit{KO2}}&$4$&-&-&-&-&-&-&-&$14.68$\tabularnewline
+~~\scriptsize{\textit{KstarO2}}&$4$&-&-&-&$10.65$&-&$14.08$&-&-\tabularnewline
 ~~\scriptsize{\textit{KO2}}&$5$&$9.47$&-&$8.61$&-&-&-&-&-\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&$1$&-&-&-&$1$\tabularnewline
-~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&-&$1$&$1$&$1$&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&-&-&$1.15$\tabularnewline
-~~\scriptsize{\textit{mA}}&$2$&-&-&$1.19$&-&$1.29$&-&-&-\tabularnewline
-~~\scriptsize{\textit{Qc}}&$2$&-&-&-&-&-&$11.57$&-&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$2$&-&-&-&$1.21$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&$7.45$&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&-&$1.98$&-&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&$2.9$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&-&-&$3.26$\tabularnewline
+~~\scriptsize{\textit{mA}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$2$&$1.13$&$1.17$&-&-&-&$1.15$&-&-\tabularnewline
+~~\scriptsize{\textit{mA}}&$2$&-&-&$1.19$&$1.29$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Qc}}&$2$&-&-&-&-&$11.57$&-&-&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$2$&-&-&-&-&-&-&$1.21$&-\tabularnewline
+~~\scriptsize{\textit{vmaxP}}&$2$&-&-&-&-&-&-&-&$7.45$\tabularnewline
+~~\scriptsize{\textit{alpha}}&$3$&-&-&$1.44$&$1.98$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$3$&-&-&-&-&-&-&$2.9$&-\tabularnewline
+~~\scriptsize{\textit{umax}}&$3$&$2.73$&$2.11$&-&-&-&$3.26$&-&-\tabularnewline
 ~~\scriptsize{\textit{alpha}}&$4$&$3.55$&$4.57$&-&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&-&$4.09$&-&-&-\tabularnewline
-~~\scriptsize{\textit{Qc}}&$4$&-&-&-&-&-&-&-&$4.98$\tabularnewline
-~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&$4.9$&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&-&-&$10.11$\tabularnewline
+~~\scriptsize{\textit{ediblevector(Z1)}}&$4$&-&-&$2.09$&$4.09$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Qc}}&$4$&-&-&-&-&-&$4.98$&-&-\tabularnewline
+~~\scriptsize{\textit{vmaxN}}&$4$&-&-&-&-&-&-&$4.9$&-\tabularnewline
+~~\scriptsize{\textit{alpha}}&$5$&-&-&-&-&-&$10.11$&-&-\tabularnewline
 ~~\scriptsize{\textit{Qc}}&$5$&-&-&$2.9$&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{vmaxN}}&$5$&$8.14$&-&-&-&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Athresh}}&$6$&$11.27$&-&-&-&-&-&-&-\tabularnewline
@@ -479,13 +447,13 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 ~~\scriptsize{\textit{vmaxN}}&$7$&-&-&$3.97$&-&-&-&-&-\tabularnewline
 \hline
 {\bfseries Zooplankton}&&&&&&&&&\tabularnewline
-~~\scriptsize{\textit{ZKa}}&$1$&-&-&$1$&-&$1$&$1$&$1$&-\tabularnewline
-~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&$1$&-&-&-&$1$\tabularnewline
-~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&$5.43$&-&-&-&$7.3$\tabularnewline
-~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&-&$6.32$&$9.76$&$8.54$&-\tabularnewline
+~~\scriptsize{\textit{ZKa}}&$1$&-&-&$1$&$1$&$1$&-&-&$1$\tabularnewline
+~~\scriptsize{\textit{Zumax}}&$1$&$1$&$1$&-&-&-&$1$&$1$&-\tabularnewline
+~~\scriptsize{\textit{ZKa}}&$2$&-&$4.31$&-&-&-&$7.3$&$5.43$&-\tabularnewline
+~~\scriptsize{\textit{ZQn}}&$2$&-&-&$3.18$&$6.32$&$9.76$&-&-&$8.54$\tabularnewline
 ~~\scriptsize{\textit{Zm}}&$3$&-&-&$4.57$&-&-&-&-&-\tabularnewline
-~~\scriptsize{\textit{Zumax}}&$3$&-&-&-&-&$6.93$&-&-&-\tabularnewline
-~~\scriptsize{\textit{Zm}}&$4$&-&-&-&-&$11.86$&-&-&-\tabularnewline
+~~\scriptsize{\textit{Zumax}}&$3$&-&-&-&$6.93$&-&-&-&-\tabularnewline
+~~\scriptsize{\textit{Zm}}&$4$&-&-&-&$11.86$&-&-&-&-\tabularnewline
 ~~\scriptsize{\textit{Zumax}}&$4$&-&-&$5.2$&-&-&-&-&-\tabularnewline
 \hline
 \end{tabular}\end{center}}
@@ -627,72 +595,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 \end{table}
 
 
-% change in sensitivity for different initial, structural conditions
-%latex.default(totab_all[, -c(1, 2)], file = "", rowlabel = "State variables by parameter category",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:inistrchg", rowname = stts, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), colheads = colnms, cgroup = c("",         "Change"), n.cgroup = c(1, 3))%
-\begin{table}[!tbp]
-{\scriptsize
-\caption{Changes in mean sensitivity of state variables by parameter categories to different initial conditions and structural components of the model.  Changes show the difference in average sensitivity from results using the default model setup. Sensitivities are based on average $L1$ (see \cref{l1}) values of the state variables to changes in parameters in each parameter category. Increases in average sensitivity are in bold. Medians and ranges of sensitivity values for the different conditions are shown in \cref{fig:inistrsumm}.\label{tab:inistrchg}} 
-\begin{center}
-\begin{tabular}{llclll}
-\hline\hline
-\multicolumn{1}{l}{\bfseries State variables by parameter category}&\multicolumn{1}{c}{\bfseries }&\multicolumn{1}{c}{\bfseries }&\multicolumn{3}{c}{\bfseries Change}\tabularnewline
-\cline{4-6}
-\multicolumn{1}{l}{}&\multicolumn{1}{c}{Default sensitivity}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{Initial: April}&\multicolumn{1}{c}{Initial: September}&\multicolumn{1}{c}{Structure: complex}\tabularnewline
-\hline
-{\bfseries Optics}&&&&&\tabularnewline
-~~Ammonium&$0.01$&&$-9.13\times 10^{-3}$&$-8.37\times 10^{-3}$&$-7.7\times 10^{-3}$\tabularnewline
-~~Chlorophyll&$8.77\times 10^{-3}$&&$-6.79\times 10^{-3}$&$-6.3\times 10^{-3}$&$-7.33\times 10^{-3}$\tabularnewline
-~~Dissolved Oxygen&$2.81\times 10^{-4}$&&$-2.11\times 10^{-4}$&$-1.46\times 10^{-4}$&$-1.93\times 10^{-4}$\tabularnewline
-~~Irradiance&$9.1\times 10^{-3}$&&$\bm{2.56\times 10^{-3}}$&$\bm{3.1\times 10^{-3}}$&$\bm{1.57\times 10^{-3}}$\tabularnewline
-~~Nitrate&$7.72\times 10^{-3}$&&$-6.46\times 10^{-3}$&$-6.2\times 10^{-3}$&$-6.8\times 10^{-3}$\tabularnewline
-~~POM&$0.01$&&$-9.06\times 10^{-3}$&$-8.49\times 10^{-3}$&$-8.56\times 10^{-3}$\tabularnewline
-~~DOM&$0.02$&&$-0.01$&$-0.01$&$-0.01$\tabularnewline
-~~Phosphate&$3.35\times 10^{-3}$&&$-2.53\times 10^{-3}$&$-2.15\times 10^{-3}$&$-3.04\times 10^{-3}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&&&&\tabularnewline
-~~Ammonium&$0.31$&&$\bm{0.08}$&$\bm{0.04}$&$-2.22\times 10^{-4}$\tabularnewline
-~~Chlorophyll&$0.02$&&$\bm{0.12}$&$\bm{0.14}$&$-0.01$\tabularnewline
-~~Dissolved Oxygen&$2.17\times 10^{-3}$&&$-6.75\times 10^{-4}$&$\bm{2.32\times 10^{-4}}$&$-1.05\times 10^{-3}$\tabularnewline
-~~Irradiance&$6.63\times 10^{-3}$&&$\bm{5.34\times 10^{-3}}$&$\bm{6.79\times 10^{-3}}$&$-2.99\times 10^{-4}$\tabularnewline
-~~Nitrate&$0.12$&&$\bm{0.06}$&$\bm{0.09}$&$-0.1$\tabularnewline
-~~POM&$0.13$&&$\bm{0.15}$&$\bm{0.12}$&$\bm{0.04}$\tabularnewline
-~~DOM&$0.14$&&$\bm{0.07}$&$\bm{0.17}$&$\bm{0.05}$\tabularnewline
-~~Phosphate&$0.03$&&$\bm{0.04}$&$\bm{0.06}$&$-0.02$\tabularnewline
-\hline
-{\bfseries Phytoplankton}&&&&&\tabularnewline
-~~Ammonium&$0.8$&&$-0.02$&$\bm{0.3}$&$\bm{65.98}$\tabularnewline
-~~Chlorophyll&$1.14$&&$\bm{1.23}$&$\bm{4.38}$&$\bm{104.24}$\tabularnewline
-~~Dissolved Oxygen&$0.01$&&$-4.58\times 10^{-4}$&$\bm{2.31\times 10^{-3}}$&$\bm{3.44\times 10^{-4}}$\tabularnewline
-~~Irradiance&$0.02$&&$-2.04\times 10^{-3}$&$\bm{1.83\times 10^{-3}}$&$\bm{7.53\times 10^{-3}}$\tabularnewline
-~~Nitrate&$0.74$&&$-0.43$&$-0.45$&$-0.64$\tabularnewline
-~~POM&$0.76$&&$\bm{0.17}$&$\bm{0.46}$&$\bm{55.11}$\tabularnewline
-~~DOM&$1.28$&&$\bm{0.34}$&$\bm{1.15}$&$\bm{128.93}$\tabularnewline
-~~Phosphate&$0.17$&&$\bm{0.03}$&$\bm{0.05}$&$-0.14$\tabularnewline
-\hline
-{\bfseries Temperature}&&&&&\tabularnewline
-~~Ammonium&$0.79$&&$-0.69$&$-0.69$&$\bm{272.31}$\tabularnewline
-~~Chlorophyll&$0.6$&&$-0.47$&$-0.45$&$\bm{114.51}$\tabularnewline
-~~Dissolved Oxygen&$0.02$&&$-0.02$&$-0.02$&$-0.01$\tabularnewline
-~~Irradiance&$0.03$&&$-0.02$&$-0.02$&$\bm{0.01}$\tabularnewline
-~~Nitrate&$0.3$&&$-0.15$&$-0.16$&$-0.19$\tabularnewline
-~~POM&$0.86$&&$-0.68$&$-0.69$&$\bm{215.17}$\tabularnewline
-~~DOM&$1.48$&&$-1.21$&$-1.2$&$\bm{900.26}$\tabularnewline
-~~Phosphate&$0.16$&&$-0.11$&$-0.09$&$-0.11$\tabularnewline
-\hline
-{\bfseries Zooplankton}&&&&&\tabularnewline
-~~Ammonium&$0.47$&&$-0.45$&$-0.44$&$-0.16$\tabularnewline
-~~Chlorophyll&$0.39$&&$-0.26$&$-0.23$&$-0.2$\tabularnewline
-~~Dissolved Oxygen&$0.01$&&$-0.01$&$-8.68\times 10^{-3}$&$-6.96\times 10^{-3}$\tabularnewline
-~~Irradiance&$0.03$&&$-0.02$&$-0.02$&$-0.01$\tabularnewline
-~~Nitrate&$1.06$&&$-1.02$&$-1.02$&$-0.98$\tabularnewline
-~~POM&$0.37$&&$-0.27$&$-0.28$&$-0.18$\tabularnewline
-~~DOM&$0.39$&&$-0.3$&$-0.28$&$-0.18$\tabularnewline
-~~Phosphate&$0.31$&&$-0.19$&$-0.17$&$-0.27$\tabularnewline
-\hline
-\end{tabular}\end{center}}
-\end{table}
-
-
 \clearpage
 
 %%%%%%
@@ -715,11 +617,11 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 % effects of changing initial and structural conditions
 \begin{figure}[!ht]
 
-{\centering \includegraphics[width=\textwidth]{figs/sensalltile-1} 
+{\centering \includegraphics[width=0.7\textwidth]{figs/sensalltile-1} 
 
 }
 
-\caption{Sensitivity values (L1, \cref{l1}) of all state variables to changes in parameter values using default conditions, changes in initial conditions (April, September seasonal means, \cref{tab:inits}), and changes in structural complexity (\cref{tab:strcs}). Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \cref{tab:dosens} for L1 values for \ac{do} and \cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.}\label{fig:sensalltile}
+\caption{Sensitivity values (L1, \cref{l1}) of all state variables to changes in a 50\% increase in parameter values. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \cref{tab:dosens} for L1 values for \ac{do} and \cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.}\label{fig:sensalltile}
 \end{figure}
 
 
@@ -780,18 +682,6 @@ Specific growth rate&Leibig's minimum&nutrient dependent\tabularnewline
 }
 
 \caption[Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for all state variables]{Identifiability (as $\gamma$, \cref{gameq}) of selecting parameters for all state variables. Parameters are selected by decreasing sensitivity independent of parameter categories. Grey lines indicate potential thresholds at $\gamma = 10, 15$ for maximum acceptable identifiability. Selection stops after $\gamma > 15$.}\label{fig:heurist_stts}
-\end{figure}
-
-
-
-% summary of initial/structural changes on parameter sensitivity
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\textwidth]{figs/inistrsumm-1} 
-
-}
-
-\caption{Summaries of changes in parameter sensitivity values (L1, \cref{l1}) from the default model conditions.  Sensitivity was re-evaluated using initial conditions as seasonal means for April and September, and added structural complexity.  Sensitivity is summarized as the minimum, median, and maximum for each state variable separated by parameter categories. Changes in average sensitivity from the default model conditions are in \cref{tab:inistrchg}.}\label{fig:inistrsumm}
 \end{figure}
 
 

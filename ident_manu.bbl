@@ -1,4 +1,4 @@
-\begin{thebibliography}{68}
+\begin{thebibliography}{58}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -35,11 +35,6 @@ Clark, J.~S., Carpenter, S.~R., Barber, M., Collins, S., Dobson, A., Foley,
   2001. Ecological forecasts: an emerging imperative. Sci. 293~(5530),
   657--660.
 
-\bibitem[{Cloern et~al.(1995)Cloern, Grenz, and Vidergar-Lucas}]{Cloern95}
-Cloern, J.~E., Grenz, C., Vidergar-Lucas, L., 1995. An empirical model of the
-  phytoplankton:carbon ratio - the conversion factor between productivity and
-  growth rate. Limnol. Oceanogr. 40~(7), 1313--1321.
-
 \bibitem[{Denman(2003)}]{Denman03}
 Denman, K.~L., 2003. Modelling planktonic ecosystems: parameterizing
   complexity. Prog. Oceanogr. 57~(3-4), 429--452.
@@ -53,14 +48,6 @@ Diaz, R.~J., Rosenberg, R., 1995. Marine benthic hypoxia: A review of its
 Diaz, R.~J., Rosenberg, R., 2011. Introduction to environmental and economic
   consequences of hypoxia. Int. J. Water Resour. Dev. 27~(1), 71--82.
 
-\bibitem[{Droop(1973)}]{Droop73}
-Droop, M.~R., 1973. Some thoughts on nutrient limitation in algae. J. Phycol.
-  9, 264--272.
-
-\bibitem[{Dugdale and Goering(1967)}]{Dugdale67}
-Dugdale, R.~C., Goering, J.~J., 1967. Uptake of new and regenerated nitrogen in
-  primary productivity. Limnol. Oceanogr. 12, 196--206.
-
 \bibitem[{Durand et~al.(2002)Durand, Gascuel-Odoux, and Cordier}]{Durand02}
 Durand, P., Gascuel-Odoux, C., Cordier, M.~O., 2002. Parameterisation of
   hydrological models: a review and lessons learned from studies of an
@@ -70,11 +57,6 @@ Durand, P., Gascuel-Odoux, C., Cordier, M.~O., 2002. Parameterisation of
 Eldridge, P.~M., Roelke, D.~L., 2010. Origins and scales of hypoxia on the
   {L}ouisiana shelf: importance of seasonal plankton dynamics and river
   nutrients and discharge. Ecol. Model. 221~(7), 1028--1042.
-
-\bibitem[{Eppley et~al.(1969)Eppley, Rogers, and McCarthy}]{Eppley69}
-Eppley, R.~W., Rogers, J.~N., McCarthy, J., 1969. Half-saturation constants for
-  uptake of nitrate and ammonium by marine phytoplankton. Limnol. Oceanogr.
-  14~(6), 912--920.
 
 \bibitem[{Estrada and Diaz(2010)}]{Estrada10}
 Estrada, V., Diaz, M., 2010. Global sensitivity analysis in the development of
@@ -103,10 +85,6 @@ Fennel, K., Hu, J., Laurent, A., Marta-Almeida, M., Hetland, R., 2013.
   sediment oxygen consumption and model nesting. J. Geophys. Res. Ocean.
   118~(2), 990--1002.
 
-\bibitem[{Flynn(2003)}]{Flynn03}
-Flynn, K.~J., 2003. Modelling multi-nutrient interactions in phytoplankton;
-  balancing simplicity and realism. Prog. Oceanogr. 56~(2), 249--279.
-
 \bibitem[{Ganju et~al.(2016)Ganju, Brush, Rashleigh, Aretxabaleta, del Barrio,
   Grear, Harris, Lake, McCardell, O'Donnell, Ralston, Signell, Testa, and
   Vaudrey}]{Ganju16}
@@ -115,17 +93,6 @@ Ganju, N.~K., Brush, M.~J., Rashleigh, B., Aretxabaleta, A.~L., del Barrio, P.,
   Ralston, D.~K., Signell, R.~P., Testa, J.~M., Vaudrey, J. M.~P., 2016.
   Progress and challenges in coupled hydrodynamic-ecological estuarine
   modeling. Estuaries Coasts 39~(2), 311--332.
-
-\bibitem[{Geider et~al.(1997)Geider, MacIntyre, and Kana}]{Geider97}
-Geider, R.~J., MacIntyre, H.~L., Kana, T.~M., 1997. A dynamic model of
-  phytoplankton growth and acclimation: responses of the balanced growth rate
-  and the chlorophyll \textit{a}:carbon ratio to light, nutrient-limitation and
-  temperature. Mar. Ecol. Prog. Ser. 148, 187--200.
-
-\bibitem[{Geider et~al.(1998)Geider, MacIntyre, and Kana}]{Geider98}
-Geider, R.~J., MacIntyre, H.~L., Kana, T.~M., 1998. A dynamic regulatory model
-  of phytoplanktonic acclimation to light, nutrients, and temperature. Limnol.
-  Oceanogr. 43~(4), 679--694.
 
 \bibitem[{Hagy and Murrell(2007)}]{Hagy07}
 Hagy, J.~D., Murrell, M.~C., 2007. Susceptibility of a northern {G}ulf of
@@ -165,11 +132,6 @@ Just\'{i}c, D., Legov\'{i}c, T., Rottini-Sandrini, L., 1987. Trends in oxygen
 Kirchner, J.~W., 2006. Getting the right answers for the right reasons: Linking
   measurements, analyses, and models to advance the science of hydrology. Water
   Resour. Res. 42~(3), W03S04.
-
-\bibitem[{Lehman et~al.(1975)Lehman, Botkin, and Likens}]{Lehman75}
-Lehman, J.~T., Botkin, D.~B., Likens, G.~E., 1975. The assumptions and
-  rationales of a computer model of phytoplankton population dynamics. Limnol.
-  Oceanogr. 20~(3), 343--364.
 
 \bibitem[{Lehrter and Cebrian(2010)}]{Lehrter10}
 Lehrter, J.~C., Cebrian, J., 2010. Uncertainty propagation in an ecosystem
@@ -271,21 +233,10 @@ Penta, B., Lee, Z., Kudela, R.~M., Palacios, S.~L., Gray, D.~J., Jolliff,
   J.~K., Shulman, I.~G., 2008. An underwater light attenuation scheme for
   marine ecosystem models. Opt. Express 16~(21), 16581--16591.
 
-\bibitem[{Penta et~al.(2009)Penta, Lee, Kudela, Palacios, Gray, Jolliff, and
-  Shulman}]{Penta09}
-Penta, B., Lee, Z., Kudela, R.~M., Palacios, S.~L., Gray, D.~J., Jolliff,
-  J.~K., Shulman, I.~G., 2009. An underwater light attenuation scheme for
-  marine ecosystem models: errata. Opt. Express 17~(25), 23351--23351.
-
 \bibitem[{Petrucci and Bonhomme(2014)}]{Petrucci14}
 Petrucci, G., Bonhomme, C., 2014. The dilemma of spatial representation for
   urban hydrology semi-distributed modelling: trade-offs among complexity,
   calibration and geographical data. J. Hydrol. 517, 997--1007.
-
-\bibitem[{Platt et~al.(1980)Platt, Gallegos, and Harrison}]{Platt80}
-Platt, T., Gallegos, C.~L., Harrison, W.~G., 1980. Photoinhibition of
-  photosynthesis in natural assemblages of marine phytoplankton. J. Mar. Res.
-  38, 687--701.
 
 \bibitem[{Rabalais et~al.(2002)Rabalais, Turner, and Scavia}]{Rabalais02}
 Rabalais, N.~N., Turner, R.~E., Scavia, D., 2002. Beyond science into policy:
