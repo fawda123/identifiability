@@ -722,7 +722,7 @@ p <- ggplot(toplo_all, aes(y = Parameter, x = L1, fill = Sensitivity)) +
   scale_x_discrete('State variable', expand = c(0, 0)) +
   scale_fill_distiller(palette = "Spectral", trans = 'log10',  na.value = 'grey95') +
   facet_grid(Category~., scales = 'free_y', space = 'free') + 
-  guides(fill = guide_colourbar(barheight = 0.5, barwidth = 10))
+  guides(fill = guide_colourbar(barheight = 0.25, barwidth = 5, label.theme = element_text(size = 6, angle = 0)))
 
 print(p)
 @
@@ -774,7 +774,7 @@ toplo <- tmpcat %>%
 
 cols <- RColorBrewer::brewer.pal(11, 'Spectral')
 lncol <- 'darkgrey'
-sz <- 2
+sz <- 3
 
 p1 <- ggplot(toplo, aes(x = N, group = N)) + 
   geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = lncol) + 
@@ -782,7 +782,7 @@ p1 <- ggplot(toplo, aes(x = N, group = N)) +
   geom_point(aes(y = med, shape = 'Med'), fill = cols[3], colour = lncol, size = sz) + 
   scale_shape_manual(values = c(21, 24)) + 
   facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
-  mytheme +
+  mytheme %+replace%
   theme(legend.position = 'none') + 
   ggtitle('(a) By parameter category')
 
@@ -806,12 +806,14 @@ p2 <- ggplot(toplo2, aes(x = N, group = N)) +
   scale_shape_manual(name = '', labels = c('Ave', 'Med'), values = c(21, 24)) + 
   scale_fill_manual(name = '', labels = c('Ave', 'Med'), values = cols[c(5, 3)]) +
   facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
-  mytheme + 
+  mytheme %+replace%
   theme(legend.title = element_blank()) + 
   ggtitle('(b) By top parameters, all categories')
 
 pleg <- g_legend(p2)
-p2 <- p2 + theme(legend.position = 'none')
+p2 <- p2 + 
+  mytheme %+replace%
+  theme(legend.position = 'none')
 
 grid.arrange(
   arrangeGrob(p1, p2, ncol = 2),
@@ -889,9 +891,9 @@ p1 <- ggplot(toplo, aes(x = N, group = N)) +
     ) + 
   fils + 
   facet_wrap(~ Category, ncol = 1, scales = 'free_y') +
-  mytheme +
-  scale_y_continuous(trans = 'log10') + 
+  mytheme %+replace%
   theme(legend.position = 'none') + 
+  scale_y_continuous(trans = 'log10') + 
   ggtitle('(a) By parameter category')
 
 toplo2 <- sapply(1:length(top_ident_all), function(x){ 
@@ -927,7 +929,9 @@ p2 <- ggplot(toplo2, aes(x = N, group = N)) +
   ggtitle('(b) By top parameters, all categories')
 
 pleg <- g_legend(p2)
-p2 <- p2 + theme(legend.position = 'none')
+p2 <- p2 +
+  mytheme %+replace%
+  theme(legend.position = 'none')
 
 grid.arrange(
   arrangeGrob(p1, p2, ncol = 2, bottom = 'Parameters in set'),
@@ -1192,7 +1196,7 @@ ggplot(toplo, aes(x = Selected, y = coll)) +
     expand = c(.1, .1)
     ) + 
   cols +
-  pthm +
+  pthm %+replace%
   theme(legend.position = 'top')
 
 @
