@@ -1,4 +1,4 @@
-\begin{thebibliography}{58}
+\begin{thebibliography}{51}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -13,13 +13,6 @@ Beck, M.~B., 1987. Water quality modeling: A review of the analysis of
 Bianchi, T.~S., DiMarco, S.~F., Jr, J. H.~C., Hetland, R.~D., Chapman, P., Day,
   J.~W., Allison, M.~A., 2010. The science of hypoxia in the {N}orthern {G}ulf
   of {M}exico: a review. Sci. Total. Environ. 408~(7), 1471--1484.
-
-\bibitem[{Bierman et~al.(1994)Bierman, Hinz, Zhu, Wiseman, Rabalais, and
-  Turner}]{Bierman94}
-Bierman, V.~J., Hinz, S.~C., Zhu, D.~W., Wiseman, W.~J., Rabalais, N.~N.,
-  Turner, R.~E., 1994. A preliminary mass-balance model of primary productivity
-  and dissolved oxygen in the {M}ississippi {R}iver plume/ inner {G}ulf shelf
-  region. Estuaries 17~(4), 886--899.
 
 \bibitem[{Brun et~al.(2001)Brun, Reichert, and K\"{u}nsch}]{Brun01}
 Brun, R., Reichert, P., K\"{u}nsch, H.~R., 2001. Practical identifiability
@@ -107,11 +100,6 @@ Harvey, L. D.~D., 2000. Upscaling in global change research. Clim. Chang.
 Hilborn, R., Mangel, M., 1997. The Ecological Detective: Confronting Models
   with Data. Princeton University Press, Princeton, New Jersey.
 
-\bibitem[{Hodur(1997)}]{Hodur97}
-Hodur, R.~M., 1997. The {N}aval {R}esearch {L}aboratory's {C}oupled
-  {O}cean/{A}tmosphere {M}esoscale {P}rediction {S}ystem ({COAMPS}). Mon.
-  Weather. Rev. 125, 1414--1430.
-
 \bibitem[{Howarth et~al.(1996)Howarth, Billen, Swaney, Townsend, Jaworski,
   Lajtha, Downing, Elmgren, Caraco, Jordan, Berendse, Freney, Kudeyarov,
   Murdoch, and Zhao-Liang}]{Howarth96}
@@ -144,13 +132,6 @@ Lehrter, J.~C., Ko, D.~S., Lowe, L., Penta, B., In press. Predicted effects of
   Patterns, Controls, and Effect of Dissolved Oxygen Dynamics. Springer, New
   York.
 
-\bibitem[{Lehrter et~al.(2013)Lehrter, Ko, Murrell, III, Schaeffer, Greene,
-  Gould, and Penta}]{Lehrter13}
-Lehrter, J.~C., Ko, D.~S., Murrell, M.~C., III, J. D.~H., Schaeffer, B.~A.,
-  Greene, R.~M., Gould, R.~W., Penta, B., 2013. Nutrient distributions,
-  transports, and budgets on the inner margin of a river-dominated continental
-  shelf. J. Geophys. Res. 118~(10), 4822--4838.
-
 \bibitem[{Levins(1966)}]{Levins66}
 Levins, R., 1966. The strategy of model building in population biology. Am.
   Sci. 54~(4), 421--431.
@@ -179,19 +160,6 @@ Mateus, M.~D., Franz, G., 2015. Sensitivity analysis in a complex marine
 Morrison, M., Morgan, M.~S., 1999. Models as mediating agents. In: Morgan,
   M.~S., Morrison, M. (Eds.), Models as Mediators. Cambridge University Press,
   Cambridge, p. 401.
-
-\bibitem[{Murrell et~al.(2014)Murrell, Beddick, Devereux, Greene, III, Jarvis,
-  Kurtz, Lehrter, and Yates}]{Murrell14}
-Murrell, M.~C., Beddick, D.~L., Devereux, R., Greene, R.~M., III, J. D.~H.,
-  Jarvis, B.~M., Kurtz, J.~C., Lehrter, J.~C., Yates, D.~F., 2014. Gulf of
-  mexico hypoxia research program data report: 2002-2007. Tech. Rep.
-  EPA/600/R-13/257, US Environmental Protection Agency, Washington, DC.
-
-\bibitem[{Murrell et~al.(2013)Murrell, Stanley, Lehrter, and Hagy}]{Murrell13}
-Murrell, M.~C., Stanley, R.~S., Lehrter, J.~C., Hagy, J.~D., 2013. Plankton
-  community respiration, net ecosystem metabolism, and oxygen dynamics on the
-  {L}ouisiana continental shelf: Implications for hypoxia. Cont. Shelf Res. 52,
-  27--38.
 
 \bibitem[{Nossent and Bauwens(2012)}]{Nossent12}
 Nossent, J., Bauwens, W., 2012. Multi-variable sensitivity and identifiability
@@ -272,10 +240,6 @@ Roelke, D.~L., 2000. Copepod food-quality threshold as a mechanism influencing
 Scavia, D., Justic, D., Bierman, V.~J., 2004. Reducing hypoxia in the {G}ulf of
   {M}exico: Advice from three models. Estuaries 27~(3), 419--425.
 
-\bibitem[{Snowling and Kramer(2001)}]{Snowling01}
-Snowling, S.~D., Kramer, J.~R., 2001. Evaluating modelling uncertainty for
-  model selection. Ecol. Model. 138, 17--30.
-
 \bibitem[{Soetaert and Petzoldt(2010)}]{Soetaert10}
 Soetaert, K., Petzoldt, T., 2010. Inverse modelling, sensitivity, and {M}onte
   {C}arlo analysis in {R} using package {FME}. J. Stat. Softw. 33~(3), 1--28.
@@ -286,19 +250,11 @@ Wade, A.~J., Jackson, B.~M., Butterfield, D., 2008. Over-parameterised,
   quality models? {A}n example of an 80-year catchment-scale nutrient balance.
   Sci. Total. Environ. 400~(1-3), 52--74.
 
-\bibitem[{Wagener et~al.(2001{\natexlab{a}})Wagener, Boyle, Lees, Wheater,
-  Gupta, and Sorooshian}]{Wagener01}
+\bibitem[{Wagener et~al.(2001)Wagener, Boyle, Lees, Wheater, Gupta, and
+  Sorooshian}]{Wagener01}
 Wagener, T., Boyle, D.~P., Lees, M.~J., Wheater, H.~S., Gupta, H.~V.,
-  Sorooshian, S., 2001{\natexlab{a}}. A framework for development and
-  application of hydrological models. Hydrol. Earth Syst. Sci. 5~(1), 13--26.
-
-\bibitem[{Wagener et~al.(2001{\natexlab{b}})Wagener, Lees, and
-  Wheater}]{Wagener01b}
-Wagener, T., Lees, M.~J., Wheater, H.~S., 2001{\natexlab{b}}. A toolkit for the
-  development and application of parsimonious hydrological models. In: Singh,
-  V.~P., Meyer, D. K. F. S.~P. (Eds.), Mathematical Models of Small Watershed
-  Hydrology and Applications - Volume 2. Water Resources Publications LLC, USA,
-  pp. 91--140.
+  Sorooshian, S., 2001. A framework for development and application of
+  hydrological models. Hydrol. Earth Syst. Sci. 5~(1), 13--26.
 
 \bibitem[{Warner et~al.(2005)Warner, Geyer, and Lerczak}]{Warner05}
 Warner, J.~C., Geyer, W.~R., Lerczak, J.~A., 2005. Numerical modeling of an
