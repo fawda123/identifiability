@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  9 MAR 2017 13:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  12 MAR 2017 12:52
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -464,40 +464,40 @@ Package acronym Info: Label `acro:cgem' overridden on input line 203.
 
 ]
 [14] [15]) [16] [17] [18] [19] [20]
-<figs/combnex-1.pdf, id=465, 361.35pt x 361.35pt>
+<figs/combnex-1.pdf, id=467, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
 Package pdftex.def Info: figs/combnex-1.pdf used on input line 592.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=466, 289.08pt x 433.62pt>
+<figs/sensalltile-1.pdf, id=468, 289.08pt x 433.62pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
 Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 604.
 (pdftex.def)             Requested size: 328.82707pt x 493.26668pt.
 
-<figs/identplo-1.pdf, id=475, 578.16pt x 505.89pt>
+<figs/identplo-1.pdf, id=477, 578.16pt x 505.89pt>
 File: figs/identplo-1.pdf Graphic file (type pdf)
  <use figs/identplo-1.pdf>
 Package pdftex.def Info: figs/identplo-1.pdf used on input line 616.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=478, 650.43pt x 578.16pt>
+<figs/identploall-1.pdf, id=480, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
 Package pdftex.def Info: figs/identploall-1.pdf used on input line 628.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/percthresh-1.pdf, id=481, 650.43pt x 578.16pt>
+<figs/percthresh-1.pdf, id=483, 650.43pt x 578.16pt>
 File: figs/percthresh-1.pdf Graphic file (type pdf)
 
 <use figs/percthresh-1.pdf>
 Package pdftex.def Info: figs/percthresh-1.pdf used on input line 640.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=484, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=486, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
 Package pdftex.def Info: figs/exclex-1.pdf used on input line 652.
@@ -602,9 +602,9 @@ pe1/public/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 t8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on ident_manu.pdf (33 pages, 585896 bytes).
+Output written on ident_manu.pdf (33 pages, 586237 bytes).
 PDF statistics:
- 707 PDF objects out of 1000 (max. 8388607)
+ 709 PDF objects out of 1000 (max. 8388607)
  137 named destinations out of 1000 (max. 500000)
  143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
