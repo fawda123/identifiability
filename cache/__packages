@@ -11,3 +11,8 @@ Hmisc
 ggrepel
 english
 purrr
+lubridate
+rgeos
+ggpolypath
+readxl
+ggmap

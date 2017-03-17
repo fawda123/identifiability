@@ -98,6 +98,13 @@ library(Hmisc)
 library(ggrepel)
 library(english)
 library(purrr)
+library(grid)
+library(lubridate)
+# library(raster)
+library(rgeos)
+library(ggpolypath)
+library(readxl)
+library(ggmap)
 @
 
 % get the version from git log
@@ -1111,6 +1118,239 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
     axis.ticks.y = element_line(),
     axis.ticks.length = unit(.1, "cm")
   )
+
+@
+
+<<areachg, eval = T, fig.cap = 'Estimated hypoxic area and monthly averages (km$^2 \\times$ 1000) using the default parameter settings (a, b) and the differences using a 50\\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \\ac{do} in \\cref{fig:sensalltile,tab:dosens}. Error bars are 95\\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 29\\textsuperscript{th} using the defaulat parameters (grey) and estimated changes with parameter perturbations is shown in (e).', fig.height = 7, fig.width = 7, echo = F, cache = TRUE, out.width = "\\textwidth">>=
+# ##
+# # area time series
+# areats <- read_excel('ignore/runcompare.xlsx', sheet = 'area')
+# 
+# ##
+# # get all arrays of hypox area for each parameter
+# shts <- excel_sheets('ignore/runcompare.xlsx') %>% 
+#   grep('array', ., value = T)
+# latlon <- read_excel('ignore/runcompare.xlsx', sheet = 'Latlon') %>% 
+#   list(
+#     lat = c(.[,1])[[1]], 
+#     lon = as.numeric(names(.)[-1])
+#     ) %>% 
+#   .[c('lat', 'lon')]
+# 
+# ls <- vector('list', length = length(shts))
+# names(ls) <- shts
+# for(sht in shts){
+#  
+#   cat(sht, '\t')
+#   
+#   # read the sheet, interpolate for higher res
+#   tmp <- read_excel('ignore/runcompare.xlsx', sheet = sht, na = '-9999', col_names = F) 
+#   tmp <- tmp[1:176,1:320] %>% 
+#     as.matrix
+#   obs <- list(x = latlon$lat, y = latlon$lon, z = tmp)
+#   newgrd <- expand.grid(
+#       x = approx(latlon$lat, n = 4 * ncol(tmp))$y,
+#       y = approx(latlon$lon, n = 4 * nrow(tmp))$y
+#       )
+#   int_val <- fields::interp.surface(
+#     obj = obs,
+#     loc = newgrd
+#     )
+#   tmp <- data.frame(newgrd, tmp = int_val) %>%
+#     spread(x, tmp) %>%
+#     dplyr::select(-y) %>%
+#     as.matrix %>% 
+#     .[, ncol(.):1] %>% 
+#     t
+#   
+#   # subset hypoxic areas, make polygon
+#   # get only the large areas
+#   tmp[tmp >= 64] <- NA
+#   tmp[!is.na(tmp)] <- 1
+#   tmp <- raster(tmp, 
+#     xmn = min(latlon$lon), 
+#     xmx = max(latlon$lon),   
+#     ymn = min(latlon$lat), 
+#     ymx = max(latlon$lat)
+#     )
+#   tmp <- rasterToPolygons(tmp, dissolve = T) %>% 
+#     disaggregate
+#   areas <- transform(data.frame(tmp), area = gArea(tmp, byid = T))
+#   filt <- with(areas, which(area > 0.12)) #quantile(area, 0.99)))
+#   tmp <- tmp[filt, ] %>% 
+#     fortify
+#   
+#   ls[[sht]] <- data.frame(parm = sht, tmp)
+#    
+# }
+# 
+# # combine output from each sheet
+# arrs <- do.call('rbind', ls) %>% 
+#   mutate(
+#     parm = gsub('_array$', '', parm)
+#     ) %>% 
+#   # filter(lat > 28) %>% 
+#   tibble::remove_rownames(.) %>% 
+#   unite('grp', parm, group, remove = F)
+# 
+# # save
+# save(areats, arrs, file = 'data/area.RData', compress = 'xz')
+
+# area time series and 2d arrays (areats, arrs)
+data(area)
+
+# theme
+mytheme <- theme_minimal() + 
+  theme(
+    axis.line.x = element_line(), 
+    axis.line.y = element_line(), 
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank(), 
+    axis.ticks.x = element_line(),
+    axis.ticks.y = element_line(),
+    axis.ticks.length = unit(.1, "cm"),
+    legend.title = element_blank(),
+    legend.position = 'top', 
+    legend.text.align = 0
+  )
+
+# colors
+cols <- RColorBrewer::brewer.pal(5, 'Spectral')
+
+# format area time series 
+areats <- areats %>% 
+  dplyr::select(dts = 1, everything()) %>% 
+  mutate(
+    dts = as.Date(dts), 
+    mo = month(dts, label = T)
+  ) %>% 
+  gather('var', 'val', -dts, -mo) %>% 
+  mutate(
+    var = gsub('\\+50%$', '', var),
+    val = val / 1000
+    ) %>% 
+  spread(var, val) %>% 
+  filter(mo %in% c('May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'))
+
+# formatted levels in order
+levs <- c('umax', 'ZKa', 'astar490', 'KG1', 'Tref')
+labs <- paste0(c('umax', 'ZKa', 'astar490', 'KG1', 'Tref(nospA+nospZ)'), '_1')
+labs <- par_txt(labs, frm = 'exp')
+
+##
+# data for each plot
+
+toplo1 <- areats
+
+toplo2 <- gather(areats, 'var', 'val', -dts, -Original, -mo) %>% 
+  mutate(
+    valper = val - Original,
+    var = factor(var, levels = levs, labels = labs)
+  )
+
+toplo3 <- areats %>%
+  group_by(mo) %>% 
+  summarise(
+    valup = t.test(Original)$conf.int[2],
+    valdn = t.test(Original)$conf.int[1],
+    val = mean(Original)
+  )
+
+toplo4 <- gather(areats, 'var', 'val', -dts, -mo, -Original) %>% 
+  group_by(mo, var) %>% 
+  summarise(
+    valup = t.test(val, Original)$conf.int[2],
+    valdn = t.test(val, Original)$conf.int[1],
+    val = mean(val) - mean(Original)
+  ) %>% 
+  ungroup %>% 
+  mutate(
+    var = factor(var, levels = levs, labels = labs)
+  )
+
+toplo5 <- filter(arrs, parm %in% 'original')
+
+toplo6 <- filter(arrs, !parm %in% 'original') %>% 
+  mutate(
+    parm = factor(parm, levels = levs, labels = labs)
+  )
+
+##
+# subplots
+
+p1 <- ggplot(toplo1, aes(x = dts, y = Original)) + 
+  geom_polygon() + 
+  mytheme + 
+  scale_x_date(date_labels = '%b', date_breaks = '1 month') +
+  ggtitle(label = NULL, subtitle = '(a) Area with default parameters')
+
+p2 <- ggplot(toplo2, aes(x = dts, y = valper, fill = var)) + 
+  geom_ribbon(aes(ymin = 0, ymax = valper), colour = 'darkgrey', size = 0.35) + 
+  mytheme %+replace%
+  theme(legend.position = 'none') +
+  scale_x_date(date_labels = '%b', date_breaks = '1 month') +
+  scale_fill_manual(values = cols, labels = labs) +
+  ggtitle(label = NULL, subtitle = '(c) Area differences with parameter perturbations')
+
+p3 <- ggplot(toplo3, aes(x = mo, y = val)) + 
+  geom_bar(stat = 'identity') + 
+  geom_errorbar(aes(ymin = valdn, ymax = valup), width = 0.25, lwd = 0.35) + 
+  mytheme +
+  ggtitle(label = NULL, subtitle = '(b) Averages with default parameters')
+
+pd <- position_dodge(0.75)
+p4 <- ggplot(toplo4, aes(x = mo, y = val, fill = var)) + 
+  geom_bar(stat = 'identity', position = pd, width = 0.75, colour = 'darkgrey', lwd = 0.35) + 
+  geom_errorbar(aes(ymin = valdn, ymax = valup), position = pd, width = 0.25, size = 0.35) + 
+  scale_fill_manual(values = cols, labels = labs) +
+  mytheme +
+  ggtitle(label = NULL, subtitle = '(d) Average differences with parameter perturbations')
+
+pleg <- g_legend(p4)
+p4 <- p4 + 
+  mytheme  %+replace%
+  theme(legend.position = 'none')
+
+# basemap for area ts
+ext <- make_bbox(arrs$long, arrs$lat, f = 0.01)
+map <- get_stamenmap(ext, zoom = 9, maptype = "toner-lite")
+    
+p5 <- ggmap(map) + 
+  geom_polypath(data = toplo5, aes(x = long, y = lat, group = grp), alpha = 0.5) +
+  geom_path(data = toplo6, aes(x = long, y = lat, group = grp, colour = parm), alpha = 0.9, size = 1) + 
+  scale_y_continuous(expand = c(0, 0)) + 
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = cols, labels = labs) +
+  coord_equal() + 
+  mytheme %+replace%
+  theme(legend.position = 'none') +
+  ggtitle(label = NULL, subtitle = '(e) Estimated areal extents on August 29')
+
+pA <- ggplot_gtable(ggplot_build(p1))
+pB <- ggplot_gtable(ggplot_build(p2))
+pC <- ggplot_gtable(ggplot_build(p3))
+pD <- ggplot_gtable(ggplot_build(p4))
+pE <- ggplot_gtable(ggplot_build(p5))
+maxWidth = unit.pmax(pA$widths[2:3], pB$widths[2:3])
+pA$widths[2:3] <- maxWidth
+pC$widths[2:3] <- maxWidth
+pE$widths[2:3] <- maxWidth
+maxWidth = unit.pmax(pC$widths[2:3], pD$widths[2:3], pE$widths[2:3])
+pB$widths[2:3] <- maxWidth
+pD$widths[2:3] <- maxWidth
+
+ylab <- expression(paste('Hypoxic area ( ', km^2, ' x 1000)'))
+grid.arrange(
+  left = textGrob(ylab, rot = 90),
+  arrangeGrob(
+    arrangeGrob(pA, pC, ncol = 2),
+    pleg, 
+    arrangeGrob(pB, pD, ncol = 2), 
+    pE,
+    ncol = 1, 
+    heights = c(1, 0.1, 1, 1.4)
+  )
+)
 
 @
 
