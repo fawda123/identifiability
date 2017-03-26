@@ -1186,3 +1186,225 @@ loc_summ <- function(scatall){
   return(out_ls)
   
 }
+
+######
+# get list of parameter combinations to calibrate from tocal_all data object
+#
+# tocal_all input data object created in dat_proc.R
+# out_var chr string of state variable to eval
+# thrsh numeric for collinearity thresholds
+# coll logical if gamma is returned as an additional element for each heuristic
+#
+# temperature is manually added as a category in the first heuristic
+# only one parameter so wasn't included in tocal_all output
+#
+# min/max values for ediblevector and tref were added, 
+# former form Eldridge and Roelke, latter from reasonable temp ranges
+get_cmbs <- function(tocal_all, out_var = 'O2', thrsh = 15, coll = TRUE, errs = TRUE, pert = 0.5){
+  
+  # expected parameter values and ranges
+  allp <- get(load(file = 'ignore/GEM_InputFile.RData'))
+  rngs <- formpars('ignore/var_ranges.txt')
+  
+  # get out_var results, melt, create heurist column, filter by thresh, 
+  # add temp category (one parameter), combine with input file to get values
+  idpars <- tocal_all[[out_var]] %>% 
+    reshape2::melt(id.vars = names(.[[1]])) %>% 
+    mutate(
+      Category = ifelse(!L1 %in% 'cat', '', Category),
+      L1 = ifelse(Category %in% '', L1, ''), 
+      parm = as.character(Parameter)
+      ) %>% 
+    unite('heurist', L1, Category, sep = '') %>% 
+    filter(coll < thrsh) %>%
+    group_by(heurist) %>% 
+    mutate(coll = max(coll, na.rm = TRUE)) %>% 
+    ungroup %>% 
+    select(parm, error, heurist, coll) %>% 
+    rbind(
+      data.frame(parm = 'Tref(nospA+nospZ)_1', error = 0.02, heurist = 'Temperature', coll = NA)
+      ) %>% 
+    left_join(., allp, by = 'parm') %>% 
+    rename(vals = value)
+  
+  # get expected ranges
+  # add missing values
+  rngs <- filter(rngs, parm %in% idpars$parm) %>% 
+    separate(value, c('est', 'minv', 'maxv'), sep = '/') %>% 
+    mutate(
+      minv = ifelse(parm %in% 'Tref(nospA+nospZ)_1', 0, 
+        ifelse(parm %in% 'ediblevector(Z1)_1', 0.05, 
+          minv)),
+      maxv = ifelse(parm %in% 'Tref(nospA+nospZ)_1', 40, 
+        ifelse(parm %in% 'ediblevector(Z1)_1', 1, 
+          maxv))
+      ) %>% 
+    gather('var', 'val', -parm) %>% 
+    mutate(val = as.numeric(val)) %>% 
+    spread(var, val) %>% 
+    select(-est) 
+  
+  # combine both, create list of lists by heuristic and val/min/max
+  out <- left_join(idpars, rngs, by = 'parm') %>% 
+    split(.$heurist) %>% 
+    lapply(., function(x){
+      
+      # collinearity value
+      collv <- unique(x$coll)
+      
+      # error valus
+      errsv <- x$error
+      names(errsv) <- x$parm
+      
+      # change minv maxv to +- pert if not null
+      if(!is.null(pert)){
+        x$minv <- pert * as.numeric(x$vals)
+        x$maxv <- (1 + pert) * as.numeric(x$vals)
+      }
+      
+      # get value, min, max of each parameter
+      x <- select(x, -heurist) %>% 
+        gather('var', 'val', -parm, -coll) %>% 
+        split(.$var) %>% 
+        lapply(., function(y){
+          
+          nms <- y$parm
+          out <- as.list(as.numeric(y$val))
+          names(out) <- nms
+          
+          return(out)
+          
+        })
+      
+      # add gamma to list for heurist
+      if(coll)
+        x$coll <- collv
+      
+      # add individual errors to list
+      if(errs)
+        x$errs <- errsv
+      
+      return(x)
+
+    })
+  
+  # make sure parameter values in range of min/max
+  chks <- sapply(names(out), function(x){
+      
+      prms <- out[[x]]
+      vals <- unlist(prms$vals)
+      minv <- unlist(prms$minv)
+      maxv <- unlist(prms$maxv)
+      
+      chk <- minv > vals | maxv < vals
+      if(any(chk)) warning('parameter values for ', x , ' not in expected range')
+      
+    })
+  
+  return(out)
+  
+}
+
+# convert the input parameter info between formats
+#
+# parsin can be a chr string of file location of original GEM_InputFile or input data frame of parameters to be converted to ASCII format, the data frame is the ouput from the ASCII text file, but there's an additional function that replaces parameters in the data frame for conversion to the standard GEM format
+formpars <- function(parsin){
+ 
+  library(dplyr)
+  
+  # data frame to input file  
+  if(inherits(parsin, 'data.frame')){
+
+    # split data frame by parameters
+    # reorganize duplicates as single chr vector
+    # back to data frame
+    tmp <- mutate(parsin, 
+        parm = gsub('_[0-9]*$', '', parm),
+        parm = factor(parm, levels =  unique(parm))
+      ) %>% 
+      split(., .$parm) %>% 
+      lapply(., function(x) paste(x[1][, 1, drop = TRUE], collapse = ' ')) %>% 
+      reshape2::melt(.) %>% 
+      rename(parm = L1) %>% 
+      mutate(
+        ord = as.numeric(row.names(.)), 
+        parm = paste0('!', parm), 
+        value = paste0(value, '\t\t')
+        )
+
+    # add category labels and NA rows above
+    # added by index but with decimal change for ordering
+    cats <- c('Simulation Specifics', 'Switches in GEM', 'Optics', 'Temperature', 'Phytoplankton, up to 6 types', 'Zooplankton, up to 2 types', 'Organic Matter', 'River Loads - used in 3D only', 'Other including Boundary Conditions') 
+    cats <- paste0('!', cats)
+    locs <- grep('starting time|^!Which_fluxes|^!Kw$|^!Tref|^!ediblevector\\(Z1|^!Zeffic|^!KG1$|^!rcNO3|^!Which_VMix', tmp$parm, ignore.case = F)
+    locs <- locs - 0.01
+    lab <- data.frame(value = cats, parm = '', ord = locs)
+    labfill <- data.frame(value = '', parm = '', ord = locs - 0.01)
+    
+    tmp <- rbind(tmp, lab, labfill) %>% 
+      arrange(ord) %>% 
+      select(-ord)
+      
+    # combine columns to vector
+    out <- paste(tmp$value, tmp$parm, sep = '')
+      
+  }
+  
+  # input file to data frame
+  if(inherits(parsin, 'character')){
+    
+    # sanity checks
+    if(!file.exists(parsin)) stop('Input file does not exist')
+
+    # readby lines, one list element per parameter 
+    tmp <- readLines(parsin) %>% 
+      strsplit('!') %>% 
+      lapply(., function(x){
+        tospl <- x[1] %>% 
+          gsub('\t', '', .) %>%
+          strsplit(' ') %>% 
+          .[[1]] %>% 
+          .[nchar(.) > 0] %>% 
+          list(., x[2])
+        tospl
+      })
+
+    # get parameter names, everything left of colon
+    nms <- lapply(tmp, function(x) x[[2]]) %>% 
+      unlist %>% 
+      gsub(':.*$', '', .)
+    
+    # get parameter values, rename list elements as parameter names
+    tmp <- lapply(tmp, function(x) x[[1]]) 
+    names(tmp) <- nms
+
+    # list elements that contain parameters (inverse of notparms)
+    cats <- c('Simulation Specifics', 'Switches in GEM', 'Optics', 'Temperature', 'Phytoplankton, up to 6 types', 'Zooplankton, up to 2 types', 'Organic Matter', 'River Loads - used in 3D only', 'Other including Boundary Conditions') 
+    notparms <- which(nms %in% cats)
+    if(length(notparms) != length(cats)) stop('Cannot find all parameter categories in input file')
+    notparms <- sort(c(as.numeric(which(is.na(tmp))), notparms))
+    parms <- seq(length(tmp))
+    parms <- parms[!parms %in% notparms]
+    tmp <- tmp[parms] 
+
+    # empties are important, need to convert to blank character
+    tmp[unlist(lapply(tmp, length)) == 0] <- ' '
+    
+    # suffix for parameters with more than one value
+    suff <- lapply(tmp, function(x) seq(length(x))) %>% 
+      unlist #%>% 
+      # gsub('0', '1', .) # the blank rows are important
+    
+    # melt list, add suffix to id more than one parameter value
+    out <- reshape2::melt(tmp) %>% 
+      mutate(
+        L1 = paste0(L1, '_', suff),
+        value = as.character(value)
+        ) %>% 
+      rename(parm = L1)
+    
+  }
+  
+  return(out)
+  
+}
