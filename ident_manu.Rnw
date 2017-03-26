@@ -33,6 +33,7 @@
 \acrodef{lcs}[LCS]{Louisiana continental shelf}
 \acrodef{marb}[MARB]{Mississippi-Atchafalaya River Basin}
 \acrodef{pom}[POM]{particulate organic matter}
+\acrodef{rmse}[\textit{RMSE}]{root mean squared error}
 \acrodef{zerod}[0-D]{zero-dimensional}
 
 %for supplemental figures/tables
@@ -106,6 +107,7 @@ library(ggpolypath)
 library(readxl)
 library(ggmap)
 library(ggsn)
+library(tibble)
 @
 
 % get the version from git log
@@ -242,11 +244,17 @@ A set of heuristics was developed that addresses the tradeoff in model complexit
 
 \subsection{Model calibration and extrapolation}
 
-Selected parameter subsets from the seven heuristics were used to calibrate the \ac{zerod} model.  This analysis demonstrated that different parameter sets can produce model output with differing precision and calibration effort given 1) differences in variable sensitivity to parameters in each subset, 2) differences in the parameters selected from different categories (heuristic difference), and 3) differences in identifiability values.  Generally, this analysis was a proof of concept that the selection heuristics can lead to an `optimal' model by maximizing the balance between sensitivity and identifiability.  
+Selected parameter subsets from the seven heuristics were used to calibrate the \ac{zerod} model.  This analysis demonstrated that different parameter sets can produce model output with differing precision and calibration effort given
+\begin{inparaenum}[1\upshape)]
+\item differences in variable sensitivity to parameters in each subset, 
+\item differences in the parameters selected from different categories (heuristic difference), and 
+\item differences in identifiability values.
+\end{inparaenum}
+Generally, this analysis was a proof of concept that the selection heuristics can lead to an `optimal' model by maximizing the balance between sensitivity and identifiability.  
 
 A time series of \ac{do} from Weeks Bay, Alabama was used for model calibration.  Daily observations from January 1\textsuperscript{st},  2006 to January 1\textsuperscript{st}, 2007 at the Weeks Bay station of the Weeks Bay National Estuarine Reserve were used \citep{Wenner04}.  We chose this location because of the availability of data for model calibration compared to bottom waters in the northern \ac{gom} and the system exhibits hypoxia from eutrophication.  This application also provided a practical example of how the FishTank model could be calibrated using data from alternative locations.  Initial conditions for model input were modified to match conditions in Weeks Bay using observed water quality and nutrient data (all data from \url{http://cdmo.baruch.sc.edu/}).  The \ac{do} time series was filtered to reduce physical effects of the tidal advection component on the observed data (\textit{sensu} \citealt{Beck15b}).  As such, the filtered data were comparable to a time series with no physical advection to match conditions of the \ac{zerod} FishTank model with no hydrodynamic component. 
 
-Each parameter subset was calibrated to most closely match the model output to the observed time series.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This opimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within +/- 50\% of the default parameter values.  While we recognize that `actual' parameter values could possibly be outside of this range, constraining the values to those tested herein was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in precision as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the root-mean squared error between the observed and modelled data.    
+Each parameter subset was calibrated to most closely match the model output to the observed time series.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This opimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within +/- 50\% of the default parameter values.  While we recognize that `actual' parameter values could possibly be outside of this range, constraining the values to those tested herein was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in precision as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
 
 As a final analysis, effects of parameter changes on the larger 3-dimensional model were evaluated to demonstrate that results from the \ac{zerod} FishTank model can be extrapolated.  For simplicity, only the most sensitive parameter in each category was selected.  The \ac{cgem} model was run for one year using the default parameter conditions and by increasing each of the selected parameters by 50\%.  This produced six spatially-referenced time series from which the changes in the daily hypoxic area (number of cells $<$ 64 mmol \ac{do}) were estimated in the nothern \ac{gom}.
 
@@ -399,10 +407,52 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 \subsection{Model calibration and extrapolation}
 
-Calibration of parameter values for each of the seven selection heuristics produced model output that varied in precision and computational effort to identify optimal values.  The seven evaluated subsets were those for \ac{do} in each of the four categories of parameters in \cref{tab:heurist1}, including the single parameter for temperature.  The subsets in \cref{tab:heurist2,tab:heurist3} for the parameters selected independent of category and equally within each category were also evaluated.
 <<>>=
-NULL
+load(file = 'data/tocal_all.RData')
+load(file = 'data/cals.RData')
+
+# starting rmse
+# 72.13955 
+
+idpars <- get_cmbs(tocal_all, 'O2', coll = T, errs = T, pert = 0.5) 
+
+colerr <- get_cmbs(tocal_all, 'O2') %>% 
+  lapply(function(x) c(x$coll, mean(x$errs), length(x$errs))) %>% 
+  do.call('rbind', .) %>% 
+  data.frame %>% 
+  rownames_to_column %>% 
+  rename(
+    heurist = rowname, 
+    coll = X1,
+    avee = X2,
+    nprm = X3
+  )
+
+levs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'top', 'cattop')
+labs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'Independent of category', 'Equally within category')
+caldat <- lapply(cals, function(x) c(x$value, nrow(x$mat))) %>% 
+  do.call('rbind', .) %>% 
+  data.frame %>% 
+  rownames_to_column %>% 
+  rename(
+    heurist = rowname, 
+    rmse = X1, 
+    its = X2
+  ) %>% 
+  left_join(colerr, by = 'heurist') %>% 
+  select(heurist, coll, nprm, avee, its, rmse) %>% 
+  mutate(
+    heurist = factor(heurist, levels = levs, labels = labs)
+  )
+
+# pairs(caldat[, -1])
+temp <- filter(caldat, heurist %in% 'Temperature')
+optics <- filter(caldat, heurist %in% 'Optics')
+top <- filter(caldat, heurist %in% 'Independent of category')
+cattop <- filter(caldat, heurist %in% 'Equally within category')
 @
+
+Calibration of parameter values for each of the seven selection heuristics produced model output that varied in precision and computational effort to identify optimal values (\cref{tab:calib}).  The seven evaluated subsets were those for \ac{do} in each of the four categories of parameters in \cref{tab:heurist1}, including the single parameter for temperature.  The subsets in \cref{tab:heurist2,tab:heurist3} for the parameters selected independent of category and equally within each category were also evaluated.  As expected, the number of required iterations to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only \Sexpr{toeng(temp$its)[[1]]} iterations were required to optimize the single parameter selected for the temperature category, whereas \Sexpr{top$its} iterations were required for the \Sexpr{toeng(top$nprm)[[1]]} parameters selected independent of category.  A slight positive assocation between collinearity and number of iterations was also observed, such that computational effort  to identify optimal values for a parameter set inreased with lower identifiability (higher $\gamma$).  Of the seven paramter subsets, selection independent of category and equally within each category produced the lowest \ac{rmse} values (\Sexpr{scinot(top$rmse)}, \Sexpr{scinot(cattop$rmse)}, respectively), whereas the optimal values for paramters in the Optics category had the lowest reduction in \ac{rmse} (\Sexpr{scinot(optics$rmse)}).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 (\Sexpr{scinot(optics$avee)}), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 (\Sexpr{scinot(top$avee)}, \cref{tab:calib}). 
 
 % starting rmse of model without calibration
 \cref{fig:areachg}
@@ -628,47 +678,12 @@ latex(
 % calibration table, do
 <<calib, eval = T, cache = F>>=
 
-library(tidyverse)
-library(lubridate)
-source("R/funcs.R")
-
-load(file = 'data/tocal_all.RData')
-load(file = 'data/cals.RData')
-
-# starting rmse
 strt <- cals[[1]]$mat[1,] %>% 
-  .[length(.)]
-# 72.13955 
+  .[length(.)] %>% 
+  scinot
 
-idpars <- get_cmbs(tocal_all, 'O2', coll = T, errs = T, pert = 0.5) 
-
-colerr <- get_cmbs(tocal_all, 'O2') %>% 
-  lapply(function(x) c(x$coll, mean(x$errs), length(x$errs))) %>% 
-  do.call('rbind', .) %>% 
-  data.frame %>% 
-  rownames_to_column %>% 
-  rename(
-    heurist = rowname, 
-    coll = X1,
-    avee = X2,
-    nprm = X3
-  )
-
-levs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'top', 'cattop')
-labs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'Independent of category', 'Equally within category')
-caldat <- lapply(cals, function(x) c(x$value, nrow(x$mat))) %>% 
-  do.call('rbind', .) %>% 
-  data.frame %>% 
-  rownames_to_column %>% 
-  rename(
-    heurist = rowname, 
-    rmse = X1, 
-    its = X2
-  ) %>% 
-  left_join(colerr, by = 'heurist') %>% 
-  select(heurist, coll, nprm, avee, its, rmse) %>% 
+totab <- caldat %>% 
   mutate(
-    heurist = factor(heurist, levels = levs, labels = labs),
     coll = ifelse(is.na(coll), 1, coll),
     coll = sapply(coll, scinot),
     nprm = sapply(nprm, scinot),
@@ -678,10 +693,9 @@ caldat <- lapply(cals, function(x) c(x$value, nrow(x$mat))) %>%
     ) %>% 
   arrange(heurist)
 
-# pairs(caldat[, -1])
-totab <- caldat
 cap_val <- 'Results of model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The collinearity values ($\\gamma$) and parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  Mean L1 is the average of sensitivity values (\\cref{l1}) for the subset.  $RMSE$ shows the final error comparing observed and model output after the specified number of iterations for optimization.'
-colnms <- c('$\\gamma$', '$n$ parameters', 'mean L1', 'Iterations', '$RMSE$')
+foot.val <- '\\footnotesize *Starting \\ac{rmse} $= 72.14$'
+colnms <- c('$\\gamma$', '$n$ parameters', 'mean L1', 'Iterations', '$RMSE$*')
 
 latex( 
   totab[, -1],
@@ -693,6 +707,7 @@ latex(
   label = 'tab:calib',
   rowname = totab$heurist,
   rgroup = c('1', '2', '3'),
+  insert.bottom = foot.val, 
   n.rgroup = c(5, 1, 1),
   colheads = colnms
   )
