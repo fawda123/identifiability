@@ -147,7 +147,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Fri Mar 17 14:00:58 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/4e88d0837d798238902ff4eb6348b72e9143c557}{4e88d0837d798238902ff4eb6348b72e9143c557}}
+\tnotetext[mytitlenote]{Version: Sun Mar 26 14:18:02 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/4a9eb06d6e3839b6a43aa6e1e4dfe01a06a56524}{4a9eb06d6e3839b6a43aa6e1e4dfe01a06a56524}}
 
 \date{}
 
@@ -588,6 +588,33 @@ Specific approaches can be used to improve and build on the results presented he
 ~~3&\scriptsize{\textit{KG1}}&$0.92$&$1$\textsubscript{OM}&$3.87$\tabularnewline
 ~~4&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$0.86$&$1$\textsubscript{T}&$3.93$\tabularnewline
 ~~5&\scriptsize{\textit{astar490}}&$0.03$&$1$\textsubscript{O}&$5.81$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+\end{table}
+
+
+% calibration table, do
+%latex.default(totab[, -1], file = "", rowlabel = "Selection heuristic",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:calib", rowname = totab$heurist, rgroup = c("1",         "2", "3"), n.rgroup = c(5, 1, 1), colheads = colnms)%
+\begin{table}[!tbp]
+{\scriptsize
+\caption{Results of model calibration to observed \ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The collinearity values ($\gamma$) and parameters of each subset are from \cref{tab:heurist1,tab:heurist2,tab:heurist3}.  Mean L1 is the average of sensitivity values (\cref{l1}) for the subset.  $RMSE$ shows the final error comparing observed and model output after the specified number of iterations for optimization.\label{tab:calib}} 
+\begin{center}
+\begin{tabular}{llllll}
+\hline\hline
+\multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$}\tabularnewline
+\hline
+{\bfseries 1}&&&&&\tabularnewline
+~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$14$&$72.14$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$154$&$68.7$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$270$&$68.72$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$6$&$71.76$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$99$&$71.22$\tabularnewline
+\hline
+{\bfseries 2}&&&&&\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$850$&$67.05$\tabularnewline
+\hline
+{\bfseries 3}&&&&&\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$690$&$67.67$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}

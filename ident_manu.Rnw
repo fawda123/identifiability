@@ -622,6 +622,81 @@ latex(
   n.rgroup = as.numeric(table(stts)),
   colheads = colnms
   )
+
+@
+
+% calibration table, do
+<<calib, eval = T, cache = F>>=
+
+library(tidyverse)
+library(lubridate)
+source("R/funcs.R")
+
+load(file = 'data/tocal_all.RData')
+load(file = 'data/cals.RData')
+
+# starting rmse
+strt <- cals[[1]]$mat[1,] %>% 
+  .[length(.)]
+# 72.13955 
+
+idpars <- get_cmbs(tocal_all, 'O2', coll = T, errs = T, pert = 0.5) 
+
+colerr <- get_cmbs(tocal_all, 'O2') %>% 
+  lapply(function(x) c(x$coll, mean(x$errs), length(x$errs))) %>% 
+  do.call('rbind', .) %>% 
+  data.frame %>% 
+  rownames_to_column %>% 
+  rename(
+    heurist = rowname, 
+    coll = X1,
+    avee = X2,
+    nprm = X3
+  )
+
+levs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'top', 'cattop')
+labs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'Independent of category', 'Equally within category')
+caldat <- lapply(cals, function(x) c(x$value, nrow(x$mat))) %>% 
+  do.call('rbind', .) %>% 
+  data.frame %>% 
+  rownames_to_column %>% 
+  rename(
+    heurist = rowname, 
+    rmse = X1, 
+    its = X2
+  ) %>% 
+  left_join(colerr, by = 'heurist') %>% 
+  select(heurist, coll, nprm, avee, its, rmse) %>% 
+  mutate(
+    heurist = factor(heurist, levels = levs, labels = labs),
+    coll = ifelse(is.na(coll), 1, coll),
+    coll = sapply(coll, scinot),
+    nprm = sapply(nprm, scinot),
+    its = sapply(its, scinot),
+    rmse = sapply(rmse, scinot), 
+    avee = sapply(avee, scinot)
+    ) %>% 
+  arrange(heurist)
+
+# pairs(caldat[, -1])
+totab <- caldat
+cap_val <- 'Results of model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The collinearity values ($\\gamma$) and parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  Mean L1 is the average of sensitivity values (\\cref{l1}) for the subset.  $RMSE$ shows the final error comparing observed and model output after the specified number of iterations for optimization.'
+colnms <- c('$\\gamma$', '$n$ parameters', 'mean L1', 'Iterations', '$RMSE$')
+
+latex( 
+  totab[, -1],
+  file = '',
+  rowlabel = 'Selection heuristic',
+  caption = cap_val,
+  caption.loc = 'top',
+  size = 'scriptsize',
+  label = 'tab:calib',
+  rowname = totab$heurist,
+  rgroup = c('1', '2', '3'),
+  n.rgroup = c(5, 1, 1),
+  colheads = colnms
+  )
+
 @
 
 \clearpage
