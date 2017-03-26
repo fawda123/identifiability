@@ -810,7 +810,7 @@ print(p)
 @
 
 % identifiability plot
-<<identplo, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Lines represent identifiability ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
+<<identplo, eval = T, fig.cap = 'Collinearity ($\\gamma$ as a measure of identifiability, \\cref{gameq}) of parameter subsets for \\ac{do}.  Plots in (a) show collinearity by parameter categories and (b) shows collinearity by selecting the top 1 through 4 parameters in all categories.  Lines represent collinearity ranges for the possible combinations given the number of parameters in the set.  The temperature category is not shown because \\ac{do} was sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 7, fig.width = 8, echo = F, cache = TRUE>>=
 
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
@@ -897,9 +897,10 @@ p2 <- p2 +
   mytheme %+replace%
   theme(legend.position = 'none')
 
+leftlab <- expression(paste('Collinearity, ', italic(gamma)))
 grid.arrange(
   arrangeGrob(p1, p2, ncol = 2),
-  left = 'Identifiability', 
+  left = textGrob(leftlab, rot = 90),
   bottom = 'Parameters in set',
   pleg, ncol = 2, widths = c(1, 0.1)
 )
@@ -907,7 +908,7 @@ grid.arrange(
 @
 
 % identifiability plot, all state variables
-<<identploall, eval = T, fig.cap = 'Average identifiability (as $\\gamma$, \\cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show identifiability by parameter categories and (b) shows identifiability by selecting the top 1 through 4 parameters in all categories.  Identifiability was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
+<<identploall, eval = T, fig.cap = 'Average collinearity ($\\gamma$ as a measure of identifiability, \\cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show collinearity by parameter categories and (b) shows collinearity by selecting the top 1 through 4 parameters in all categories.  Collinearity was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\\gamma = 1$).', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
 
 # identifiability by category (all parameters with >0 L1) 
 data(cat_ident_all)
@@ -1015,9 +1016,10 @@ p2 <- p2 +
   mytheme %+replace%
   theme(legend.position = 'none')
 
+leftlab <- expression(paste('Collinearity, ', italic(gamma)))
 grid.arrange(
   arrangeGrob(p1, p2, ncol = 2, bottom = 'Parameters in set'),
-  left = 'Identifiability',
+  left = textGrob(leftlab, rot = 90),
   pleg, ncol = 2, widths = c(1, 0.2)
 )
 
@@ -1174,7 +1176,7 @@ grid.arrange(
 @
 
 % parameter exclusion temp
-<<exclex, eval = T, fig.cap = 'Identifiability (as $\\gamma$, \\cref{gameq}) for \\ac{do} of organic matter parameters for subset combinations in \\cref{fig:identplo}.  Identifiability is evaluated for subsets that excluded and included the parameters at the top of each plot. Identifiability of including all eight parameters is in \\cref{fig:identplo}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable identifiability.', fig.height = 7.25, fig.width = 7.25, echo = F, cache = TRUE, out.width = "0.8\\textwidth">>=
+<<exclex, eval = T, fig.cap = 'Collinearity ($\\gamma$ as a measure of identifiability, \\cref{gameq}) for \\ac{do} of organic matter parameters for subset combinations in \\cref{fig:identplo}.  Collinearity is evaluated for subsets that excluded and included the parameters at the top of each plot. Collinearity of including all eight parameters is in \\cref{fig:identplo}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable collinearity.', fig.height = 7.25, fig.width = 7.25, echo = F, cache = TRUE, out.width = "0.8\\textwidth">>=
 data(cat_ident_all)
 
 tmpcat <- cat_ident_all[['O2']]
@@ -1189,6 +1191,7 @@ toplo <-tmpcat$`Organic Matter` %>%
     inc = factor(inc, levels = c(0, 1), labels = c('excluded', 'included'))
     )
 
+leftlab <- expression(paste('Collinearity, ', italic(gamma)))
 ggplot(toplo, aes(x = N, y = coll, fill = inc)) + 
   geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
   geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
@@ -1196,7 +1199,7 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
   facet_wrap(~parm, label = label_parsed, ncol = 2) + 
   theme_minimal() + 
   scale_fill_brewer(palette = 'Spectral') + 
-  scale_y_continuous('Identifiability', trans = 'log', breaks = c(0.1, 1, 10, 100, 1000)) +
+  scale_y_continuous(leftlab, trans = 'log', breaks = c(0.1, 1, 10, 100, 1000)) +
   scale_x_discrete('Parameters in set') + 
   theme(
     legend.title = element_blank(),
