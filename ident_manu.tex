@@ -58,7 +58,7 @@
 \usepackage{paralist}
 \usepackage{bm}
 \usepackage{fixltx2e}
-% \usepackage[inline]{showlabels}
+\usepackage[inline]{showlabels}
 
 \journal{Ecological Modelling}
 
@@ -148,7 +148,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Sun Mar 26 15:32:37 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/b41a6df79d21b187457db88f058313b9b430416a}{b41a6df79d21b187457db88f058313b9b430416a}}
+\tnotetext[mytitlenote]{Version: Sun Mar 26 16:14:21 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/ad5c4632bfb7084298ee0ce337870bbac1db811c}{ad5c4632bfb7084298ee0ce337870bbac1db811c}}
 
 \date{}
 
@@ -292,15 +292,13 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 
 
-Calibration of parameter values for each of the seven selection heuristics produced model output that varied in precision and computational effort to identify optimal values (\cref{tab:calib}).  The seven evaluated subsets were those for \ac{do} in each of the four categories of parameters in \cref{tab:heurist1}, including the single parameter for temperature.  The subsets in \cref{tab:heurist2,tab:heurist3} for the parameters selected independent of category and equally within each category were also evaluated.  As expected, the number of required iterations to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only six iterations were required to optimize the single parameter selected for the temperature category, whereas 850 iterations were required for the eight parameters selected independent of category.  A slight positive assocation between collinearity and number of iterations was also observed, such that computational effort  to identify optimal values for a parameter set inreased with lower identifiability (higher $\gamma$).  Of the seven paramter subsets, selection independent of category and equally within each category produced the lowest \ac{rmse} values ($67.05$, $67.67$, respectively), whereas the optimal values for paramters in the Optics category had the lowest reduction in \ac{rmse} ($72.14$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics produced model output that varied in precision and computational effort to identify optimal values (\cref{tab:calib}).  The seven evaluated subsets were those for \ac{do} in each of the four categories of parameters in \cref{tab:heurist1}, including the single parameter for temperature.  The subsets in \cref{tab:heurist2,tab:heurist3} for the parameters selected independent of parameter category and equally within each category were also evaluated.  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only six iterations were required to optimize the single parameter selected for the temperature category, whereas 850 iterations were required for the eight parameters selected independent of category.  A slight positive assocation between collinearity ($\gamma$) and number of iterations was also observed, such that computational effort  to identify optimal values for a parameter set increased with lower identifiability (higher $\gamma$).  Of the seven parameter subsets, selection independent of category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $72.14$, reduction to $67.052$, $67.665$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($72.139$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
 
-% starting rmse of model without calibration
-\cref{fig:areachg}
-% does overall area change correlate with degree of sensitivity?  
+
+
+The estimated areal extent of bottom-water hypoxia using default parameter values for the 3-dimensional model peaked on August, 28\textsuperscript{th} at $1.19\times 10^{4}$ km$^2$ (\cref{fig:areachg}a, August mean area 8988 $\pm$ 551 km$^2$, \cref{fig:areachg}b). Increases in the top sensitive parameters for \ac{do} in each category (\cref{tab:dosens}) increased the estimated areal extent of hypoxia (Figs. \ref{fig:areachg}c, \ref{fig:areachg}e), with the exception of the parameter for optimum temperature of growth (\textit{Tref(nospA+nospZ)$_{p1}$}), which caused a decrease (mean difference from July default area -1070 $\pm$ 1161 km$^2$, \cref{fig:areachg}d).  The largest increase in area was caused by an increase in the maximum growth rate of phytoplankton (\textit{umax}), with the greatest increase occurring in July (monthly mean increase of 4109 $\pm$ 1085 km$^2$, \cref{fig:areachg}d).  Overall, changes in hypoxia extent were largest for parameters with large sensitivity values (i.e., L1 = $0.05$ for \textit{ZKa}, L1 = $0.05$ for \textit{umax}).
 
 \section{Discussion}
-
-\subsection{Implications of sensitivity and identifiability analyses}
 
 Common goals in the application of biogeochemical models of ecosystem processes are to \begin{inparaenum}[1\upshape)]
 \item accurately describe the system by matching predictions with observed data \citep{Reckhow90}, and 
@@ -611,20 +609,20 @@ Specific approaches can be used to improve and build on the results presented he
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$*}\tabularnewline
 \hline
 {\bfseries 1}&&&&&\tabularnewline
-~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$14$&$72.14$\tabularnewline
-~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$154$&$68.7$\tabularnewline
-~~Phytoplankton&$3.97$&$7$&$0.02$&$270$&$68.72$\tabularnewline
-~~Temperature&$1$&$1$&$0.02$&$6$&$71.76$\tabularnewline
-~~Zooplankton&$5.2$&$4$&$0.03$&$99$&$71.22$\tabularnewline
+~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$14$&$72.139$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$154$&$68.701$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$270$&$68.722$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$6$&$71.759$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$99$&$71.223$\tabularnewline
 \hline
 {\bfseries 2}&&&&&\tabularnewline
-~~Independent of category&$6.81$&$8$&$0.03$&$850$&$67.05$\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$850$&$67.052$\tabularnewline
 \hline
 {\bfseries 3}&&&&&\tabularnewline
-~~Equally within category&$5.22$&$7$&$0.03$&$690$&$67.67$\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$690$&$67.665$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-\footnotesize *Starting \ac{rmse} $= 72.14$\end{table}
+\footnotesize *Starting \ac{rmse} $= 72.140$\end{table}
 
 
 \clearpage
@@ -712,7 +710,7 @@ Specific approaches can be used to improve and build on the results presented he
 
 }
 
-\caption{Estimated hypoxic area and monthly averages (km$^2 \times$ 1000) using the default parameter settings (a, b) and the differences using a 50\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \ac{do} in \cref{fig:sensalltile,tab:dosens}. Error bars are 95\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 29\textsuperscript{th} using the defaulat parameters (grey) and estimated changes with parameter perturbations is shown in (e).}\label{fig:areachg}
+\caption{Estimated hypoxic area and monthly averages (km$^2 \times$ 1000) using the default parameter settings (a, b) and the differences using a 50\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \ac{do} in \cref{fig:sensalltile,tab:dosens}. Error bars are 95\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 28\textsuperscript{th} using the defaulat parameters (grey) and estimated changes with parameter perturbations is shown in (e).}\label{fig:areachg}
 \end{figure}
 
 
