@@ -8,7 +8,7 @@
 \usepackage{paralist}
 \usepackage{bm}
 \usepackage{fixltx2e}
-\usepackage[inline]{showlabels}
+% \usepackage[inline]{showlabels}
 
 \journal{Ecological Modelling}
 
@@ -370,8 +370,6 @@ toppersO2 <- colltoppers$O2
 @
 
 The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$.  Parameter identifiability for \ac{do} decreased (increasing $\gamma$) at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets in the phytoplankton (\Sexpr{catpersO2$Phytoplankton[1]}\% of subsets less than $\gamma = 15$, \Sexpr{catpersO2$Phytoplankton[2]}\% less than $\gamma = 10$) and zooplankton categories (\Sexpr{catpersO2$Zooplankton[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$Zooplankton[2]}\% less than $\gamma = 10$), whereas all combinations were identifiable for optics (\Sexpr{catpersO2$Optics[1]}\% less than $\gamma = 15, 10$) and a majority identifiable for organic matter (\Sexpr{catpersO2$`Organic Matter`[1]}\% less than $\gamma = 15$, \Sexpr{catpersO2$`Organic Matter`[2]}\% less than $\gamma = 10$). Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was \Sexpr{toppersO2$top1[1]}\% less than $\gamma = 15, 10$ for the top parameter in each category, \Sexpr{toppersO2$top2[1]}\% and \Sexpr{toppersO2$top2[2]}\% for the top two, \Sexpr{toppersO2$top3[1]}\% and \Sexpr{toppersO2$top3[2]}\% for the top three, and \Sexpr{toppersO2$top4[1]}\% and \Sexpr{toppersO2$top4[2]}\% for the top four.  Results for the remaining state variables had similar patterns in identifiability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable (highest overall $\gamma$), whereas \ac{do} was most identifiable.
-
-An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided only general rules for $\gamma$ thresholds \citep{Brun01,Omlin01}, such that exact values for which parameter sets are inestimable likely vary between models and optimization methods.  As such, multiple values are shown in \cref{fig:percthresh}  given that actual thresholds could vary in practice. In general, identifiability decreased with the addition of parameters, although the rate of decrease depended on the selected threshold for $\gamma$. More conservative values for $\gamma$ (e.g., $\gamma = 5$) were more sensitive to the number of parameters in a subset, that is, identifiability decreased more quickly with the addition of parameters at lower $\gamma$ thresholds as compared to higher $\gamma$.  Notable differences in identifiability were also observed by parameter selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
 
 <<eval = T>>=
 om_coll <- par_txt(paste0(c('KG1', 'KG2', 'KGcdom', 'KNH4', 'KNO3', 'KO2', 'KstarO2', 'nitmax'), '_1'))
@@ -1096,156 +1094,6 @@ grid.arrange(
 
 @
 
-% percent below gamma thresholds
-<<percthresh, eval = T, fig.cap = 'Percent of identifiable parameter sets for \\ac{do} at different $\\gamma$ thresholds, selection criteria, and total number of parameters in the set.  Thresholds varied from $\\gamma = 2$ to $20$ such that sets with $\\gamma$ below a threshold were considered identifiable relative to the value. Plots in (a) show percent of identifiable sets by selecting parameters within categories and (b) shows percent identifiable by selecting from the top 1 through 4 parameters in all categories.  Percent identifiable was based on all sets in \\cref{fig:identplo}.', fig.height = 8, fig.width = 9, echo = F, cache = TRUE>>=
-data(cat_ident_all)
-data(top_ident_all)
-
-# state variable, categories (no temp ident because only one parameter)
-catnms <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Zooplankton')
-toplevs <- paste0('top', 1:4)
-toplabs <- paste('Top', 1:4)
-stts_lev <- c('O2')
-stts_lab <- c('Dissolved Oxygen')
-
-thresh <- seq(2, 20, by = 2)
-
-# percent combos less than gamma 15, 10 by state variable, by parameter category
-# temperature category not evaluated, only one paramaeter
-collcatpers <- lapply(cat_ident_all[stts_lev], function(stvar){
-  
-  bystvar <- lapply(stvar[!names(stvar) %in% 'Temperature'], function(x){
-
-    bysets <- split(x, x$N) %>% 
-      lapply(function(sets){
-        colls <- sets$coll
-        sapply(thresh, function(x) 100 * sum(colls < x)/length(colls))
-       
-      }) %>% 
-      do.call('rbind', .) %>% 
-      data.frame(
-        nparms = row.names(.), 
-        .
-      ) %>% 
-      mutate(
-        nparms = as.numeric(as.character(nparms))
-      ) %>% 
-      gather('lval', 'perc', -nparms) %>% 
-      mutate(lval = factor(lval, 
-        levels = paste0('X', 1:length(thresh)), 
-        labels = paste0('l', thresh)
-      ))
-    bysets
-
-  }) %>% 
-  reshape2::melt(., id.vars = names(.[[1]])) %>% 
-  rename(Category = L1)
-  
-  return(bystvar)
-
-  }) %>% 
-  reshape2::melt(., id.vars = names(.[[1]])) %>% 
-  rename(`State variable` = L1) %>% 
-  mutate(
-    `State variable` = factor(`State variable`, levels = stts_lev, labels = stts_lab),
-    Category = factor(Category, levels = catnms), 
-    Threshold = gsub('^l', '', lval),
-    Threshold = as.numeric(Threshold)
-    )
-
-colltoppers <- lapply(top_ident_all[stts_lev], function(stvar){
-  
-  bystvar <- lapply(stvar, function(x){
-
-    bysets <- split(x, x$N) %>% 
-      lapply(function(sets){
-        colls <- sets$coll
-        sapply(thresh, function(x) 100 * sum(colls < x)/length(colls))
-       
-      }) %>% 
-      do.call('rbind', .) %>% 
-      data.frame(
-        nparms = row.names(.), 
-        .
-      ) %>% 
-      mutate(
-        nparms = as.numeric(as.character(nparms))
-      ) %>% 
-      gather('lval', 'perc', -nparms) %>% 
-      mutate(lval = factor(lval, 
-        levels = paste0('X', 1:length(thresh)), 
-        labels = paste0('l', thresh)
-      ))
-    bysets
-
-  }) %>% 
-  reshape2::melt(., id.vars = names(.[[1]])) %>% 
-  rename(Category = L1) %>% 
-  filter(!Category %in% 'top5')
-  
-  return(bystvar)
-
-  }) %>% 
-  reshape2::melt(., id.vars = names(.[[1]])) %>% 
-  rename(`State variable` = L1) %>% 
-  mutate(
-    `State variable` = factor(`State variable`, levels = stts_lev, labels = stts_lab),
-    Category = factor(Category, levels = toplevs, labels = toplabs), 
-    Threshold = gsub('^l', '', lval),
-    Threshold = as.numeric(Threshold)
-    )
-
-toplo1 <- collcatpers
-toplo2 <- colltoppers
-
-# default theme
-mytheme <- theme_minimal() + 
-  theme(
-    axis.line.x = element_line(), 
-    axis.line.y = element_line(), 
-    axis.title.x = element_blank(), 
-    axis.title.y = element_blank(),
-    axis.ticks.x = element_line(),
-    axis.ticks.y = element_line(),
-    axis.ticks.length = unit(.1, "cm"), 
-    legend.position = 'none'
-  )
-
-lncol <- 'darkgrey'
-sz <- 3
-
-p1 <- ggplot(toplo1, aes(x = nparms, group = lval)) + 
-  geom_line(aes(y = perc), colour = lncol) + 
-  geom_point(aes(y = perc, fill = Threshold), shape = 21, colour = lncol, 
-    size = sz
-    ) + 
-  scale_fill_distiller(palette = "Spectral") +
-  facet_wrap(~ Category, ncol = 1) +
-  mytheme +
-  ggtitle('(a) By parameter category')
-
-p2 <- ggplot(toplo2, aes(x = nparms, group = lval)) + 
-  geom_line(aes(y = perc), colour = lncol) + 
-  geom_point(aes(y = perc, fill = Threshold), shape = 21, colour = lncol, 
-    size = sz
-    ) + 
-  scale_fill_distiller(palette = "Spectral") +
-  facet_wrap(~ Category, ncol = 1) +
-  mytheme +
-  ggtitle('(b) By top parameters, all categories')
-
-pleg <- ggplot(toplo2, aes(x = nparms, group = lval)) + 
-  geom_point(aes(y = perc, fill = Threshold)) + 
-  scale_fill_distiller(palette = "Spectral")
-pleg <- g_legend(pleg)
-
-grid.arrange(
-  arrangeGrob(p1, p2, ncol = 2, bottom = 'Parameters in set'),
-  left = 'Percent identifiable sets',
-  pleg, ncol = 2, widths = c(1, 0.2)
-)
-@
-
 % parameter exclusion temp
 <<exclex, eval = T, fig.cap = 'Collinearity ($\\gamma$ as a measure of identifiability, \\cref{gameq}) for \\ac{do} of organic matter parameters for subset combinations in \\cref{fig:identplo}.  Collinearity is evaluated for subsets that excluded and included the parameters at the top of each plot. Collinearity of including all eight parameters is in \\cref{fig:identplo}. Grey lines indicate potential thresholds at $\\gamma = 10, 15$ for maximum acceptable collinearity.', fig.height = 7.25, fig.width = 7.25, echo = F, cache = TRUE, out.width = "0.8\\textwidth">>=
 data(cat_ident_all)
@@ -1266,7 +1114,7 @@ leftlab <- expression(paste('Collinearity, ', italic(gamma)))
 ggplot(toplo, aes(x = N, y = coll, fill = inc)) + 
   geom_hline(yintercept = 15, linetype = 'longdash', colour = 'darkgrey') + 
   geom_hline(yintercept = 10, linetype = 'dotted', colour = 'darkgrey') + 
-  geom_boxplot(outlier.size = 0.5, size = 0.5) + 
+  geom_boxplot(outlier.size = 0.5, size = 0.4) + 
   facet_wrap(~parm, label = label_parsed, ncol = 2) + 
   theme_minimal() + 
   scale_fill_brewer(palette = 'Spectral') + 

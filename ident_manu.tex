@@ -58,7 +58,7 @@
 \usepackage{paralist}
 \usepackage{bm}
 \usepackage{fixltx2e}
-\usepackage[inline]{showlabels}
+% \usepackage[inline]{showlabels}
 
 \journal{Ecological Modelling}
 
@@ -148,7 +148,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Sun Mar 26 16:14:21 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/ad5c4632bfb7084298ee0ce337870bbac1db811c}{ad5c4632bfb7084298ee0ce337870bbac1db811c}}
+\tnotetext[mytitlenote]{Version: Mon Mar 27 13:44:31 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/52c5bbb2da21e0ecce154b9907a01aab993c8937}{52c5bbb2da21e0ecce154b9907a01aab993c8937}}
 
 \date{}
 
@@ -278,8 +278,6 @@ Local sensitivity analyses for the additional state variables (ammonium, \ac{chl
 
 
 The identifiability analyses suggested that many parameter subsets exceeded the thresholds of $\gamma = 10, 15$.  Parameter identifiability for \ac{do} decreased (increasing $\gamma$) at different rates with increasing size of parameter subsets depending on the parameter category or the number of top parameters that were selected (\cref{fig:identplo}). By category, identifiability was lowest for all combinations of parameter subsets in the phytoplankton ($60$\% of subsets less than $\gamma = 15$, $43$\% less than $\gamma = 10$) and zooplankton categories ($53.1$\% less than $\gamma = 15$, $40$\% less than $\gamma = 10$), whereas all combinations were identifiable for optics ($100$\% less than $\gamma = 15, 10$) and a majority identifiable for organic matter ($91.9$\% less than $\gamma = 15$, $76.5$\% less than $\gamma = 10$). Identifiability for parameters in the temperature category was not evaluated because \ac{do} was sensitive to only one parameter (i.e., $\gamma = 1$). Parameter combinations for choosing from the top, top two, top three, and top four parameters in each category together had decreasing identifability with the increasing size of the selection pool (e.g., top one versus top four parameters, \cref{fig:identplo}).  The percentage of parameter subsets that were below the acceptable thresholds for identifability was $100$\% less than $\gamma = 15, 10$ for the top parameter in each category, $90.6$\% and $80.7$\% for the top two, $80.7$\% and $70.9$\% for the top three, and $55.8$\% and $45.7$\% for the top four.  Results for the remaining state variables had similar patterns in identifiability with increasing size of parameter subsets and selection categories, although differences in identifiabiltiy between state variables was observed (\cref{fig:identploall}).  Most notably, nitrate was consistently the least identifiable variable (highest overall $\gamma$), whereas \ac{do} was most identifiable.
-
-An alternative view of the results in \cref{fig:identplo} can be used to demonstrate the effects of parameter selection criteria and number of parameters in the selection pool on identifiability.  \Cref{fig:percthresh} shows the percentage of identifiable parameter sets for \ac{do} using the same selection criteria in \cref{fig:identplo}, i.e., selection of parameters only within parameter categories and selection of the top sensitive parameters regardless of category.  \Cref{fig:percthresh} is similar to \cref{fig:identplo}, with the added effect of a chosen $\gamma$ threshold on identifability.  Previous studies have provided only general rules for $\gamma$ thresholds \citep{Brun01,Omlin01}, such that exact values for which parameter sets are inestimable likely vary between models and optimization methods.  As such, multiple values are shown in \cref{fig:percthresh}  given that actual thresholds could vary in practice. In general, identifiability decreased with the addition of parameters, although the rate of decrease depended on the selected threshold for $\gamma$. More conservative values for $\gamma$ (e.g., $\gamma = 5$) were more sensitive to the number of parameters in a subset, that is, identifiability decreased more quickly with the addition of parameters at lower $\gamma$ thresholds as compared to higher $\gamma$.  Notable differences in identifiability were also observed by parameter selection criteria (within categories or top parameters only), which further supports results in \cref{fig:identplo,fig:identploall}.    
 
 
 
@@ -676,18 +674,6 @@ Specific approaches can be used to improve and build on the results presented he
 }
 
 \caption[Average collinearity ($\gamma$ as a measure of identifiability, \cref{gameq}) of parameter subsets for all state variables]{Average collinearity ($\gamma$ as a measure of identifiability, \cref{gameq}) of parameter subsets for all state variables.  Plots in (a) show collinearity by parameter categories and (b) shows collinearity by selecting the top 1 through 4 parameters in all categories.  Collinearity was averaged for all combinations in a parameter set to evaluate relative differenes between state variables.  The temperature category is not shown because all state variables were sensitive to only one parameter (i.e., $\gamma = 1$).}\label{fig:identploall}
-\end{figure}
-
-
-
-% percent below gamma thresholds
-\begin{figure}[!ht]
-
-{\centering \includegraphics[width=\maxwidth]{figs/percthresh-1} 
-
-}
-
-\caption{Percent of identifiable parameter sets for \ac{do} at different $\gamma$ thresholds, selection criteria, and total number of parameters in the set.  Thresholds varied from $\gamma = 2$ to $20$ such that sets with $\gamma$ below a threshold were considered identifiable relative to the value. Plots in (a) show percent of identifiable sets by selecting parameters within categories and (b) shows percent identifiable by selecting from the top 1 through 4 parameters in all categories.  Percent identifiable was based on all sets in \cref{fig:identplo}.}\label{fig:percthresh}
 \end{figure}
 
 
