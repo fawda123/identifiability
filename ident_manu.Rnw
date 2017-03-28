@@ -171,7 +171,7 @@ nparms <- parcats2(as_df = TRUE) %>%
 @
 
 \begin{abstract}
-\noindent Local sensitivity analyses and identifiability of parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of \Sexpr{sum(unlist(nparms))} total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved precision if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
+\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of \Sexpr{sum(unlist(nparms))} total parameters had a sufficiently unique effect on model output for precise calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved precision if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
 \end{abstract}
 
 \begin{keyword}
@@ -196,7 +196,7 @@ This study describes a parameter sensitivity and identifiability analysis of a \
 \item quantify the identifiability of subsets of the total parameter space based on sensitivity,
 \item and provide a set of heuristics for choosing parameters based on sensitivity, identifiability, and parameter categories.
 \end{inparaenum}
-The \ac{zero} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model precision.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
+The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model precision.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
 
 \section{Methods}
 
@@ -412,7 +412,7 @@ load(file = 'data/cals.RData')
 # starting rmse
 strt <- cals[[1]]$mat[1,] %>% 
   .[length(.)] %>% 
-  scinot(., digits = 3)
+  scinot(.)
 # 72.13955 
 
 idpars <- get_cmbs(tocal_all, 'O2', coll = T, errs = T, pert = 0.5) 
@@ -453,7 +453,7 @@ top <- filter(caldat, heurist %in% 'Independent of category')
 cattop <- filter(caldat, heurist %in% 'Equally within category')
 @
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in precision and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only \Sexpr{toeng(temp$its)[[1]]} iterations were required to optimize the single parameter selected for the temperature category, whereas \Sexpr{top$its} iterations were required for the \Sexpr{toeng(top$nprm)[[1]]} parameters selected independent of category.  A slight positive association between collinearity ($\gamma$) and number of iterations was also observed, such that computational effort  to identify optimal values for a parameter set increased with lower identifiability (higher $\gamma$).  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} \Sexpr{strt}, reduction to \Sexpr{scinot(top$rmse, digits = 3)}, \Sexpr{scinot(cattop$rmse, digits = 3)}, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction (\Sexpr{scinot(optics$rmse, digits = 3)}).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 (\Sexpr{scinot(optics$avee)}, \Sexpr{toeng(optics$nprm)} parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 (\Sexpr{scinot(top$avee)}, \Sexpr{toeng(top$nprm)} parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in precision and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only \Sexpr{toeng(temp$its)[[1]]} iterations were required to optimize the single parameter selected for the temperature category, whereas \Sexpr{top$its} iterations were required for the \Sexpr{toeng(top$nprm)[[1]]} parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} \Sexpr{strt}, reduction to \Sexpr{scinot(top$rmse)}, \Sexpr{scinot(cattop$rmse)}, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction (\Sexpr{scinot(optics$rmse)}).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 (\Sexpr{scinot(optics$avee)}, \Sexpr{toeng(optics$nprm)} parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 (\Sexpr{scinot(top$avee)}, \Sexpr{toeng(top$nprm)} parameters, \cref{tab:calib}). 
 
 <<>>=
 data(area)
@@ -540,8 +540,8 @@ Specific approaches can be used to improve and build on the results presented he
 
 \clearpage
 
-\bibliography{refs}
-% \bibliography{refsshr}
+% \bibliography{refs}
+\bibliography{refsshr}
 \clearpage
 
 %%%%%%
@@ -742,8 +742,8 @@ totab <- caldat %>%
     coll = ifelse(is.na(coll), 1, coll),
     coll = sapply(coll, scinot),
     nprm = sapply(nprm, scinot),
-    its = sapply(its, scinot),
-    rmse = sapply(rmse, scinot, digits = 3), 
+    its = paste0('$', its, '$'),
+    rmse = sapply(rmse, scinot), 
     avee = sapply(avee, scinot)
     ) %>% 
   arrange(heurist)

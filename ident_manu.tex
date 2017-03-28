@@ -148,7 +148,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Mon Mar 27 15:12:15 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/2fbaaefe9317f286aa11b3f3fe425ff27a551ad5}{2fbaaefe9317f286aa11b3f3fe425ff27a551ad5}}
+\tnotetext[mytitlenote]{Version: Tue Mar 28 09:22:53 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/2cadbba32f41563b26f352a0842ad2eea3b78910}{2cadbba32f41563b26f352a0842ad2eea3b78910}}
 
 \date{}
 
@@ -173,7 +173,7 @@
 
 
 \begin{abstract}
-\noindent Local sensitivity analyses and identifiability of parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of 51 total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved precision if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
+\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspendence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of 51 total parameters had a sufficiently unique effect on model output for precise calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved precision if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
 \end{abstract}
 
 \begin{keyword}
@@ -198,7 +198,7 @@ This study describes a parameter sensitivity and identifiability analysis of a \
 \item quantify the identifiability of subsets of the total parameter space based on sensitivity,
 \item and provide a set of heuristics for choosing parameters based on sensitivity, identifiability, and parameter categories.
 \end{inparaenum}
-The \ac{zero} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model precision.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
+The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model precision.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
 
 \section{Methods}
 
@@ -290,7 +290,7 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in precision and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only six iterations were required to optimize the single parameter selected for the temperature category, whereas 850 iterations were required for the eight parameters selected independent of category.  A slight positive association between collinearity ($\gamma$) and number of iterations was also observed, such that computational effort  to identify optimal values for a parameter set increased with lower identifiability (higher $\gamma$).  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $72.14$, reduction to $67.052$, $67.665$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($72.139$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in precision and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only six iterations were required to optimize the single parameter selected for the temperature category, whereas 1530 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $72.14$, reduction to $66.77$, $67.44$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($72.12$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
 
 
 
@@ -318,8 +318,8 @@ Specific approaches can be used to improve and build on the results presented he
 
 \clearpage
 
-\bibliography{refs}
-% \bibliography{refsshr}
+% \bibliography{refs}
+\bibliography{refsshr}
 \clearpage
 
 %%%%%%
@@ -608,17 +608,17 @@ Specific approaches can be used to improve and build on the results presented he
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$*}\tabularnewline
 \hline
 {\bfseries 1}&&&&&\tabularnewline
-~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$14$&$72.139$\tabularnewline
-~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$154$&$68.701$\tabularnewline
-~~Phytoplankton&$3.97$&$7$&$0.02$&$270$&$68.722$\tabularnewline
-~~Temperature&$1$&$1$&$0.02$&$6$&$71.759$\tabularnewline
-~~Zooplankton&$5.2$&$4$&$0.03$&$99$&$71.223$\tabularnewline
+~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$49$&$72.12$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$154$&$68.7$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$1725$&$68.3$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$6$&$71.76$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$279$&$71.22$\tabularnewline
 \hline
 {\bfseries 2}&&&&&\tabularnewline
-~~Independent of category&$6.81$&$8$&$0.03$&$850$&$67.052$\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$1530$&$66.77$\tabularnewline
 \hline
 {\bfseries 3}&&&&&\tabularnewline
-~~Equally within category&$5.22$&$7$&$0.03$&$690$&$67.665$\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$1005$&$67.44$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \footnotesize *Starting \ac{rmse} $= 72.140$\end{table}
