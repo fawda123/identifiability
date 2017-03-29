@@ -779,8 +779,8 @@ latex(
 % model schematic
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{figs/mod_schem.png}
-\caption{Conceptual representation of biogeochemical components for \ac{do} and carbon dioxide modelled in \ac{cgem} (complete equations \citealt{Eldridge10}). FishTank implements a \ac{zerod} version of the model that does not include any advection, mixing, or sediment diagenesis.}
+\includegraphics[width=0.7\textwidth]{figs/mod_schem.pdf}
+\caption{Conceptual representation of biogeochemical components modelled in \ac{cgem} (complete equations \citealt{Eldridge10}). FishTank implements a \ac{zerod} version of the model that does not include any advection, mixing, or sediment diagenesis.}
 \label{fig:mod_schem}
 \end{figure}
 
