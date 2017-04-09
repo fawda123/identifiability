@@ -1,4 +1,4 @@
-\documentclass[preprint]{elsarticle}
+\documentclass[review]{elsarticle}
 \usepackage[paperwidth=8.5in,paperheight=11in,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 \usepackage{setspace}
 \usepackage[colorlinks=true,allcolors=Blue]{hyperref}
@@ -78,7 +78,7 @@
 }%
 \makeatother
 
-\linespread{1.5}
+\linespread{2}
 
 %knitr options
 <<setup, include = F, cache = F>>=
@@ -133,6 +133,7 @@ writeLines(refs, con = file('refs.bib'))
 @
 
 \begin{document}
+\large
 
 \begin{frontmatter}
 
@@ -191,7 +192,7 @@ The development of a model represents a tradeoff between characteristics expecte
 
 Model precision can be evaluated relative to the effects of initial conditions or the observed data used for calibration, changes in parameter values, or variation in the structural components (i.e., observational, parameter, or structural uncertainty) \citep{Beck87}.  Evaluating effects of parameter changes is by far the most common and simplest approach.  Although sensitivity analyses should be integrated with model development, parameters are often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is sometimes called inverse modelling where results from sensitivity analyses are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability'.  Redundancies in parameter effects lead to unidentifiable models where calibration is empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}. Unidentifiable parameter sets have effects on model output that can be undone or compensated for by alteration of other parameters.  Identifiability issues are not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in practice \citep{Fasham06}.
 
-This study describes a parameter sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}.  The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
+This study describes a sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}.  The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
 \item identify the parameters that have the greatest influence on state variables using local sensitivity analysis,
 \item quantify the identifiability of subsets of the total parameter space based on sensitivity,
 \item and provide a set of heuristics for choosing parameters based on sensitivity, identifiability, and parameter categories.
