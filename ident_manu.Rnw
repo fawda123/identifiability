@@ -138,7 +138,7 @@ writeLines(refs, con = file('refs.bib'))
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{\Sexpr{vers}}
+\tnotetext[mytitlenote]{\Sexpr{vers}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -181,7 +181,7 @@ nparms <- parcats2(as_df = TRUE) %>%
 
 \end{frontmatter}
 
-\linenumbers
+% \linenumbers
 \acresetall
 
 \section{Introduction}
@@ -199,7 +199,7 @@ This study describes a sensitivity and identifiability analysis of a \ac{zerod} 
 \end{inparaenum}
 The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model precision.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
 
-\section{Methods}
+\section{Materials and Methods}
 
 \subsection{Model description}
 
@@ -539,6 +539,14 @@ An evaluation of sensitivity and identifiability of relevant parameter sets is a
 
 Specific approaches can be used to improve and build on the results presented herein, in addition to the more general considerations above.  The effects of structural or observational uncertainty could be evaluated as an extension of the analyses presented above. For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) could vary given the initial nutrient concentrations \citep{Eppley69}. Further, changes in the ratio between nitrogen and phosphorus could affect the sensitivity of state variables to parameter changes depending on the limiting nutrient.  A more challenging analysis is an evaluation of the effects of structural components on model output, which requires exclusion or inclusion of explicit biogeochemical equations. Fortunately, the FishTank model includes several `switches' that allow users to change the governing equations that estimate state variables, such as switches that `turn on' different structural equations for light attenuation in the water column.  This design is uncommon in biogeochemical models and could be leveraged for an evaluation of structural uncertainty. As such, our analysis of parameter sensitivity and identifiabilty could be combined with an evaluation of observational and structural uncertainty for a more complete characterization of the model, having implications for understanding drivers of hypoxia in coastal waters.  
 
+\section*{Acknowledgments}
+
+We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}.  
+
+\section*{Role of Funding Sources}
+
+This study was funded, reviewed, and approved for publication by the US EPA, National Health and Environmental Effects Research Laboratory.  However, the views expressed in this paper are those of the authors and do not necessarily reflect the views or policies of the US EPA. 
+
 \clearpage
 
 % \bibliography{refs}
@@ -781,7 +789,7 @@ latex(
 \begin{figure}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/mod_schem.pdf}
-\caption{Conceptual representation of biogeochemical components modelled in \ac{cgem} (complete equations \citealt{Eldridge10}). FishTank implements a \ac{zerod} version of the model that does not include any advection, mixing, or sediment diagenesis.}
+\caption{Conceptual representation of biogeochemical components modelled in \ac{cgem} (complete equations in \citealt{Eldridge10}). FishTank implements a \ac{zerod} version of the model that does not include any advection, mixing, or sediment diagenesis.}
 \label{fig:mod_schem}
 \end{figure}
 
@@ -1144,7 +1152,7 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
 
 @
 
-<<areachg, eval = T, fig.cap = 'Estimated hypoxic area and monthly averages (km$^2 \\times$ 1000) using the default parameter settings (a, b) and the differences using a 50\\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \\ac{do} in \\cref{fig:sensalltile,tab:dosens}. Error bars are 95\\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 28\\textsuperscript{th} using the defaulat parameters (grey) and estimated changes with parameter perturbations is shown in (e).', fig.height = 7, fig.width = 7, echo = F, cache = TRUE, out.width = "\\textwidth">>=
+<<areachg, eval = T, fig.cap = 'Estimated hypoxic area and monthly averages (km$^2 \\times$ 1000) using the default parameter settings (a, b) and the differences using a 50\\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \\ac{do} in \\cref{fig:sensalltile,tab:dosens}. Error bars are 95\\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 28\\textsuperscript{th} using the default parameters (grey) and estimated changes with parameter perturbations is shown in (e).', fig.height = 7, fig.width = 7, echo = F, cache = TRUE, out.width = "\\textwidth">>=
 # ##
 # # area time series
 # areats <- read_excel('ignore/runcompare.xlsx', sheet = 'area')
