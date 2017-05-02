@@ -541,7 +541,7 @@ Specific approaches can be used to improve and build on the results presented he
 
 \section*{Acknowledgments}
 
-We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}.  
+We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}. We thank James Pauer, Yonghsan Wan, and Susan Elizabeth George for providing helpful comments on an earlier draft.
 
 \section*{Role of Funding Sources}
 
@@ -833,7 +833,7 @@ p2 <- ggplot(toplo, aes(x = numparms, y = sels, fill = combs)) +
 p2
 @
 
-% effects of changing initial and structural conditions
+% sensitivity heat map
 <<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in a 50\\% increase in parameter values. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 6, fig.width = 4, out.width = '0.7\\textwidth', eval = T, echo = F, warning = F, message = F>>=
 # initial conditions
 data(ini_eval)
@@ -970,10 +970,10 @@ toplo2 <-  reshape2::melt(tmptop, id.var = c('N', 'coll')) %>%
 
 p2 <- ggplot(toplo2, aes(x = N, group = N)) + 
   geom_errorbar(aes(ymin = min, ymax = max), width = 0, colour = lncol) + 
-  geom_point(aes(y = ave, shape = 'Ave', fill = 'Ave'), colour = lncol, size = sz) + 
-  geom_point(aes(y = med, shape = 'Med', fill = 'Med'), colour = lncol, size = sz) + 
-  scale_shape_manual(name = '', labels = c('Ave', 'Med'), values = c(21, 24)) + 
-  scale_fill_manual(name = '', labels = c('Ave', 'Med'), values = cols[c(5, 3)]) +
+  geom_point(aes(y = ave, shape = 'Average', fill = 'Average'), colour = lncol, size = sz) + 
+  geom_point(aes(y = med, shape = 'Median', fill = 'Median'), colour = lncol, size = sz) + 
+  scale_shape_manual(name = '', labels = c('Average', 'Median'), values = c(21, 24)) + 
+  scale_fill_manual(name = '', labels = c('Average', 'Median'), values = cols[c(5, 3)]) +
   facet_wrap(~ npercat, ncol = 1, scales = 'free_y') +
   mytheme %+replace%
   theme(legend.title = element_blank()) + 
