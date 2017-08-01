@@ -148,7 +148,7 @@ writeLines(refs, con = file('refs.bib'))
 \ead{beck.marcus@epa.gov}
 
 \author{John C. Lehrter}
-\address{Dauphin Island Sea Lab, University of South Alabama, Dauphin Island, AL 36528}
+\address{University of South Alabama, Dauphin Island Sea Lab, Dauphin Island, AL 36528}
 \ead{jlehrter@disl.org}
 
 \author{Lisa L. Lowe}
@@ -203,7 +203,7 @@ The \ac{zerod} model was calibrated with selected parameter subsets to demonstra
 
 \subsection{Model description}
 
-Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^{-3}$), occur seasonally in bottom waters in the northern \ac{gom}.  The hypoxic area averages 15,540 km$^2$ annually (1993-2015) with minimum concentrations observed from late spring to early fall.  Seasonal variation is strongly related to carbon and nutrient export from the \ac{marb} \citep{Lohrenz08,Bianchi10}, whereas hydrologic variation, currents, and wind patterns can affect vertical salinity gradients that contribute to hypoxia formation \citep{Wiseman97,Paerl98,Obenour15}. The \ac{cgem} was developed to describe hypoxia dynamics on the \ac{lcs} and includes elements from the Navy Coastal Ocean Model \citep{Martin00} for hydrodynamics and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep[\cref{fig:mod_schem},][]{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf.  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.
+Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^{-3}$), occur seasonally in bottom waters in the northern \ac{gom}.  The hypoxic area averages 15,540 km$^2$ annually (1993-2015) with minimum concentrations observed from late spring to early fall.  Seasonal variation is strongly related to carbon and nutrient export from the \ac{marb} \citep{Lohrenz08,Bianchi10}, whereas hydrologic variation, currents, and wind patterns can affect vertical salinity gradients that contribute to hypoxia formation \citep{Wiseman97,Paerl98,Obenour15}. The \ac{cgem} was developed to describe hypoxia dynamics on the \ac{lcs} and includes elements from the Navy Coastal Ocean Model \citep{Martin00} for hydrodynamics and a biogeochemical model with multiple plankton groups, water-column metabolism, and sediment diagenesis \citep[\cref{fig:fishmod},][]{Eldridge10}.  The hydrodynamic component of \ac{cgem} provides a spatially-explicit description of hypoxia using an orthogonal grid with an approximate horizontal resolution of 1.9 km$^2$ and twenty equally-spaced vertical sigma layers on the shelf.  The biogeochemical component includes equations for 36 state variables including six phytoplankton groups (with nitrogen and phosophorus quotas for each), two zooplankton groups, nitrate, ammonium, phosphate, dissolved inorganic carbon, oxygen, silica, and multiple variables for dissolved and particulate organic matter from different sources.
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any advection, mixing, or sediment diagenesis. Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Results are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups given nutrient uptake rates, organic matter inputs and losses, inherent optical properties, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citetalias{LehrterIP}). A total of 108 equations are estimated at each time step to return values for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution. Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.
 
@@ -782,8 +782,8 @@ latex(
 % model schematic
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{figs/mod_schem.pdf}
-\caption{Conceptual representation of biogeochemical components modelled in \ac{cgem} (complete equations in \citealt{Eldridge10}). FishTank implements a \ac{zerod} version of the model that does not include any advection, mixing, or sediment diagenesis.}
+\includegraphics[width=0.7\textwidth]{figs/fishmod.pdf}
+\caption{Conceptual representation of biogeochemical components included in FishTank (complete equations in \citealt{Eldridge10}). The \acl{cgem} couples FishTank with a hydrodynamic model that includes advection, mixing, and dispersion.}
 \label{fig:mod_schem}
 \end{figure}
 

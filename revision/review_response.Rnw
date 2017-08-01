@@ -50,7 +50,7 @@ options(replace.assign=TRUE,width=90,digits=1)
 
 The authors executed the work on parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern Gulf of Mexico. The authors did not provide proper conceptual diagram of the model.  
 
-{\it }
+{\it The previous conceptual diagram was for CGEM that included both the biogeochemical components of FishTank and hydrodynamic components.  A new figure was created that inludes only the FishTank components.  }
 
 The model is not presented in detail, it is necessary to give more details on original model. 
 
