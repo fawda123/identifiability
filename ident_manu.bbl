@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{57}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -28,6 +28,20 @@ Brun, R., Reichert, P., K\"{u}nsch, H.~R., 2001. Practical identifiability
 Byrd, R.~H., Lu, P., Nocedal, J., Zhu, C., 1995. A limited memory algorithm for
   bound constrained optimization. SIAM J. Sci. Comput. 16~(5), 1190--1208.
 
+\bibitem[{Camacho et~al.(2014{\natexlab{a}})Camacho, Martin, Diaz-Ramirez,
+  McAnally, Rodriguez, Suscy, and Zhang}]{Camacho14b}
+Camacho, R.~A., Martin, J.~L., Diaz-Ramirez, J., McAnally, W., Rodriguez, H.,
+  Suscy, P., Zhang, S., 2014{\natexlab{a}}. Uncertainty analysis of estuarine
+  hydrodynamic models: an evaluation of input data uncertainty in the {W}eeks
+  {B}ay estuary, {A}labama. Appl. Ocean. Res. 47, 138--153.
+
+\bibitem[{Camacho et~al.(2014{\natexlab{b}})Camacho, Martin, Watson, Paul,
+  Zheng, and Stribling}]{Camacho14a}
+Camacho, R.~A., Martin, J.~L., Watson, B., Paul, M.~J., Zheng, L., Stribling,
+  J.~B., 2014{\natexlab{b}}. Modeling the factors controlling phytoplankton in
+  the {S}t. {L}ouis {B}ay estuary, {M}ississippi and evaluating estuarine
+  responses to nutrient load modifications. J. Environ. Eng. 141~(3), 04014067.
+
 \bibitem[{Clark et~al.(2001)Clark, Carpenter, Barber, Collins, Dobson, Foley,
   Lodge, Pascual, Pielke, Pizer, Pringle, Reid, Rose, Sala, Schlesinger, Wall,
   and Wear}]{Clark01}
@@ -49,6 +63,12 @@ Diaz, R.~J., Rosenberg, R., 1995. Marine benthic hypoxia: A review of its
 \bibitem[{Diaz and Rosenberg(2011)}]{Diaz11}
 Diaz, R.~J., Rosenberg, R., 2011. Introduction to environmental and economic
   consequences of hypoxia. Int. J. Water Resour. Dev. 27~(1), 71--82.
+
+\bibitem[{Dortch et~al.(2007)Dortch, Zakikhani, Noel, and Kim}]{Dortch07}
+Dortch, M.~S., Zakikhani, M., Noel, M.~R., Kim, S.~C., 2007. Application of a
+  water quality model to {M}ississippi {S}ound to evaluate impacts of
+  freshwater diversions. Tech. rep., Engineer Research and Development Center,
+  Vicksburg, Mississippi.
 
 \bibitem[{Durand et~al.(2002)Durand, Gascuel-Odoux, and Cordier}]{Durand02}
 Durand, P., Gascuel-Odoux, C., Cordier, M.~O., 2002. Parameterisation of
