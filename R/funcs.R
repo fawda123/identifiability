@@ -473,18 +473,18 @@ parcats2 <- function(as_df = FALSE){
       "Ksi: half-saturation constant for Si uptake", 
       "Ksi: half-saturation constant for Si uptake", 
       "Ksi: half-saturation constant for Si uptake", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQn: Qn constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
-      "KQp: Qp constant for Flynn nutrient dependent growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQn: Qn constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
+      "KQp: Qp constant for Flynn growth model", 
       "nfQs: exponent for Geider nutrient uptake model",
       "nfQs: exponent for Geider nutrient uptake model", 
       "nfQs: exponent for Geider nutrient uptake model",
@@ -829,23 +829,23 @@ parcats2 <- function(as_df = FALSE){
       'KstarO2: O2 concentration that inhibits denitrification',
       'KNO3: half-saturation concentration for denitrification',
       'pCO2: atmospheric CO2',
-      'stoich_x1R:  C:P stoichiometry of OM1_R',
-      'stoich_y1R:  N:P stoichiometry of OM1_R',
-      'stoich_x2R:  C:P stoichiometry of OM2_R',
-      'stoich_y2R:  N:P stoichiometry of OM2_R',
+      'stoich_x1R: C:P stoichiometry of OM1_R',
+      'stoich_y1R: N:P stoichiometry of OM1_R',
+      'stoich_x2R: C:P stoichiometry of OM2_R',
+      'stoich_y2R: N:P stoichiometry of OM2_R',
       'stoich_x1BC: C:P stoichiometry of OM1_BC',
       'stoich_y1BC: N:P stoichiometry of OM1_BC',
       'stoich_x2BC: C:P stoichiometry of OM2_BC',
       'stoich_y2BC: N:P stoichiometry of OM2_BC',
-      'sink OM1_A:  sinking rate',
-      'sink OM2_A:  sinking rate',
-      'sink OM1_Z:  sinking rate',
-      'sink OM2_Z:  sinking rate',
-      'sink OM1_R:  sinking rate',
-      'sink OM2_R:  sinking rate',
+      'sink OM1_A: phytoplankton sinking rate',
+      'sink OM2_A: phytoplankton sinking rate',
+      'sink OM1_Z: zooplankton sinking rate',
+      'sink OM2_Z: zooplankton sinking rate',
+      'sink OM1_R: sinking rate',
+      'sink OM2_R: sinking rate',
       'sink OM1_BC: sinking rate',
       'sink OM2_BC: sinking rate',
-      'KGcdom: decay rate of CDOM, 1/day',
+      'KGcdom: decay rate of CDOM',
       'CF_SPM: conversion factor for river OM to river SPM'
       ), 
     vals = c(
@@ -888,7 +888,7 @@ parcats2 <- function(as_df = FALSE){
   # return as data frame if T
   if(as_df){
     
-    out <- lapply(out, data.frame)
+    out <- lapply(out, data.frame, stringsAsFactors = FALSE)
     out <- do.call('rbind', out)
     row.names(out) <- 1:nrow(out)
     
@@ -1021,27 +1021,29 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
   tmpest$Parameter <- as.character(tmpest$Parameter)
   tmpest_cat <- sens_ests_cat_all[[out_var]]
   
+  # parameter descriptions
   labs <- parcats2(as_df = TRUE) %>% 
     rename(Parameter = shrt) %>% 
-    mutate(Parameter = as.character(Parameter))
+    mutate(
+      Parameter = as.character(Parameter),
+      lngs = gsub('^.*:\\s', '', lngs), 
+      lngs = gsub('_', '', lngs)
+      )
 
+  # join results with labs
   totab <- tmpest_cat %>% 
     select(Parameter) %>% 
     mutate(Parameter = as.character(Parameter)) %>% 
     left_join(., tmpest, by = 'Parameter') %>% 
     left_join(., labs, by = 'Parameter') %>% 
-    select(cats, lngs, Parameter, vals, L1) %>% 
+    select(cats, lngs, Parameter, L1) %>% 
     arrange(cats, -L1) %>% 
     mutate(
       Parameter = par_txt(Parameter),
-      lngs = gsub('^.*:\\s', '', lngs), 
-      lngs = gsub('_', '', lngs),
-      vals = sapply(vals, scinot, digits = digits, pow = pow),
       L1 = sapply(L1, scinot, digits = digits, pow = pow)
     ) %>% 
     rename(
-      Description = lngs, 
-      Value = vals
+      Description = lngs
     )
   
   # return data.frame if TRUE
@@ -1052,7 +1054,7 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
   cats <- totab$cats
   totab <- totab[,-c(1:2)]
   
-  cap.val<- paste('Sensitivity of', captxt, 'to perturbations of individual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output from the default (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+  cap.val<- paste('Sensitivity of', captxt, 'to perturbations of individual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
   
   latex( 
     totab,
@@ -1067,6 +1069,68 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
     label = paste0('tab:', tablab), 
     insert.bottom = foot.val
     )
+    
+}
+
+######
+# parmtab
+# get table of starting parameter values by category
+parmtab <- function(tablab = 'parmtab', tabsize = 'normalsize', pow = 3, digits = 2, foot.val = NULL, dfout = FALSE){
+
+  library(Hmisc)
+  library(dplyr)
+  library(tidyr)
+  
+  # parameter descriptions
+  labs <- parcats2(as_df = TRUE) %>% 
+    mutate(
+      shrt = gsub('_[0-9]$', '', shrt),
+      lngs = gsub('^.*:\\s*', '', lngs), 
+      lngs = gsub('_', '', lngs)
+      ) %>% 
+    unique
+
+  # join results with labs
+  totab <- parunis() %>% 
+    left_join(labs, by = c('cats', 'lngs', 'shrt')) %>% 
+    mutate(
+      cats = factor(cats, levels = c('Optics', 'Temperature', 'Phytoplankton', 'Zooplankton', 'Organic Matter')),
+      shrt = paste0(shrt, '_1'),
+      shrt = par_txt(shrt),
+      valsp50 = 1.5 * vals,
+      vals = sapply(vals, scinot, digits = digits, pow = pow),
+      valsp50 = sapply(valsp50, scinot, digits = digits, pow = pow)
+    ) %>% 
+    arrange(cats, shrt) %>% 
+    rename(
+      Description = lngs, 
+      Parameter = shrt, 
+      Value = vals, 
+      `Value $\\cdot$ 1.5` = valsp50
+    )
+  
+  return(totab)
+  
+  # # final table formatting
+  # Description <- totab$Description
+  # cats <- totab$cats
+  # totab <- totab[,-c(1:2)]
+  # 
+  # cap.val<- paste('Sensitivity of', captxt, 'to perturbations of individual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
+  # 
+  # latex( 
+  #   totab,
+  #   file = '',
+  #   rowlabel = 'Description',
+  #   caption = cap.val,
+  #   caption.loc = 'top',
+  #   rowname = Description,
+  #   rgroup = unique(cats),
+  #   n.rgroup = as.numeric(table(cats)),
+  #   size = tabsize,
+  #   label = paste0('tab:', tablab), 
+  #   insert.bottom = foot.val
+  #   )
     
 }
 
@@ -1414,89 +1478,77 @@ formpars <- function(parsin){
   
 }
 
-# function for matching units to paramter long names in parcats
-# currently only includes data returned by senstab
+# function to print parameter units
 parunis <- function(as_df = TRUE){
   
   out <- list(
-    Description = c(
+    cats = c("Optics", "Optics", "Optics", "Optics", 
+      "Temperature", "Temperature", "Phytoplankton", "Phytoplankton", 
+      "Phytoplankton", "Phytoplankton", "Phytoplankton", "Phytoplankton", 
+      "Phytoplankton", "Phytoplankton", "Phytoplankton", "Phytoplankton", 
+      "Phytoplankton", "Phytoplankton", "Phytoplankton", "Phytoplankton", 
+      "Phytoplankton", "Phytoplankton", "Phytoplankton", "Phytoplankton", 
+      "Phytoplankton", "Phytoplankton", "Phytoplankton", "Phytoplankton", 
+      "Zooplankton", "Zooplankton", "Zooplankton", "Zooplankton", "Zooplankton", 
+      "Zooplankton", "Zooplankton", "Zooplankton", "Zooplankton", "Zooplankton", 
+      "Zooplankton", "Organic Matter", "Organic Matter", "Organic Matter", 
+      "Organic Matter", "Organic Matter", "Organic Matter", "Organic Matter", 
+      "Organic Matter", "Organic Matter", "Organic Matter", "Organic Matter", 
+      "Organic Matter"
+      ), 
+    lngs = c(
       "Chla specific absorption at 490 nm", 
-      "OMZ specific absorption at 490 nm", 
-      "OMA specific absorption at 490 nm", 
-      "Optimum temperature for growth", 
-      "maximum growth rate", 
-      "mortality coefficient", 
-      "initial slope of photosynthesis v irradiance", 
-      "edibility vector for Z1", 
-      "phytoplankton carbon/cell", 
-      "phytoplankton growth respiration coefficient", 
-      "N-uptake rate measured at umax", 
-      "phytoplankton basal respiration coefficient", 
-      "phytoplankton threshold for grazing", 
-      "minimum N cell-quota", 
-      "P-uptake rate measured at umax", 
-      "coefficient for non-limiting nutrient", 
-      "phytoplankton volume/cell", 
-      "half-saturation constant for P", 
-      "half-saturation constant for N",
-      "minimum P cell-quota", 
-      "half saturation coefficient for grazing", 
-      "zooplankton nitrogen/individual", 
-      "quadratic mortality constant", 
-      "maximum growth rate of zooplankton", 
-      "assimilation efficiency as a fraction of ingestion", 
-      "proportion of phytoplankton lost to sloppy feeding", 
-      "zooplankton growth-dependent respiration factor", 
-      "zooplankton biomass-dependent respiration factor",
-      "zooplankton carbon/individual", 
-      "zooplankton phosphorus/individual", 
-      "turnover rate for OM1A and OM1Z", 
-      "turnover rate for OM2A and OM2Z", 
-      "O2 concentration that inhibits denitrification", 
-      "decay rate of CDOM", 
-      "half-saturation concentration for O2 utilization", 
-      "half-saturation concentration for denitrification", 
-      "maximum rate of nitrification per day", 
-      "NH4 rate constant for nitrification"), 
+      "OMA specific absorption at 490 nm", "OMZ specific absorption at 490 nm", 
+      "sinking rate", "Optimum temperature for growth", "Optimum temperature for growth", 
+      "edibility vector for Z1", "edibility vector for Z2", "maximum growth rate", 
+      "initial slope of photosynthesis v irradiance", "phytoplankton growth respiration coefficient", 
+      "phytoplankton basal respiration coefficient", "minimum N cell-quota", 
+      "minimum P cell-quota", "half-saturation constant for N", "half-saturation constant for P", 
+      "half-saturation constant for Si uptake", "Qn constant for Flynn growth model", 
+      "Qp constant for Flynn growth model", "N-uptake rate measured at umax", 
+      "P-uptake rate measured at umax", "Si-uptake rate measured at umax", 
+      "coefficient for non-limiting nutrient", "phytoplankton volume/cell", 
+      "phytoplankton carbon/cell", "phytoplankton threshold for grazing", 
+      "sinking rate of phytoplankton cells", "mortality coefficient", 
+      "assimilation efficiency as a fraction of ingestion", "proportion of phytoplankton lost to sloppy feeding", 
+      "zooplankton volume/individual", "zooplankton carbon/individual", 
+      "zooplankton nitrogen/individual", "zooplankton phosphorus/individual", 
+      "half saturation coefficient for grazing", "zooplankton growth-dependent respiration factor", 
+      "zooplankton biomass-dependent respiration factor", "maximum growth rate of zooplankton", 
+      "quadratic mortality constant", "turnover rate for OM1A and OM1Z", 
+      "turnover rate for OM2A and OM2Z", "NH4 rate constant for nitrification", 
+      "maximum rate of nitrification per day", "half-saturation concentration for O2 utilization", 
+      "O2 concentration that inhibits denitrification", "half-saturation concentration for denitrification", 
+      "phytoplankton sinking rate", "phytoplankton sinking rate", "zooplankton sinking rate", "zooplankton sinking rate", 
+      "decay rate of CDOM"
+      ), 
+    shrt = c(
+      "astar490", "astarOMA", 
+      "astarOMZ", "sink CDOM", "Tref(nospA+nospZ)", "Tref(nospA+nospZ)", 
+      "ediblevector(Z1)", "ediblevector(Z2)", "umax", "alpha", "respg", 
+      "respb", "QminN", "QminP", "Kn", "Kp", "Ksi", "KQn", "KQp", "vmaxN", 
+      "vmaxP", "vmaxSi", "aN", "volcell", "Qc", "Athresh", "sink A", 
+      "mA", "Zeffic", "Zslop", "Zvolcell", "ZQc", "ZQn", "ZQp", "ZKa", 
+      "Zrespg", "Zrespb", "Zumax", "Zm", "KG1", "KG2", "KNH4", "nitmax", 
+      "KO2", "KstarO2", "KNO3", "sink OM1_A", "sink OM2_A", "sink OM1_Z", 
+      "sink OM2_Z", "KGcdom"
+      ), 
     Units = c(
       "m$^{-1}$ (mg Chla m$^{-3}$)$^{-1}$", 
-      "m$^{-1}$ (mg OMZ m$^{-3}$)$^{-1}$", 
-      "m$^{-1}$ (mg OMA m$^{-3}$)$^{-1}$", 
-      "C", 
-      "d$^{-1}$", 
-      "d$^{-1}$", 
-      "10$^{-16} cm^2 s quanta$^{-1}$ d$^{-1}$", 
-      "", 
-      "10$^{-7} mmol C cell$^{-1}$",
-      "", 
-      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
-      "d$^{-1}$", 
-      "10$^7$ cells m$^{-3}$", 
-      "10$^{-9}$ mmol N cell$^{-1}$", 
-      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
-      "", 
-      "$\\\\mu$m$^3$", 
-      "mmol m$^{-3}$", 
-      "mmol m$^{-3}$", 
-      "10$^{-9}$ mmol P cell$^{-1}$", 
-      "$\\\\mu$m$^3$ m$^{-3}$", 
-      "mmol N ind$^{-1}$", 
-      "m$^6$ ind$^{-2}$ d$^{-1}$", 
-      "$\\\\mu$m$^3$ ind$^{-1}$ d$^{-1}$", 
-      "", 
-      "", 
-      "", 
-      "d$^{-1}$", 
-      "mmol C ind$^{-1}$", 
-      "mmol P ind$^{-1}$", 
-      "y$^{-1}$",
-      "y$^{-1}$", 
-      "mmol m$^{-3}$", 
-      "d$^{-1}$", 
-      "mmol m$^{-3}$", 
-      "mmol m$^{-3}$", 
-      "mmol m$^{-3}$ d$^{-1}$", 
-      "mmol m$^{-3}$")
+      "m$^{-1}$ (mg OMA m$^{-3}$)$^{-1}$", "m$^{-1}$ (mg OMZ m$^{-3}$)$^{-1}$", 
+      "m d$^{-1}$", "C", "C", "-", "-", "d$^{-1}$", "10$^{-16} cm^2 s quanta$^{-1}$ d$^{-1}$", 
+      "-", "d$^{-1}$", "10$^{-9}$ mmol N cell$^{-1}$", "10$^{-9}$ mmol P cell$^{-1}$", 
+      "mmol m$^{-3}$", "mmol m$^{-3}$", "mmol m$^{-3}$", "-", "-", 
+      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
+      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", "-", "$\\\\mu$m$^3$", "10$^{-7} mmol C cell$^{-1}$", 
+      "10$^7$ cells m$^{-3}$", "m d$^{-1}$", "d$^{-1}$", "-", "-", 
+      "$\\\\mu$m$^3$ ind$^{-1}$", "mmol C ind$^{-1}$", "mmol N ind$^{-1}$", 
+      "mmol P ind$^{-1}$", "$\\\\mu$m$^3$ m$^{-3}$", "-", "d$^{-1}$", 
+      "$\\\\mu$m$^3$ ind$^{-1}$ d$^{-1}$", "m$^6$ ind$^{-2}$ d$^{-1}$", 
+      "y$^{-1}$", "y$^{-1}$", "mmol m$^{-3}$", "mmol m$^{-3}$ d$^{-1}$", 
+      "mmol m$^{-3}$", "mmol m$^{-3}$", "mmol m$^{-3}$", "m d$^{-1}$", 
+      "m d$^{-1}$", "m d$^{-1}$", "m d$^{-1}$", "d$^{-1}$"
+      )
     )
   
   if(as_df) out <- data.frame(out, stringsAsFactors = FALSE)
