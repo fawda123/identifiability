@@ -1,4 +1,4 @@
-\begin{thebibliography}{57}
+\begin{thebibliography}{55}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
@@ -41,15 +41,6 @@ Camacho, R.~A., Martin, J.~L., Watson, B., Paul, M.~J., Zheng, L., Stribling,
   J.~B., 2014{\natexlab{b}}. Modeling the factors controlling phytoplankton in
   the {S}t. {L}ouis {B}ay estuary, {M}ississippi and evaluating estuarine
   responses to nutrient load modifications. J. Environ. Eng. 141~(3), 04014067.
-
-\bibitem[{Clark et~al.(2001)Clark, Carpenter, Barber, Collins, Dobson, Foley,
-  Lodge, Pascual, Pielke, Pizer, Pringle, Reid, Rose, Sala, Schlesinger, Wall,
-  and Wear}]{Clark01}
-Clark, J.~S., Carpenter, S.~R., Barber, M., Collins, S., Dobson, A., Foley,
-  J.~A., Lodge, D.~M., Pascual, M., Pielke, R., Pizer, W., Pringle, C., Reid,
-  W.~V., Rose, K.~A., Sala, O., Schlesinger, W.~H., Wall, D.~H., Wear, D.,
-  2001. Ecological forecasts: an emerging imperative. Sci. 293~(5530),
-  657--660.
 
 \bibitem[{Denman(2003)}]{Denman03}
 Denman, K.~L., 2003. Modelling planktonic ecosystems: parameterizing
@@ -151,12 +142,11 @@ Kirchner, J.~W., 2006. Getting the right answers for the right reasons: Linking
   measurements, analyses, and models to advance the science of hydrology. Water
   Resour. Res. 42~(3), W03S04.
 
-\bibitem[{Lehrter et~al.(In press)Lehrter, Ko, Lowe, and Penta}]{LehrterIP}
-Lehrter, J.~C., Ko, D.~S., Lowe, L., Penta, B., In press. Predicted effects of
-  climate change on the severity of northern {G}ulf of {M}exico hypoxia. In:
-  {Justic et al.} (Ed.), Modeling Coastal Hypoxia: Numerical Simulations of
-  Patterns, Controls, and Effect of Dissolved Oxygen Dynamics. Springer, New
-  York.
+\bibitem[{Lehrter et~al.(2017)Lehrter, Ko, Lowe, and Penta}]{Lehrter17}
+Lehrter, J.~C., Ko, D.~S., Lowe, L.~L., Penta, B., 2017. Predicted effects of
+  climate change on northern {G}ulf of {M}exico hypoxia. In: {Justic et al.}
+  (Ed.), Modeling Coastal Hypoxia: Numerical Simulations of Patterns, Controls,
+  and Effect of Dissolved Oxygen Dynamics. Springer, New York, pp. 173--204.
 
 \bibitem[{Levins(1966)}]{Levins66}
 Levins, R., 1966. The strategy of model building in population biology. Am.
@@ -245,10 +235,6 @@ Rabalais, N.~N., Turner, R.~E., Scavia, D., 2002. Beyond science into policy:
 {RDCT (R Development Core Team)}, 2017. {R: A language and environment for
   statistical computing, v3.3.2. R Foundation for Statistical Computing,
   Vienna, Austria}. \url{http://www.R-project.org}.
-
-\bibitem[{Reckhow et~al.(1990)Reckhow, Clements, and Dodd}]{Reckhow90}
-Reckhow, K.~H., Clements, J.~T., Dodd, R.~C., 1990. Statistical evaluation of
-  mechanistic water-quality models. J. Environ. Eng. 116~(2), 250--268.
 
 \bibitem[{Refsgaard et~al.(2007)Refsgaard, van~der Sluijs, H{\o}jberg, and
   Vanrolleghem}]{Refsgaard07}

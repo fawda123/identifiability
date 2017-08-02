@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  1 AUG 2017 16:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  2 AUG 2017 11:04
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -339,20 +339,20 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 )
 (M:\docs\manuscripts\identifiability\ident_manu.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
-LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
 
 (C:\Users\mbeck\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -403,7 +403,7 @@ LaTeX Font Info:    ... okay on input line 146.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring ON on input line 146.
+Package hyperref Info: Link coloring ON on input line 143.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -412,188 +412,188 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 146.
-LaTeX Info: Redefining \pageref on input line 146.
-LaTeX Info: Redefining \nameref on input line 146.
+LaTeX Info: Redefining \ref on input line 143.
+LaTeX Info: Redefining \pageref on input line 143.
+LaTeX Info: Redefining \nameref on input line 143.
 
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 (M:\docs\manuscripts\identifiability\ident_manu.out)
 \@outlinefile=\write5
 Package acronym Info: Label `acro:zerod' newly defined as it shall be overridde
 n
-although it is yet undefined on input line 177.
+although it is yet undefined on input line 174.
 Package acronym Info: Label `acro:cgem' newly defined as it shall be overridden
 
-although it is yet undefined on input line 181.
+although it is yet undefined on input line 178.
 Package acronym Info: Label `acro:gom' newly defined as it shall be overridden
-although it is yet undefined on input line 181.
+although it is yet undefined on input line 178.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 184.
+(Font)              <8> on input line 181.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 184.
+(Font)              <6> on input line 181.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 184.
+(Font)              <5> on input line 181.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 184.
+(Font)              <14.4> on input line 181.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 184.
+(Font)              <7> on input line 181.
  [1
 
 
 {C:/Users/mbeck/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 189.
+(Font)              <12> on input line 186.
 Package acronym Info: Label `acro:lcs' newly defined as it shall be overridden
-although it is yet undefined on input line 191.
-Package acronym Info: Label `acro:gom' overridden on input line 191.
+although it is yet undefined on input line 188.
+Package acronym Info: Label `acro:gom' overridden on input line 188.
 Package acronym Info: Label `acro:marb' newly defined as it shall be overridden
 
-although it is yet undefined on input line 191.
+although it is yet undefined on input line 188.
  [2] [3]
-Package acronym Info: Label `acro:zerod' overridden on input line 197.
+Package acronym Info: Label `acro:zerod' overridden on input line 194.
 Package acronym Info: Label `acro:do' newly defined as it shall be overridden
-although it is yet undefined on input line 202.
+although it is yet undefined on input line 199.
 Package acronym Info: Label `acro:chla' newly defined as it shall be overridden
 
-although it is yet undefined on input line 202.
+although it is yet undefined on input line 199.
 Package acronym Info: Label `acro:pom' newly defined as it shall be overridden
-although it is yet undefined on input line 202.
+although it is yet undefined on input line 199.
 Package acronym Info: Label `acro:dom' newly defined as it shall be overridden
-although it is yet undefined on input line 202.
+although it is yet undefined on input line 199.
  [4]
-Package acronym Info: Label `acro:cgem' overridden on input line 208.
+Package acronym Info: Label `acro:cgem' overridden on input line 205.
+ [5]
 
+LaTeX Warning: Reference `fig:fishmod' on page 1 undefined on input line 207.
 
-LaTeX Warning: Reference `fig:fishmod' on page 1 undefined on input line 208.
-
-[5] [6] [7] [8] [9] [10]
+[6] [7] [8] [9] [10]
 Package acronym Info: Label `acro:rmse' newly defined as it shall be overridden
 
-although it is yet undefined on input line 260.
- [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
-[21] (M:\docs\manuscripts\identifiability\ident_manu.bbl [22
+although it is yet undefined on input line 257.
+ [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+(M:\docs\manuscripts\identifiability\ident_manu.bbl [22
 
-] [23] [24]
-[25] [26] [27] [28]) [29] [30] [31] [32] [33] [34]
-<figs/fishmod.pdf, id=564, 612.51859pt x 273.67847pt>
+] [23] [24] [25]
+[26] [27]) [28] [29] [30] [31] [32] [33]
+<figs/fishmod.pdf, id=558, 612.51859pt x 273.67847pt>
 File: figs/fishmod.pdf Graphic file (type pdf)
  <use figs/fishmod.pdf>
-Package pdftex.def Info: figs/fishmod.pdf used on input line 640.
+Package pdftex.def Info: figs/fishmod.pdf used on input line 637.
 (pdftex.def)             Requested size: 328.82707pt x 146.9239pt.
 
-<figs/combnex-1.pdf, id=569, 361.35pt x 361.35pt>
+<figs/combnex-1.pdf, id=563, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 648.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 645.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=570, 289.08pt x 433.62pt>
+<figs/sensalltile-1.pdf, id=564, 289.08pt x 433.62pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 660.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 657.
 (pdftex.def)             Requested size: 328.82707pt x 493.26668pt.
 
-<figs/identplo-1.pdf, id=579, 578.16pt x 505.89pt>
+<figs/identplo-1.pdf, id=573, 578.16pt x 505.89pt>
 File: figs/identplo-1.pdf Graphic file (type pdf)
  <use figs/identplo-1.pdf>
-Package pdftex.def Info: figs/identplo-1.pdf used on input line 672.
+Package pdftex.def Info: figs/identplo-1.pdf used on input line 669.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=582, 650.43pt x 578.16pt>
+<figs/identploall-1.pdf, id=576, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
-Package pdftex.def Info: figs/identploall-1.pdf used on input line 684.
+Package pdftex.def Info: figs/identploall-1.pdf used on input line 681.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=585, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=579, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 696.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 693.
 (pdftex.def)             Requested size: 375.80544pt x 375.81802pt.
 
-<figs/areachg-1.pdf, id=592, 505.89pt x 505.89pt>
+<figs/areachg-1.pdf, id=586, 505.89pt x 505.89pt>
 File: figs/areachg-1.pdf Graphic file (type pdf)
  <use figs/areachg-1.pdf>
-Package pdftex.def Info: figs/areachg-1.pdf used on input line 707.
+Package pdftex.def Info: figs/areachg-1.pdf used on input line 704.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
 
-[35
+[34
 
 
  <M:/docs/manuscripts/identifiability/figs/fishmod.pdf> <M:/docs/manuscripts/id
-entifiability/figs/combnex-1.pdf>] [36 <M:/docs/manuscripts/identifiability/fig
-s/sensalltile-1.pdf>] [37 <M:/docs/manuscripts/identifiability/figs/identplo-1.
-pdf>] [38 <M:/docs/manuscripts/identifiability/figs/identploall-1.pdf>]
-[39 <M:/docs/manuscripts/identifiability/figs/exclex-1.pdf>] [40 <M:/docs/manus
+entifiability/figs/combnex-1.pdf>] [35 <M:/docs/manuscripts/identifiability/fig
+s/sensalltile-1.pdf>] [36 <M:/docs/manuscripts/identifiability/figs/identplo-1.
+pdf>] [37 <M:/docs/manuscripts/identifiability/figs/identploall-1.pdf>]
+[38 <M:/docs/manuscripts/identifiability/figs/exclex-1.pdf>] [39 <M:/docs/manus
 cripts/identifiability/figs/areachg-1.pdf>]pdfTeX warning (ext4): destination w
 ith the same identifier (name{table.1}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.728 ..., and organic matter.\label{tab:nh4sens}}
+l.725 ..., and organic matter.\label{tab:nh4sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.1}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.728 ..., and organic matter.\label{tab:nh4sens}}
+l.725 ..., and organic matter.\label{tab:nh4sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.2}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.790 ..., and organic matter.\label{tab:chlsens}}
+l.787 ..., and organic matter.\label{tab:chlsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.2}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.790 ..., and organic matter.\label{tab:chlsens}}
+l.787 ..., and organic matter.\label{tab:chlsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.3}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.852 ..., and organic matter.\label{tab:irrsens}}
+l.849 ..., and organic matter.\label{tab:irrsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.3}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.852 ..., and organic matter.\label{tab:irrsens}}
+l.849 ..., and organic matter.\label{tab:irrsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.4}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.914 ..., and organic matter.\label{tab:no3sens}}
+l.911 ..., and organic matter.\label{tab:no3sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.4}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.914 ..., and organic matter.\label{tab:no3sens}}
+l.911 ..., and organic matter.\label{tab:no3sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.5}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.976 ..., and organic matter.\label{tab:om1sens}}
+l.973 ..., and organic matter.\label{tab:om1sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.5}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.976 ..., and organic matter.\label{tab:om1sens}}
-                                                   [41] [42] [43] [44] [45]
-[46] [47]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1164.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1164.
+l.973 ..., and organic matter.\label{tab:om1sens}}
+                                                   [40] [41] [42] [43] [44]
+[45] [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1161.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1161.
  (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1164.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1164.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1161.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1161.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 62B21E28F17528CBA4AD5B4CF2B7C71B;952.
@@ -601,16 +601,16 @@ Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1164.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1161.
  ) 
 Here is how much of TeX's memory you used:
- 9066 strings out of 493921
- 141866 string characters out of 3147282
- 310143 words of memory out of 3000000
- 12075 multiletter control sequences out of 15000+200000
+ 9056 strings out of 493921
+ 141725 string characters out of 3147282
+ 324118 words of memory out of 3000000
+ 12068 multiletter control sequences out of 15000+200000
  17214 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 34i,12n,34p,2071b,564s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,12n,34p,2071b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
@@ -636,9 +636,9 @@ lic/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 tt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on ident_manu.pdf (47 pages, 808699 bytes).
+Output written on ident_manu.pdf (46 pages, 810018 bytes).
 PDF statistics:
- 861 PDF objects out of 1000 (max. 8388607)
- 162 named destinations out of 1000 (max. 500000)
+ 855 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
  148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

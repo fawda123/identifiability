@@ -1030,16 +1030,18 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
     mutate(Parameter = as.character(Parameter)) %>% 
     left_join(., tmpest, by = 'Parameter') %>% 
     left_join(., labs, by = 'Parameter') %>% 
-    select(cats, lngs, Parameter, L1) %>% 
+    select(cats, lngs, Parameter, vals, L1) %>% 
     arrange(cats, -L1) %>% 
     mutate(
       Parameter = par_txt(Parameter),
       lngs = gsub('^.*:\\s', '', lngs), 
       lngs = gsub('_', '', lngs),
+      vals = sapply(vals, scinot, digits = digits, pow = pow),
       L1 = sapply(L1, scinot, digits = digits, pow = pow)
     ) %>% 
     rename(
-      Description = lngs
+      Description = lngs, 
+      Value = vals
     )
   
   # final table formatting
