@@ -159,14 +159,14 @@ parcats2 <- function(as_df = FALSE){
       'Ea_R(nospA+nospZ)_8'
       ),
     lngs = c(
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
-      'Tref(nospA+nospZ): Optimum temperature for growth(C)',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
+      'Tref(nospA+nospZ): Optimum temperature for growth',
       'KTg1(nospA+nospZ): Effect of T below Topt(C^2)',
       'KTg1(nospA+nospZ): Effect of T below Topt(C^2)',
       'KTg1(nospA+nospZ): Effect of T below Topt(C^2)',
@@ -407,12 +407,12 @@ parcats2 <- function(as_df = FALSE){
       "umax: maximum growth rate", 
       "umax: maximum growth rate", 
       "umax: maximum growth rate", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
-      "alpha: initial slope of the photosynthesis-irradiance relationship", 
+      "alpha: initial slope of photosynthesis v irradiance", 
+      "alpha: initial slope of photosynthesis v irradiance", 
+      "alpha: initial slope of photosynthesis v irradiance", 
+      "alpha: initial slope of photosynthesis v irradiance", 
+      "alpha: initial slope of photosynthesis v irradiance", 
+      "alpha: initial slope of photosynthesis v irradiance", 
       "beta: photoinhibition constant", 
       "beta: photoinhibition constant", 
       "beta: photoinhibition constant",
@@ -527,12 +527,12 @@ parcats2 <- function(as_df = FALSE){
       "Qc: phytoplankton carbon/cell", 
       "Qc: phytoplankton carbon/cell", 
       "Qc: phytoplankton carbon/cell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
-      "Athresh: Phytoplankton threshold for grazing, is multiplied by VOLcell", 
+      "Athresh: phytoplankton threshold for grazing", 
+      "Athresh: phytoplankton threshold for grazing", 
+      "Athresh: phytoplankton threshold for grazing", 
+      "Athresh: phytoplankton threshold for grazing", 
+      "Athresh: phytoplankton threshold for grazing", 
+      "Athresh: phytoplankton threshold for grazing", 
       "sink A: sinking rate of phytoplankton cells",
       "sink A: sinking rate of phytoplankton cells", 
       "sink A: sinking rate of phytoplankton cells",
@@ -735,8 +735,8 @@ parcats2 <- function(as_df = FALSE){
     lngs = c(
       'Zeffic: assimilation efficiency as a fraction of ingestion',
       'Zeffic: assimilation efficiency as a fraction of ingestion',
-      'Zslop: proportion of grazed phytoplankton lost to sloppy feeding',
-      'Zslop: proportion of grazed phytoplankton lost to sloppy feeding',
+      'Zslop: proportion of phytoplankton lost to sloppy feeding',
+      'Zslop: proportion of phytoplankton lost to sloppy feeding',
       'Zvolcell: zooplankton volume/individual',
       'Zvolcell: zooplankton volume/individual',
       'ZQc: zooplankton carbon/individual',
@@ -747,14 +747,14 @@ parcats2 <- function(as_df = FALSE){
       'ZQp: zooplankton phosphorus/individual',
       'ZKa: half saturation coefficient for grazing',
       'ZKa: half saturation coefficient for grazing',
-      'Zrespg: Zooplankton growth-dependent respiration factor',
-      'Zrespg: Zooplankton growth-dependent respiration factor',
-      'Zrespb: Zooplankton biomass-dependent respiration factor',
-      'Zrespb: Zooplankton biomass-dependent respiration factor',
+      'Zrespg: zooplankton growth-dependent respiration factor',
+      'Zrespg: zooplankton growth-dependent respiration factor',
+      'Zrespb: zooplankton biomass-dependent respiration factor',
+      'Zrespb: zooplankton biomass-dependent respiration factor',
       'Zumax: maximum growth rate of zooplankton',
       'Zumax: maximum growth rate of zooplankton',
-      'Zm: Zooplankton mortality constant for quadratic mortality',
-      'Zm: Zooplankton mortality constant for quadratic mortality'
+      'Zm: quadratic mortality constant',
+      'Zm: quadratic mortality constant'
       ), 
     vals = c(
       0.4,
@@ -827,7 +827,7 @@ parcats2 <- function(as_df = FALSE){
       'nitmax: maximum rate of nitrification per day',
       'KO2: half-saturation concentration for O2 utilization',
       'KstarO2: O2 concentration that inhibits denitrification',
-      'KNO3: half-saturation concentration for NO3 used in denitrification',
+      'KNO3: half-saturation concentration for denitrification',
       'pCO2: atmospheric CO2',
       'stoich_x1R:  C:P stoichiometry of OM1_R',
       'stoich_y1R:  N:P stoichiometry of OM1_R',
@@ -1007,7 +1007,7 @@ par_txt <- function(parin, frm = 'tex', p1z1 = TRUE){
 
 ######
 # function for sensitivity tables, no phyto, zoop groupings
-senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabsize = 'normalsize', pow = 3, digits = 2, foot.val = NULL){
+senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabsize = 'normalsize', pow = 3, digits = 2, foot.val = NULL, dfout = FALSE){
 
   library(Hmisc)
   library(dplyr)
@@ -1043,6 +1043,9 @@ senstab <- function(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', tabs
       Description = lngs, 
       Value = vals
     )
+  
+  # return data.frame if TRUE
+  if(dfout) return(totab)
   
   # final table formatting
   Description <- totab$Description
@@ -1406,6 +1409,97 @@ formpars <- function(parsin){
       rename(parm = L1)
     
   }
+  
+  return(out)
+  
+}
+
+# function for matching units to paramter long names in parcats
+# currently only includes data returned by senstab
+parunis <- function(as_df = TRUE){
+  
+  out <- list(
+    Description = c(
+      "Chla specific absorption at 490 nm", 
+      "OMZ specific absorption at 490 nm", 
+      "OMA specific absorption at 490 nm", 
+      "Optimum temperature for growth", 
+      "maximum growth rate", 
+      "mortality coefficient", 
+      "initial slope of photosynthesis v irradiance", 
+      "edibility vector for Z1", 
+      "phytoplankton carbon/cell", 
+      "phytoplankton growth respiration coefficient", 
+      "N-uptake rate measured at umax", 
+      "phytoplankton basal respiration coefficient", 
+      "phytoplankton threshold for grazing", 
+      "minimum N cell-quota", 
+      "P-uptake rate measured at umax", 
+      "coefficient for non-limiting nutrient", 
+      "phytoplankton volume/cell", 
+      "half-saturation constant for P", 
+      "half-saturation constant for N",
+      "minimum P cell-quota", 
+      "half saturation coefficient for grazing", 
+      "zooplankton nitrogen/individual", 
+      "quadratic mortality constant", 
+      "maximum growth rate of zooplankton", 
+      "assimilation efficiency as a fraction of ingestion", 
+      "proportion of phytoplankton lost to sloppy feeding", 
+      "zooplankton growth-dependent respiration factor", 
+      "zooplankton biomass-dependent respiration factor",
+      "zooplankton carbon/individual", 
+      "zooplankton phosphorus/individual", 
+      "turnover rate for OM1A and OM1Z", 
+      "turnover rate for OM2A and OM2Z", 
+      "O2 concentration that inhibits denitrification", 
+      "decay rate of CDOM", 
+      "half-saturation concentration for O2 utilization", 
+      "half-saturation concentration for denitrification", 
+      "maximum rate of nitrification per day", 
+      "NH4 rate constant for nitrification"), 
+    Units = c(
+      "m$^{-1}$ (mg Chla m$^{-3}$)$^{-1}$", 
+      "m$^{-1}$ (mg OMZ m$^{-3}$)$^{-1}$", 
+      "m$^{-1}$ (mg OMA m$^{-3}$)$^{-1}$", 
+      "C", 
+      "d$^{-1}$", 
+      "d$^{-1}$", 
+      "10$^{-16} cm^2 s quanta$^{-1}$ d$^{-1}$", 
+      "", 
+      "10$^{-7} mmol C cell$^{-1}$",
+      "", 
+      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
+      "d$^{-1}$", 
+      "10$^7$ cells m$^{-3}$", 
+      "10$^{-9}$ mmol N cell$^{-1}$", 
+      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
+      "", 
+      "$\\\\mu$m$^3$", 
+      "mmol m$^{-3}$", 
+      "mmol m$^{-3}$", 
+      "10$^{-9}$ mmol P cell$^{-1}$", 
+      "$\\\\mu$m$^3$ m$^{-3}$", 
+      "mmol N ind$^{-1}$", 
+      "m$^6$ ind$^{-2}$ d$^{-1}$", 
+      "$\\\\mu$m$^3$ ind$^{-1}$ d$^{-1}$", 
+      "", 
+      "", 
+      "", 
+      "d$^{-1}$", 
+      "mmol C ind$^{-1}$", 
+      "mmol P ind$^{-1}$", 
+      "y$^{-1}$",
+      "y$^{-1}$", 
+      "mmol m$^{-3}$", 
+      "d$^{-1}$", 
+      "mmol m$^{-3}$", 
+      "mmol m$^{-3}$", 
+      "mmol m$^{-3}$ d$^{-1}$", 
+      "mmol m$^{-3}$")
+    )
+  
+  if(as_df) out <- data.frame(out, stringsAsFactors = FALSE)
   
   return(out)
   
