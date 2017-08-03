@@ -146,7 +146,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Wed Aug 2 13:16:06 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/5cd8b68899d08c2c8f96177fe72e018bd764f96a}{5cd8b68899d08c2c8f96177fe72e018bd764f96a}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
+\tnotetext[mytitlenote]{Version: Wed Aug 2 17:20:03 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/a49e333c59176457f6c598684d90ef37895bdafb}{a49e333c59176457f6c598684d90ef37895bdafb}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -206,11 +206,11 @@ Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^{-3}$), 
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any advection, mixing, or sediment diagenesis (\cref{fig:fishmod}). A full description of the model structure, equations, and parameters is described in \citet{Lehrter17}. Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Results are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups given nutrient uptake rates, organic matter inputs and losses, inherent optical properties, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citealt{Lehrter17}). A total of 108 equations are estimated at each time step to return values for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution. Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.
 
-The sensitivity of state variables to perturbations of all relevant parameters for the 108 equations was estimated using a five minute timestep with daily output from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to add complexity in community structure and foodweb dynamics. To remove obvious redundancies, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final set that was evaluated included 51 parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ 4 parameters), organic matter (12), phytoplankton (22), temperature (2), and zooplankton (11).  A full description of the model parameters is available as an appendix in \citet{Lehrter17}.  
+The sensitivity of state variables to perturbations of all relevant parameters for the 108 equations was estimated using a five minute timestep with daily output from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to add complexity in community structure and foodweb dynamics. To remove obvious redundancies, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final set that was evaluated included 51 parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ 4 parameters), organic matter (12), phytoplankton (22), temperature (2), and zooplankton (11) (\cref{tab:parmtab}).  A full description of the model parameters is available as an appendix in \citet{Lehrter17}.  
 
 \subsection{Local sensitivity analysis}
 
-A local sensitivity analysis was performed by evaluating the change in state variables following perturbation of each parameter from its original value \citep{Soetaert10,Camacho14b,RDCT17}. This approach is described as a First Order Variance Analysis that linearly propagates changes from model parameters to model predictions \citep{Camacho14b}. Parameters were individually perturbed by a 50\% increase of the original values and sensitivity $S$ was estimated for each time step $i$ given a change for parameter $j$ as:
+A local sensitivity analysis was performed by evaluating the change in state variables following perturbation of each parameter from its original value \citep{Soetaert10,Camacho14b,RDCT17}. This approach is described as a First Order Variance Analysis that linearly propagates changes from model parameters to model predictions \citep{Camacho14b}. Parameters were individually perturbed by a 50\% increase of the original values (\cref{tab:parmtab}) and sensitivity $S$ was estimated for each time step $i$ given a change for parameter $j$ as:
 
 \begin{equation} \label{sijeqn}
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
@@ -327,6 +327,81 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 
 \invisiblesection{Tables}
 
+% parameter info
+%latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
+\begin{table}[!tbp]
+{\tiny
+\caption{FishTank parameters evaluated for sensitivity and identifiability. Sensitivitity analyses were based on a 50\% increase (Value $\cdot$ 1.5) from the initial value of each parameter. Dashed units are dimensionless. Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.  A full description of the model structure, equations, and parameters is described in \citet{Lehrter17}.\label{tab:parmtab}} 
+\begin{center}
+\begin{tabular}{lllll}
+\hline\hline
+\multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{Units}&\multicolumn{1}{c}{Value}&\multicolumn{1}{c}{Value $\cdot$ 1.5}\tabularnewline
+\hline
+{\bfseries Optics}&&&&\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&m$^{-1}$ (mg Chla m$^{-3}$)$^{-1}$&$0.04$&$0.06$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&m$^{-1}$ (mg OMA m$^{-3}$)$^{-1}$&$0.1$&$0.15$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&m$^{-1}$ (mg OMZ m$^{-3}$)$^{-1}$&$0.1$&$0.15$\tabularnewline
+~~sinking rate&\textit{sink CDOM}&m d$^{-1}$&$0$&$0$\tabularnewline
+\hline
+{\bfseries Temperature}&&&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&C&$22$&$33$\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&C&$22$&$33$\tabularnewline
+\hline
+{\bfseries Phytoplankton}&&&&\tabularnewline
+~~initial slope of photosynthesis v irradiance&\textit{alpha}&10$^{-16}$ cm$^2$ s quanta$^{-1}$ d$^{-1}$&$8.42\times 10^{-17}$&$1.26\times 10^{-16}$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&-&$1$&$1.5$\tabularnewline
+~~phytoplankton threshold for grazing&\textit{Athresh}&10$^7$ cells m$^{-3}$&$1.72\times 10^{8}$&$2.58\times 10^{8}$\tabularnewline
+~~edibility vector for Z1&\textit{ediblevector(Z1)}&-&$0.25$&$0.38$\tabularnewline
+~~edibility vector for Z2&\textit{ediblevector(Z2)}&-&$0.25$&$0.38$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&mmol m$^{-3}$&$4.51$&$6.76$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&mmol m$^{-3}$&$2.86$&$4.29$\tabularnewline
+~~Qn constant for Flynn growth model&\textit{KQn}&-&$5$&$7.5$\tabularnewline
+~~Qp constant for Flynn growth model&\textit{KQp}&-&$0.2$&$0.3$\tabularnewline
+~~half-saturation constant for Si uptake&\textit{Ksi}&mmol m$^{-3}$&$4.51$&$6.76$\tabularnewline
+~~mortality coefficient&\textit{mA}&d$^{-1}$&$0.1$&$0.15$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&10$^{-7}$ mmol C cell$^{-1}$&$1.35\times 10^{-6}$&$2.03\times 10^{-6}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&10$^{-9}$ mmol N cell$^{-1}$&$6.08\times 10^{-9}$&$9.12\times 10^{-9}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&10$^{-9}$ mmol P cell$^{-1}$&$6.19\times 10^{-10}$&$9.29\times 10^{-10}$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&d$^{-1}$&$0.02$&$0.03$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&-&$0.1$&$0.15$\tabularnewline
+~~sinking rate of phytoplankton cells&\textit{sink A}&m d$^{-1}$&$1.49$&$2.23$\tabularnewline
+~~maximum growth rate&\textit{umax}&d$^{-1}$&$0.41$&$0.62$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1\times 10^{-8}$&$6.15\times 10^{-8}$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$2.68\times 10^{-8}$&$4.02\times 10^{-8}$\tabularnewline
+~~Si-uptake rate measured at umax&\textit{vmaxSi}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1\times 10^{-8}$&$6.15\times 10^{-8}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$\mu$m$^3$&$3.37\times 10^{4}$&$5.05\times 10^{4}$\tabularnewline
+\hline
+{\bfseries Zooplankton}&&&&\tabularnewline
+~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&-&$0.4$&$0.6$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$\mu$m$^3$ m$^{-3}$&$1.12\times 10^{12}$&$1.68\times 10^{12}$\tabularnewline
+~~quadratic mortality constant&\textit{Zm}&m$^6$ ind$^{-2}$ d$^{-1}$&$7.2\times 10^{-4}$&$0$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&mmol C ind$^{-1}$&$3.13\times 10^{-4}$&$4.7\times 10^{-4}$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&mmol N ind$^{-1}$&$6.95\times 10^{-5}$&$1.04\times 10^{-4}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&mmol P ind$^{-1}$&$3.77\times 10^{-6}$&$5.66\times 10^{-6}$\tabularnewline
+~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&d$^{-1}$&$0.1$&$0.15$\tabularnewline
+~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&-&$0.2$&$0.3$\tabularnewline
+~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&-&$0.25$&$0.38$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$\mu$m$^3$ ind$^{-1}$ d$^{-1}$&$9.45\times 10^{7}$&$1.42\times 10^{8}$\tabularnewline
+~~zooplankton volume/individual&\textit{Zvolcell}&$\mu$m$^3$ ind$^{-1}$&$2.98\times 10^{7}$&$4.47\times 10^{7}$\tabularnewline
+\hline
+{\bfseries Organic Matter}&&&&\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&y$^{-1}$&$50$&$75$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&y$^{-1}$&$50$&$75$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&d$^{-1}$&$0.01$&$0.02$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&mmol m$^{-3}$&$1$&$1.5$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&mmol m$^{-3}$&$10$&$15$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&mmol m$^{-3}$&$10$&$15$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&mmol m$^{-3}$&$10$&$15$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&mmol m$^{-3}$ d$^{-1}$&$0.52$&$0.78$\tabularnewline
+~~phytoplankton sinking rate&\textit{sink OM1\_A}&m d$^{-1}$&$10$&$15$\tabularnewline
+~~zooplankton sinking rate&\textit{sink OM1\_Z}&m d$^{-1}$&$10$&$15$\tabularnewline
+~~phytoplankton sinking rate&\textit{sink OM2\_A}&m d$^{-1}$&$0$&$0$\tabularnewline
+~~zooplankton sinking rate&\textit{sink OM2\_Z}&m d$^{-1}$&$0$&$0$\tabularnewline
+\hline
+\end{tabular}\end{center}}
+\end{table}
+
+
 % do sensitivity all categories
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
 \begin{table}[!tbp]
@@ -342,8 +417,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$4.92\times 10^{-5}$\tabularnewline
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$4.39\times 10^{-5}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$6.15\times 10^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$3.14\times 10^{-3}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$3.04\times 10^{-3}$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$2.98\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$5.85\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$5.8\times 10^{-4}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$4.99\times 10^{-4}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$4.17\times 10^{-4}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.05$\tabularnewline
@@ -363,6 +445,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$2.77\times 10^{-4}$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$8.34\times 10^{-8}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$0.05$\tabularnewline
 ~~zooplankton nitrogen/individual&\textit{ZQn}&$0.02$\tabularnewline
@@ -374,16 +459,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$2.96\times 10^{-3}$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$9.38\times 10^{-5}$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$3.69\times 10^{-5}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$6.15\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$3.14\times 10^{-3}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$3.04\times 10^{-3}$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$2.98\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$5.85\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$5.8\times 10^{-4}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$4.99\times 10^{-4}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$4.17\times 10^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts\end{table}
@@ -636,7 +711,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \centering
 \includegraphics[width=0.7\textwidth]{figs/fishmod.pdf}
 \caption{Conceptual representation of biogeochemical components included in FishTank (complete equations in \citealt{Eldridge10}). The \acl{cgem} couples FishTank with a hydrodynamic model that includes advection, mixing, and dispersion.}
-\label{fig:mod_schem}
+\label{fig:fishmod}
 \end{figure}
 
 % combination example
@@ -733,8 +808,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.63\times 10^{-3}$\tabularnewline
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.5\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.79$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.54$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$0.66$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.07$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.06$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.05$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.03$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$7.55\times 10^{-3}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$8.49$\tabularnewline
@@ -754,6 +836,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$2.24\times 10^{-6}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.79$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~maximum growth rate of zooplankton&\textit{Zumax}&$1.42$\tabularnewline
 ~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.76$\tabularnewline
@@ -765,16 +850,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.16$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$1.07\times 10^{-3}$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$1.44\times 10^{-4}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$1.54$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$0.66$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.07$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.06$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.05$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.03$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$7.55\times 10^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -795,8 +870,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.45\times 10^{-3}$\tabularnewline
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.13\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.6$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.03$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.01$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.35\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$3.4\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$2.97\times 10^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$13.94$\tabularnewline
@@ -816,6 +898,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$1.38\times 10^{-6}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.6$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~maximum growth rate of zooplankton&\textit{Zumax}&$1.02$\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$0.85$\tabularnewline
@@ -827,16 +912,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.14$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$1.29\times 10^{-3}$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$7.55\times 10^{-5}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.03$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.01$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.35\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$3.4\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$2.97\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -857,8 +932,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.47\times 10^{-3}$\tabularnewline
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.34\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.03$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.05$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$3.96\times 10^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$9.88\times 10^{-4}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.2\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.54\times 10^{-4}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$6.18\times 10^{-5}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.72\times 10^{-6}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$1.48\times 10^{-6}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.09$\tabularnewline
@@ -878,6 +960,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$9.81\times 10^{-4}$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$1.92\times 10^{-7}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.03$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$0.13$\tabularnewline
 ~~zooplankton nitrogen/individual&\textit{ZQn}&$0.06$\tabularnewline
@@ -889,16 +974,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$9.67\times 10^{-3}$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$9.34\times 10^{-5}$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$1.99\times 10^{-5}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.05$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$3.96\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$9.88\times 10^{-4}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.2\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.54\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$6.18\times 10^{-5}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$1.72\times 10^{-6}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1.48\times 10^{-6}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -919,8 +994,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.27\times 10^{-3}$\tabularnewline
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.19\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.3$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.78$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$0.07$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.04$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.03$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.02$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$9.96\times 10^{-3}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$9.87\times 10^{-3}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$8.49$\tabularnewline
@@ -940,6 +1022,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$7.06\times 10^{-3}$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$6.67\times 10^{-7}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.3$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$7.59$\tabularnewline
 ~~zooplankton nitrogen/individual&\textit{ZQn}&$1.17$\tabularnewline
@@ -951,16 +1036,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$3.8\times 10^{-3}$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$8.59\times 10^{-4}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.78$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$0.07$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.04$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.03$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.02$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$9.96\times 10^{-3}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$9.87\times 10^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -981,8 +1056,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.73\times 10^{-3}$\tabularnewline
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.49\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.86$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.92$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.02$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$3.72\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$6.98\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$6.41\times 10^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$7.22$\tabularnewline
@@ -1002,6 +1084,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$7.35\times 10^{-4}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.86$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~maximum growth rate of zooplankton&\textit{Zumax}&$0.96$\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$0.79$\tabularnewline
@@ -1013,16 +1098,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.12$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$9.64\times 10^{-3}$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$1.06\times 10^{-3}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.92$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.02$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$3.72\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$6.98\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$6.41\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1043,8 +1118,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$2.48\times 10^{-3}$\tabularnewline
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$2.04\times 10^{-3}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$1.48$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.94$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.1$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.04$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.03$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$3.16\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$8.44\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$7.41\times 10^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$14.25$\tabularnewline
@@ -1064,6 +1146,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for N&\textit{Kn}&$0.02$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$4.37\times 10^{-3}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$1.48$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~maximum growth rate of zooplankton&\textit{Zumax}&$1.01$\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$0.88$\tabularnewline
@@ -1075,16 +1160,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.12$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$0.04$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$1.69\times 10^{-3}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.94$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.1$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.04$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.03$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$3.16\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$8.44\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$7.41\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1105,8 +1180,15 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$5.21\times 10^{-4}$\tabularnewline
 ~~OMA specific absorption at 490 nm&\textit{astarOMA}&$5.13\times 10^{-4}$\tabularnewline
 \hline
-{\bfseries Temperature}&&\tabularnewline
-~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.16$\tabularnewline
+{\bfseries Organic Matter}&&\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.14$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.06$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$0.02$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.01$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.29\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$2.7\times 10^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$2.64\times 10^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.78$\tabularnewline
@@ -1126,6 +1208,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~phytoplankton carbon/cell&\textit{Qc}&$6.68\times 10^{-3}$\tabularnewline
 ~~minimum P cell-quota&\textit{QminP}&$8.21\times 10^{-7}$\tabularnewline
 \hline
+{\bfseries Temperature}&&\tabularnewline
+~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.16$\tabularnewline
+\hline
 {\bfseries Zooplankton}&&\tabularnewline
 ~~half saturation coefficient for grazing&\textit{ZKa}&$1.47$\tabularnewline
 ~~zooplankton nitrogen/individual&\textit{ZQn}&$0.5$\tabularnewline
@@ -1137,16 +1222,6 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.06$\tabularnewline
 ~~zooplankton phosphorus/individual&\textit{ZQp}&$6.43\times 10^{-3}$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$3.38\times 10^{-5}$\tabularnewline
-\hline
-{\bfseries Organic Matter}&&\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.14$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.06$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$0.02$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.01$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.29\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$2.7\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$2.64\times 10^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}

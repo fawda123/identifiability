@@ -204,11 +204,11 @@ Hypoxic events, defined  as $<$2 mg L$^{-1}$ of \ac{do} ($<$ 64 mmol m$^{-3}$), 
 
 The core unit of \ac{cgem} is FishTank, a \ac{zerod} model that implements the biogeochemical equations in \citet{Eldridge10} and does not include any advection, mixing, or sediment diagenesis (\cref{fig:fishmod}). A full description of the model structure, equations, and parameters is described in \citet{Lehrter17}. Although FishTank was developed for specific application in \ac{cgem}, it can easily be applied to other hydrodynamic grids. Results are based on time-dependent differential equations that describe energy flow between phytoplankton and zooplankton groups given nutrient uptake rates, organic matter inputs and losses, inherent optical properties, and temperature (\citealt{Penta08,Eldridge10}, see appendix in \citealt{Lehrter17}). A total of 108 equations are estimated at each time step to return values for each of the 36 state variables described by the model.  In addition to the initial conditions, 251 parameter values for each of the equations are also supplied at model execution. Values for each of the parameters were based on estimates from the literature, field or laboratory-based measurements, or expert knowledge in absence of the former.  As such, a sensitivity analysis of parameter values is warranted given that, for example, literature or field-based estimates may not apply under all scenarios or expert knowledge is not completely certain \citep{Refsgaard07}.
 
-The sensitivity of state variables to perturbations of all relevant parameters for the 108 equations was estimated using a five minute timestep with daily output from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to add complexity in community structure and foodweb dynamics. To remove obvious redundancies, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final set that was evaluated included \Sexpr{length(p1z1pars)} parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}).  A full description of the model parameters is available as an appendix in \citet{Lehrter17}.  
+The sensitivity of state variables to perturbations of all relevant parameters for the 108 equations was estimated using a five minute timestep with daily output from January 1\textsuperscript{st} to December 31\textsuperscript{st}, 2006. Irrelevant parameters were removed for several reasons; parameters were not relevant for the \ac{zerod} model (i.e., hydrodynamic parameters), were considered physical constants, or had no effect given initial conditions.  Additionally, FishTank includes six phytoplankton and two zooplankton groups to add complexity in community structure and foodweb dynamics. To remove obvious redundancies, the sensitivity analyses were conducted using only one phytoplankton and one zooplankton group.  The final set that was evaluated included \Sexpr{length(p1z1pars)} parameters that were further grouped into one of six categories based on applicable biogeochemical components of the model: optics ($n = $ \Sexpr{nparms$Optics} parameters), organic matter (\Sexpr{nparms$`Organic Matter`}), phytoplankton (\Sexpr{nparms$Phytoplankton}), temperature (\Sexpr{nparms$Temperature}), and zooplankton (\Sexpr{nparms$Zooplankton}) (\cref{tab:parmtab}).  A full description of the model parameters is available as an appendix in \citet{Lehrter17}.  
 
 \subsection{Local sensitivity analysis}
 
-A local sensitivity analysis was performed by evaluating the change in state variables following perturbation of each parameter from its original value \citep{Soetaert10,Camacho14b,RDCT17}. This approach is described as a First Order Variance Analysis that linearly propagates changes from model parameters to model predictions \citep{Camacho14b}. Parameters were individually perturbed by a 50\% increase of the original values and sensitivity $S$ was estimated for each time step $i$ given a change for parameter $j$ as:
+A local sensitivity analysis was performed by evaluating the change in state variables following perturbation of each parameter from its original value \citep{Soetaert10,Camacho14b,RDCT17}. This approach is described as a First Order Variance Analysis that linearly propagates changes from model parameters to model predictions \citep{Camacho14b}. Parameters were individually perturbed by a 50\% increase of the original values (\cref{tab:parmtab}) and sensitivity $S$ was estimated for each time step $i$ given a change for parameter $j$ as:
 
 \begin{equation} \label{sijeqn}
 S_{ij} = \frac{\partial y_i}{\partial \Theta_j}\cdot\frac{w_{\Theta_j}}{w_{y_i}}
@@ -549,6 +549,11 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 
 \invisiblesection{Tables}
 
+% parameter info
+<<parmtab, eval = T, cache = F>>=
+parmtab(tabsize = 'tiny')
+@
+
 % do sensitivity all categories
 <<dosens, eval = T, cache = F>>=
 senstab(out_var = 'O2', tablab = 'dosens', captxt = '\\ac{do}', digits = 2, pow = 2, tabsize = 'footnotesize', foot.val = '\\footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts')
@@ -781,11 +786,11 @@ latex(
 \centering
 \includegraphics[width=0.7\textwidth]{figs/fishmod.pdf}
 \caption{Conceptual representation of biogeochemical components included in FishTank (complete equations in \citealt{Eldridge10}). The \acl{cgem} couples FishTank with a hydrodynamic model that includes advection, mixing, and dispersion.}
-\label{fig:mod_schem}
+\label{fig:fishmod}
 \end{figure}
 
 % combination example
-<<combnex, eval = T, echo = F, fig.cap = 'Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.', fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
+<<combnex, eval = T, echo = F, fig.cap = 'Examples of unique parameter combinations from different parameter sets and number of selected parameters.  The number of combinations are shown for increasing numbers of selected parameters from the total in the set, where 50 parameter sets are shown each with one through 50 total parameters. Note that the number of unique combinations is shown as the natural-log.', cache = TRUE, fig.height = 5, fig.width = 5, out.width = '0.6\\textwidth'>>=
 
 numparms <- 1:50
 sels <- numparms
@@ -825,7 +830,7 @@ p2
 @
 
 % sensitivity heat map
-<<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in a 50\\% increase in parameter values. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 6, fig.width = 4, out.width = '0.7\\textwidth', eval = T, echo = F, warning = F, message = F>>=
+<<sensalltile, fig.cap = 'Sensitivity values (L1, \\cref{l1}) of all state variables to changes in a 50\\% increase in parameter values. Parameters are grouped by category: optics, organic matter, phytoplankton, zooplankton, temperature, and zoplankton.  See \\cref{tab:dosens} for L1 values for \\ac{do} and \\cref{tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens} for the other state variables.', fig.height = 6, fig.width = 4, out.width = '0.7\\textwidth', eval = T, cache = TRUE, echo = F, warning = F, message = F>>=
 # initial conditions
 data(ini_eval)
 data(struct_eval)

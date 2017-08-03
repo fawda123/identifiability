@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  2 AUG 2017 15:35
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.8.29)  3 AUG 2017 12:08
 entering extended mode
 **ident_manu.tex
 (M:\docs\manuscripts\identifiability\ident_manu.tex
@@ -462,11 +462,8 @@ Package acronym Info: Label `acro:dom' newly defined as it shall be overridden
 although it is yet undefined on input line 199.
  [4]
 Package acronym Info: Label `acro:cgem' overridden on input line 205.
- [5]
-
-LaTeX Warning: Reference `fig:fishmod' on page 1 undefined on input line 207.
-
-[6] [7] [8] [9] [10]
+ [5] [6] [7] [8]
+[9] [10]
 Package acronym Info: Label `acro:rmse' newly defined as it shall be overridden
 
 although it is yet undefined on input line 257.
@@ -474,171 +471,180 @@ although it is yet undefined on input line 257.
 (M:\docs\manuscripts\identifiability\ident_manu.bbl [22
 
 ] [23] [24] [25]
-[26] [27]) [28] [29] [30] [31] [32] [33]
-<figs/fishmod.pdf, id=558, 612.51859pt x 273.67847pt>
+[26] [27]) [28] [29] [30] [31] [32] [33] [34]
+<figs/fishmod.pdf, id=571, 612.51859pt x 273.67847pt>
 File: figs/fishmod.pdf Graphic file (type pdf)
  <use figs/fishmod.pdf>
-Package pdftex.def Info: figs/fishmod.pdf used on input line 637.
+Package pdftex.def Info: figs/fishmod.pdf used on input line 712.
 (pdftex.def)             Requested size: 328.82707pt x 146.9239pt.
 
-<figs/combnex-1.pdf, id=563, 361.35pt x 361.35pt>
+<figs/combnex-1.pdf, id=576, 361.35pt x 361.35pt>
 File: figs/combnex-1.pdf Graphic file (type pdf)
  <use figs/combnex-1.pdf>
-Package pdftex.def Info: figs/combnex-1.pdf used on input line 645.
+Package pdftex.def Info: figs/combnex-1.pdf used on input line 720.
 (pdftex.def)             Requested size: 281.85587pt x 281.85738pt.
 
-<figs/sensalltile-1.pdf, id=564, 289.08pt x 433.62pt>
+<figs/sensalltile-1.pdf, id=577, 289.08pt x 433.62pt>
 File: figs/sensalltile-1.pdf Graphic file (type pdf)
 
 <use figs/sensalltile-1.pdf>
-Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 657.
+Package pdftex.def Info: figs/sensalltile-1.pdf used on input line 732.
 (pdftex.def)             Requested size: 328.82707pt x 493.26668pt.
 
-<figs/identplo-1.pdf, id=573, 578.16pt x 505.89pt>
+<figs/identplo-1.pdf, id=586, 578.16pt x 505.89pt>
 File: figs/identplo-1.pdf Graphic file (type pdf)
  <use figs/identplo-1.pdf>
-Package pdftex.def Info: figs/identplo-1.pdf used on input line 669.
+Package pdftex.def Info: figs/identplo-1.pdf used on input line 744.
 (pdftex.def)             Requested size: 469.75502pt x 411.0346pt.
 
-<figs/identploall-1.pdf, id=576, 650.43pt x 578.16pt>
+<figs/identploall-1.pdf, id=589, 650.43pt x 578.16pt>
 File: figs/identploall-1.pdf Graphic file (type pdf)
 
 <use figs/identploall-1.pdf>
-Package pdftex.def Info: figs/identploall-1.pdf used on input line 681.
+Package pdftex.def Info: figs/identploall-1.pdf used on input line 756.
 (pdftex.def)             Requested size: 469.75502pt x 417.57172pt.
 
-<figs/exclex-1.pdf, id=579, 523.9575pt x 523.9575pt>
+<figs/exclex-1.pdf, id=592, 523.9575pt x 523.9575pt>
 File: figs/exclex-1.pdf Graphic file (type pdf)
  <use figs/exclex-1.pdf>
-Package pdftex.def Info: figs/exclex-1.pdf used on input line 693.
+Package pdftex.def Info: figs/exclex-1.pdf used on input line 768.
 (pdftex.def)             Requested size: 375.80544pt x 375.81802pt.
 
-<figs/areachg-1.pdf, id=586, 505.89pt x 505.89pt>
+<figs/areachg-1.pdf, id=599, 505.89pt x 505.89pt>
 File: figs/areachg-1.pdf Graphic file (type pdf)
  <use figs/areachg-1.pdf>
-Package pdftex.def Info: figs/areachg-1.pdf used on input line 704.
+Package pdftex.def Info: figs/areachg-1.pdf used on input line 779.
 (pdftex.def)             Requested size: 469.75502pt x 469.76265pt.
 
-[34
+[35
 
 
  <M:/docs/manuscripts/identifiability/figs/fishmod.pdf> <M:/docs/manuscripts/id
-entifiability/figs/combnex-1.pdf>] [35 <M:/docs/manuscripts/identifiability/fig
-s/sensalltile-1.pdf>] [36 <M:/docs/manuscripts/identifiability/figs/identplo-1.
-pdf>] [37 <M:/docs/manuscripts/identifiability/figs/identploall-1.pdf>]
-[38 <M:/docs/manuscripts/identifiability/figs/exclex-1.pdf>] [39 <M:/docs/manus
+entifiability/figs/combnex-1.pdf>] [36 <M:/docs/manuscripts/identifiability/fig
+s/sensalltile-1.pdf>] [37 <M:/docs/manuscripts/identifiability/figs/identplo-1.
+pdf>] [38 <M:/docs/manuscripts/identifiability/figs/identploall-1.pdf>]
+[39 <M:/docs/manuscripts/identifiability/figs/exclex-1.pdf>] [40 <M:/docs/manus
 cripts/identifiability/figs/areachg-1.pdf>]pdfTeX warning (ext4): destination w
 ith the same identifier (name{table.1}) has been already used, duplicate ignore
 d
 <to be read again> 
                    \relax 
-l.725 ..., and organic matter.\label{tab:nh4sens}}
+l.800 ..., and organic matter.\label{tab:nh4sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.1}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.725 ..., and organic matter.\label{tab:nh4sens}}
+l.800 ..., and organic matter.\label{tab:nh4sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.2}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.787 ..., and organic matter.\label{tab:chlsens}}
+l.862 ..., and organic matter.\label{tab:chlsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.2}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.787 ..., and organic matter.\label{tab:chlsens}}
+l.862 ..., and organic matter.\label{tab:chlsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.3}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.849 ..., and organic matter.\label{tab:irrsens}}
+l.924 ..., and organic matter.\label{tab:irrsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.3}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.849 ..., and organic matter.\label{tab:irrsens}}
+l.924 ..., and organic matter.\label{tab:irrsens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.4}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.911 ..., and organic matter.\label{tab:no3sens}}
+l.986 ..., and organic matter.\label{tab:no3sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.4}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.911 ..., and organic matter.\label{tab:no3sens}}
+l.986 ..., and organic matter.\label{tab:no3sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.5}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.973 ..., and organic matter.\label{tab:om1sens}}
+l.1048 ... and organic matter.\label{tab:om1sens}}
                                                   pdfTeX warning (ext4): destin
 ation with the same identifier (name{table.5}) has been already used, duplicate
  ignored
 <to be read again> 
                    \relax 
-l.973 ..., and organic matter.\label{tab:om1sens}}
-                                                   [40] [41] [42] [43] [44]
-[45] [46]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1161.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1161.
+l.1048 ... and organic matter.\label{tab:om1sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.6}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1110 ... and organic matter.\label{tab:om2sens}}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{table.6}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.1110 ... and organic matter.\label{tab:om2sens}}
+                                                   [41] [42] [43] [44] [45]
+[46] [47]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1236.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1236.
  (M:\docs\manuscripts\identifiability\ident_manu.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1161.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1161.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1236.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1236.
 
 Package rerunfilecheck Info: File `ident_manu.out' has not changed.
 (rerunfilecheck)             Checksum: 62B21E28F17528CBA4AD5B4CF2B7C71B;952.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1161.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1236.
  ) 
 Here is how much of TeX's memory you used:
- 9056 strings out of 493921
- 141725 string characters out of 3147282
- 310118 words of memory out of 3000000
- 12068 multiletter control sequences out of 15000+200000
+ 9061 strings out of 493921
+ 141786 string characters out of 3147282
+ 329118 words of memory out of 3000000
+ 12072 multiletter control sequences out of 15000+200000
  17214 words of font info for 58 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  34i,12n,34p,2071b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmti7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-tt12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on ident_manu.pdf (46 pages, 805910 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmti7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+ti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on ident_manu.pdf (47 pages, 834140 bytes).
 PDF statistics:
- 855 PDF objects out of 1000 (max. 8388607)
- 159 named destinations out of 1000 (max. 500000)
+ 870 PDF objects out of 1000 (max. 8388607)
+ 160 named destinations out of 1000 (max. 500000)
  148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1109,29 +1109,29 @@ parmtab <- function(tablab = 'parmtab', tabsize = 'normalsize', pow = 3, digits 
       `Value $\\cdot$ 1.5` = valsp50
     )
   
-  return(totab)
+  if(dfout) return(totab)
   
-  # # final table formatting
-  # Description <- totab$Description
-  # cats <- totab$cats
-  # totab <- totab[,-c(1:2)]
-  # 
-  # cap.val<- paste('Sensitivity of', captxt, 'to perturbations of individual parameters.  Sensitivities are based on a 50\\% increase from the initial parameter value, where $L1$ summarizes differences in model output (see \\cref{l1}).  Parameters that did not affect', captxt, 'are not shown.  Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.')
-  # 
-  # latex( 
-  #   totab,
-  #   file = '',
-  #   rowlabel = 'Description',
-  #   caption = cap.val,
-  #   caption.loc = 'top',
-  #   rowname = Description,
-  #   rgroup = unique(cats),
-  #   n.rgroup = as.numeric(table(cats)),
-  #   size = tabsize,
-  #   label = paste0('tab:', tablab), 
-  #   insert.bottom = foot.val
-  #   )
-    
+  # final table formatting
+  Description <- totab$Description
+  cats <- totab$cats
+  totab <- totab[,-c(1:2)]
+
+  cap.val<- paste("FishTank parameters evaluated for sensitivity and identifiability. Sensitivitity analyses were based on a 50\\% increase (Value $\\cdot$ 1.5) from the initial value of each parameter. Dashed units are dimensionless. Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.  A full description of the model structure, equations, and parameters is described in \\citet{Lehrter17}.")
+
+  latex(
+    totab,
+    file = '',
+    rowlabel = 'Description',
+    caption = cap.val,
+    caption.loc = 'top',
+    rowname = Description,
+    rgroup = unique(cats),
+    n.rgroup = as.numeric(table(cats)),
+    size = tabsize,
+    label = paste0('tab:', tablab),
+    insert.bottom = foot.val
+    )
+
 }
 
 ######
@@ -1536,15 +1536,15 @@ parunis <- function(as_df = TRUE){
     Units = c(
       "m$^{-1}$ (mg Chla m$^{-3}$)$^{-1}$", 
       "m$^{-1}$ (mg OMA m$^{-3}$)$^{-1}$", "m$^{-1}$ (mg OMZ m$^{-3}$)$^{-1}$", 
-      "m d$^{-1}$", "C", "C", "-", "-", "d$^{-1}$", "10$^{-16} cm^2 s quanta$^{-1}$ d$^{-1}$", 
+      "m d$^{-1}$", "C", "C", "-", "-", "d$^{-1}$", "10$^{-16}$ cm$^2$ s quanta$^{-1}$ d$^{-1}$", 
       "-", "d$^{-1}$", "10$^{-9}$ mmol N cell$^{-1}$", "10$^{-9}$ mmol P cell$^{-1}$", 
       "mmol m$^{-3}$", "mmol m$^{-3}$", "mmol m$^{-3}$", "-", "-", 
-      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", 
-      "10$^{-8} mmol cell$^{-1}$ d$^{-1}$", "-", "$\\\\mu$m$^3$", "10$^{-7} mmol C cell$^{-1}$", 
+      "10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$", "10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$", 
+      "10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$", "-", "$\\mu$m$^3$", "10$^{-7}$ mmol C cell$^{-1}$", 
       "10$^7$ cells m$^{-3}$", "m d$^{-1}$", "d$^{-1}$", "-", "-", 
-      "$\\\\mu$m$^3$ ind$^{-1}$", "mmol C ind$^{-1}$", "mmol N ind$^{-1}$", 
-      "mmol P ind$^{-1}$", "$\\\\mu$m$^3$ m$^{-3}$", "-", "d$^{-1}$", 
-      "$\\\\mu$m$^3$ ind$^{-1}$ d$^{-1}$", "m$^6$ ind$^{-2}$ d$^{-1}$", 
+      "$\\mu$m$^3$ ind$^{-1}$", "mmol C ind$^{-1}$", "mmol N ind$^{-1}$", 
+      "mmol P ind$^{-1}$", "$\\mu$m$^3$ m$^{-3}$", "-", "d$^{-1}$", 
+      "$\\mu$m$^3$ ind$^{-1}$ d$^{-1}$", "m$^6$ ind$^{-2}$ d$^{-1}$", 
       "y$^{-1}$", "y$^{-1}$", "mmol m$^{-3}$", "mmol m$^{-3}$ d$^{-1}$", 
       "mmol m$^{-3}$", "mmol m$^{-3}$", "mmol m$^{-3}$", "m d$^{-1}$", 
       "m d$^{-1}$", "m d$^{-1}$", "m d$^{-1}$", "d$^{-1}$"

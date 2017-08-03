@@ -54,7 +54,7 @@ The authors executed the work on parameter sensitivity and identifiability for a
 
 The model is not presented in detail, it is necessary to give more details on original model. 
 
-{\it }
+{\it We have added Table 1 that inlcudes a full list and description of parameters that were evaluated for the sensitivity analysis.}
 
 Discussion part is unnecessary long, lot of introduction in the discussion. This part needs major revisions and complete restructure. 
 
@@ -108,7 +108,7 @@ Line 9 page 10. Selection or Selected?
 
 Line 4 page 12. what are the default parameter conditions?. You should include a table with the default parameter values and parameter values under 50\% modified conditions. 
 
-{\it The starting parameter values were added to Tables 1, S1-S7.  We have not added the 50\% increase in each parameter as this is a simple calculation and it clutters the tabular information.}
+{\it A new table (Table 1) was added for the full parameter set including names, long description, units, values, and the 50\% increase in values for the sensitivity analyses.}
 
 Lines 29-30 page 16. Please include the units in the reported RMSEs. mmol O2?
 
