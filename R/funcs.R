@@ -1556,3 +1556,155 @@ parunis <- function(as_df = TRUE){
   return(out)
   
 }
+
+# Plot calibration results for parameter subsets
+#
+# cals is input dataset
+# tocal_all is input dataset
+# whichsub chr string of subset to plot, must be one of names in tocal_all
+# pert NULL or numeric indicating range of parameter values that were tested to create cals
+# heights vector of length two for plot spacing
+# widths vector of length two for plot spacing
+#
+plo_cal <- function(cals, tocal_all, whichsub = names(cals), pert = NULL, heights = c(0.1, 1), widths = c(1, 1)){
+
+  library(tibble)
+  library(tidyverse)
+    
+  # get calibration results for a given parameter subsets
+  whichsub <- match.arg(whichsub)
+  selsub <- cals[[whichsub]]
+  
+  # get min/max values that were used to create cals, make sure pert is ok
+  rngs <- get_cmbs(tocal_all, out_var = 'O2', thrsh = 15, coll = T, errs = TRUE, pert = pert)
+  
+  # get parameter levels, ordered by sensitivity
+  ords <- rngs[[whichsub]] %>% 
+    .$errs %>% 
+    names
+  ordlabs <- as.character(par_txt(ords, frm = 'exp'))
+
+  # calibration steps, parameters and error
+  toplo <- selsub$mat %>% 
+    data.frame
+  names(toplo) <- c(names(selsub$par), 'rmse')
+  toplo <- toplo %>% 
+    mutate(iter = 1:nrow(.)) %>% 
+    gather('var', 'val', -iter) 
+  
+  # err data to plot
+  toploerr <- toplo %>% 
+    filter(var %in% 'rmse')
+    
+  # calibration steps to plot
+  toplo <- toplo %>% 
+    filter(!var %in% 'rmse') %>% 
+    mutate(
+      var = factor(var, levels = ords, labels = ordlabs)
+    )
+  
+  # error plot (top left)
+  perr <- ggplot(toploerr, aes(x = iter, y = val)) + 
+    geom_line() + 
+    theme_bw() + 
+    theme(
+      strip.background = element_blank(), 
+      # axis.text.y = element_text(size = 6), 
+      axis.title.x = element_blank(), 
+      axis.ticks.x = element_blank(), 
+      axis.text.x = element_blank(), 
+      plot.margin = grid::unit(rep(0.1, 4), 'lines')
+    ) +
+    scale_x_continuous('Calibration step') + 
+    scale_y_continuous(expression(atop(paste(O[2], ' RMSE'), paste('(mmol ', m^{-3}, ')'))))
+  
+  # calibration plot, bottom left
+  piter <- ggplot(toplo, aes(x = iter, y = val)) + 
+    geom_line() + 
+    facet_wrap(~var, ncol = 1, scales = 'free_y', label = label_parsed) +
+    theme_bw() + 
+    theme(
+      strip.background = element_blank(), 
+      axis.text.y = element_text(size = 6), 
+      panel.spacing = unit(0, "lines"),
+      plot.margin = grid::unit(rep(0.1, 4), 'lines')
+    ) +
+    scale_x_continuous('Calibration step') + 
+    scale_y_continuous('Absolute parameter change')#, labels = axdig)
+  
+  # calibrated parameter values
+  calib <- selsub$par %>% 
+    data.frame(calib = .) %>% 
+    rownames_to_column('parm')
+  
+  # parameter values, min, max, calibrated values
+  toplo2 <- rngs[[whichsub]][c('vals', 'minv', 'maxv')] %>% 
+    lapply(., unlist) %>% 
+    data.frame %>% 
+    rownames_to_column('parm') %>% 
+    full_join(calib, by = 'parm') %>% 
+    gather('var', 'val', -parm) %>% 
+    group_by(parm) %>% 
+    mutate(
+      val = scales::rescale(val, to = c(0, 1))
+      ) %>% 
+    spread(var, val) %>% 
+    ungroup %>% 
+    mutate(
+      parm = factor(parm, levels = ords, labels = ordlabs)
+    )
+  
+  # calibrated values in long format
+  toplo3 <- toplo2 %>% 
+    select(-maxv, -minv) %>% 
+    gather('var', 'val', -parm) %>% 
+    mutate(var = factor(var, levels = c('vals', 'calib'), labels = c('Initial', 'Final')))
+  
+  # relative parameter changes plot
+  prel <- ggplot() + 
+    geom_errorbar(data = toplo2, aes(x = 0, ymin = minv, ymax = maxv), width = 0.5) + 
+    geom_point(data = toplo3, aes(x = 0, y = val, colour = var, size = var)) + 
+    geom_point(data = toplo3, aes(x = 0, y = val, colour = var, size = var)) + 
+    facet_wrap(~parm, ncol = 1, label = label_parsed) +
+    coord_flip() +
+    theme(
+      axis.text.y = element_blank(), 
+      axis.title.y = element_blank(),
+      panel.grid.minor = element_blank(), 
+      panel.grid.major = element_blank(),
+      panel.background = element_blank(), 
+      axis.ticks.y = element_blank(), 
+      strip.background = element_blank(), 
+      axis.ticks.x = element_blank(), 
+      axis.text.x = element_text(colour = NA), 
+      legend.position = 'top', 
+      legend.title = element_blank(),
+      legend.key = element_blank(), 
+      panel.spacing = unit(0, "lines"), 
+      plot.margin = grid::unit(rep(0.1, 4), 'lines')
+    ) + 
+    scale_colour_manual(values = c('black', "#3288BD")) +
+    scale_size_manual(values = c(2, 4)) +
+    scale_x_continuous(limits = c(-1, 1)) + 
+    scale_y_continuous('Relative parameter change')
+  
+  # extract legend
+  pleg <- g_legend(prel)
+  prel <- prel + 
+    theme(legend.position = 'none')
+    
+  # line up left axis
+  pA <- ggplot_gtable(ggplot_build(perr))
+  pB <- ggplot_gtable(ggplot_build(piter))
+  maxWidth = grid::unit.pmax(pA$widths[2:3], pB$widths[2:3])
+  pA$widths[2:3] <- maxWidth
+  pB$widths[2:3] <- maxWidth
+  
+  # final plot
+  grid.arrange(
+    arrangeGrob(pA, pleg, ncol = 2, widths = widths),
+    arrangeGrob(pB, prel, ncol = 2, widths = widths), 
+    ncol = 1, heights = heights
+  )
+
+}

@@ -146,7 +146,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Fri Aug 4 17:59:08 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/84e94b5eb0aca29df79344221e5651a5af428017}{84e94b5eb0aca29df79344221e5651a5af428017}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
+\tnotetext[mytitlenote]{Version: Sun Aug 6 08:21:57 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/c03d0df749cea19daced8a68105265cf1ed2a63e}{c03d0df749cea19daced8a68105265cf1ed2a63e}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -288,7 +288,7 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only six iterations were required to optimize the single parameter selected for the temperature category, whereas 136 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $33.47$ mmol O$_2$ m$^{-3}$, reduction to $26.56$, $28.36$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($33.3$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only three iterations were required to optimize the single parameter selected for the temperature category, whereas 136 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $35.17$ mmol O$_2$ m$^{-3}$, reduction to $35.15$, $35.16$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($35.17$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
 
 
 
@@ -683,20 +683,20 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$*}\tabularnewline
 \hline
 {\bfseries 1}&&&&&\tabularnewline
-~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$49$&$33.3$\tabularnewline
-~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$44$&$31.48$\tabularnewline
-~~Phytoplankton&$3.97$&$7$&$0.02$&$300$&$25.84$\tabularnewline
-~~Temperature&$1$&$1$&$0.02$&$6$&$31.23$\tabularnewline
-~~Zooplankton&$5.2$&$4$&$0.03$&$72$&$32.99$\tabularnewline
+~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$7$&$35.17$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$286$&$35.05$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$255$&$35.03$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$3$&$35.17$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$9$&$35.17$\tabularnewline
 \hline
 {\bfseries 2}&&&&&\tabularnewline
-~~Independent of category&$6.81$&$8$&$0.03$&$136$&$26.56$\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$136$&$35.15$\tabularnewline
 \hline
 {\bfseries 3}&&&&&\tabularnewline
-~~Equally within category&$5.22$&$7$&$0.03$&$45$&$28.36$\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$105$&$35.16$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-\footnotesize *Starting \ac{rmse} $= 72.140$\end{table}
+\footnotesize *Starting \ac{rmse} $35.17$\end{table}
 
 
 \clearpage
@@ -774,6 +774,19 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 
 
 
+% calibration example
+\begin{figure}[!ht]
+
+{\centering \includegraphics[width=\textwidth]{figs/calex-1} 
+
+}
+
+\caption{Example of calibration steps for the phytoplankton parameter subset.  The FishTank model was calibrated using data from an approximate 12-hour flask experiment of oxygen production.  Model calibration adjusted parameters (left plots) to minimize the \ac{rmse} between experimental and modelled dissolved oxygen (top left).  The phytoplankton parameters were those identifiable for dissolved oxygen (\cref{tab:heurist1}), arranged from most (top plot) to least sensitive (bottom plot) (\cref{tab:dosens}).  The relative parameter changes in the right plots show the initial parameter values (black) and the the selected parameter values (blue) after calibration.}\label{fig:calex}
+\end{figure}
+
+
+
+% CGEM area change plots
 \begin{figure}[!ht]
 
 {\centering \includegraphics[width=\textwidth]{figs/areachg-1} 

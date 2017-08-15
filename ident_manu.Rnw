@@ -742,6 +742,13 @@ latex(
 % calibration table, do
 <<calib, eval = T, cache = F>>=
 
+load(file = 'data/cals.RData')
+
+# starting rmse
+strt <- cals[[1]]$mat[1,] %>% 
+  .[length(.)] %>% 
+  scinot(.)
+
 totab <- caldat %>% 
   mutate(
     coll = ifelse(is.na(coll), 1, coll),
@@ -754,7 +761,7 @@ totab <- caldat %>%
   arrange(heurist)
 
 cap_val <- 'Results of model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The collinearity values ($\\gamma$) and parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  Mean L1 is the average of sensitivity values (\\cref{l1}) for the subset.  $RMSE$ shows the final error comparing observed and model output after the specified number of iterations for optimization.'
-foot.val <- '\\footnotesize *Starting \\ac{rmse} $= 72.140$'
+foot.val <- paste0('\\footnotesize *Starting \\ac{rmse} ', strt)
 colnms <- c('$\\gamma$', '$n$ parameters', 'mean L1', 'Iterations', '$RMSE$*')
 
 latex( 
@@ -1148,6 +1155,14 @@ ggplot(toplo, aes(x = N, y = coll, fill = inc)) +
 
 @
 
+% calibration example
+<<calex, eval = T, fig.cap = 'Example of calibration steps for the phytoplankton parameter subset.  The FishTank model was calibrated using data from an approximate 12-hour flask experiment of oxygen production.  Model calibration adjusted parameters (left plots) to minimize the \\ac{rmse} between experimental and modelled dissolved oxygen (top left).  The phytoplankton parameters were those identifiable for dissolved oxygen (\\cref{tab:heurist1}), arranged from most (top plot) to least sensitive (bottom plot) (\\cref{tab:dosens}).  The relative parameter changes in the right plots show the initial parameter values (black) and the the selected parameter values (blue) after calibration.', fig.height = 7, fig.width = 6, echo = F, cache = T, out.width = '\\textwidth'>>=
+data(cals)
+data(tocal_all)
+plo_cal(cals, tocal_all, whichsub = 'Phytoplankton', widths = c(1, 0.4), heights = c(0.125, 1))
+@
+
+% CGEM area change plots
 <<areachg, eval = T, fig.cap = 'Estimated hypoxic area and monthly averages (km$^2 \\times$ 1000) using the default parameter settings (a, b) and the differences using a 50\\% increase in each parameter (c, d).  The selected parameters were the top sensitive in each parameter category for \\ac{do} in \\cref{fig:sensalltile,tab:dosens}. Error bars are 95\\% confidence intervals for the monthly averages in (b) and the difference in monthly averages (d) from the perturbed and default results.  Areal extent of estimated hypoxia on August 28\\textsuperscript{th} using the default parameters (grey) and estimated changes with parameter perturbations is shown in (e).', fig.height = 7, fig.width = 7, echo = F, cache = TRUE, out.width = "\\textwidth">>=
 # ##
 # # area time series
