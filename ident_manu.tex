@@ -146,7 +146,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Sun Aug 6 08:21:57 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/c03d0df749cea19daced8a68105265cf1ed2a63e}{c03d0df749cea19daced8a68105265cf1ed2a63e}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
+\tnotetext[mytitlenote]{Version: Tue Aug 15 15:08:02 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/c0ce23e253cb1532614d91ec7a60ed5b8e91e26f}{c0ce23e253cb1532614d91ec7a60ed5b8e91e26f}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -697,6 +697,61 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 \end{tabular}\end{center}}
 \footnotesize *Starting \ac{rmse} $35.17$\end{table}
+
+
+% do ending parameter values
+%latex.default(totab[, -c(1, 2)], file = "", rowlabel = "Selection heuristic",     caption = cap_val, caption.loc = "top", size = "scriptsize",     label = "tab:calibprm", rowname = totab$heurist, rgroup = names(table(totab$rgrp)),     n.rgroup = as.numeric(table(totab$rgrp)), colheads = colnms)%
+\begin{table}[!tbp]
+{\scriptsize
+\caption{Results of parameter changes from model calibration to observed \ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The parameters of each subset are from \cref{tab:heurist1,tab:heurist2,tab:heurist3}.  The L1 values are relative sensitivity of \ac{do} to a paramter change.  Starting and final parameter values after calibration are shown, including the percent change.  The calibration routing was bounded by minimum and maximum values appropriate for each parameter.\label{tab:calibprm}} 
+\begin{center}
+\begin{tabular}{llllllll}
+\hline\hline
+\multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{Min}&\multicolumn{1}{c}{Max}&\multicolumn{1}{c}{Initial}&\multicolumn{1}{c}{Final}&\multicolumn{1}{c}{\% change}\tabularnewline
+\hline
+{\bfseries 1}&&&&&&&\tabularnewline
+~~Optics&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&nc\tabularnewline
+~~&\textit{astarOMZ}&$4.92\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
+~~&\textit{astarOMA}&$4.39\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
+~~Organic Matter&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$48.04$&+60\tabularnewline
+~~&\textit{KG2}&$3.14\times 10^{-3}$&$5$&$100$&$30$&$33.21$&+11\tabularnewline
+~~&\textit{KstarO2}&$3.04\times 10^{-3}$&$1$&$100$&$10$&$10$&nc\tabularnewline
+~~&\textit{KGcdom}&$2.98\times 10^{-3}$&$0$&$1$&$0.01$&$0.01$&nc\tabularnewline
+~~&\textit{KO2}&$5.85\times 10^{-4}$&$1$&$100$&$10$&$100$&+900\tabularnewline
+~~Phytoplankton&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
+~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
+~~&\textit{ediblevector(Z1)}&$0.02$&$0.05$&$1$&$0.5$&$0.5$&nc\tabularnewline
+~~&\textit{Qc}&$0.01$&$1\times 10^{-9}$&$5\times 10^{-7}$&$4.54\times 10^{-8}$&$5\times 10^{-7}$&+1001\tabularnewline
+~~&\textit{respg}&$8.36\times 10^{-3}$&$0.01$&$0.5$&$0.1$&$0.1$&nc\tabularnewline
+~~&\textit{vmaxN}&$8.12\times 10^{-3}$&$1\times 10^{-11}$&$1\times 10^{-8}$&$1.33\times 10^{-9}$&$1.33\times 10^{-9}$&nc\tabularnewline
+~~Temperature&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
+~~Zooplankton&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
+~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$7.2\times 10^{-4}$&nc\tabularnewline
+~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
+\hline
+{\bfseries 2}&&&&&&&\tabularnewline
+~~Independent of category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$1.12$&nc\tabularnewline
+~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.09$&--21\tabularnewline
+~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
+~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
+~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$7.2\times 10^{-4}$&nc\tabularnewline
+~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
+\hline
+{\bfseries 3}&&&&&&&\tabularnewline
+~~Equally within category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$1.47$&+32\tabularnewline
+~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.1$&--11\tabularnewline
+~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
+~~&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$5$&--83\tabularnewline
+~~&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&nc\tabularnewline
+\hline
+\end{tabular}\end{center}}
+\end{table}
 
 
 \clearpage

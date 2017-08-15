@@ -746,8 +746,7 @@ load(file = 'data/cals.RData')
 
 # starting rmse
 strt <- cals[[1]]$mat[1,] %>% 
-  .[length(.)] %>% 
-  scinot(.)
+  .[length(.)]
 
 totab <- caldat %>% 
   mutate(
@@ -759,6 +758,7 @@ totab <- caldat %>%
     avee = sapply(avee, scinot)
     ) %>% 
   arrange(heurist)
+strt <- scinot(strt)
 
 cap_val <- 'Results of model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The collinearity values ($\\gamma$) and parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  Mean L1 is the average of sensitivity values (\\cref{l1}) for the subset.  $RMSE$ shows the final error comparing observed and model output after the specified number of iterations for optimization.'
 foot.val <- paste0('\\footnotesize *Starting \\ac{rmse} ', strt)
@@ -776,6 +776,74 @@ latex(
   rgroup = c('1', '2', '3'),
   insert.bottom = foot.val, 
   n.rgroup = c(5, 1, 1),
+  colheads = colnms
+  )
+
+@
+
+% do ending parameter values
+<<calibprm, eval = T, cache = F, warning = F>>=
+
+load(file = 'data/cals.RData')
+load(file = 'data/tocal_all.RData')
+
+ests <- map(cals, 'par') %>%
+  map(enframe, name = 'parm', value = 'val') %>% 
+  enframe(name = 'heurist') %>%
+  unnest %>% 
+  mutate(var = 'calib') %>% 
+  select(heurist, var, parm, val)
+
+rngs <- get_cmbs(tocal_all, out_var = 'O2', thrsh = 15, coll = T, errs = TRUE, pert = NULL) %>% 
+  lapply(function(x){
+    x[c('error', 'vals', 'minv', 'maxv')] %>% 
+      bind_rows(.id = 'var') %>% 
+      gather('parm', 'val', -var)
+  }) %>% 
+  enframe(name = 'heurist') %>% 
+  unnest 
+
+levs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'top', 'cattop')
+labs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankton', 'Independent of category', 'Equally within category')
+
+totab <- rbind(ests, rngs) %>% 
+  spread('var', 'val') %>% 
+  mutate(
+    pchg = 100 * (calib - vals)/vals,
+    pchg = ifelse(pchg > 0, paste0('+', round(pchg, 0)), 
+      ifelse(pchg < 0, paste0('-', round(pchg, 0)), 'nc')
+    ),
+    minv = sapply(minv, scinot), 
+    maxv = sapply(maxv, scinot), 
+    vals = sapply(vals, scinot),
+    calib = sapply(calib, scinot),
+    rgrp = ifelse(heurist == 'top', '2', ifelse(heurist == 'cattop', '3', '1')), 
+    heurist = factor(heurist, levels = levs, labels = labs), 
+    parm = par_txt(parm)
+  ) %>% 
+  select(rgrp, heurist, parm, error, minv, maxv, vals, calib, pchg) %>% 
+  arrange(heurist, -error) %>% 
+  mutate(
+    error = sapply(error, scinot),
+    heurist = as.character(heurist), 
+    heurist = ifelse(duplicated(heurist), '', heurist)
+    ) 
+  
+  
+cap_val <- 'Results of parameter changes from model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  The L1 values are relative sensitivity of \\ac{do} to a paramter change.  Starting and final parameter values after calibration are shown, including the percent change.  The calibration routing was bounded by minimum and maximum values appropriate for each parameter.'
+colnms <- c('Parameter', 'L1', 'Min', 'Max', 'Initial', 'Final', '\\% change')
+
+latex(
+  totab[, -c(1,2)],
+  file = '',
+  rowlabel = 'Selection heuristic',
+  caption = cap_val,
+  caption.loc = 'top',
+  size = 'scriptsize',
+  label = 'tab:calibprm',
+  rowname = totab$heurist,
+  rgroup = names(table(totab$rgrp)),
+  n.rgroup = as.numeric(table(totab$rgrp)),
   colheads = colnms
   )
 
