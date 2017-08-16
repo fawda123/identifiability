@@ -146,7 +146,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Tue Aug 15 15:08:02 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/c0ce23e253cb1532614d91ec7a60ed5b8e91e26f}{c0ce23e253cb1532614d91ec7a60ed5b8e91e26f}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
+\tnotetext[mytitlenote]{Version: Tue Aug 15 18:37:33 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/b9430cdc1b195b992ae6ea786f8e485723cf540c}{b9430cdc1b195b992ae6ea786f8e485723cf540c}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -244,7 +244,7 @@ A set of heuristics was developed that addresses the tradeoff in model complexit
 
 \subsection{Model calibration and scalability}
 
-Selected parameter subsets from the seven heuristics were used to calibrate the \ac{zerod} model.  This analysis demonstrated that different parameter sets can produce model output with differing goodness and fit and calibration effort given
+Selected parameter subsets from the seven heuristics were used to calibrate the \ac{zerod} model.  This analysis demonstrated that different parameter sets can produce model output with differing goodness of fit and calibration effort given
 \begin{inparaenum}[1\upshape)]
 \item differences in variable sensitivity to parameters in each subset, 
 \item differences in the parameters selected from different categories (heuristic difference), and 
@@ -252,9 +252,11 @@ Selected parameter subsets from the seven heuristics were used to calibrate the 
 \end{inparaenum}
 Generally, this analysis was a proof of concept that the selection heuristics can lead to an `optimal' model by maximizing the balance between sensitivity and identifiability.  
 
-A time series of \ac{do} from Weeks Bay, Alabama was used for model calibration.  Daily observations from January 1\textsuperscript{st},  2006 to January 1\textsuperscript{st}, 2007 at the Weeks Bay station of the Weeks Bay National Estuarine Reserve were used \citep{Wenner04}.  We chose this location because of the availability of data for model calibration compared to bottom waters in the northern \ac{gom} and the system exhibits hypoxia from eutrophication.  This application also provided a practical example of how the FishTank model could be calibrated using data from alternative locations.  Initial conditions for model input were modified to match conditions in Weeks Bay using observed water quality and nutrient data (all data from \url{http://cdmo.baruch.sc.edu/}).  The \ac{do} time series was filtered to reduce physical effects of the tidal advection component on the observed data (\textit{sensu} \citealt{Beck15b}).  As such, the filtered data were comparable to a time series with no physical advection to match conditions of the \ac{zerod} FishTank model with no hydrodynamic component. 
+Estimates of oxygen production from closed bottle experiments were used to calibrate the \ac{zerod} model.  Surface water was collected from a fixed location in Pensacola Bay, Florida () on September 25\textsuperscript{th}, 2013.  Water samples were placed into closed 100 mL glass bottles at the time of collection and transported back to the lab for treatments.  Concentrations of \ac{do} and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents (Parsons et al. 1985) and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method (Holmes et al. 1999); other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods (APHA 2005).  
 
-Each parameter subset was calibrated to most closely match the model output to the observed time series.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within +/- 50\% of the default parameter values.  While we recognize that `actual' parameter values could possibly extend beyond this range, constraining the values to the range tested herein was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
+Oxygen production after an approximate 12 hour period was estimated within the bottles using three treatments: light, dark, and light plus nutrients.  All treatments were allowed to sit under ambient outdoor conditions in a water bath with continuous flow at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The nutrient treatments were supplemented with an equal mix of 25 mmol m$^{-3}$ of ammonium and nitrate and 1.7 mmol m$^{-3}$, approximately two order of magnitude above ambient concentrations.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of \ac{do} in each bottle were measured.  Four replicates of each treatment were used. HOBO\textsuperscript{\textregistered} pendants were used to measure continous temperature and light for each treatment.  
+
+Each parameter subset was calibrated to the ending \ac{do} concentration for each of the four replicates per treatment.   The intial values Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within an expected range chosen by the authors to best reflect...  While we recognize that `actual' parameter values could possibly extend beyond this range, constraining the values to the range tested herein was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
 
 As a final analysis, effects of parameter changes on the larger 3-dimensional model were evaluated to demonstrate that results from the \ac{zerod} FishTank model are scalable.  For simplicity, only the most sensitive parameter in each category was selected.  The \ac{cgem} model was run for one year using the default parameter conditions and by increasing each of the selected parameters by 50\%.  This produced six spatially-referenced time series (one default, five for each parameter change) from which changes in the daily hypoxic area (number of cells $<$ 64 mmol \ac{do}) were estimated.
 
@@ -288,7 +290,7 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only three iterations were required to optimize the single parameter selected for the temperature category, whereas 136 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $35.17$ mmol O$_2$ m$^{-3}$, reduction to $35.15$, $35.16$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($35.17$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only three iterations were required to optimize the single parameter selected for the temperature category, whereas 289 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $35.33$ mmol O$_2$ m$^{-3}$, reduction to $35.29$, $35.32$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($35.33$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
 
 
 
@@ -683,20 +685,20 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$*}\tabularnewline
 \hline
 {\bfseries 1}&&&&&\tabularnewline
-~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$7$&$35.17$\tabularnewline
-~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$286$&$35.05$\tabularnewline
-~~Phytoplankton&$3.97$&$7$&$0.02$&$255$&$35.03$\tabularnewline
-~~Temperature&$1$&$1$&$0.02$&$3$&$35.17$\tabularnewline
-~~Zooplankton&$5.2$&$4$&$0.03$&$9$&$35.17$\tabularnewline
+~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$133$&$35.33$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$231$&$35.33$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$180$&$34.63$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$3$&$35.33$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$117$&$35.32$\tabularnewline
 \hline
 {\bfseries 2}&&&&&\tabularnewline
-~~Independent of category&$6.81$&$8$&$0.03$&$136$&$35.15$\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$289$&$35.29$\tabularnewline
 \hline
 {\bfseries 3}&&&&&\tabularnewline
-~~Equally within category&$5.22$&$7$&$0.03$&$105$&$35.16$\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$180$&$35.32$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-\footnotesize *Starting \ac{rmse} $35.17$\end{table}
+\footnotesize *Starting \ac{rmse} $35.33$\end{table}
 
 
 % do ending parameter values
@@ -710,14 +712,14 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{Min}&\multicolumn{1}{c}{Max}&\multicolumn{1}{c}{Initial}&\multicolumn{1}{c}{Final}&\multicolumn{1}{c}{\% change}\tabularnewline
 \hline
 {\bfseries 1}&&&&&&&\tabularnewline
-~~Optics&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&nc\tabularnewline
+~~Optics&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&-0\tabularnewline
 ~~&\textit{astarOMZ}&$4.92\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
 ~~&\textit{astarOMA}&$4.39\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
-~~Organic Matter&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$48.04$&+60\tabularnewline
-~~&\textit{KG2}&$3.14\times 10^{-3}$&$5$&$100$&$30$&$33.21$&+11\tabularnewline
+~~Organic Matter&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$30.02$&+0\tabularnewline
+~~&\textit{KG2}&$3.14\times 10^{-3}$&$5$&$100$&$30$&$30.06$&+0\tabularnewline
 ~~&\textit{KstarO2}&$3.04\times 10^{-3}$&$1$&$100$&$10$&$10$&nc\tabularnewline
 ~~&\textit{KGcdom}&$2.98\times 10^{-3}$&$0$&$1$&$0.01$&$0.01$&nc\tabularnewline
-~~&\textit{KO2}&$5.85\times 10^{-4}$&$1$&$100$&$10$&$100$&+900\tabularnewline
+~~&\textit{KO2}&$5.85\times 10^{-4}$&$1$&$100$&$10$&$10.18$&+2\tabularnewline
 ~~Phytoplankton&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
 ~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
 ~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
@@ -728,27 +730,27 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~Temperature&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
 ~~Zooplankton&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
 ~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
-~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$7.2\times 10^{-4}$&nc\tabularnewline
+~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$6.96\times 10^{-3}$&+867\tabularnewline
 ~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
 \hline
 {\bfseries 2}&&&&&&&\tabularnewline
-~~Independent of category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$1.12$&nc\tabularnewline
+~~Independent of category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
 ~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
-~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.09$&--21\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
 ~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
 ~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
 ~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
-~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$7.2\times 10^{-4}$&nc\tabularnewline
+~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$5.47\times 10^{-3}$&+660\tabularnewline
 ~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
 \hline
 {\bfseries 3}&&&&&&&\tabularnewline
-~~Equally within category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$1.47$&+32\tabularnewline
+~~Equally within category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
 ~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
-~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.1$&--11\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
 ~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
 ~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
-~~&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$5$&--83\tabularnewline
-~~&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&nc\tabularnewline
+~~&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$28.11$&--6\tabularnewline
+~~&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.03$&--12\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
