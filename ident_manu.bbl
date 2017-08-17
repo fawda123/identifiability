@@ -1,17 +1,16 @@
-\begin{thebibliography}{55}
+\begin{thebibliography}{57}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \expandafter\ifx\csname url\endcsname\relax
   \def\url#1{\texttt{#1}}\fi
 \expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
 
+\bibitem[{{APHA (American Public Health Association)}(2005)}]{APHA05}
+{APHA (American Public Health Association)}, 2005. Standard methods for the
+  examination of water and wastewater. Washington, DC.
+
 \bibitem[{Beck(1987)}]{Beck87}
 Beck, M.~B., 1987. Water quality modeling: A review of the analysis of
   uncertainty. Water Resour. Res. 23~(8), 1393--1442.
-
-\bibitem[{Beck et~al.(2015)Beck, {Hagy III}, and Murrell}]{Beck15b}
-Beck, M.~W., {Hagy III}, J.~D., Murrell, M.~C., 2015. Improving estimates of
-  ecosystem metabolism by reducing effects of tidal advection on dissolved
-  oxygen time series. Limnol. Oceanogr. Methods 13~(12), 731--745.
 
 \bibitem[{Bianchi et~al.(2010)Bianchi, DiMarco, Jr, Hetland, Chapman, Day, and
   Allison}]{Bianchi10}
@@ -121,6 +120,12 @@ Hagy, J.~D., Murrell, M.~C., 2007. Susceptibility of a northern {G}ulf of
 Hilborn, R., Mangel, M., 1997. The Ecological Detective: Confronting Models
   with Data. Princeton University Press, Princeton, New Jersey.
 
+\bibitem[{Holmes et~al.(1999)Holmes, Amino, Kerouel, Hooker, and
+  Peterson}]{Holmes99}
+Holmes, R.~M., Amino, A., Kerouel, R., Hooker, B.~A., Peterson, B.~J., 1999. A
+  simple precise method for measuring ammonium in marine and freshwater
+  ecosystems. J. Fish. Aquat. Sci. 56~(10), 1801--1808.
+
 \bibitem[{Howarth et~al.(1996)Howarth, Billen, Swaney, Townsend, Jaworski,
   Lajtha, Downing, Elmgren, Caraco, Jordan, Berendse, Freney, Kudeyarov,
   Murdoch, and Zhao-Liang}]{Howarth96}
@@ -177,6 +182,13 @@ Morrison, M., Morgan, M.~S., 1999. Models as mediating agents. In: Morgan,
   M.~S., Morrison, M. (Eds.), Models as Mediators. Cambridge University Press,
   Cambridge, p. 401.
 
+\bibitem[{Murrell et~al.(in revision)Murrell, Caffrey, Marcovich, Beck, Jarvis,
+  and III}]{MurrellIR}
+Murrell, M.~C., Caffrey, J.~C., Marcovich, D.~T., Beck, M.~W., Jarvis, B.~M.,
+  III, J. D.~H., in revision. Seasonal oxygen dynamics in a warm temperate
+  estuary: Effects of hydrologic variability on measurements of primary
+  production, respiration, and net metabolism. Estuaries Coasts -~(-), --.
+
 \bibitem[{Nocedal and Wright(2006)}]{Nocedal06}
 Nocedal, J., Wright, S.~J., 2006. Numerical Optimization, 2nd Edition.
   Springer-Verlag, New York, New York.
@@ -207,6 +219,10 @@ Paerl, H.~W., Pinckney, J.~L., Fear, J.~M., Peierls, B.~L., 1998. Ecosystem
   responses to internal and watershed organic matter loading: consequences for
   hypoxia in the eutrophying {N}euse {R}iver {E}stuary, {N}orth {C}arolina,
   {USA}. Mar. Ecol. Prog. Ser. 166, 17--25.
+
+\bibitem[{Parsons et~al.(1985)Parsons, Maita, and Lalli}]{Parsons85}
+Parsons, T.~R., Maita, Y., Lalli, C.~M., 1985. A manual of chemical methods for
+  seawater analysis. Pergamon Press, New York.
 
 \bibitem[{Pauer et~al.(2016)Pauer, Feist, Anstead, DePetro, Melendez, Lehrter,
   Murrell, Zhang, and Ko}]{Pauer16}
@@ -276,12 +292,6 @@ Wagener, T., Boyle, D.~P., Lees, M.~J., Wheater, H.~S., Gupta, H.~V.,
 Warner, J.~C., Geyer, W.~R., Lerczak, J.~A., 2005. Numerical modeling of an
   estuary: a comprehensive skill assessment. J. Geophys. Res. Ocean. 110~(C5),
   13.
-
-\bibitem[{Wenner et~al.(2004)Wenner, Sanger, Arendt, Holland, and
-  Chen}]{Wenner04}
-Wenner, E., Sanger, D., Arendt, M., Holland, A.~F., Chen, Y., 2004. Variability
-  in dissolved oxygen and other water-quality variables within the {N}ational
-  {E}stuarine {R}esearch {R}eserve {S}ystem. J. Coast. Res. 45~(SI), 17--38.
 
 \bibitem[{Wheater et~al.(1986)Wheater, Bishop, and Beck}]{Wheater86}
 Wheater, H.~S., Bishop, K.~H., Beck, M.~B., 1986. The identification of

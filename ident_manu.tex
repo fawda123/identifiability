@@ -71,6 +71,10 @@
 \crefname{figure}{Fig.}{Figs.}
 \renewcommand{\figurename}{Fig.}
 
+% aliased citations
+\defcitealias{APHA05}{APHA 2005}
+\defcitealias{MurrellIR}{Murrell et al. in revision}
+
 %acronyms
 \acrodef{chla}[chl-\textit{a}]{chlorophyll \textit{a}}
 \acrodef{cgem}[CGEM]{Coastal General Ecosystem Model}
@@ -146,7 +150,7 @@
 \begin{frontmatter}
 
 \title{Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern {G}ulf of {M}exico\tnoteref{mytitlenote}}
-\tnotetext[mytitlenote]{Version: Tue Aug 15 18:37:33 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/b9430cdc1b195b992ae6ea786f8e485723cf540c}{b9430cdc1b195b992ae6ea786f8e485723cf540c}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
+\tnotetext[mytitlenote]{Version: Wed Aug 16 18:18:02 2017 -0500, \href{https://github.com/fawda123/identifiability/commit/b081f900ad818adbbf496e0b8888820e38bda065}{b081f900ad818adbbf496e0b8888820e38bda065}\newline Acronyms: \acfi{chla}; \acfi{cgem}; \acfi{do}; \acfi{dom}; \acfi{gom}; \acfi{lcs}; \acfi{marb}; \acfi{pom}; \acfi{rmse}; \acfi{zerod}}
 
 \date{}
 
@@ -171,7 +175,7 @@
 
 
 \begin{abstract}
-\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspondence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of 51 total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved fit to the observed data if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
+\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspondence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of 51 total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved fit to the observed data if sensitive phytoplankton parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
 \end{abstract}
 
 \begin{keyword}
@@ -191,12 +195,12 @@ The development of a model represents a tradeoff between achieving predictive ac
 
 Model fit can be evaluated relative to the effects of initial conditions or the observed data used for calibration, changes in parameter values, or variation in the structural components (i.e., observational, parameter, or structural uncertainty) \citep{Beck87}.  Evaluating effects of parameter changes is by far the most common and simplest approach.  Although sensitivity analyses should be integrated with model development, parameters are often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is sometimes called inverse modelling where results from sensitivity analyses are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability'.  Redundancies in parameter effects lead to unidentifiable models where calibration is empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}. Unidentifiable parameter sets have effects on model output that can be undone or compensated for by alteration of other parameters.  Identifiability issues are not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in practice \citep{Fasham06}.
 
-This study describes a sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}.  The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
+This study describes a sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}. In general, the analysis makes a case for unit-testing with lower-dimensional models, particularly when computional limitations preclude the use of conventional optimization algorithms with larger three-dimensional models. The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
 \item identify the parameters that have the greatest influence on state variables using local sensitivity analysis,
 \item quantify the identifiability of subsets of the total parameter space based on sensitivity,
 \item and provide a set of heuristics for choosing parameters based on sensitivity, identifiability, and parameter categories.
 \end{inparaenum}
-The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model fit.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability of the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
+The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics for optimization.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability of the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
 
 \section{Materials and Methods}
 
@@ -252,11 +256,11 @@ Selected parameter subsets from the seven heuristics were used to calibrate the 
 \end{inparaenum}
 Generally, this analysis was a proof of concept that the selection heuristics can lead to an `optimal' model by maximizing the balance between sensitivity and identifiability.  
 
-Estimates of oxygen production from closed bottle experiments were used to calibrate the \ac{zerod} model.  Surface water was collected from a fixed location in Pensacola Bay, Florida () on September 25\textsuperscript{th}, 2013.  Water samples were placed into closed 100 mL glass bottles at the time of collection and transported back to the lab for treatments.  Concentrations of \ac{do} and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents (Parsons et al. 1985) and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method (Holmes et al. 1999); other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods (APHA 2005).  
+Estimates of oxygen production from closed bottle experiments were used to calibrate the \ac{zerod} model.  Surface water was collected from a fixed location in Pensacola Bay, Florida (30.35$^{\circ}$ N, 87.20$^{\circ}$ W) on September 25\textsuperscript{th}, 2013 (full details in \citetalias{MurrellIR}).  Water samples were placed into closed 100 mL glass bottles at the time of collection and transported back to the lab for treatments.  Concentrations of \ac{do} and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents \citep{Parsons85} and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method \citep{Holmes99}; other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods \citepalias{APHA05}.
 
-Oxygen production after an approximate 12 hour period was estimated within the bottles using three treatments: light, dark, and light plus nutrients.  All treatments were allowed to sit under ambient outdoor conditions in a water bath with continuous flow at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The nutrient treatments were supplemented with an equal mix of 25 mmol m$^{-3}$ of ammonium and nitrate and 1.7 mmol m$^{-3}$, approximately two order of magnitude above ambient concentrations.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of \ac{do} in each bottle were measured.  Four replicates of each treatment were used. HOBO\textsuperscript{\textregistered} pendants were used to measure continous temperature and light for each treatment.  
+Oxygen production after an approximate 12 hour period (morning to evening) was estimated within the bottles using light and dark treaments.  All treatments were exposed to ambient outdoor conditions in a water bath with continuous flow at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of \ac{do} in each bottle were measured.  Each treatment had four replicates and HOBO\textsuperscript{\textregistered} pendants were used to measure continuous temperature and light.  
 
-Each parameter subset was calibrated to the ending \ac{do} concentration for each of the four replicates per treatment.   The intial values Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within an expected range chosen by the authors to best reflect...  While we recognize that `actual' parameter values could possibly extend beyond this range, constraining the values to the range tested herein was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
+Each parameter subset in \cref{tab:heurist1,tab:heurist2,tab:heurist3} for \ac{do} was calibrated to the ending oxygen concentration for each of the four replicates of each treatment. The intial nutrient and oxygen concentrations were used as starting conditions for FishTank.  The corresponding continuous temperature and light measurements were also used as forcing conditions.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within a range of values for a subset that was chosen to best reflect expectations given professional judgment and reasonable bounds from the literature.  While we recognize that `actual' parameter values could possibly extend beyond these ranges, constraining the values was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
 
 As a final analysis, effects of parameter changes on the larger 3-dimensional model were evaluated to demonstrate that results from the \ac{zerod} FishTank model are scalable.  For simplicity, only the most sensitive parameter in each category was selected.  The \ac{cgem} model was run for one year using the default parameter conditions and by increasing each of the selected parameters by 50\%.  This produced six spatially-referenced time series (one default, five for each parameter change) from which changes in the daily hypoxic area (number of cells $<$ 64 mmol \ac{do}) were estimated.
 
@@ -267,11 +271,11 @@ As a final analysis, effects of parameter changes on the larger 3-dimensional mo
  
 \subsection{Local sensitivity analysis}
 
-Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 38 of the 51 (75\% of total) parameters that were evaluated in FishTank (\cref{fig:sensalltile}, \cref{tab:dosens}). Within each parameter category, \ac{do} was sensitive to three parameters for optics (75\% of all optic parameters), eight for organic matter (67\%), 16 for phytoplankton (73\%), one for temperature (50\%), and 10 for zooplankton (91\%). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, average sensitivity was $L1 = $ $9.2\times 10^{-3}$ with values ranging from $L1 = $ $8.34\times 10^{-8}$ for \textit{QminP} (phytoplankton) to $0.05$ for \textit{umax} (phytoplankton). Within categories (excluding temperature with one sensitive parameter), sensitivity ranged from $4.39\times 10^{-5}$ (\textit{astarOMA}) to $7.51\times 10^{-4}$ (\textit{astar490}) for optics, $4.17\times 10^{-4}$ (\textit{KNH4}) to $6.15\times 10^{-3}$ (\textit{KG1}) for organic matter, $8.34\times 10^{-8}$ (\textit{QminP}) to $0.05$ (\textit{umax}) for phytoplankton, and $3.69\times 10^{-5}$ (\textit{ZQp}) to $0.05$ (\textit{ZKa}) for zooplankton (\cref{tab:dosens}).  Average sensitivity values in each category were $L1 = $ $2.81\times 10^{-4}$ for optics, $2.17\times 10^{-3}$ for organic matter, $0.02$ for temperature, $0.01$ for phytoplankton, and $0.01$ for zooplankton.
+Local sensitivity analyses showed that \ac{do} was sensitive to perturbations in 38 of the 51 (75\% of total) parameters that were evaluated in FishTank (\cref{fig:sensalltile}, \cref{tab:dosens}). Within each parameter category, \ac{do} was sensitive to three parameters for optics (75\% of all optic parameters), eight for organic matter (67\%), 16 for phytoplankton (73\%), one for temperature (50\%), and 10 for zooplankton (91\%). Although \ac{do} had the greatest sensitivity to parameters in the zooplankton category (as percentage of total), the relative effects varied. Among all parameters, average sensitivity was $L1 = $ $9.2e^{-3}$ with values ranging from $L1 = $ $8.34e^{-8}$ for \textit{QminP} (phytoplankton) to $0.05$ for \textit{umax} (phytoplankton). Within categories (excluding temperature with one sensitive parameter), sensitivity ranged from $4.39e^{-5}$ (\textit{astarOMA}) to $7.51e^{-4}$ (\textit{astar490}) for optics, $4.17e^{-4}$ (\textit{KNH4}) to $6.15e^{-3}$ (\textit{KG1}) for organic matter, $8.34e^{-8}$ (\textit{QminP}) to $0.05$ (\textit{umax}) for phytoplankton, and $3.69e^{-5}$ (\textit{ZQp}) to $0.05$ (\textit{ZKa}) for zooplankton (\cref{tab:dosens}).  Average sensitivity values in each category were $L1 = $ $2.81e^{-4}$ for optics, $2.17e^{-3}$ for organic matter, $0.02$ for temperature, $0.01$ for phytoplankton, and $0.01$ for zooplankton.
 
 
 
-Local sensitivity analyses for the additional state variables (ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus) had similar results as \ac{do} with some exceptions (\cref{fig:sensalltile,tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens}).  All variables were sensitive to the same parameters as \ac{do} (38 of 51 evaluated), although average sensitivity differed between variables.  Average $L1$ ranged from $0.02$ for irradiance (\cref{tab:irrsens}) to $0.71$ for \ac{dom} (\cref{tab:om2sens}).  All average sensitivity values for the state variables were higher than the average for \ac{do} ($L1$ = $9.2\times 10^{-3}$).  For each variable, $L1$ ranged from $2.24\times 10^{-6}$ (\textit{QminP}) to $8.49$ (\textit{mA}) for ammonium (\cref{tab:nh4sens}), $1.38\times 10^{-6}$ (\textit{QminP}) to $13.94$ (\textit{mA}) for \ac{chla} (\cref{tab:chlsens}), $1.92\times 10^{-7}$ (\textit{QminP}) to $0.13$ (\textit{ZKa}) for irradiance (\cref{tab:irrsens}), $6.67\times 10^{-7}$ (\textit{QminP}) to $8.49$ (\textit{umax}) for nitrate (\cref{tab:no3sens}), $6.41\times 10^{-5}$ (\textit{KNH4}) to $7.22$ (\textit{mA}) for \ac{pom} (\cref{tab:om1sens}),  $7.41\times 10^{-5}$ (\textit{KNH4}) to $14.25$ (\textit{mA}) for \ac{dom} (\cref{tab:om2sens}), and $8.21\times 10^{-7}$ (\textit{QminP}) to $1.47$ (\textit{ZKa}) for phosphate (\cref{tab:po4sens}).  For the parameter categories, ammonium was most sensitive to phytoplankton parameters (average $L1$ = $0.8$ across all parameters in the category), \ac{chla} to phytoplankton ($L1$ = $1.14$), irradiance to zooplankton ($L1$ = $0.03$), nitrate to zooplankton ($L1$ = $1.06$), \ac{pom} to temperature ($L1$ = $0.86$), \ac{dom} to temperature ($L1$ = $1.48$), and phosphate to zooplankton ($L1$ = $0.31$).  Finally, average sensitivity between parameter categories independent of the state variables ranged from $8.38\times 10^{-3}$ for optics (average $L1$ across all variables) to $0.62$ for phytoplankton. 
+Local sensitivity analyses for the additional state variables (ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus) had similar results as \ac{do} with some exceptions (\cref{fig:sensalltile,tab:nh4sens,tab:chlsens,tab:irrsens,tab:no3sens,tab:om1sens,tab:om2sens,tab:po4sens}).  All variables were sensitive to the same parameters as \ac{do} (38 of 51 evaluated), although average sensitivity differed between variables.  Average $L1$ ranged from $0.02$ for irradiance (\cref{tab:irrsens}) to $0.71$ for \ac{dom} (\cref{tab:om2sens}).  All average sensitivity values for the state variables were higher than the average for \ac{do} ($L1$ = $9.2e^{-3}$).  For each variable, $L1$ ranged from $2.24e^{-6}$ (\textit{QminP}) to $8.49$ (\textit{mA}) for ammonium (\cref{tab:nh4sens}), $1.38e^{-6}$ (\textit{QminP}) to $13.94$ (\textit{mA}) for \ac{chla} (\cref{tab:chlsens}), $1.92e^{-7}$ (\textit{QminP}) to $0.13$ (\textit{ZKa}) for irradiance (\cref{tab:irrsens}), $6.67e^{-7}$ (\textit{QminP}) to $8.49$ (\textit{umax}) for nitrate (\cref{tab:no3sens}), $6.41e^{-5}$ (\textit{KNH4}) to $7.22$ (\textit{mA}) for \ac{pom} (\cref{tab:om1sens}),  $7.41e^{-5}$ (\textit{KNH4}) to $14.25$ (\textit{mA}) for \ac{dom} (\cref{tab:om2sens}), and $8.21e^{-7}$ (\textit{QminP}) to $1.47$ (\textit{ZKa}) for phosphate (\cref{tab:po4sens}).  For the parameter categories, ammonium was most sensitive to phytoplankton parameters (average $L1$ = $0.8$ across all parameters in the category), \ac{chla} to phytoplankton ($L1$ = $1.14$), irradiance to zooplankton ($L1$ = $0.03$), nitrate to zooplankton ($L1$ = $1.06$), \ac{pom} to temperature ($L1$ = $0.86$), \ac{dom} to temperature ($L1$ = $1.48$), and phosphate to zooplankton ($L1$ = $0.31$).  Finally, average sensitivity between parameter categories independent of the state variables ranged from $8.38e^{-3}$ for optics (average $L1$ across all variables) to $0.62$ for phytoplankton. 
 
 \subsection{Identifiability of parameter subsets and selection rules}
 
@@ -290,11 +294,11 @@ Results for each of the three selection heuristics (blocked by parameter categor
 
 
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only three iterations were required to optimize the single parameter selected for the temperature category, whereas 289 iterations were required for the eight parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $35.33$ mmol O$_2$ m$^{-3}$, reduction to $35.29$, $35.32$, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction ($35.33$).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 ($2.81\times 10^{-4}$, three parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 ($0.03$, eight parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3}) produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only 12 iterations were required to optimize the single parameter selected for the temperature category, whereas 615 iterations were required for the seven parameters selected for phytoplankton (\cref{fig:calex}).  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, the optimal phytoplankton parameters had the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} $21.14$ mmol O$_2$ m$^{-3}$, reduction to $5.81$).  The identifiable parameters selected equally within categories (third heuristic) and independent of category (second heuristic) produced the second and third greatest reduction in \ac{rmse} ($19.09$, and $19.45$, respectively), although much less than that observed for phytoplankton parametrs. Overall, calibration to most of the parameter subsets had a small effect on \ac{rmse}.  However, the magnitude of parameter changes for calibration varied up to several orders of magnitude from the initial values (\cref{tab:calibprm}).  The percent change in parameters from the intial values varied from no change (Optics parameters \textit{astarOMZ} and ) to 900\% (\textit{KO2}).  Many calibrated parameter values included those at the lower or upper bounds used for the optimization routine (as for phytoplankton, \cref{fig:calex}).  There was no relationship between magnitude of parameter changes within a subset and overall reduction of \ac{rmse}.
 
 
 
-The estimated areal extent of bottom-water hypoxia using default parameter values for the 3-dimensional model peaked on August, 28\textsuperscript{th} at $1.19\times 10^{4}$ km$^2$ (\cref{fig:areachg}a, August mean area 8988 $\pm$ 551 km$^2$, \cref{fig:areachg}b). Increases in the top sensitive parameters for \ac{do} in each category (\cref{tab:dosens}) increased the estimated areal extent of hypoxia (Figs. \ref{fig:areachg}c, \ref{fig:areachg}e), with the exception of the parameter for optimum temperature of growth (\textit{Tref(nospA+nospZ)$_{p1}$}), which caused a decrease (mean difference from July default area -1070 $\pm$ 1161 km$^2$, \cref{fig:areachg}d).  The largest increase in area was caused by an increase in the maximum growth rate of phytoplankton (\textit{umax}), with the greatest increase occurring in July (monthly mean increase of 4109 $\pm$ 1085 km$^2$, \cref{fig:areachg}d).  Overall, changes in hypoxia extent were largest for parameters with large sensitivity values (i.e., L1 = $0.05$ for \textit{ZKa}, L1 = $0.05$ for \textit{umax}).
+The estimated areal extent of bottom-water hypoxia using default parameter values for the 3-dimensional model peaked on August, 28\textsuperscript{th} at $1.19e^{4}$ km$^2$ (\cref{fig:areachg}a, August mean area 8988 $\pm$ 551 km$^2$, \cref{fig:areachg}b). Increases in the top sensitive parameters for \ac{do} in each category (\cref{tab:dosens}) increased the estimated areal extent of hypoxia (Figs. \ref{fig:areachg}c, \ref{fig:areachg}e), with the exception of the parameter for optimum temperature of growth (\textit{Tref(nospA+nospZ)$_{p1}$}), which caused a decrease (mean difference from July default area -1070 $\pm$ 1161 km$^2$, \cref{fig:areachg}d).  The largest increase in area was caused by an increase in the maximum growth rate of phytoplankton (\textit{umax}), with the greatest increase occurring in July (monthly mean increase of 4109 $\pm$ 1085 km$^2$, \cref{fig:areachg}d).  Overall, changes in hypoxia extent were largest for parameters with large sensitivity values (i.e., L1 = $0.05$ for \textit{ZKa}, L1 = $0.05$ for \textit{umax}).
 
 \section{Discussion}
 
@@ -306,19 +310,21 @@ Results from the identifiability analyses provided additional insight into the i
 
 \subsection{Recommendations and conclusions}
 
-Our results demonstrated that small parameter subsets relative to all sensitive parameters were within the identifiability thresholds described in the literature.  The identifiable parameter subsets varied considerably between state variables and the method for parameter selection.  Use of identifiable parameter subsets with sensitive parameters improved model fit and results for the smaller model were scalable to the 3-dimensional model.  However, an evaluation of sensitivity and identifiability of relevant parameter sets is a preliminary and simplistic approach to improving model predictions.  We have provided a general approach to select parameter subsets for further model development depending on the ecological context (i.e., selection by parameter category, selection for specific state variables). Thus, the results described above have relevance for model refinement with the specific goal of better understanding ecological dynamics that moderate hypoxia on the northern \ac{gom}.  The general principles of sensitivity and parameter identifiability have broad applicability beyond this context and we argue that such methods should be more universally applied as an initial approach to quantify numerical constraints of biogeochemical models.  
+Our results demonstrated that small parameter subsets relative to all sensitive parameters were within the identifiability thresholds described in the literature.  The identifiable parameter subsets varied considerably between state variables and the method for parameter selection.  Use of identifiable parameter subsets with sensitive parameters improved model fit, particularly for phytoplankton parameters.  However, calibration to most parameter sets showed little improvement in model fit despite relatively large changes in parameter values.  This result underscores the challenge of model optimization when conidering many parameters.  Although we demonstrated model sensitivity to individual parameters, the interactive effects are also important.  For example, optimization to zooplankton parameters showed almost no change in model \ac{rmse} despite a relatively large sensitivity of the model to individual parameters.  A more comprehensive approach that considers the interaction of zooplankton parameters with others, such as phytoplankton, is warranted given the structural dependencies betwen parameter cateogires.  Indeed, the reduction in \ac{rmse} for selection heuristics that weighted the parameter categories equally showed the second largest reduction in model error.  
 
 The effects of structural or observational uncertainty could be evaluated as an extension of the analyses presented above. For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) could vary given the initial nutrient concentrations \citep{Eppley69}. Further, changes in the ratio between nitrogen and phosphorus could affect the sensitivity of state variables to parameter changes depending on the limiting nutrient.  A more challenging analysis is an evaluation of the effects of structural components on model output, which requires exclusion or inclusion of explicit biogeochemical equations. The FishTank model includes several `switches' that allow users to change the governing equations that estimate state variables, such as switches that `turn on' different structural equations for light attenuation in the water column.  This design is uncommon in biogeochemical models and could be leveraged for an evaluation of structural uncertainty. As such, our analysis of parameter sensitivity and identifiabilty could be combined with an evaluation of observational and structural uncertainty for a more complete characterization of the model, having implications for understanding drivers of hypoxia in coastal waters.  
 
 \section*{Acknowledgments}
 
-We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}. We thank James Pauer, Yonghsan Wan, and Susan Elizabeth George for providing helpful comments on an earlier draft.
+We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}. We thank James Pauer, Yonghsan Wan, Susan Elizabeth George, and an anonymous reviewer for providing helpful comments on an earlier draft. We thank Michael Murrell for assistance with the bottle dataset.  
 
 \section*{Role of Funding Sources}
 
 This study was funded, reviewed, and approved for publication by the US EPA, National Health and Environmental Effects Research Laboratory.  However, the views expressed in this paper are those of the authors and do not necessarily reflect the views or policies of the US EPA. 
 
 \clearpage
+
+% for abbreviated journal names
 
 % \bibliography{refs}
 \bibliography{refsshr}
@@ -332,7 +338,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 % parameter info
 %latex.default(totab, file = "", rowlabel = "Description", caption = cap.val,     caption.loc = "top", rowname = Description, rgroup = unique(cats),     n.rgroup = as.numeric(table(cats)), size = tabsize, label = paste0("tab:",         tablab), insert.bottom = foot.val)%
 \begin{table}[!tbp]
-{\tiny
+{\scriptsize
 \caption{FishTank parameters evaluated for sensitivity and identifiability. Sensitivitity analyses were based on a 50\% increase (Value $\cdot$ 1.5) from the initial value of each parameter. Dashed units are dimensionless. Parameters are grouped by categories as optics, temperature, phytoplankton, zooplankton, and organic matter.  A full description of the model structure, equations, and parameters is described in \citet{Lehrter17}.\label{tab:parmtab}} 
 \begin{center}
 \begin{tabular}{lllll}
@@ -350,9 +356,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&C&$22$&$33$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&&&\tabularnewline
-~~initial slope of photosynthesis v irradiance&\textit{alpha}&10$^{-16}$ cm$^2$ s quanta$^{-1}$ d$^{-1}$&$8.42\times 10^{-17}$&$1.26\times 10^{-16}$\tabularnewline
+~~initial slope of photosynthesis v irradiance&\textit{alpha}&10$^{-16}$ cm$^2$ s quanta$^{-1}$ d$^{-1}$&$8.42e^{-17}$&$1.26e^{-16}$\tabularnewline
 ~~coefficient for non-limiting nutrient&\textit{aN}&-&$1$&$1.5$\tabularnewline
-~~phytoplankton threshold for grazing&\textit{Athresh}&10$^7$ cells m$^{-3}$&$1.72\times 10^{8}$&$2.58\times 10^{8}$\tabularnewline
+~~phytoplankton threshold for grazing&\textit{Athresh}&10$^7$ cells m$^{-3}$&$1.72e^{8}$&$2.58e^{8}$\tabularnewline
 ~~edibility vector for Z1&\textit{ediblevector(Z1)}&-&$0.25$&$0.38$\tabularnewline
 ~~edibility vector for Z2&\textit{ediblevector(Z2)}&-&$0.25$&$0.38$\tabularnewline
 ~~half-saturation constant for N&\textit{Kn}&mmol m$^{-3}$&$4.51$&$6.76$\tabularnewline
@@ -361,30 +367,30 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~Qp constant for Flynn growth model&\textit{KQp}&-&$0.2$&$0.3$\tabularnewline
 ~~half-saturation constant for Si uptake&\textit{Ksi}&mmol m$^{-3}$&$4.51$&$6.76$\tabularnewline
 ~~mortality coefficient&\textit{mA}&d$^{-1}$&$0.1$&$0.15$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&10$^{-7}$ mmol C cell$^{-1}$&$1.35\times 10^{-6}$&$2.03\times 10^{-6}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&10$^{-9}$ mmol N cell$^{-1}$&$6.08\times 10^{-9}$&$9.12\times 10^{-9}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&10$^{-9}$ mmol P cell$^{-1}$&$6.19\times 10^{-10}$&$9.29\times 10^{-10}$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&10$^{-7}$ mmol C cell$^{-1}$&$1.35e^{-6}$&$2.03e^{-6}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&10$^{-9}$ mmol N cell$^{-1}$&$6.08e^{-9}$&$9.12e^{-9}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&10$^{-9}$ mmol P cell$^{-1}$&$6.19e^{-10}$&$9.29e^{-10}$\tabularnewline
 ~~phytoplankton basal respiration coefficient&\textit{respb}&d$^{-1}$&$0.02$&$0.03$\tabularnewline
 ~~phytoplankton growth respiration coefficient&\textit{respg}&-&$0.1$&$0.15$\tabularnewline
 ~~sinking rate of phytoplankton cells&\textit{sink A}&m d$^{-1}$&$1.49$&$2.23$\tabularnewline
 ~~maximum growth rate&\textit{umax}&d$^{-1}$&$0.41$&$0.62$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1\times 10^{-8}$&$6.15\times 10^{-8}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$2.68\times 10^{-8}$&$4.02\times 10^{-8}$\tabularnewline
-~~Si-uptake rate measured at umax&\textit{vmaxSi}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1\times 10^{-8}$&$6.15\times 10^{-8}$\tabularnewline
-~~phytoplankton volume/cell&\textit{volcell}&$\mu$m$^3$&$3.37\times 10^{4}$&$5.05\times 10^{4}$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1e^{-8}$&$6.15e^{-8}$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$2.68e^{-8}$&$4.02e^{-8}$\tabularnewline
+~~Si-uptake rate measured at umax&\textit{vmaxSi}&10$^{-8}$ mmol cell$^{-1}$ d$^{-1}$&$4.1e^{-8}$&$6.15e^{-8}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$\mu$m$^3$&$3.37e^{4}$&$5.05e^{4}$\tabularnewline
 \hline
 {\bfseries Zooplankton}&&&&\tabularnewline
 ~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&-&$0.4$&$0.6$\tabularnewline
-~~half saturation coefficient for grazing&\textit{ZKa}&$\mu$m$^3$ m$^{-3}$&$1.12\times 10^{12}$&$1.68\times 10^{12}$\tabularnewline
-~~quadratic mortality constant&\textit{Zm}&m$^6$ ind$^{-2}$ d$^{-1}$&$7.2\times 10^{-4}$&$0$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&mmol C ind$^{-1}$&$3.13\times 10^{-4}$&$4.7\times 10^{-4}$\tabularnewline
-~~zooplankton nitrogen/individual&\textit{ZQn}&mmol N ind$^{-1}$&$6.95\times 10^{-5}$&$1.04\times 10^{-4}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&mmol P ind$^{-1}$&$3.77\times 10^{-6}$&$5.66\times 10^{-6}$\tabularnewline
+~~half saturation coefficient for grazing&\textit{ZKa}&$\mu$m$^3$ m$^{-3}$&$1.12e^{12}$&$1.68e^{12}$\tabularnewline
+~~quadratic mortality constant&\textit{Zm}&m$^6$ ind$^{-2}$ d$^{-1}$&$7.2e^{-4}$&$0$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&mmol C ind$^{-1}$&$3.13e^{-4}$&$4.7e^{-4}$\tabularnewline
+~~zooplankton nitrogen/individual&\textit{ZQn}&mmol N ind$^{-1}$&$6.95e^{-5}$&$1.04e^{-4}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&mmol P ind$^{-1}$&$3.77e^{-6}$&$5.66e^{-6}$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&d$^{-1}$&$0.1$&$0.15$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&-&$0.2$&$0.3$\tabularnewline
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&-&$0.25$&$0.38$\tabularnewline
-~~maximum growth rate of zooplankton&\textit{Zumax}&$\mu$m$^3$ ind$^{-1}$ d$^{-1}$&$9.45\times 10^{7}$&$1.42\times 10^{8}$\tabularnewline
-~~zooplankton volume/individual&\textit{Zvolcell}&$\mu$m$^3$ ind$^{-1}$&$2.98\times 10^{7}$&$4.47\times 10^{7}$\tabularnewline
+~~maximum growth rate of zooplankton&\textit{Zumax}&$\mu$m$^3$ ind$^{-1}$ d$^{-1}$&$9.45e^{7}$&$1.42e^{8}$\tabularnewline
+~~zooplankton volume/individual&\textit{Zvolcell}&$\mu$m$^3$ ind$^{-1}$&$2.98e^{7}$&$4.47e^{7}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&&&\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&y$^{-1}$&$50$&$75$\tabularnewline
@@ -415,19 +421,19 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
 {\bfseries Optics}&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$7.51\times 10^{-4}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$4.92\times 10^{-5}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$4.39\times 10^{-5}$\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$7.51e^{-4}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$4.92e^{-5}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$4.39e^{-5}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$6.15\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$3.14\times 10^{-3}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$3.04\times 10^{-3}$\tabularnewline
-~~decay rate of CDOM&\textit{KGcdom}&$2.98\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$5.85\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$5.8\times 10^{-4}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$4.99\times 10^{-4}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$4.17\times 10^{-4}$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$6.15e^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$3.14e^{-3}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$3.04e^{-3}$\tabularnewline
+~~decay rate of CDOM&\textit{KGcdom}&$2.98e^{-3}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$5.85e^{-4}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$5.8e^{-4}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$4.99e^{-4}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$4.17e^{-4}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.05$\tabularnewline
@@ -435,17 +441,17 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~initial slope of photosynthesis v irradiance&\textit{alpha}&$0.02$\tabularnewline
 ~~edibility vector for Z1&\textit{ediblevector(Z1)}&$0.02$\tabularnewline
 ~~phytoplankton carbon/cell&\textit{Qc}&$0.01$\tabularnewline
-~~phytoplankton growth respiration coefficient&\textit{respg}&$8.36\times 10^{-3}$\tabularnewline
-~~N-uptake rate measured at umax&\textit{vmaxN}&$8.12\times 10^{-3}$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$6.94\times 10^{-3}$\tabularnewline
-~~phytoplankton threshold for grazing&\textit{Athresh}&$4.57\times 10^{-3}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$4.32\times 10^{-3}$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$4.27\times 10^{-3}$\tabularnewline
-~~coefficient for non-limiting nutrient&\textit{aN}&$4.23\times 10^{-3}$\tabularnewline
-~~phytoplankton volume/cell&\textit{volcell}&$4.13\times 10^{-3}$\tabularnewline
-~~half-saturation constant for P&\textit{Kp}&$2.9\times 10^{-3}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$2.77\times 10^{-4}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$8.34\times 10^{-8}$\tabularnewline
+~~phytoplankton growth respiration coefficient&\textit{respg}&$8.36e^{-3}$\tabularnewline
+~~N-uptake rate measured at umax&\textit{vmaxN}&$8.12e^{-3}$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$6.94e^{-3}$\tabularnewline
+~~phytoplankton threshold for grazing&\textit{Athresh}&$4.57e^{-3}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$4.32e^{-3}$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$4.27e^{-3}$\tabularnewline
+~~coefficient for non-limiting nutrient&\textit{aN}&$4.23e^{-3}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$4.13e^{-3}$\tabularnewline
+~~half-saturation constant for P&\textit{Kp}&$2.9e^{-3}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$2.77e^{-4}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$8.34e^{-8}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$\tabularnewline
@@ -456,11 +462,11 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~quadratic mortality constant&\textit{Zm}&$0.02$\tabularnewline
 ~~maximum growth rate of zooplankton&\textit{Zumax}&$0.02$\tabularnewline
 ~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.01$\tabularnewline
-~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$7.78\times 10^{-3}$\tabularnewline
-~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$5.32\times 10^{-3}$\tabularnewline
-~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$2.96\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$9.38\times 10^{-5}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$3.69\times 10^{-5}$\tabularnewline
+~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$7.78e^{-3}$\tabularnewline
+~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$5.32e^{-3}$\tabularnewline
+~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$2.96e^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$9.38e^{-5}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$3.69e^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \footnotesize *Temperature parameters apply separately to phytoplankton ($p1$, one group) or zooplankton ($z1$, one group), denoted by subscripts\end{table}
@@ -629,8 +635,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~1&\scriptsize{\textit{umax}}&$0.05$&$1$\textsubscript{P}&$1$\tabularnewline
 ~~2&\scriptsize{\textit{ZKa}}&$0.05$&$1$\textsubscript{Z}&$2.17$\tabularnewline
 ~~3&\scriptsize{\textit{Tref(nospA+nospZ)$_{p1}$}}&$0.02$&$1$\textsubscript{T}&$2.29$\tabularnewline
-~~4&\scriptsize{\textit{KG1}}&$6.15\times 10^{-3}$&$1$\textsubscript{OM}&$3.85$\tabularnewline
-~~5&\scriptsize{\textit{astar490}}&$7.51\times 10^{-4}$&$1$\textsubscript{O}&$3.89$\tabularnewline
+~~4&\scriptsize{\textit{KG1}}&$6.15e^{-3}$&$1$\textsubscript{OM}&$3.85$\tabularnewline
+~~5&\scriptsize{\textit{astar490}}&$7.51e^{-4}$&$1$\textsubscript{O}&$3.89$\tabularnewline
 ~~6&\scriptsize{\textit{mA}}&$0.02$&$2$\textsubscript{P}&$4.42$\tabularnewline
 ~~7&\scriptsize{\textit{ZQn}}&$0.02$&$2$\textsubscript{Z}&$5.22$\tabularnewline
 \hline
@@ -651,8 +657,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~5&\scriptsize{\textit{astar490}}&$0.02$&$1$\textsubscript{O}&$6.9$\tabularnewline
 ~~6&\scriptsize{\textit{ZQn}}&$0.06$&$2$\textsubscript{Z}&$10.63$\tabularnewline
 ~~7&\scriptsize{\textit{mA}}&$0.05$&$2$\textsubscript{P}&$11.21$\tabularnewline
-~~8&\scriptsize{\textit{KG1}}&$3.96\times 10^{-3}$&$2$\textsubscript{OM}&$14.65$\tabularnewline
-~~9&\scriptsize{\textit{astarOMA}}&$1.47\times 10^{-3}$&$2$\textsubscript{O}&$14.72$\tabularnewline
+~~8&\scriptsize{\textit{KG1}}&$3.96e^{-3}$&$2$\textsubscript{OM}&$14.65$\tabularnewline
+~~9&\scriptsize{\textit{astarOMA}}&$1.47e^{-3}$&$2$\textsubscript{O}&$14.72$\tabularnewline
 \hline
 {\bfseries Nitrate}&&&&\tabularnewline
 ~~1&\scriptsize{\textit{umax}}&$8.49$&$1$\textsubscript{P}&$1$\tabularnewline
@@ -685,20 +691,20 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{$\gamma$}&\multicolumn{1}{c}{$n$ parameters}&\multicolumn{1}{c}{mean L1}&\multicolumn{1}{c}{Iterations}&\multicolumn{1}{c}{$RMSE$*}\tabularnewline
 \hline
 {\bfseries 1}&&&&&\tabularnewline
-~~Optics&$3.87$&$3$&$2.81\times 10^{-4}$&$133$&$35.33$\tabularnewline
-~~Organic Matter&$8.61$&$5$&$3.18\times 10^{-3}$&$231$&$35.33$\tabularnewline
-~~Phytoplankton&$3.97$&$7$&$0.02$&$180$&$34.63$\tabularnewline
-~~Temperature&$1$&$1$&$0.02$&$3$&$35.33$\tabularnewline
-~~Zooplankton&$5.2$&$4$&$0.03$&$117$&$35.32$\tabularnewline
+~~Optics&$3.87$&$3$&$2.81e^{-4}$&$14$&$21.14$\tabularnewline
+~~Organic Matter&$8.61$&$5$&$3.18e^{-3}$&$132$&$20.6$\tabularnewline
+~~Phytoplankton&$3.97$&$7$&$0.02$&$615$&$5.81$\tabularnewline
+~~Temperature&$1$&$1$&$0.02$&$12$&$21.14$\tabularnewline
+~~Zooplankton&$5.2$&$4$&$0.03$&$54$&$21.14$\tabularnewline
 \hline
 {\bfseries 2}&&&&&\tabularnewline
-~~Independent of category&$6.81$&$8$&$0.03$&$289$&$35.29$\tabularnewline
+~~Independent of category&$6.81$&$8$&$0.03$&$221$&$19.45$\tabularnewline
 \hline
 {\bfseries 3}&&&&&\tabularnewline
-~~Equally within category&$5.22$&$7$&$0.03$&$180$&$35.32$\tabularnewline
+~~Equally within category&$5.22$&$7$&$0.03$&$435$&$19.09$\tabularnewline
 \hline
 \end{tabular}\end{center}}
-\footnotesize *Starting \ac{rmse} $35.33$\end{table}
+\footnotesize *Starting \ac{rmse} $21.14$\end{table}
 
 
 % do ending parameter values
@@ -707,50 +713,50 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 {\scriptsize
 \caption{Results of parameter changes from model calibration to observed \ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The parameters of each subset are from \cref{tab:heurist1,tab:heurist2,tab:heurist3}.  The L1 values are relative sensitivity of \ac{do} to a paramter change.  Starting and final parameter values after calibration are shown, including the percent change.  The calibration routing was bounded by minimum and maximum values appropriate for each parameter.\label{tab:calibprm}} 
 \begin{center}
-\begin{tabular}{llllllll}
+\begin{tabular}{lllllll}
 \hline\hline
-\multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{Min}&\multicolumn{1}{c}{Max}&\multicolumn{1}{c}{Initial}&\multicolumn{1}{c}{Final}&\multicolumn{1}{c}{\% change}\tabularnewline
+\multicolumn{1}{l}{Selection heuristic}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}&\multicolumn{1}{c}{Min/Max}&\multicolumn{1}{c}{Initial}&\multicolumn{1}{c}{Final}&\multicolumn{1}{c}{\% change}\tabularnewline
 \hline
-{\bfseries 1}&&&&&&&\tabularnewline
-~~Optics&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.04$&-0\tabularnewline
-~~&\textit{astarOMZ}&$4.92\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
-~~&\textit{astarOMA}&$4.39\times 10^{-5}$&$0.01$&$0.15$&$0.01$&$0.01$&nc\tabularnewline
-~~Organic Matter&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$30.02$&+0\tabularnewline
-~~&\textit{KG2}&$3.14\times 10^{-3}$&$5$&$100$&$30$&$30.06$&+0\tabularnewline
-~~&\textit{KstarO2}&$3.04\times 10^{-3}$&$1$&$100$&$10$&$10$&nc\tabularnewline
-~~&\textit{KGcdom}&$2.98\times 10^{-3}$&$0$&$1$&$0.01$&$0.01$&nc\tabularnewline
-~~&\textit{KO2}&$5.85\times 10^{-4}$&$1$&$100$&$10$&$10.18$&+2\tabularnewline
-~~Phytoplankton&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
-~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
-~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
-~~&\textit{ediblevector(Z1)}&$0.02$&$0.05$&$1$&$0.5$&$0.5$&nc\tabularnewline
-~~&\textit{Qc}&$0.01$&$1\times 10^{-9}$&$5\times 10^{-7}$&$4.54\times 10^{-8}$&$5\times 10^{-7}$&+1001\tabularnewline
-~~&\textit{respg}&$8.36\times 10^{-3}$&$0.01$&$0.5$&$0.1$&$0.1$&nc\tabularnewline
-~~&\textit{vmaxN}&$8.12\times 10^{-3}$&$1\times 10^{-11}$&$1\times 10^{-8}$&$1.33\times 10^{-9}$&$1.33\times 10^{-9}$&nc\tabularnewline
-~~Temperature&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
-~~Zooplankton&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
-~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
-~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$6.96\times 10^{-3}$&+867\tabularnewline
-~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
+{\bfseries 1}&&&&&&\tabularnewline
+~~Optics&\textit{astar490}&$7.51e^{-4}$&$0.02$/$0.12$&$0.04$&$0.04$&--0.3\tabularnewline
+~~&\textit{astarOMZ}&$4.92e^{-5}$&$0.01$/$0.15$&$0.01$&$0.01$&nc\tabularnewline
+~~&\textit{astarOMA}&$4.39e^{-5}$&$0.01$/$0.15$&$0.01$&$0.01$&nc\tabularnewline
+~~Organic Matter&\textit{KG1}&$6.15e^{-3}$&$5$/$100$&$30$&$5$&--83.3\tabularnewline
+~~&\textit{KG2}&$3.14e^{-3}$&$5$/$100$&$30$&$52.31$&+74.4\tabularnewline
+~~&\textit{KstarO2}&$3.04e^{-3}$&$1$/$100$&$10$&$10.01$&+0.1\tabularnewline
+~~&\textit{KGcdom}&$2.98e^{-3}$&$0$/$1$&$0.01$&$0.01$&+0.1\tabularnewline
+~~&\textit{KO2}&$5.85e^{-4}$&$1$/$100$&$10$&$100$&+900\tabularnewline
+~~Phytoplankton&\textit{umax}&$0.05$&$0.1$/$2.5$&$1.12$&$2.49$&+121.9\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$/$0.5$&$0.11$&$0.07$&--38.9\tabularnewline
+~~&\textit{alpha}&$0.02$&$1e^{-17}$/$6e^{-16}$&$3.96e^{-16}$&$6e^{-16}$&+51.5\tabularnewline
+~~&\textit{ediblevector(Z1)}&$0.02$&$0.05$/$1$&$0.5$&$0.37$&--26.5\tabularnewline
+~~&\textit{Qc}&$0.01$&$1e^{-9}$/$5e^{-7}$&$4.54e^{-8}$&$3.21e^{-7}$&+606.3\tabularnewline
+~~&\textit{respg}&$8.36e^{-3}$&$0.01$/$0.5$&$0.1$&$0.01$&--89.6\tabularnewline
+~~&\textit{vmaxN}&$8.12e^{-3}$&$1e^{-11}$/$1e^{-8}$&$1.33e^{-9}$&$1.35e^{-9}$&+1.8\tabularnewline
+~~Temperature&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$/$40$&$17$&$16.5$&--2.9\tabularnewline
+~~Zooplankton&\textit{ZKa}&$0.05$&$1e^{11}$/$2.5e^{12}$&$1.12e^{12}$&$1.61e^{12}$&+43.6\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1e^{-6}$/$2.04e^{-4}$&$6.95e^{-5}$&$7.53e^{-5}$&+8.3\tabularnewline
+~~&\textit{Zm}&$0.02$&$1e^{-4}$/$10$&$7.2e^{-4}$&$8.9e^{-4}$&+23.6\tabularnewline
+~~&\textit{Zumax}&$0.02$&$5e^{8}$/$2e^{9}$&$9.45e^{8}$&$5.33e^{8}$&--43.6\tabularnewline
 \hline
-{\bfseries 2}&&&&&&&\tabularnewline
-~~Independent of category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
-~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
-~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
-~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
-~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
-~~&\textit{alpha}&$0.02$&$1\times 10^{-17}$&$6\times 10^{-16}$&$3.96\times 10^{-16}$&$6\times 10^{-16}$&+52\tabularnewline
-~~&\textit{Zm}&$0.02$&$1\times 10^{-4}$&$10$&$7.2\times 10^{-4}$&$5.47\times 10^{-3}$&+660\tabularnewline
-~~&\textit{Zumax}&$0.02$&$5\times 10^{8}$&$2\times 10^{9}$&$9.45\times 10^{8}$&$9.45\times 10^{8}$&nc\tabularnewline
+{\bfseries 2}&&&&&&\tabularnewline
+~~Independent of category&\textit{umax}&$0.05$&$0.1$/$2.5$&$1.12$&$2.5$&+123.2\tabularnewline
+~~&\textit{ZKa}&$0.05$&$1e^{11}$/$2.5e^{12}$&$1.12e^{12}$&$2.5e^{12}$&+123.2\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$/$0.5$&$0.11$&$0.01$&--90.9\tabularnewline
+~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$/$40$&$17$&$5.82$&--65.7\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1e^{-6}$/$2.04e^{-4}$&$6.95e^{-5}$&$7.04e^{-5}$&+1.2\tabularnewline
+~~&\textit{alpha}&$0.02$&$1e^{-17}$/$6e^{-16}$&$3.96e^{-16}$&$6e^{-16}$&+51.5\tabularnewline
+~~&\textit{Zm}&$0.02$&$1e^{-4}$/$10$&$7.2e^{-4}$&$1.07e^{-3}$&+48.9\tabularnewline
+~~&\textit{Zumax}&$0.02$&$5e^{8}$/$2e^{9}$&$9.45e^{8}$&$5e^{8}$&--47.1\tabularnewline
 \hline
-{\bfseries 3}&&&&&&&\tabularnewline
-~~Equally within category&\textit{umax}&$0.05$&$0.1$&$2.5$&$1.12$&$2.5$&+123\tabularnewline
-~~&\textit{ZKa}&$0.05$&$1\times 10^{11}$&$2.5\times 10^{12}$&$1.12\times 10^{12}$&$1.12\times 10^{12}$&nc\tabularnewline
-~~&\textit{mA}&$0.02$&$0.01$&$0.5$&$0.11$&$0.01$&--91\tabularnewline
-~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$&$40$&$17$&$17$&nc\tabularnewline
-~~&\textit{ZQn}&$0.02$&$1\times 10^{-6}$&$2.04\times 10^{-4}$&$6.95\times 10^{-5}$&$6.95\times 10^{-5}$&nc\tabularnewline
-~~&\textit{KG1}&$6.15\times 10^{-3}$&$5$&$100$&$30$&$28.11$&--6\tabularnewline
-~~&\textit{astar490}&$7.51\times 10^{-4}$&$0.02$&$0.12$&$0.04$&$0.03$&--12\tabularnewline
+{\bfseries 3}&&&&&&\tabularnewline
+~~Equally within category&\textit{umax}&$0.05$&$0.1$/$2.5$&$1.12$&$2.5$&+123.2\tabularnewline
+~~&\textit{ZKa}&$0.05$&$1e^{11}$/$2.5e^{12}$&$1.12e^{12}$&$2.5e^{12}$&+123.2\tabularnewline
+~~&\textit{mA}&$0.02$&$0.01$/$0.5$&$0.11$&$0.01$&--90.9\tabularnewline
+~~&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.02$&$0$/$40$&$17$&$12.2$&--28.2\tabularnewline
+~~&\textit{ZQn}&$0.02$&$1e^{-6}$/$2.04e^{-4}$&$6.95e^{-5}$&$8.87e^{-5}$&+27.6\tabularnewline
+~~&\textit{KG1}&$6.15e^{-3}$&$5$/$100$&$30$&$5$&--83.3\tabularnewline
+~~&\textit{astar490}&$7.51e^{-4}$&$0.02$/$0.12$&$0.04$&$0.02$&--46.7\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -875,8 +881,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.03$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.63\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.5\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.63e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.5e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~maximum rate of nitrification per day&\textit{nitmax}&$1.54$\tabularnewline
@@ -886,7 +892,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.06$\tabularnewline
 ~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.05$\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.03$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$7.55\times 10^{-3}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$7.55e^{-3}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$8.49$\tabularnewline
@@ -904,7 +910,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~P-uptake rate measured at umax&\textit{vmaxP}&$0.1$\tabularnewline
 ~~phytoplankton carbon/cell&\textit{Qc}&$0.03$\tabularnewline
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$2.24\times 10^{-6}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$2.24e^{-6}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.79$\tabularnewline
@@ -918,8 +924,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.3$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.22$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.16$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$1.07\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$1.44\times 10^{-4}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.07e^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$1.44e^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -937,18 +943,18 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.02$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.45\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.13\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.45e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.13e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~decay rate of CDOM&\textit{KGcdom}&$0.07$\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.03$\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
 ~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.01$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.35\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$3.4\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$2.97\times 10^{-5}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.35e^{-3}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19e^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$3.4e^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$2.97e^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$13.94$\tabularnewline
@@ -966,7 +972,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~minimum N cell-quota&\textit{QminN}&$0.07$\tabularnewline
 ~~phytoplankton carbon/cell&\textit{Qc}&$0.02$\tabularnewline
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$1.38\times 10^{-6}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$1.38e^{-6}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.6$\tabularnewline
@@ -980,8 +986,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.23$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.17$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.14$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$1.29\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$7.55\times 10^{-5}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.29e^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$7.55e^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -999,18 +1005,18 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.02$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.47\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.34\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.47e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.34e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~decay rate of CDOM&\textit{KGcdom}&$0.05$\tabularnewline
-~~turnover rate for OM1A and OM1Z&\textit{KG1}&$3.96\times 10^{-3}$\tabularnewline
-~~turnover rate for OM2A and OM2Z&\textit{KG2}&$9.88\times 10^{-4}$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.2\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.54\times 10^{-4}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$6.18\times 10^{-5}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$1.72\times 10^{-6}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$1.48\times 10^{-6}$\tabularnewline
+~~turnover rate for OM1A and OM1Z&\textit{KG1}&$3.96e^{-3}$\tabularnewline
+~~turnover rate for OM2A and OM2Z&\textit{KG2}&$9.88e^{-4}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.2e^{-4}$\tabularnewline
+~~half-saturation concentration for O2 utilization&\textit{KO2}&$3.54e^{-4}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$6.18e^{-5}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$1.72e^{-6}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$1.48e^{-6}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.09$\tabularnewline
@@ -1022,13 +1028,13 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~coefficient for non-limiting nutrient&\textit{aN}&$0.01$\tabularnewline
 ~~phytoplankton growth respiration coefficient&\textit{respg}&$0.01$\tabularnewline
 ~~half-saturation constant for P&\textit{Kp}&$0.01$\tabularnewline
-~~P-uptake rate measured at umax&\textit{vmaxP}&$9.48\times 10^{-3}$\tabularnewline
-~~phytoplankton basal respiration coefficient&\textit{respb}&$9.38\times 10^{-3}$\tabularnewline
-~~phytoplankton volume/cell&\textit{volcell}&$8.1\times 10^{-3}$\tabularnewline
-~~minimum N cell-quota&\textit{QminN}&$5.75\times 10^{-3}$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$3.78\times 10^{-3}$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$9.81\times 10^{-4}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$1.92\times 10^{-7}$\tabularnewline
+~~P-uptake rate measured at umax&\textit{vmaxP}&$9.48e^{-3}$\tabularnewline
+~~phytoplankton basal respiration coefficient&\textit{respb}&$9.38e^{-3}$\tabularnewline
+~~phytoplankton volume/cell&\textit{volcell}&$8.1e^{-3}$\tabularnewline
+~~minimum N cell-quota&\textit{QminN}&$5.75e^{-3}$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$3.78e^{-3}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$9.81e^{-4}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$1.92e^{-7}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.03$\tabularnewline
@@ -1041,9 +1047,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.03$\tabularnewline
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.02$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.01$\tabularnewline
-~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$9.67\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$9.34\times 10^{-5}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$1.99\times 10^{-5}$\tabularnewline
+~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$9.67e^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$9.34e^{-5}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$1.99e^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1061,8 +1067,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.02$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.27\times 10^{-3}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.19\times 10^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.27e^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.19e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.78$\tabularnewline
@@ -1071,8 +1077,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.03$\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.02$\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$9.96\times 10^{-3}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$9.87\times 10^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$9.96e^{-3}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$9.87e^{-3}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$8.49$\tabularnewline
@@ -1089,8 +1095,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation constant for P&\textit{Kp}&$0.09$\tabularnewline
 ~~minimum N cell-quota&\textit{QminN}&$0.09$\tabularnewline
 ~~phytoplankton basal respiration coefficient&\textit{respb}&$0.07$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$7.06\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$6.67\times 10^{-7}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$7.06e^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$6.67e^{-7}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.3$\tabularnewline
@@ -1104,8 +1110,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~assimilation efficiency as a fraction of ingestion&\textit{Zeffic}&$0.25$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.17$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.1$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.8\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$8.59\times 10^{-4}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$3.8e^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$8.59e^{-4}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1123,8 +1129,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.03$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.73\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.49\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$1.73e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$1.49e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.92$\tabularnewline
@@ -1132,9 +1138,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
 ~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.02$\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.01$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$3.72\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$6.98\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$6.41\times 10^{-5}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$3.72e^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$6.98e^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$6.41e^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$7.22$\tabularnewline
@@ -1152,7 +1158,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~phytoplankton volume/cell&\textit{volcell}&$0.1$\tabularnewline
 ~~P-uptake rate measured at umax&\textit{vmaxP}&$0.09$\tabularnewline
 ~~half-saturation constant for N&\textit{Kn}&$0.01$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$7.35\times 10^{-4}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$7.35e^{-4}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.86$\tabularnewline
@@ -1166,8 +1172,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.27$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.16$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.12$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$9.64\times 10^{-3}$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$1.06\times 10^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$9.64e^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.06e^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1185,8 +1191,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \hline
 {\bfseries Optics}&&\tabularnewline
 ~~Chla specific absorption at 490 nm&\textit{astar490}&$0.04$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$2.48\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$2.04\times 10^{-3}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$2.48e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$2.04e^{-3}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.94$\tabularnewline
@@ -1194,9 +1200,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.04$\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.04$\tabularnewline
 ~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$0.03$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$3.16\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$8.44\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$7.41\times 10^{-5}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$3.16e^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$8.44e^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$7.41e^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~mortality coefficient&\textit{mA}&$14.25$\tabularnewline
@@ -1214,7 +1220,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~P-uptake rate measured at umax&\textit{vmaxP}&$0.14$\tabularnewline
 ~~phytoplankton volume/cell&\textit{volcell}&$0.1$\tabularnewline
 ~~half-saturation constant for N&\textit{Kn}&$0.02$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$4.37\times 10^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$4.37e^{-3}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$1.48$\tabularnewline
@@ -1229,7 +1235,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.13$\tabularnewline
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.12$\tabularnewline
 ~~zooplankton carbon/individual&\textit{ZQc}&$0.04$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$1.69\times 10^{-3}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$1.69e^{-3}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}
@@ -1246,19 +1252,19 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 \multicolumn{1}{l}{Description}&\multicolumn{1}{c}{Parameter}&\multicolumn{1}{c}{L1}\tabularnewline
 \hline
 {\bfseries Optics}&&\tabularnewline
-~~Chla specific absorption at 490 nm&\textit{astar490}&$9.01\times 10^{-3}$\tabularnewline
-~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$5.21\times 10^{-4}$\tabularnewline
-~~OMA specific absorption at 490 nm&\textit{astarOMA}&$5.13\times 10^{-4}$\tabularnewline
+~~Chla specific absorption at 490 nm&\textit{astar490}&$9.01e^{-3}$\tabularnewline
+~~OMZ specific absorption at 490 nm&\textit{astarOMZ}&$5.21e^{-4}$\tabularnewline
+~~OMA specific absorption at 490 nm&\textit{astarOMA}&$5.13e^{-4}$\tabularnewline
 \hline
 {\bfseries Organic Matter}&&\tabularnewline
 ~~turnover rate for OM1A and OM1Z&\textit{KG1}&$0.14$\tabularnewline
 ~~turnover rate for OM2A and OM2Z&\textit{KG2}&$0.06$\tabularnewline
 ~~decay rate of CDOM&\textit{KGcdom}&$0.02$\tabularnewline
 ~~half-saturation concentration for O2 utilization&\textit{KO2}&$0.01$\tabularnewline
-~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.29\times 10^{-3}$\tabularnewline
-~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19\times 10^{-3}$\tabularnewline
-~~maximum rate of nitrification per day&\textit{nitmax}&$2.7\times 10^{-5}$\tabularnewline
-~~NH4 rate constant for nitrification&\textit{KNH4}&$2.64\times 10^{-5}$\tabularnewline
+~~O2 concentration that inhibits denitrification&\textit{KstarO2}&$7.29e^{-3}$\tabularnewline
+~~half-saturation concentration for denitrification&\textit{KNO3}&$1.19e^{-3}$\tabularnewline
+~~maximum rate of nitrification per day&\textit{nitmax}&$2.7e^{-5}$\tabularnewline
+~~NH4 rate constant for nitrification&\textit{KNH4}&$2.64e^{-5}$\tabularnewline
 \hline
 {\bfseries Phytoplankton}&&\tabularnewline
 ~~maximum growth rate&\textit{umax}&$0.78$\tabularnewline
@@ -1274,9 +1280,9 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~phytoplankton basal respiration coefficient&\textit{respb}&$0.06$\tabularnewline
 ~~minimum N cell-quota&\textit{QminN}&$0.04$\tabularnewline
 ~~half-saturation constant for P&\textit{Kp}&$0.03$\tabularnewline
-~~half-saturation constant for N&\textit{Kn}&$6.97\times 10^{-3}$\tabularnewline
-~~phytoplankton carbon/cell&\textit{Qc}&$6.68\times 10^{-3}$\tabularnewline
-~~minimum P cell-quota&\textit{QminP}&$8.21\times 10^{-7}$\tabularnewline
+~~half-saturation constant for N&\textit{Kn}&$6.97e^{-3}$\tabularnewline
+~~phytoplankton carbon/cell&\textit{Qc}&$6.68e^{-3}$\tabularnewline
+~~minimum P cell-quota&\textit{QminP}&$8.21e^{-7}$\tabularnewline
 \hline
 {\bfseries Temperature}&&\tabularnewline
 ~~Optimum temperature for growth&\textit{Tref(nospA+nospZ)$_{p1}$}&$0.16$\tabularnewline
@@ -1290,8 +1296,8 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 ~~proportion of phytoplankton lost to sloppy feeding&\textit{Zslop}&$0.15$\tabularnewline
 ~~zooplankton growth-dependent respiration factor&\textit{Zrespg}&$0.1$\tabularnewline
 ~~zooplankton biomass-dependent respiration factor&\textit{Zrespb}&$0.06$\tabularnewline
-~~zooplankton phosphorus/individual&\textit{ZQp}&$6.43\times 10^{-3}$\tabularnewline
-~~zooplankton carbon/individual&\textit{ZQc}&$3.38\times 10^{-5}$\tabularnewline
+~~zooplankton phosphorus/individual&\textit{ZQp}&$6.43e^{-3}$\tabularnewline
+~~zooplankton carbon/individual&\textit{ZQc}&$3.38e^{-5}$\tabularnewline
 \hline
 \end{tabular}\end{center}}
 \end{table}

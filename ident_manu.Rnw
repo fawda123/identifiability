@@ -21,6 +21,10 @@
 \crefname{figure}{Fig.}{Figs.}
 \renewcommand{\figurename}{Fig.}
 
+% aliased citations
+\defcitealias{APHA05}{APHA 2005}
+\defcitealias{MurrellIR}{Murrell et al. in revision}
+
 %acronyms
 \acrodef{chla}[chl-\textit{a}]{chlorophyll \textit{a}}
 \acrodef{cgem}[CGEM]{Coastal General Ecosystem Model}
@@ -169,7 +173,7 @@ nparms <- parcats2(as_df = TRUE) %>%
 @
 
 \begin{abstract}
-\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspondence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of \Sexpr{sum(unlist(nparms))} total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved fit to the observed data if sensitive parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
+\noindent Local sensitivity analyses and identifiable parameter subsets were used to describe numerical constraints of a hypoxia model for bottom waters of the northern Gulf of Mexico.  The sensitivity of state variables differed considerably with parameter changes, although most variables were responsive to changes in parameters that influenced planktonic growth rates and less sensitive to physical or chemical parameters.  Variation in sensitivity had a direct correspondence with identifiability, such that only small subsets of the complete parameter set had unique effects on the model output. Selecting parameters by decreasing sensitivity demonstrated that only eight of \Sexpr{sum(unlist(nparms))} total parameters had a sufficiently unique effect on model output for accurate calibration.  As a result, parameter selection heuristics were used to identify parameters for model calibration that depended on combined effects on output, relative sensitivity of each parameter, and ecological categories for the biogeochemical equations. The calibrated \ac{zerod} unit of the hypoxia model had improved fit to the observed data if sensitive phytoplankton parameters were included in an identifiable subset.  Extension of results to a three-dimensional grid of the Gulf of Mexico showed that sensitive parameters for the \ac{zerod} model translated to non-trivial changes in the areal estimates of hypoxia.
 \end{abstract}
 
 \begin{keyword}
@@ -189,12 +193,12 @@ The development of a model represents a tradeoff between achieving predictive ac
 
 Model fit can be evaluated relative to the effects of initial conditions or the observed data used for calibration, changes in parameter values, or variation in the structural components (i.e., observational, parameter, or structural uncertainty) \citep{Beck87}.  Evaluating effects of parameter changes is by far the most common and simplest approach.  Although sensitivity analyses should be integrated with model development, parameters are often evaluated post-hoc as a form of `damage control' for further calibration.  This approach is sometimes called inverse modelling where results from sensitivity analyses are used to guide calibration or fit of the developed model to observations (\citealt{Soetaert10}, or confronting models with data, \textit{sensu} \citealt{Hilborn97}).  Parameter sensitivity analysis combined with inverse modelling necessarily involves questions of parameter `identifiability'.  Redundancies in parameter effects lead to unidentifiable models where calibration is empirically impossible (i.e., standard algorithms will not converge) or parameter values may be non-unique leading to the right answer for the wrong reason \citep{Kirchner06}. Unidentifiable parameter sets have effects on model output that can be undone or compensated for by alteration of other parameters.  Identifiability issues are not foreign to hypoxia or eutrophication models  \citep{Omlin01,Estrada10,Mateus15}, although there is a clear need for greater integration of these concepts in practice \citep{Fasham06}.
 
-This study describes a sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}.  The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
+This study describes a sensitivity and identifiability analysis of a \ac{zerod} unit of a larger spatial-temporal model of hypoxia dynamics on the \ac{lcs}. In general, the analysis makes a case for unit-testing with lower-dimensional models, particularly when computional limitations preclude the use of conventional optimization algorithms with larger three-dimensional models. The objectives were to provide a statistical approach that demonstrates numerical limitations of parameter sets for model calibration and provide a framework for selecting parameters within the identifiability constraints.  The specific goals were to \begin{inparaenum}[1\upshape)]
 \item identify the parameters that have the greatest influence on state variables using local sensitivity analysis,
 \item quantify the identifiability of subsets of the total parameter space based on sensitivity,
 \item and provide a set of heuristics for choosing parameters based on sensitivity, identifiability, and parameter categories.
 \end{inparaenum}
-The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics to improve model fit.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability of the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
+The \ac{zerod} model was calibrated with selected parameter subsets to demonstrate use of the selection heuristics for optimization.  Sensitive parameters for the \ac{zerod} model were also varied in the larger 3-dimensional model to demonstrate scalability of the results. In addition to \ac{do}, other state variables that were evaluated included ammonium, \ac{chla}, irradiance, nitrate, \ac{pom}, \ac{dom}, and phosphorus. In general, we provide empirical results to support the assumption that models are generally over-parameterized and only a finite and smaller subset of the complete parameter set can be optimized.
 
 \section{Materials and Methods}
 
@@ -250,11 +254,11 @@ Selected parameter subsets from the seven heuristics were used to calibrate the 
 \end{inparaenum}
 Generally, this analysis was a proof of concept that the selection heuristics can lead to an `optimal' model by maximizing the balance between sensitivity and identifiability.  
 
-Estimates of oxygen production from closed bottle experiments were used to calibrate the \ac{zerod} model.  Surface water was collected from a fixed location in Pensacola Bay, Florida () on September 25\textsuperscript{th}, 2013.  Water samples were placed into closed 100 mL glass bottles at the time of collection and transported back to the lab for treatments.  Concentrations of \ac{do} and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents (Parsons et al. 1985) and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method (Holmes et al. 1999); other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods (APHA 2005).  
+Estimates of oxygen production from closed bottle experiments were used to calibrate the \ac{zerod} model.  Surface water was collected from a fixed location in Pensacola Bay, Florida (30.35$^{\circ}$ N, 87.20$^{\circ}$ W) on September 25\textsuperscript{th}, 2013 (full details in \citetalias{MurrellIR}).  Water samples were placed into closed 100 mL glass bottles at the time of collection and transported back to the lab for treatments.  Concentrations of \ac{do} and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents \citep{Parsons85} and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method \citep{Holmes99}; other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods \citepalias{APHA05}.
 
-Oxygen production after an approximate 12 hour period (morning to evening) was estimated within the bottles using three treatments: light, dark, and light plus nutrients.  All treatments were exposed to ambient outdoor conditions in a water bath with continuous flow at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The nutrient treatments were supplemented with an equal mix of 25 mmol m$^{-3}$ of ammonium and nitrate and 1.7 mmol m$^{-3}$, approximately two orders of magnitude above ambient concentrations.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of \ac{do} in each bottle were measured.  Four replicates of each treatment were used. HOBO\textsuperscript{\textregistered} pendants were used to measure continous temperature and light for each treatment.  
+Oxygen production after an approximate 12 hour period (morning to evening) was estimated within the bottles using light and dark treaments.  All treatments were exposed to ambient outdoor conditions in a water bath with continuous flow at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of \ac{do} in each bottle were measured.  Each treatment had four replicates and HOBO\textsuperscript{\textregistered} pendants were used to measure continuous temperature and light.  
 
-Each parameter subset was calibrated to the ending \ac{do} concentration for each of the four replicates of each treatment.   The intial concentrations and treatments were used as starting conditions for FishTank.  The corresponding continous temperature and light measurements were also used as forcing conditions for the model.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within a range of values for a subset that was chosen to best reflect expections given professional judgment and reasonable bounds from the literature.  While we recognize that `actual' parameter values could possibly extend beyond these ranges, constraining the values was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
+Each parameter subset in \cref{tab:heurist1,tab:heurist2,tab:heurist3} for \ac{do} was calibrated to the ending oxygen concentration for each of the four replicates of each treatment. The intial nutrient and oxygen concentrations were used as starting conditions for FishTank.  The corresponding continuous temperature and light measurements were also used as forcing conditions.  Parameter values were searched using the optim function in R that implemented the limited memory modification of the BFGS quasi-Newton method \citep{Byrd95,Nocedal06,RDCT17}.  This optimization scheme searches for values within the user-defined lower and upper bounds of each parameter.  We set the algorithm to search within a range of values for a subset that was chosen to best reflect expectations given professional judgment and reasonable bounds from the literature.  While we recognize that `actual' parameter values could possibly extend beyond these ranges, constraining the values was expected to produce output that was more interpretable within the context of the sensitivity functions defined above.  Moreover, precise limits on each parameter were less of a concern for the current analysis as our primary goal was to demonstrate differences in fit as a function of sensitivity and identifiability.  The optimal values for each parameter were identified based on convergence of the model results as a minimization of the \ac{rmse} between the observed and modelled data.    
 
 As a final analysis, effects of parameter changes on the larger 3-dimensional model were evaluated to demonstrate that results from the \ac{zerod} FishTank model are scalable.  For simplicity, only the most sensitive parameter in each category was selected.  The \ac{cgem} model was run for one year using the default parameter conditions and by increasing each of the selected parameters by 50\%.  This produced six spatially-referenced time series (one default, five for each parameter change) from which changes in the daily hypoxic area (number of cells $<$ 64 mmol \ac{do}) were estimated.
 
@@ -413,7 +417,6 @@ load(file = 'data/cals.RData')
 strt <- cals[[1]]$mat[1,] %>% 
   .[length(.)] %>% 
   scinot(.)
-# 72.13955 
 
 idpars <- get_cmbs(tocal_all, 'O2', coll = T, errs = T, pert = 0.5) 
 
@@ -451,9 +454,54 @@ temp <- filter(caldat, heurist %in% 'Temperature')
 optics <- filter(caldat, heurist %in% 'Optics')
 top <- filter(caldat, heurist %in% 'Independent of category')
 cattop <- filter(caldat, heurist %in% 'Equally within category')
+phyto <- filter(caldat, heurist %in% 'Phytoplankton')
+
+# for individual parameters
+
+ests <- map(cals, 'par') %>%
+  map(enframe, name = 'parm', value = 'val') %>% 
+  enframe(name = 'heurist') %>%
+  unnest %>% 
+  mutate(var = 'calib') %>% 
+  select(heurist, var, parm, val)
+
+rngs <- get_cmbs(tocal_all, out_var = 'O2', thrsh = 15, coll = T, errs = TRUE, pert = NULL) %>% 
+  lapply(function(x){
+    x[c('error', 'vals', 'minv', 'maxv')] %>% 
+      bind_rows(.id = 'var') %>% 
+      gather('parm', 'val', -var)
+  }) %>% 
+  enframe(name = 'heurist') %>% 
+  unnest 
+
+prch <- rbind(ests, rngs) %>% 
+  spread('var', 'val') %>% 
+  mutate(
+    pchg = 100 * (calib - vals) / vals,
+    pchg = ifelse(pchg > 0, round(pchg, 1), 
+      ifelse(pchg < 0, round(pchg, 1), NA)
+    ),
+    minv = sapply(minv, scinot), 
+    maxv = sapply(maxv, scinot), 
+    vals = vals,
+    calib = sapply(calib, scinot),
+    rgrp = ifelse(heurist == 'top', '2', ifelse(heurist == 'cattop', '3', '1')), 
+    heurist = factor(heurist, levels = levs, labels = labs), 
+    parm = par_txt(parm)
+  ) %>% 
+  unite('minmax', minv, maxv, sep = '/') %>% 
+  select(rgrp, heurist, parm, error, minmax, vals, calib, pchg) %>% 
+  arrange(heurist, -error) %>% 
+  mutate(
+    heurist = as.character(heurist), 
+    heurist = ifelse(duplicated(heurist), '', heurist)
+    ) 
+nc <- prch %>% 
+  filter(is.na(pchg))
+ncmax <- prch[which.max(prch$pchg), ]
 @
 
-Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3})  produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only \Sexpr{toeng(temp$its)[[1]]} iterations were required to optimize the single parameter selected for the temperature category, whereas \Sexpr{top$its} iterations were required for the \Sexpr{toeng(top$nprm)[[1]]} parameters selected independent of category.  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, selection independent of parameter category and equally within each category produced the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} \Sexpr{strt} mmol O$_2$ m$^{-3}$, reduction to \Sexpr{scinot(top$rmse)}, \Sexpr{scinot(cattop$rmse)}, respectively), whereas the optimal values for parameters in the Optics category had the smallest reduction (\Sexpr{scinot(optics$rmse)}).  Lower \ac{rmse} was associated with higher average sensitivity of a parameter subset.  Parameters selected only in the optics category had the highest \ac{rmse} and lowest average L1 (\Sexpr{scinot(optics$avee)}, \Sexpr{toeng(optics$nprm)} parameters), whereas parameters selected independent of category had the lowest \ac{rmse} and highest average L1 (\Sexpr{scinot(top$avee)}, \Sexpr{toeng(top$nprm)} parameters, \cref{tab:calib}). 
+Calibration of parameter values for each of the seven selection heuristics (\cref{tab:heurist1,tab:heurist2,tab:heurist3}) produced model output that varied in goodness of fit and computational effort required to identify optimal values (\cref{tab:calib}).  As expected, the number of required iterations of the optimization algorithm to minimize \ac{rmse} of observed \ac{do} and model output varied in proportion to the number of parameters in a subset.  For example, only \Sexpr{toeng(temp$its)[[1]]} iterations were required to optimize the single parameter selected for the temperature category, whereas \Sexpr{phyto$its} iterations were required for the \Sexpr{toeng(phyto$nprm)[[1]]} parameters selected for phytoplankton (\cref{fig:calex}).  No association was observed between collinearity ($\gamma$) and number of iterations or calibration.  Of the seven parameter subsets, the optimal phytoplankton parameters had the largest reduction in \ac{rmse} values from the default output (starting \ac{rmse} \Sexpr{strt} mmol O$_2$ m$^{-3}$, reduction to \Sexpr{scinot(phyto$rmse)}).  The identifiable parameters selected equally within categories (third heuristic) and independent of category (second heuristic) produced the second and third greatest reduction in \ac{rmse} (\Sexpr{scinot(cattop$rmse)}, and \Sexpr{scinot(top$rmse)}, respectively), although much less than that observed for phytoplankton parametrs. Overall, calibration to most of the parameter subsets had a small effect on \ac{rmse}.  However, the magnitude of parameter changes for calibration varied up to several orders of magnitude from the initial values (\cref{tab:calibprm}).  The percent change in parameters from the intial values varied from no change (Optics parameters \Sexpr{nc$parm[1]} and \Sexpr{nc$prm[2]}) to 900\% (\Sexpr{ncmax$parm}).  Many calibrated parameter values included those at the lower or upper bounds used for the optimization routine (as for phytoplankton, \cref{fig:calex}).  There was no relationship between magnitude of parameter changes within a subset and overall reduction of \ac{rmse}.
 
 <<>>=
 data(area)
@@ -528,13 +576,13 @@ Results from the identifiability analyses provided additional insight into the i
 
 \subsection{Recommendations and conclusions}
 
-Our results demonstrated that small parameter subsets relative to all sensitive parameters were within the identifiability thresholds described in the literature.  The identifiable parameter subsets varied considerably between state variables and the method for parameter selection.  Use of identifiable parameter subsets with sensitive parameters improved model fit and results for the smaller model were scalable to the 3-dimensional model.  However, an evaluation of sensitivity and identifiability of relevant parameter sets is a preliminary and simplistic approach to improving model predictions.  We have provided a general approach to select parameter subsets for further model development depending on the ecological context (i.e., selection by parameter category, selection for specific state variables). Thus, the results described above have relevance for model refinement with the specific goal of better understanding ecological dynamics that moderate hypoxia on the northern \ac{gom}.  The general principles of sensitivity and parameter identifiability have broad applicability beyond this context and we argue that such methods should be more universally applied as an initial approach to quantify numerical constraints of biogeochemical models.  
+Our results demonstrated that small parameter subsets relative to all sensitive parameters were within the identifiability thresholds described in the literature.  The identifiable parameter subsets varied considerably between state variables and the method for parameter selection.  Use of identifiable parameter subsets with sensitive parameters improved model fit, particularly for phytoplankton parameters.  However, calibration to most parameter sets showed little improvement in model fit despite relatively large changes in parameter values.  This result underscores the challenge of model optimization when conidering many parameters.  Although we demonstrated model sensitivity to individual parameters, the interactive effects are also important.  For example, optimization to zooplankton parameters showed almost no change in model \ac{rmse} despite a relatively large sensitivity of the model to individual parameters.  A more comprehensive approach that considers the interaction of zooplankton parameters with others, such as phytoplankton, is warranted given the structural dependencies betwen parameter cateogires.  Indeed, the reduction in \ac{rmse} for selection heuristics that weighted the parameter categories equally showed the second largest reduction in model error.  
 
 The effects of structural or observational uncertainty could be evaluated as an extension of the analyses presented above. For example, the sensitivity of \ac{do} to variation in the half-saturation constants for phytoplankton (the concentration supporting half the maximum uptake rate of nutrients) could vary given the initial nutrient concentrations \citep{Eppley69}. Further, changes in the ratio between nitrogen and phosphorus could affect the sensitivity of state variables to parameter changes depending on the limiting nutrient.  A more challenging analysis is an evaluation of the effects of structural components on model output, which requires exclusion or inclusion of explicit biogeochemical equations. The FishTank model includes several `switches' that allow users to change the governing equations that estimate state variables, such as switches that `turn on' different structural equations for light attenuation in the water column.  This design is uncommon in biogeochemical models and could be leveraged for an evaluation of structural uncertainty. As such, our analysis of parameter sensitivity and identifiabilty could be combined with an evaluation of observational and structural uncertainty for a more complete characterization of the model, having implications for understanding drivers of hypoxia in coastal waters.  
 
 \section*{Acknowledgments}
 
-We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}. We thank James Pauer, Yonghsan Wan, and Susan Elizabeth George for providing helpful comments on an earlier draft.
+We thank the research staff of the USEPA Gulf Ecology Division, Environmental Modeling and Visualization Laboratory, and Naval Research Laboratory for their efforts developing the hydrodynamic and biogeochemical components of \ac{cgem}. We thank James Pauer, Yonghsan Wan, Susan Elizabeth George, and an anonymous reviewer for providing helpful comments on an earlier draft. We thank Michael Murrell for assistance with the bottle dataset.  
 
 \section*{Role of Funding Sources}
 
@@ -542,6 +590,14 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 
 \clearpage
 
+% for abbreviated journal names
+<<eval = F, echo = F>>=
+library(Jabbrev)
+bbl_ext('ident_manu.bbl', 'refs.bib')
+bib_shr('refs_kp.bib')
+file.copy('refs_kp_new.bib', 'refsshr.bib', overwrite = TRUE)
+file.remove(c('refs_kp.bib', 'refs_kp_new.bib'))
+@
 % \bibliography{refs}
 \bibliography{refsshr}
 \clearpage
@@ -553,7 +609,7 @@ This study was funded, reviewed, and approved for publication by the US EPA, Nat
 
 % parameter info
 <<parmtab, eval = T, cache = F>>=
-parmtab(tabsize = 'tiny')
+parmtab(tabsize = 'scriptsize')
 @
 
 % do sensitivity all categories
@@ -811,9 +867,9 @@ labs <- c('Optics', 'Organic Matter', 'Phytoplankton', 'Temperature', 'Zooplankt
 totab <- rbind(ests, rngs) %>% 
   spread('var', 'val') %>% 
   mutate(
-    pchg = 100 * (calib - vals)/vals,
-    pchg = ifelse(pchg > 0, paste0('+', round(pchg, 0)), 
-      ifelse(pchg < 0, paste0('-', round(pchg, 0)), 'nc')
+    pchg = 100 * (calib - vals) / vals,
+    pchg = ifelse(pchg > 0, paste0('+', round(pchg, 1)), 
+      ifelse(pchg < 0, paste0('-', round(pchg, 1)), 'nc')
     ),
     minv = sapply(minv, scinot), 
     maxv = sapply(maxv, scinot), 
@@ -823,7 +879,8 @@ totab <- rbind(ests, rngs) %>%
     heurist = factor(heurist, levels = levs, labels = labs), 
     parm = par_txt(parm)
   ) %>% 
-  select(rgrp, heurist, parm, error, minv, maxv, vals, calib, pchg) %>% 
+  unite('minmax', minv, maxv, sep = '/') %>% 
+  select(rgrp, heurist, parm, error, minmax, vals, calib, pchg) %>% 
   arrange(heurist, -error) %>% 
   mutate(
     error = sapply(error, scinot),
@@ -833,7 +890,7 @@ totab <- rbind(ests, rngs) %>%
   
   
 cap_val <- 'Results of parameter changes from model calibration to observed \\ac{do} for each of seven parameter subsets selected by sensitivity within each parameter category (first), independent of category (second), and equally within each category (third). The parameters of each subset are from \\cref{tab:heurist1,tab:heurist2,tab:heurist3}.  The L1 values are relative sensitivity of \\ac{do} to a paramter change.  Starting and final parameter values after calibration are shown, including the percent change.  The calibration routing was bounded by minimum and maximum values appropriate for each parameter.'
-colnms <- c('Parameter', 'L1', 'Min', 'Max', 'Initial', 'Final', '\\% change')
+colnms <- c('Parameter', 'L1', 'Min/Max', 'Initial', 'Final', '\\% change')
 
 latex(
   totab[, -c(1,2)],

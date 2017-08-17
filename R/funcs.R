@@ -56,7 +56,7 @@ scinot <- function(x, pow = 2, digits = 2, showDollar = TRUE)
     exponent <- floor(log10(x))
     if (exponent & abs(exponent) > pow) {
         xx <- round(x / 10^exponent, digits=digits)
-        e <- paste("\\times 10^{", as.integer(exponent), "}", sep="")
+        e <- paste("e^{", as.integer(exponent), "}", sep="")
     } else {
         xx <- round(x, digits=digits)
         e <- ""

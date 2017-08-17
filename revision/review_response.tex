@@ -111,7 +111,7 @@ Discussion part is unnecessary long, lot of introduction in the discussion. This
 
 The sensitivity analysis was adequately implemented but further clarification is needed for how the water quality model was applied in Weeks Bay. 
 
-{\it }
+{\it We present a thorough recalibration of the model }
 
 In view of the above comments and reports of reviewers, your manuscript has been evaluated and you are informed to resubmit the manuscript after proper and thorough revisions in accordance with the comments of editor/reviewers. Review reports are appended below. Thank you for your submission in Ecological Modelling. 
 
@@ -120,6 +120,19 @@ In view of the above comments and reports of reviewers, your manuscript has been
 The authors present the sensitivity analysis of a 0-Dimensional biochemical model implemented in Weeks Bay Alabama. The authors evaluated the sensitivity of the model predictions of DO, ammonium, nitrate, chl-a and irradiance to perturbations in several model parameters. In general, the theoretical basis of the sensitivity analysis is very interesting and mathematically sound and the use of the collinearity index (Eq. 3) to explore linear correlations between parameters seems to be very useful to help identify the most important parameters controlling the model performance (in terms of goodness of fit to observed datasets). The paper can be accepted pending major revisions. 
 
 My main concern with the manuscript is that while the application of the sensitivity analysis to the FishTank model seems ok, the application of the FishTank model to Weeks Bay, AL is weak and not convincing. First of all, a correct representation of the advective and dispersive transport is critical to be able to capture the fate and transport of water quality in an estuary. Without a correct representation of transport it is almost impossible to be able to obtain a predictive water quality model. The FishTank model in this case neglects all modes of transport in Weeks Bay, AL and therefore assume the estuary is like a bathtub. This is obviously incorrect and represents a clear limitation of the paper.
+
+{\it
+
+Calibration the model to the Weeks Bay data was meant to demonstrate application of the parameter selection heuristics to improve insight into model behavior.  We agree with the reviewer that this application is not entirely appropriate given the potential hydrodynamic influences on the observed data. However, we still argue that unit-testing is an efficient means of improving larger models that are computationally intensive.  To address the concern of the reviewer and to maintain our emphasis on unit-testing, we have chosen a a more appropriate dataset, described below.  In addition, we have added this sentence to the the final paragraph of the introduction to emphasize the benefits of our zero-dimensional model.  
+
+'In general, the analysis makes a case for unit-testing with lower-dimensional models, particularly when computional limitations preclude the use of conventional optimization algorithms with larger three-dimensional models.'
+
+The new dataset was 
+
+For the discussion:
+
+'However, calibration to most parameter sets showed little improvement in model fit despite relatively large changes in parameter values.  This result underscores the challenge of model optimization when conidering many parameters.  Although we demonstrated model sensitivity to individual parameters, the interactive effects are also important.  For example, optimization to zooplankton parameters showed almost no change in model \ac{rmse} despite a relatively large sensitivity of the model to individual parameters.  A more comprehensive approach that considers the interaction of zooplankton parameters with others, such as phytoplankton, is warranted given the structural dependencies betwen parameter cateogires.  Indeed, the reduction in \ac{rmse} for selection heuristics that weighted the parameter categories equally showed the scond largest reduction in model error.'
+}
 
 For the sensitivity analysis the authors manipulated the observations of DO in the estuary filtering the tidal impacts to be able to implement the FishTank model. However, there is no evidence of the resulting time series of DO or of the other variables analyzed. I am concerned that while removing the DO variations due to tidal cycles, the authors could have also removed the daily variation of DO which can be associated to diurnal cycles of sunlight and temperature. If this is the case, then the DO calibration is based almost on synthetic and unrealistic DO data. The authors must include a section showing the data that was used for the calibration analysis. This section should include a location figure showing Weeks Bay, AL, the stations used to extract the original datasets, plots of the unprocessed and processed time series of DO, ammonium, nitrate, chl-a and irradiance as well as plots showing the processed data against the calibrated model outputs for each variable. The authors must also include a table with the calibrated parameter values. This information is standard in all modeling studies.
 
