@@ -1,24 +1,13 @@
 \documentclass[letterpaper,12pt]{article}
-\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\usepackage[paperwidth=8.5in,paperheight=11in,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 \usepackage{setspace}
-\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
-\usepackage{indentfirst}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage[final]{animate}
-\usepackage{graphicx}
-\usepackage{verbatim}
-\usepackage{rotating}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{subfig} 
-\usepackage[noae]{Sweave}
+\usepackage[colorlinks=true,allcolors=Blue]{hyperref}
+\usepackage{lineno}
 \usepackage{cleveref}
-\usepackage[figureposition=bottom]{caption}
-\usepackage{paralist}
 \usepackage{acronym}
-\usepackage{outlines}
-\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage{bm}
+\usepackage{fixltx2e}
 
 %acronyms
 % \acrodef{}{}
@@ -28,6 +17,11 @@
 # set global chunk options
 opts_chunk$set(fig.align = 'center', message = F, dev = 'pdf', dev.args = list(family = 'serif'), fig.pos = '!ht', warning = F, echo = F)
 options(replace.assign=TRUE,width=90,digits=1)
+@
+
+%setup
+<<message = F, warning = F>>=
+library(tidyverse)
 @
 
 \setlength{\parskip}{5mm}
@@ -44,7 +38,7 @@ options(replace.assign=TRUE,width=90,digits=1)
 
 {\it Response to reviewer comments ``Parameter sensitivity and identifiability for a biogeochemical model of hypoxia in the northern Gulf of Mexico'', Beck MW, Lehrter JC, Lowe LL, Jarvis BM.}
 
-{\it We thank the editor and reviewer for providing thoughtful comments on our manuscript.  Responses to these comments are shown in italics.  Page and paragraph numbers refer to the revised manuscript.}
+{\it We thank the editor and reviewer for providing helpful comments on our manuscript.  Responses to these comments are shown in italics.}
 
 \Bigtxt{Editor's comments:}
 
@@ -54,7 +48,7 @@ The authors executed the work on parameter sensitivity and identifiability for a
 
 The model is not presented in detail, it is necessary to give more details on original model. 
 
-{\it We have added Table 1 that inccudes a full list and description of parameters that were evaluated for the sensitivity analysis. This table includes short and long descriptions, units, and starting values.  
+{\it We have added Table 1 that includes a full list and description of parameters that were evaluated for the sensitivity analysis. This table includes short and long descriptions, units, and starting values.  
 
 Full details of the model are provided as an appendix in Lehrter et al. 2017.  We have not included the content here because it includes nearly twenty pages which we do not wish to duplicate.  We refer the reader to the appendix twice in section 2.1, which includes a new sentence in the first paragraph: `A full description of the model structure, equations, and parameters is described in appendices A-F in Lehrter et al. (2017).'  
 }
@@ -65,7 +59,7 @@ Discussion part is unnecessary long, lot of introduction in the discussion. This
 
 The sensitivity analysis was adequately implemented but further clarification is needed for how the water quality model was applied in Weeks Bay. 
 
-{\it We present a thorough recalibration of the model }
+{\it We present a thorough recalibration of the model with an alternative dataset described below.  Please see our responses to the reviewer.}
 
 In view of the above comments and reports of reviewers, your manuscript has been evaluated and you are informed to resubmit the manuscript after proper and thorough revisions in accordance with the comments of editor/reviewers. Review reports are appended below. Thank you for your submission in Ecological Modelling. 
 
@@ -77,20 +71,66 @@ My main concern with the manuscript is that while the application of the sensiti
 
 {\it
 
-Calibration the model to the Weeks Bay data was meant to demonstrate application of the parameter selection heuristics to improve insight into model behavior.  We agree with the reviewer that this application is not entirely appropriate given the potential hydrodynamic influences on the observed data. However, we still argue that unit-testing is an efficient means of improving larger models that are computationally intensive.  To address the concern of the reviewer and to maintain our emphasis on unit-testing, we have chosen a a more appropriate dataset, described below.  In addition, we have added this sentence to the the final paragraph of the introduction to emphasize the benefits of our zero-dimensional model.  
+We agree with the reviewer that this application is not entirely appropriate given the hydrodynamic influences on the observed data. However, our objective was to demonstrate that unit-testing of the zero-dimensional is an efficient means of improving larger models that are computationally intensive.  Our intent was not to present a complete predictive model with hydrodynamic forcing to Weeks Bay. To address the concern of the reviewer and to maintain our emphasis on unit-testing, we have chosen a a more appropriate dataset, described below.  A sentence added to the final paragraph of the introduction emphasizes our intent of the analysis:  
 
 'In general, the analysis makes a case for unit-testing with lower-dimensional models, particularly when computional limitations preclude the use of conventional optimization algorithms with larger three-dimensional models.'
 
-The new dataset was 
+An alternative dataset was used that included flask experiments of oxygen production from Pensacola Bay, Florida.  This dataset included light and dark treatments of water samples in closed bottles for an approximate 12-hour period, including before and after measurements of DO concentrations with initial nutrient values for each treatment and replicate.  The dataset is described in detail in Murrell et al. in revision (Murrell, M. C., Caffrey, J. C., Marcovich, D. T., Beck, M. W., Jarvis, B. M., III, J. D. H., in revision. Seasonal oxygen dynamics in a warm temperate estuary: Effects of hydrologic variability on measurements of primary production, respiration, and net metabolism. Estuaries Coasts - (-), –.).  Methods were added to the manuscript, Sec. 2.4:
 
-For the discussion:
+`Estimates of oxygen production from closed bottle experiments were used to calibrate the 0-D model.  Surface water was collected from a fixed location in Pensacola Bay, Florida (30.35$^{\circ}$ N, 87.20$^{\circ}$ W) on September 25\textsuperscript{th}, 2013 (full details in Murrell et al. in revision).  Water samples were placed into closed 300 mL glass bottles and transported back to the lab for treatments.  Concentrations of O$_2$ and nutrients (NH$_4^+$, NO$_2^-$, NO$_3^-$, PO$_4^{3-}$, and SiO$_3^{2-}$) were extracted from the samples within one hour of collection. Oxygen concentrations were established using Winkler reagents (Parsons et al. 1985) and titration using a MetrOhm Titrando with thiosulfate titrant calibrated against an iodate standard and electrochemical endpoint detection.  Ammonium was analyzed using a fluorometric method (Holmes et al. 1999); other nutrients were analyzed using either a Thermo Fisher Aquakem 200 discrete analyzer or an Astoria-Pacific continuous flow analyzer using standard colorimetric methods (APHA 2005).
 
-'However, calibration to most parameter sets showed little improvement in model fit despite relatively large changes in parameter values.  This result underscores the challenge of model optimization when conidering many parameters.  Although we demonstrated model sensitivity to individual parameters, the interactive effects are also important.  For example, optimization to zooplankton parameters showed almost no change in model \ac{rmse} despite a relatively large sensitivity of the model to individual parameters.  A more comprehensive approach that considers the interaction of zooplankton parameters with others, such as phytoplankton, is warranted given the structural dependencies betwen parameter cateogires.  Indeed, the reduction in \ac{rmse} for selection heuristics that weighted the parameter categories equally showed the scond largest reduction in model error.'
+<<echo = F>>=
+load(file = '../data/flaskdo.RData')
+source('../R/funcs.R')
+
+flsk <- flaskdo %>% 
+  select(-rep, -tmt_rep, -stt, -end) %>% 
+  gather('var', 'val', -tmt) %>% 
+  group_by(tmt, var) %>%
+  summarise(
+    se = sapply(sd(val)/sqrt(length(val)), scinot),
+    val = sapply(mean(val), scinot)
+    )
+
+ltstt <- flsk %>% 
+  filter(tmt %in% 'lt' & var %in% 'sttO2')
+ltend <- flsk %>% 
+  filter(tmt %in% 'lt' & var %in% 'endO2')
+dkstt <- flsk %>% 
+  filter(tmt %in% 'dk' & var %in% 'sttO2')
+dkend <- flsk %>% 
+  filter(tmt %in% 'dk' & var %in% 'endO2')
+initam <- flsk %>% 
+  filter(var %in% 'NH4')
+initno <- flsk %>% 
+  filter(var %in% 'NO3')
+initsi <- flsk %>% 
+  filter(var %in% 'Si')
+initpo <- flsk %>% 
+  filter(var %in% 'PO4')
+@
+
+Oxygen production after an approximate 12 hour period (morning to evening) was estimated within the bottles using light and dark treaments.  All treatments were exposed to ambient outdoor conditions in a water bath at the laboratory.  The dark treatments used opaque black bottles to ensure no exposure of ambient light to the samples.  The exposure experiments began at 7am and were concluded at 7pm, after which the concentrations of O$_2$ in each bottle were measured.  Each treatment had four replicates and HOBO\textsuperscript{\textregistered} pendants were used to measure continuous temperature and light. Starting O$_2$ concentrations for the experiments were \Sexpr{ltstt$val} ($\pm$ \Sexpr{ltstt$se}) mmol O$_2$ m$^{-3}$ and ending concentrations were \Sexpr{ltend$val} ($\pm$ \Sexpr{ltend$se}) mmol O$_2$ m$^{-3}$ for the light treatments and \Sexpr{dkend$val} ($\pm$ \Sexpr{dkend$se}) mmol O$_2$ m$^{-3}$ for the dark treatments.  Initial nutrient concentrations were \Sexpr{initam$val[1]} mmol m$^{-3}$ for NH$_4^+$ (single sample), \Sexpr{initpo$val[1]} mmol m$^{-3}$ for PO$_4^{3-}$, and \Sexpr{initsi$val[1]} mmol m$^{-3}$ for SiO$_3^{2-}$. Concentrations for NO$_2^-$ and NO$_3^-$ were below detection limit.
+
+Each parameter subset for O$_2$ from the selection heuristics was calibrated to the ending oxygen concentration for each of the four replicates of each treatment. The intial nutrient and oxygen concentrations were used as starting conditions for FishTank.  The corresponding continuous temperature and light measurements were also used as forcing conditions.  Parameter values were searched using the optim function...
+'
 }
 
 For the sensitivity analysis the authors manipulated the observations of DO in the estuary filtering the tidal impacts to be able to implement the FishTank model. However, there is no evidence of the resulting time series of DO or of the other variables analyzed. I am concerned that while removing the DO variations due to tidal cycles, the authors could have also removed the daily variation of DO which can be associated to diurnal cycles of sunlight and temperature. If this is the case, then the DO calibration is based almost on synthetic and unrealistic DO data. The authors must include a section showing the data that was used for the calibration analysis. This section should include a location figure showing Weeks Bay, AL, the stations used to extract the original datasets, plots of the unprocessed and processed time series of DO, ammonium, nitrate, chl-a and irradiance as well as plots showing the processed data against the calibrated model outputs for each variable. The authors must also include a table with the calibrated parameter values. This information is standard in all modeling studies.
 
+{\it
+
+Our use of the flask experimental data addresses these concerns.  The initial and ending DO concentrations for the experimental data, including intial nutrient concentrations, were reported in our revision to the methods. We have also added Table 7 for more details on the calibration results for each parameter subset.  In addition, Figure 7 was added (old Figure 7 is now Figure 8) to demonstrate the opimization routine using the phytoplankton parameter set in Table 3 for dissolved oxygen.
+
+The new results for the experimental data present some interesting challenges that demonstrated how unit-testing can inform model understanding.  The implications of the analysis were described in an addition to the discussion, sec. 4.1:
+
+`..However, calibration to most parameter sets showed little improvement in model fit despite relatively large changes in parameter values.  This result underscores the challenge of model optimization when conidering many parameters.  Although we demonstrated model sensitivity to individual parameters, the interactive effects are also important.  For example, optimization to zooplankton parameters showed almost no change in model \it{RMSE} despite a relatively large sensitivity of the model to individual parameters.  A more comprehensive approach that considers the interaction of zooplankton parameters with others, such as phytoplankton, is warranted given the structural dependencies betwen parameter categories.  Indeed, the reduction in \it{RMSE} for selection heuristics that equally considered the parameter categories (third heuristic) showed the second largest reduction in model error.  This subset included both phytoplankton and zooplankton parameters, suggesting more careful consideration of these sensitive parameters could further improve model calibration.'
+
+}
+
 Please also describe what are the forcing conditions of the FishTank model. There are two tributary rivers in Weeks Bay and one outlet condition. How is each one simulated in your FishTank model?.
+
+{\it Please see the description above justifying our use of the new dataset.}
 
 Other comments:
 
@@ -106,7 +146,7 @@ lines 24 - 39 page 3. This part of the text is full of vague statements. Please 
 
 {\it This section was revised as follows:
 
-`The development of a model represents a tradeoff between achieving predictive accuracy and a realistic representation of environmental processes.... Given that these characteristics cannot be simultaneously achieved, models are developed that balance predictive accuracy with environmental realism, often favoring one at the expense of the other.'
+`The development of a model represents a tradeoff between achieving predictive accuracy and a realistic representation of environmental processes [...] Given that these characteristics cannot be simultaneously achieved, models are developed to balance predictive accuracy with environmental realism or often favor one at the expense of the other.'
 
 }
 
@@ -116,7 +156,7 @@ lines 24 - 39 page 3. I think the reference Levins (1966) is extremely old and m
 
 It is interesting to see that the authors constantly use the term ``precision'' to denote goodness of fit. In general, precision is used to denote the number of digits of a number. Note that a number can be precise but inaccurate. I suggest the authors to revise the text and replace ``precision'' with a better term to denote goodness of fit. e.g. level of agreement between observations and simulations. 
 
-{\it We have found that precision is commonly used in the literature to describe goodness of fit, although we understand the distinction made by the reviewer.  Considering an example where observed data represent a biased sample of an environmental process (e.g., infrequent or unevent sampling of an event that varies over time), model calibration to these data can only possibly achieve precision.  Although practitioners would not knowingly use observed data that are biased for model calibration, we are certain that many ecological datasets are incomplete representations of actual processes.  We argue then that model calibration in many cases is better described as seeking precision, although in practice it is stated as predictive accuracy given an incomplete knowledge of the observed data relative to the true environmental process. Regardless, we have replaced precision with ``goodness of fit'' or ``fit'' as a more generic term.}
+{\it We have found that precision is commonly used in the literature to describe goodness of fit, although we understand the distinction made by the reviewer.  Considering an example where observed data represent a biased sample of an environmental process (e.g., infrequent or uneven sampling of an event that varies over time), model calibration to these data can only ever achieve precision.  Although practitioners would not knowingly use observed data that are biased for model calibration, we are certain that many ecological datasets are incomplete representations of actual processes.  We argue then that model calibration in many cases is better described as seeking precision, although in practice it is stated as predictive accuracy given an incomplete knowledge of the observed data relative to the true environmental process. Regardless, we have replaced precision with ``goodness of fit'' or ``fit'' as a more generic term.}
 
 Line 9 page 10. Selection or Selected?
 
@@ -128,6 +168,6 @@ Line 4 page 12. what are the default parameter conditions?. You should include a
 
 Lines 29-30 page 16. Please include the units in the reported RMSEs. mmol O2?
 
-{\it RMSE units are reported as mmol o2 m-3 and was added to the text.}
+{\it RMSE units are reported as mmol o2 m-3, which was added to the text.}
 
 \end{document}
